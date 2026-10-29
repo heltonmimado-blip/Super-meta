@@ -3,83 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Super-meta v5 - IA Global</title>
+    <title>Super-meta v6 - Ultimate AI</title>
     <style>
         body { margin: 0; font-family: sans-serif; background: #f1f5f9; color: #333; display: flex; flex-direction: column; height: 100vh; }
-        header { background: linear-gradient(135deg, #1e40af, #3b82f6); color: #fff; padding: 18px; text-align: center; }
-        h1 { margin: 0; font-size: 22px; }
-        .container { padding: 12px; max-width: 600px; margin: auto; width: 100%; flex: 1; display: flex; flex-direction: column; box-sizing: border-box; }
-        .card { background: #fff; margin: 8px 0; padding: 14px; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
-        select, input, button { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 16px; margin-top: 8px; box-sizing: border-box; }
+        header { background: linear-gradient(135deg, #1e40af, #3b82f6); color: #fff; padding: 16px; text-align: center; }
+        h1 { margin: 0; font-size: 20px; }
+        .container { padding: 10px; max-width: 600px; margin: auto; width: 100%; flex: 1; display: flex; flex-direction: column; box-sizing: border-box; }
+        .card { background: #fff; margin: 6px 0; padding: 14px; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+        select, input, button { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 15px; margin-top: 6px; box-sizing: border-box; }
         button { background: #1e40af; color: #fff; border: 0; font-weight: bold; cursor: pointer; }
-        .chat-box { flex: 1; background: #fff; border-radius: 14px; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.1); margin-bottom: 10px; }
-        .msg { padding: 10px 14px; border-radius: 12px; max-width: 80%; line-height: 1.4; }
+        .btn-secundario { background: #0ea5e9; }
+        .chat-box { flex: 1; background: #fff; border-radius: 14px; padding: 10px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.1); margin-bottom: 8px; }
+        .msg { padding: 10px 14px; border-radius: 12px; max-width: 85%; line-height: 1.4; font-size: 15px; }
         .msg-user { background: #3b82f6; color: #fff; align-self: flex-end; }
         .msg-ai { background: #e2e8f0; color: #1e293b; align-self: flex-start; }
-        .input-area { display: flex; gap: 6px; }
+        .input-area { display: flex; gap: 6px; align-items: center; }
         .input-area input { margin-top: 0; flex: 1; }
-        .input-area button { margin-top: 0; width: 80px; }
+        .input-area button { margin-top: 0; width: auto; padding: 12px 14px; }
         .escondido { display: none; }
+        .preview-img { max-width: 100%; max-height: 150px; border-radius: 8px; margin-top: 6px; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🤖 Super-meta v5 AI</h1>
-        <p style="margin:4px 0 0; font-size:13px;">O teu Tutor Inteligente Global</p>
+        <h1>🎙️ Super-meta v6 AI</h1>
+        <p style="margin:2px 0 0; font-size:12px;">Voz, Screenshots, Foco & Estudo Global</p>
     </header>
 
     <div class="container">
-        <!-- ECRÃ DE CONFIGURAÇÃO GLOBAL -->
+        <!-- ECRÃ DE SETUP E ESCOLHA DE VOZ -->
         <div id="ecra-setup" class="card">
-            <h3>🌍 Configuração Inicial</h3>
-            <label><b>Escolhe o teu País:</b></label>
-            <select id="pais-select">
+            <h3>⚙️ Configuração do Assistente</h3>
+            
+            <label><b>País / Região:</b></label>
+            <select id="pais">
                 <option value="MZ">Moçambique</option>
                 <option value="PT">Portugal</option>
                 <option value="BR">Brasil</option>
                 <option value="AO">Angola</option>
-                <option value="OUTRO">Outro País / Global</option>
+                <option value="Global">Outro / Global</option>
             </select>
 
-            <label style="margin-top:12px; display:block;"><b>Idioma de Ensino:</b></label>
-            <select id="idioma-select">
-                <option value="pt">Português</option>
-                <option value="en">English (Global)</option>
-                <option value="fr">Français</option>
+            <label style="margin-top:10px; display:block;"><b>Escolher Voz do Assistente:</b></label>
+            <select id="tipo-voz">
+                <option value="feminina">Voz Feminina (Padrão PT)</option>
+                <option value="masculina">Voz Masculina (Padrão PT)</option>
             </select>
 
-            <button onclick="iniciarApp()" style="margin-top:16px;">🚀 Entrar no Super-meta AI</button>
+            <button onclick="iniciarSuperMeta()" style="margin-top:14px;">🚀 Começar Experiência</button>
         </div>
 
-        <!-- ECRÃ DE CHAT INTELIGENTE (ESTILO GPT/GEMINI) -->
+        <!-- ECRÃ PRINCIPAL DE CHAT / ESTUDO / CHAMADA -->
         <div id="ecra-chat" class="escondido" style="display:flex; flex-direction:column; flex:1;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                <span id="info-local" style="font-size:13px; font-weight:bold; color:#1e40af;"></span>
-                <button onclick="mudarConfig()" style="width:auto; padding:6px 12px; font-size:12px; background:#64748b;">⚙️ Mudar</button>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <span id="status-voz" style="font-size:12px; font-weight:bold; color:#1e40af;">🎧 Modo Voz Ativo</span>
+                <button onclick="mudarConfig()" style="width:auto; padding:4px 10px; font-size:11px; background:#64748b;">⚙️ Definições</button>
             </div>
 
             <div id="chat-historico" class="chat-box">
-                <div class="msg msg-ai">Olá! Sou o teu assistente Super-meta AI. Pergunta-me qualquer dúvida sobre matemática, física, história ou qualquer disciplina do teu país! Como posso ajudar hoje?</div>
+                <div class="msg msg-ai">Olá! Sou o teu Super-meta v6. Podes enviar dúvidas por texto, carregar screenshots de exercícios, pedir dicas de foco ou iniciar uma chamada de voz comigo! Como ajudo hoje?</div>
+            </div>
+
+            <!-- Pré-visualização de imagem carregada -->
+            <div id="preview-container" class="escondido card" style="padding: 8px; margin-bottom: 6px;">
+                <span style="font-size: 12px; font-weight: bold;">📸 Screenshot anexado:</span>
+                <img id="img-preview" class="preview-img">
+                <button onclick="removerImagem()" style="background:#ef4444; padding:6px; font-size:12px; margin-top:4px;">Remover Imagem</button>
             </div>
 
             <div class="input-area">
-                <input type="text" id="pergunta-input" placeholder="Escreve a tua dúvida..." onkeypress="if(event.key==='Enter') enviarMensagem()">
+                <input type="file" id="input-file" accept="image/*" style="display:none" onchange="carregarImagem(event)">
+                <button type="button" onclick="document.getElementById('input-file').click()" class="btn-secundario" title="Enviar Screenshot">📷</button>
+                <input type="text" id="pergunta-input" placeholder="Escreve a tua dúvida ou pede foco..." onkeypress="if(event.key==='Enter') enviarMensagem()">
                 <button onclick="enviarMensagem()">Enviar</button>
             </div>
+            
+            <button onclick="iniciarChamadaVoz()" style="background:#16a34a; margin-top:6px; padding:10px;">📞 Iniciar Chamada de Voz Contínua</button>
         </div>
     </div>
 
     <script>
-        let configUtilizador = { pais: "MZ", idioma: "pt" };
+        let config = { pais: "MZ", voz: "feminina" };
+        let imagemBase64 = null;
 
-        function iniciarApp() {
-            configUtilizador.pais = document.getElementById('pais-select').value;
-            configUtilizador.idioma = document.getElementById('idioma-select').value;
+        function iniciarSuperMeta() {
+            config.pais = document.getElementById('pais').value;
+            config.voz = document.getElementById('tipo-voz').value;
 
-            document.getElementById('info-local').innerText = `País: ${configUtilizador.pais} | Idioma: ${configUtilizador.idioma.toUpperCase()}`;
             document.getElementById('ecra-setup').classList.add('escondido');
             document.getElementById('ecra-chat').classList.remove('escondido');
+            falarTexto("Olá! O Super-meta está pronto para te ajudar nos estudos.");
         }
 
         function mudarConfig() {
@@ -87,29 +101,70 @@
             document.getElementById('ecra-setup').classList.remove('escondido');
         }
 
+        function carregarImagem(event) {
+            const ficheiro = event.target.files[0];
+            if (ficheiro) {
+                const leitor = new FileReader();
+                leitor.onload = function(e) {
+                    imagemBase64 = e.target.result;
+                    document.getElementById('img-preview').src = imagemBase64;
+                    document.getElementById('preview-container').classList.remove('escondido');
+                }
+                leitor.readAsDataURL(ficheiro);
+            }
+        }
+
+        function removerImagem() {
+            imagemBase64 = null;
+            document.getElementById('preview-container').classList.add('escondido');
+            document.getElementById('input-file').value = "";
+        }
+
+        function falarTexto(texto) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(texto);
+                utterance.lang = 'pt-PT';
+                // Seleção aproximada de tom baseada na escolha
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
         function enviarMensagem() {
             const input = document.getElementById('pergunta-input');
             const texto = input.value.trim();
-            if(!texto) return;
+            if (!texto && !imagemBase64) return;
 
             const historico = document.getElementById('chat-historico');
+            let conteudoUser = texto;
 
-            // Mensagem do utilizador
-            historico.innerHTML += `<div class="msg msg-user">${texto}</div>`;
+            if (imagemBase64) {
+                conteudoUser += `<br><img src="${imagemBase64}" class="preview-img">`;
+            }
+
+            historico.innerHTML += `<div class="msg msg-user">${conteudoUser}</div>`;
             input.value = "";
+            
+            let imgTemp = imagemBase64;
+            removerImagem();
             historico.scrollTop = historico.scrollHeight;
 
-            // Simulação de resposta inteligente baseada no contexto global
+            // Simulação de resposta inteligente e tutoria avançada
             setTimeout(() => {
-                let respostaAI = `Com base no currículo adaptado para o país selecionado (${configUtilizador.pais}), sobre "${texto}": esta é uma excelente questão de estudo! As matérias fundamentais cobrem conceitos teóricos e práticos essenciais para o teu nível académico. Quer aprofundar com exercícios práticos?`;
+                let resposta = `Com base no teu currículo (${config.pais}) e na dúvida apresentada: analisei o problema passo a passo. Para resolver esta questão de estudo ou focar no teu dia a dia, deves aplicar os conceitos fundamentais teóricos e praticar com exercícios regulares. Quer que debatermos isto em detalhe por voz?`;
                 
-                if(configUtilizador.idioma === 'en') {
-                    respostaAI = `Based on the curriculum for your region (${configUtilizador.pais}), regarding "${texto}": this is a great study question! Let me know if you want detailed exercises.`;
+                if(imgTemp) {
+                    resposta = `Recebi o teu screenshot! Analisei a imagem enviada. O exercício apresentado aborda conceitos essenciais. Vamos resolvê-lo juntos: divide o problema nas partes conhecidas e aplica a fórmula correta.`;
                 }
 
-                historico.innerHTML += `<div class="msg msg-ai">${respostaAI}</div>`;
+                historico.innerHTML += `<div class="msg msg-ai">${resposta}</div>`;
                 historico.scrollTop = historico.scrollHeight;
-            }, 800);
+                falarTexto(resposta);
+            }, 1000);
+        }
+
+        function iniciarChamadaVoz() {
+            alert("Modo Chamada de Voz ativado! Podes falar com o assistente (se o teu telemóvel suportar reconhecimento de voz nativo).");
+            falarTexto("Estou em linha contigo! Qual é a matéria que vamos debater agora?");
         }
     </script>
 </body>
