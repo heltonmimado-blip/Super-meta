@@ -1,8 +1,18 @@
 function falarTexto(texto) {
     if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel(); // Para qualquer leitura anterior para não sobrepor
+        // Para qualquer leitura anterior para não sobrepor
+        window.speechSynthesis.cancel(); 
+        
         const utterance = new SpeechSynthesisUtterance(texto);
-        utterance.lang = 'pt-PT'; // Podes alterar para 'pt-BR' se preferires sotaque do Brasil
+        utterance.lang = 'pt-PT'; // Podes usar 'pt-BR' para sotaque do Brasil
+        
+        // Podes ajustar a velocidade (1 é normal) e o tom (1 é normal)
+        utterance.rate = 1.0; 
+        utterance.pitch = 1.0;
+
         window.speechSynthesis.speak(utterance);
+    } else {
+        alert("O teu navegador não suporta leitura de voz.");
     }
 }
+
