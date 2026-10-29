@@ -1,140 +1,115 @@
 <!DOCTYPE html>
-<html lang="pt-MZ">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Super-meta v4</title>
+    <title>Super-meta v5 - IA Global</title>
     <style>
-        body { margin: 0; font-family: sans-serif; background: #f1f5f9; color: #333; }
-        header { background: linear-gradient(135deg, #1e40af, #3b82f6); color: #fff; padding: 24px; text-align: center; border-radius: 0 0 28px 28px; }
-        h1 { margin: 0; font-size: 26px; }
-        .container { padding: 10px; max-width: 600px; margin: auto; }
-        .card { background: #fff; margin: 14px 0; padding: 18px; border-radius: 18px; box-shadow: 0 4px 12px rgba(0,0,0,.1); }
-        button { width: 100%; background: #1e40af; color: #fff; border: 0; padding: 14px; border-radius: 12px; font-weight: 800; margin-top: 10px; font-size: 16px; cursor: pointer; }
-        .btn-voltar { background: #64748b; margin-bottom: 20px; }
-        .pergunta-box { background: #f8fafc; border-left: 4px solid #3b82f6; padding: 12px; margin-top: 10px; border-radius: 8px; }
+        body { margin: 0; font-family: sans-serif; background: #f1f5f9; color: #333; display: flex; flex-direction: column; height: 100vh; }
+        header { background: linear-gradient(135deg, #1e40af, #3b82f6); color: #fff; padding: 18px; text-align: center; }
+        h1 { margin: 0; font-size: 22px; }
+        .container { padding: 12px; max-width: 600px; margin: auto; width: 100%; flex: 1; display: flex; flex-direction: column; box-sizing: border-box; }
+        .card { background: #fff; margin: 8px 0; padding: 14px; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+        select, input, button { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 16px; margin-top: 8px; box-sizing: border-box; }
+        button { background: #1e40af; color: #fff; border: 0; font-weight: bold; cursor: pointer; }
+        .chat-box { flex: 1; background: #fff; border-radius: 14px; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.1); margin-bottom: 10px; }
+        .msg { padding: 10px 14px; border-radius: 12px; max-width: 80%; line-height: 1.4; }
+        .msg-user { background: #3b82f6; color: #fff; align-self: flex-end; }
+        .msg-ai { background: #e2e8f0; color: #1e293b; align-self: flex-start; }
+        .input-area { display: flex; gap: 6px; }
+        .input-area input { margin-top: 0; flex: 1; }
+        .input-area button { margin-top: 0; width: 80px; }
         .escondido { display: none; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>📚 Super-meta v4</h1>
-        <p>Maning Off 🔥 - Ensino Classe a Classe</p>
+        <h1>🤖 Super-meta v5 AI</h1>
+        <p style="margin:4px 0 0; font-size:13px;">O teu Tutor Inteligente Global</p>
     </header>
 
     <div class="container">
-        <!-- 1. MENU PRINCIPAL (Níveis) -->
-        <div id="menu-principal">
-            <div class="card">
-                <b>🎓 Primário (1ª à 7ª Classe)</b>
-                <p>Do alfabeto às bases fundamentais</p>
-                <button onclick="carregarNivel('primario')">▶️ Ver Classes</button>
-            </div>
-            <div class="card">
-                <b>📘 Secundário (8ª à 10ª Classe)</b>
-                <p>Introdução às ciências e aprofundamento</p>
-                <button onclick="carregarNivel('secundario')">▶️ Ver Classes</button>
-            </div>
-            <div class="card">
-                <b>🎓 Médio (11ª e 12ª Classe)</b>
-                <p>Preparação pré-universitária</p>
-                <button onclick="carregarNivel('medio')">▶️ Ver Classes</button>
-            </div>
+        <!-- ECRÃ DE CONFIGURAÇÃO GLOBAL -->
+        <div id="ecra-setup" class="card">
+            <h3>🌍 Configuração Inicial</h3>
+            <label><b>Escolhe o teu País:</b></label>
+            <select id="pais-select">
+                <option value="MZ">Moçambique</option>
+                <option value="PT">Portugal</option>
+                <option value="BR">Brasil</option>
+                <option value="AO">Angola</option>
+                <option value="OUTRO">Outro País / Global</option>
+            </select>
+
+            <label style="margin-top:12px; display:block;"><b>Idioma de Ensino:</b></label>
+            <select id="idioma-select">
+                <option value="pt">Português</option>
+                <option value="en">English (Global)</option>
+                <option value="fr">Français</option>
+            </select>
+
+            <button onclick="iniciarApp()" style="margin-top:16px;">🚀 Entrar no Super-meta AI</button>
         </div>
 
-        <!-- 2. MENU DE CLASSES -->
-        <div id="menu-classes" class="escondido">
-            <button class="btn-voltar" onclick="voltarMenuPrincipal()">⬅️ Voltar aos Níveis</button>
-            <h2 id="titulo-nivel-escolhido" style="color:#1e40af; text-align:center;"></h2>
-            <div id="lista-classes"></div>
-        </div>
+        <!-- ECRÃ DE CHAT INTELIGENTE (ESTILO GPT/GEMINI) -->
+        <div id="ecra-chat" class="escondido" style="display:flex; flex-direction:column; flex:1;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <span id="info-local" style="font-size:13px; font-weight:bold; color:#1e40af;"></span>
+                <button onclick="mudarConfig()" style="width:auto; padding:6px 12px; font-size:12px; background:#64748b;">⚙️ Mudar</button>
+            </div>
 
-        <!-- 3. PÁGINA DE ESTUDO DA CLASSE -->
-        <div id="pagina-estudo" class="escondido">
-            <button class="btn-voltar" onclick="voltarClasses()">⬅️ Voltar às Classes</button>
-            <div class="card">
-                <h2 id="titulo-classe" style="margin-top:0; color:#1e40af;"></h2>
-                <p><b>📚 Matérias desta classe:</b><br><span id="texto-materias" style="color:#2563eb; font-weight:bold;"></span></p>
-                <hr style="border:0; border-top:1px solid #e2e8f0; margin:15px 0;">
-                <h3>📝 Perguntas de Estudo:</h3>
-                <div id="lista-perguntas"></div>
+            <div id="chat-historico" class="chat-box">
+                <div class="msg msg-ai">Olá! Sou o teu assistente Super-meta AI. Pergunta-me qualquer dúvida sobre matemática, física, história ou qualquer disciplina do teu país! Como posso ajudar hoje?</div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="pergunta-input" placeholder="Escreve a tua dúvida..." onkeypress="if(event.key==='Enter') enviarMensagem()">
+                <button onclick="enviarMensagem()">Enviar</button>
             </div>
         </div>
     </div>
 
     <script>
-        const dadosEscola = {
-            primario: {
-                titulo: "Ensino Primário",
-                classes: {
-                    "1a": { nome: "1ª Classe", materias: "Português, Matemática, Educação Física", perguntas: [{p: "Como se escreve o número 5 por extenso?", r: "Cinco"}] },
-                    "2a": { nome: "2ª Classe", materias: "Português, Matemática, Educação Física", perguntas: [{p: "Quanto é 12 + 8?", r: "20"}] },
-                    "3a": { nome: "3ª Classe", materias: "Português, Matemática, Ciências Naturais, Ciências Sociais", perguntas: [{p: "Qual é o órgão responsável pela respiração humana?", r: "Os pulmões"}] },
-                    "4a": { nome: "4ª Classe", materias: "Português, Matemática, Ciências Naturais, Ciências Sociais", perguntas: [{p: "Quais são os estados físicos da água?", r: "Sólido, líquido e gasoso"}] },
-                    "5a": { nome: "5ª Classe", materias: "Português, Matemática, Inglês, Ciências Naturais, Ciências Sociais", perguntas: [{p: "O que é a fotossíntese?", r: "Processo usado pelas plantas para produzir o seu próprio alimento."}] },
-                    "6a": { nome: "6ª Classe", materias: "Português, Matemática, Inglês, Ciências Naturais, História, Geografia", perguntas: [{p: "Qual é a capital de Moçambique?", r: "Maputo"}] },
-                    "7a": { nome: "7ª Classe", materias: "Português, Matemática, Inglês, Ciências Naturais, História, Geografia, Educação Visual, Educação Física", perguntas: [{p: "O que são números primos?", r: "Números divisíveis apenas por 1 e por ele próprio."}] }
-                }
-            },
-            secundario: {
-                titulo: "Ensino Secundário",
-                classes: {
-                    "8a": { nome: "8ª Classe", materias: "Matemática, Português, Inglês, Física, Química, Biologia, História, Geografia", perguntas: [{p: "Qual é a fórmula química da água?", r: "H₂O"}] },
-                    "9a": { nome: "9ª Classe", materias: "Matemática, Português, Inglês, Física, Química, Biologia, História, Geografia", perguntas: [{p: "O que estuda a mecânica em Física?", r: "O movimento e o equilíbrio dos corpos."}] },
-                    "10a": { nome: "10ª Classe", materias: "Matemática, Português, Inglês, Física, Química, Biologia, História, Geografia", perguntas: [{p: "O que é a tabela periódica?", r: "Organização de todos os elementos químicos conhecidos."}] }
-                }
-            },
-            medio: {
-                titulo: "Ensino Médio",
-                classes: {
-                    "11a": { nome: "11ª Classe", materias: "Matemática, Português, Inglês, Física, Química, Biologia, Filosofia", perguntas: [{p: "Quem é o autor da frase 'Penso, logo existo'?", r: "René Descartes"}] },
-                    "12a": { nome: "12ª Classe", materias: "Matemática, Português, Inglês, Física, Química, Biologia, Filosofia", perguntas: [{p: "Onde ocorre a respiração celular?", r: "Nas mitocôndrias"}] }
-                }
-            }
-        };
+        let configUtilizador = { pais: "MZ", idioma: "pt" };
 
-        let nivelAtual = null;
+        function iniciarApp() {
+            configUtilizador.pais = document.getElementById('pais-select').value;
+            configUtilizador.idioma = document.getElementById('idioma-select').value;
 
-        function carregarNivel(nivelKey) {
-            nivelAtual = nivelKey;
-            const info = dadosEscola[nivelKey];
-            document.getElementById('titulo-nivel-escolhido').innerText = info.titulo;
-
-            let htmlClasses = "";
-            for (let chave in info.classes) {
-                let cls = info.classes[chave];
-                htmlClasses += `<div class="card"><b>${cls.nome}</b><p style="font-size:14px; color:#555;">${cls.materias}</p><button onclick="carregarClasse('${chave}')">📖 Aceder à Matéria</button></div>`;
-            }
-            document.getElementById('lista-classes').innerHTML = htmlClasses;
-
-            document.getElementById('menu-principal').classList.add('escondido');
-            document.getElementById('menu-classes').classList.remove('escondido');
+            document.getElementById('info-local').innerText = `País: ${configUtilizador.pais} | Idioma: ${configUtilizador.idioma.toUpperCase()}`;
+            document.getElementById('ecra-setup').classList.add('escondido');
+            document.getElementById('ecra-chat').classList.remove('escondido');
         }
 
-        function carregarClasse(classeKey) {
-            const cls = dadosEscola[nivelAtual].classes[classeKey];
-            document.getElementById('titulo-classe').innerText = cls.nome;
-            document.getElementById('texto-materias').innerText = cls.materias;
-
-            let htmlPerguntas = "";
-            cls.perguntas.forEach(item => {
-                htmlPerguntas += `<div class="pergunta-box"><b>${item.p}</b><br><span style="color:#16a34a; font-weight:bold;">${item.r}</span></div>`;
-            });
-            document.getElementById('lista-perguntas').innerHTML = htmlPerguntas;
-
-            document.getElementById('menu-classes').classList.add('escondido');
-            document.getElementById('pagina-estudo').classList.remove('escondido');
+        function mudarConfig() {
+            document.getElementById('ecra-chat').classList.add('escondido');
+            document.getElementById('ecra-setup').classList.remove('escondido');
         }
 
-        function voltarMenuPrincipal() {
-            document.getElementById('menu-classes').classList.add('escondido');
-            document.getElementById('menu-principal').classList.remove('escondido');
-        }
+        function enviarMensagem() {
+            const input = document.getElementById('pergunta-input');
+            const texto = input.value.trim();
+            if(!texto) return;
 
-        function voltarClasses() {
-            document.getElementById('pagina-estudo').classList.add('escondido');
-            document.getElementById('menu-classes').classList.remove('escondido');
+            const historico = document.getElementById('chat-historico');
+
+            // Mensagem do utilizador
+            historico.innerHTML += `<div class="msg msg-user">${texto}</div>`;
+            input.value = "";
+            historico.scrollTop = historico.scrollHeight;
+
+            // Simulação de resposta inteligente baseada no contexto global
+            setTimeout(() => {
+                let respostaAI = `Com base no currículo adaptado para o país selecionado (${configUtilizador.pais}), sobre "${texto}": esta é uma excelente questão de estudo! As matérias fundamentais cobrem conceitos teóricos e práticos essenciais para o teu nível académico. Quer aprofundar com exercícios práticos?`;
+                
+                if(configUtilizador.idioma === 'en') {
+                    respostaAI = `Based on the curriculum for your region (${configUtilizador.pais}), regarding "${texto}": this is a great study question! Let me know if you want detailed exercises.`;
+                }
+
+                historico.innerHTML += `<div class="msg msg-ai">${respostaAI}</div>`;
+                historico.scrollTop = historico.scrollHeight;
+            }, 800);
         }
     </script>
 </body>
