@@ -20,39 +20,42 @@
 
     <header>
         <h1>📚 Super-meta v4</h1>
-        <p>Maning Off 🔥 - O teu app de estudo</p>
+        <p>Maning Off 🔥 - Ensino Classe a Classe</p>
     </header>
 
     <div class="container">
-        <!-- MENU PRINCIPAL -->
+        <!-- 1. MENU PRINCIPAL (Níveis) -->
         <div id="menu-principal">
             <div class="card">
-                <b>🎓 Primário - 1ª à 7ª</b>
-                <p>Matemática, Português</p>
-                <button onclick="carregarNivel('primario')">▶️ Começar</button>
+                <b>🎓 Primário (1ª à 7ª Classe)</b>
+                <p>Do alfabeto às bases fundamentais</p>
+                <button onclick="carregarNivel('primario')">▶️ Ver Classes</button>
             </div>
             <div class="card">
-                <b>📘 Secundário - 8ª à 10ª</b>
-                <p>Física, Química</p>
-                <button onclick="carregarNivel('secundario')">▶️ Começar</button>
+                <b>📘 Secundário (8ª à 10ª Classe)</b>
+                <p>Introdução às ciências e aprofundamento</p>
+                <button onclick="carregarNivel('secundario')">▶️ Ver Classes</button>
             </div>
             <div class="card">
-                <b>🎓 Médio - 11ª e 12ª</b>
-                <p>Filosofia, Biologia</p>
-                <button onclick="carregarNivel('medio')">▶️ Começar</button>
-            </div>
-            <div class="card" style="text-align:center; background:#dcfce7; border:2px solid #22c55e">
-                <b>✅ v4 - Atualizado com sucesso!</b>
-                <p>Escolhe o teu nível e começa a estudar.</p>
+                <b>🎓 Médio (11ª e 12ª Classe)</b>
+                <p>Preparação pré-universitária</p>
+                <button onclick="carregarNivel('medio')">▶️ Ver Classes</button>
             </div>
         </div>
 
-        <!-- PÁGINA DE ESTUDO (Dinamica) -->
+        <!-- 2. MENU DE CLASSES -->
+        <div id="menu-classes" class="escondido">
+            <button class="btn-voltar" onclick="voltarMenuPrincipal()">⬅️ Voltar aos Níveis</button>
+            <h2 id="titulo-nivel-escolhido" style="color:#1e40af; text-align:center;"></h2>
+            <div id="lista-classes"></div>
+        </div>
+
+        <!-- 3. PÁGINA DE ESTUDO DA CLASSE -->
         <div id="pagina-estudo" class="escondido">
-            <button class="btn-voltar" onclick="voltarMenu()">⬅️ Voltar ao Menu</button>
+            <button class="btn-voltar" onclick="voltarClasses()">⬅️ Voltar às Classes</button>
             <div class="card">
-                <h2 id="titulo-nivel" style="margin-top:0; color:#1e40af;"></h2>
-                <p><b>Matérias disponíveis:</b> <span id="texto-materias"></span></p>
+                <h2 id="titulo-classe" style="margin-top:0; color:#1e40af;"></h2>
+                <p><b>📚 Matérias desta classe:</b><br><span id="texto-materias" style="color:#2563eb; font-weight:bold;"></span></p>
                 <hr style="border:0; border-top:1px solid #e2e8f0; margin:15px 0;">
                 <h3>📝 Perguntas de Estudo:</h3>
                 <div id="lista-perguntas"></div>
@@ -61,51 +64,77 @@
     </div>
 
     <script>
-        const dadosEstudo = {
+        const dadosEscola = {
             primario: {
-                titulo: "Primário (1ª à 7ª)",
-                materias: "Matemática, Português",
-                perguntas: [
-                    { p: "Quanto é 7 x 8?", r: "R: 56" },
-                    { p: "Qual é o plural da palavra 'papel'?", r: "R: Papéis" }
-                ]
+                titulo: "Ensino Primário",
+                classes: {
+                    "1a": { nome: "1ª Classe", materias: "Português, Matemática, Educação Física", perguntas: [{p: "Como se escreve o número 5 por extenso?", r: "Cinco"}] },
+                    "2a": { nome: "2ª Classe", materias: "Português, Matemática, Educação Física", perguntas: [{p: "Quanto é 12 + 8?", r: "20"}] },
+                    "3a": { nome: "3ª Classe", materias: "Português, Matemática, Ciências Naturais, Ciências Sociais", perguntas: [{p: "Qual é o órgão responsável pela respiração humana?", r: "Os pulmões"}] },
+                    "4a": { nome: "4ª Classe", materias: "Português, Matemática, Ciências Naturais, Ciências Sociais", perguntas: [{p: "Quais são os estados físicos da água?", r: "Sólido, líquido e gasoso"}] },
+                    "5a": { nome: "5ª Classe", materias: "Português, Matemática, Inglês, Ciências Naturais, Ciências Sociais", perguntas: [{p: "O que é a fotossíntese?", r: "Processo usado pelas plantas para produzir o seu próprio alimento."}] },
+                    "6a": { nome: "6ª Classe", materias: "Português, Matemática, Inglês, Ciências Naturais, História, Geografia", perguntas: [{p: "Qual é a capital de Moçambique?", r: "Maputo"}] },
+                    "7a": { nome: "7ª Classe", materias: "Português, Matemática, Inglês, Ciências Naturais, História, Geografia, Educação Visual, Educação Física", perguntas: [{p: "O que são números primos?", r: "Números divisíveis apenas por 1 e por ele próprio."}] }
+                }
             },
             secundario: {
-                titulo: "Secundário (8ª à 10ª)",
-                materias: "Física, Química",
-                perguntas: [
-                    { p: "Qual é a fórmula química da água?", r: "R: H₂O" },
-                    { p: "O que mede o velocímetro de um carro?", r: "R: A velocidade instantânea" }
-                ]
+                titulo: "Ensino Secundário",
+                classes: {
+                    "8a": { nome: "8ª Classe", materias: "Matemática, Português, Inglês, Física, Química, Biologia, História, Geografia", perguntas: [{p: "Qual é a fórmula química da água?", r: "H₂O"}] },
+                    "9a": { nome: "9ª Classe", materias: "Matemática, Português, Inglês, Física, Química, Biologia, História, Geografia", perguntas: [{p: "O que estuda a mecânica em Física?", r: "O movimento e o equilíbrio dos corpos."}] },
+                    "10a": { nome: "10ª Classe", materias: "Matemática, Português, Inglês, Física, Química, Biologia, História, Geografia", perguntas: [{p: "O que é a tabela periódica?", r: "Organização de todos os elementos químicos conhecidos."}] }
+                }
             },
             medio: {
-                titulo: "Médio (11ª e 12ª)",
-                materias: "Filosofia, Biologia",
-                perguntas: [
-                    { p: "Quem é o autor da frase 'Penso, logo existo'?", r: "R: René Descartes" },
-                    { p: "Onde ocorre a respiração celular nas células?", r: "R: Nas mitocôndrias" }
-                ]
+                titulo: "Ensino Médio",
+                classes: {
+                    "11a": { nome: "11ª Classe", materias: "Matemática, Português, Inglês, Física, Química, Biologia, Filosofia", perguntas: [{p: "Quem é o autor da frase 'Penso, logo existo'?", r: "René Descartes"}] },
+                    "12a": { nome: "12ª Classe", materias: "Matemática, Português, Inglês, Física, Química, Biologia, Filosofia", perguntas: [{p: "Onde ocorre a respiração celular?", r: "Nas mitocôndrias"}] }
+                }
             }
         };
 
+        let nivelAtual = null;
+
         function carregarNivel(nivelKey) {
-            const info = dadosEstudo[nivelKey];
-            document.getElementById('titulo-nivel').innerText = info.titulo;
-            document.getElementById('texto-materias').innerText = info.materias;
+            nivelAtual = nivelKey;
+            const info = dadosEscola[nivelKey];
+            document.getElementById('titulo-nivel-escolhido').innerText = info.titulo;
+
+            let htmlClasses = "";
+            for (let chave in info.classes) {
+                let cls = info.classes[chave];
+                htmlClasses += `<div class="card"><b>${cls.nome}</b><p style="font-size:14px; color:#555;">${cls.materias}</p><button onclick="carregarClasse('${chave}')">📖 Aceder à Matéria</button></div>`;
+            }
+            document.getElementById('lista-classes').innerHTML = htmlClasses;
+
+            document.getElementById('menu-principal').classList.add('escondido');
+            document.getElementById('menu-classes').classList.remove('escondido');
+        }
+
+        function carregarClasse(classeKey) {
+            const cls = dadosEscola[nivelAtual].classes[classeKey];
+            document.getElementById('titulo-classe').innerText = cls.nome;
+            document.getElementById('texto-materias').innerText = cls.materias;
 
             let htmlPerguntas = "";
-            info.perguntas.forEach(item => {
+            cls.perguntas.forEach(item => {
                 htmlPerguntas += `<div class="pergunta-box"><b>${item.p}</b><br><span style="color:#16a34a; font-weight:bold;">${item.r}</span></div>`;
             });
             document.getElementById('lista-perguntas').innerHTML = htmlPerguntas;
 
-            document.getElementById('menu-principal').classList.add('escondido');
+            document.getElementById('menu-classes').classList.add('escondido');
             document.getElementById('pagina-estudo').classList.remove('escondido');
         }
 
-        function voltarMenu() {
-            document.getElementById('pagina-estudo').classList.add('escondido');
+        function voltarMenuPrincipal() {
+            document.getElementById('menu-classes').classList.add('escondido');
             document.getElementById('menu-principal').classList.remove('escondido');
+        }
+
+        function voltarClasses() {
+            document.getElementById('pagina-estudo').classList.add('escondido');
+            document.getElementById('menu-classes').classList.remove('escondido');
         }
     </script>
 </body>
