@@ -3,107 +3,101 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080f25">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d20">
 <title>Super Meta IA</title>
 
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#080f25;
- color:#f8fafc;
+ margin:0;background:#080d20;color:#f8fafc;
+ font-family:Arial,sans-serif
 }
-.app{
- max-width:520px;
- min-height:100vh;
- margin:auto;
- background:#0f172a;
-}
+.app{max-width:520px;margin:auto;min-height:100vh;background:#101a33}
 header{
  padding:25px 20px;
- background:linear-gradient(135deg,#111c3e,#1749a8);
- border-bottom:1px solid #334d85;
+ background:linear-gradient(135deg,#101a44,#1648a8,#7139b9);
+ border-radius:0 0 28px 28px;
 }
 .brand{display:flex;align-items:center;gap:13px}
 .logo{
- width:50px;height:50px;
- display:grid;place-items:center;
- background:#2563eb;
- border-radius:16px;
- font-size:27px;
+ width:54px;height:54px;border-radius:17px;
+ background:linear-gradient(135deg,#60a5fa,#9333ea);
+ display:grid;place-items:center;font-size:30px;
 }
 h1{font-size:23px;margin:0}
-header p{color:#dbeafe;font-size:13px}
-main{padding:18px}
-.card{
- background:#192641;
- border:1px solid #2b3c5b;
- padding:18px;
- border-radius:17px;
- margin-bottom:16px;
+header p{font-size:12px;color:#dbeafe}
+.status{font-size:11px;color:#86efac}
+nav{
+ display:flex;gap:7px;overflow-x:auto;padding:13px;
+ background:#111d38;position:sticky;top:0;z-index:5
 }
-h2{font-size:18px;margin-top:0}
-p{line-height:1.5}
-.muted{color:#a8b8d3;font-size:13px}
-input,select,textarea{
- width:100%;
- padding:14px;
- border-radius:10px;
- border:1px solid #435573;
- background:#101d35;
- color:white;
- margin:7px 0 13px;
- font-size:14px;
-}
+nav button{white-space:nowrap;padding:10px 13px}
 button{
- border:0;
- padding:14px;
- border-radius:11px;
- background:#2563eb;
- color:white;
- font-weight:bold;
- cursor:pointer;
+ border:0;border-radius:11px;padding:12px;
+ background:#2563eb;color:white;font-weight:bold;
+ cursor:pointer
 }
-button:active{opacity:.8}
-.primary{width:100%}
-.secondary{background:#334766}
-.hidden{display:none!important}
-.level{
- display:flex;
- align-items:center;
- gap:14px;
+button:active{opacity:.75}
+.secondary{background:#334765}
+.purple{background:#7437c9}
+main{padding:15px}
+.page{display:none}
+.page.active{display:block}
+.card{
+ background:#192744;border:1px solid #2e4165;
+ border-radius:17px;padding:17px;margin-bottom:14px
 }
-.level-icon{font-size:29px}
-.level-info{flex:1}
-.level-info h3{margin:0 0 5px}
-.level-info p{margin:0;color:#a8b8d3;font-size:12px}
-.level button{margin-top:12px;width:100%}
+h2{font-size:19px;margin:0 0 13px}
+h3{font-size:15px}
+p{line-height:1.5}
+.small{font-size:12px;color:#a8bad7}
+input,select,textarea{
+ width:100%;padding:13px;margin:7px 0 13px;
+ border-radius:10px;border:1px solid #425573;
+ background:#0d1930;color:white;font-size:14px
+}
+label{font-size:12px;font-weight:bold}
+.full{width:100%}
+.grid{
+ display:grid;grid-template-columns:1fr 1fr;gap:10px
+}
+.tile{
+ background:#203557;border:1px solid #344d75;
+ padding:17px;border-radius:15px;cursor:pointer
+}
+.tile .emoji{font-size:27px}
+.tile h3{margin:10px 0 5px}
 .chat{
- height:340px;
- overflow-y:auto;
- background:#0b1529;
- padding:12px;
- border-radius:12px;
- border:1px solid #344665;
+ height:300px;overflow:auto;padding:10px;
+ background:#0b152b;border-radius:12px
 }
-.message{
- padding:12px;
- margin:9px 0;
- border-radius:12px;
- white-space:pre-wrap;
- overflow-wrap:anywhere;
- font-size:14px;
- line-height:1.5;
+.msg{
+ padding:11px;border-radius:12px;
+ margin:8px 0;font-size:14px;line-height:1.5;
+ white-space:pre-wrap;overflow-wrap:anywhere
 }
-.ai{background:#1e3760}
-.user{background:#1d4ed8;margin-left:25px}
-.actions{display:flex;gap:8px;margin-top:10px}
-.actions input{flex:1;min-width:0;margin:0}
-.actions button{padding:12px}
-.back{margin-bottom:12px}
-footer{text-align:center;padding:20px;color:#8294b4;font-size:12px}
+.ai{background:#203e6a}
+.user{background:#2856ac;margin-left:25px}
+.row{display:flex;gap:7px;align-items:center}
+.row input{flex:1;min-width:0}
+.book{
+ padding:13px;background:#203557;
+ border-radius:12px;margin:9px 0;
+ display:flex;justify-content:space-between;
+ align-items:center;gap:10px
+}
+.book button{flex-shrink:0}
+#pdf-viewer{
+ width:100%;height:65vh;border:0;
+ background:white;border-radius:12px
+}
+#photo-preview{max-width:100%;border-radius:12px;margin-top:10px}
+.badge{
+ background:#163b37;color:#86efac;
+ padding:5px 9px;border-radius:20px;font-size:11px
+}
+footer{text-align:center;color:#7184a5;padding:20px;font-size:11px}
 </style>
 </head>
 
@@ -115,88 +109,91 @@ footer{text-align:center;padding:20px;color:#8294b4;font-size:12px}
   <div class="logo">🧠</div>
   <div>
    <h1>Super Meta IA</h1>
-   <span style="font-size:11px;color:#bfdbfe">ASSISTENTE EDUCATIVO</span>
+   <div class="status">● Assistente educativo</div>
   </div>
  </div>
- <p>Aprende, pergunta e descobre. O conhecimento começa aqui.</p>
+ <p>O conhecimento não tem fronteiras. Aprende ao teu ritmo.</p>
 </header>
+
+<nav>
+ <button onclick="showPage('home')">🏠 Início</button>
+ <button onclick="showPage('study')">📚 Estudos</button>
+ <button onclick="showPage('library')">📖 Biblioteca</button>
+ <button onclick="showPage('assistant')">🤖 IA</button>
+ <button onclick="showPage('settings')">⚙️ Definições</button>
+</nav>
 
 <main>
 
-<section id="inicio">
+<!-- INÍCIO -->
+<section id="home" class="page active">
  <div class="card">
-  <h2>👋 Bem-vindo ao Super Meta IA</h2>
-  <p class="muted">O teu espaço de aprendizagem para estudar, praticar e compreender melhor as disciplinas.</p>
+  <span class="badge">VERSÃO 3.0</span>
+  <h2 style="margin-top:15px">Bem-vindo ao Super Meta IA!</h2>
+  <p class="small">A tua plataforma para aprender, consultar livros e esclarecer dúvidas.</p>
+  <button class="full" onclick="showPage('study')">Começar a estudar →</button>
+ </div>
 
-  <label>🌍 País</label>
-  <select id="pais">
-   <option value="pt-MZ">Moçambique</option>
-   <option value="pt-PT">Portugal</option>
-   <option value="pt-BR">Brasil</option>
-  </select>
-
-  <label>🔊 Voz do assistente</label>
-  <select id="voz">
-   <option value="feminina">Feminina</option>
-   <option value="masculina">Masculina</option>
-  </select>
-
-  <button class="primary" onclick="entrar()">COMEÇAR AGORA →</button>
+ <h2>Explora a plataforma</h2>
+ <div class="grid">
+  <div class="tile" onclick="showPage('study')">
+   <div class="emoji">🎓</div>
+   <h3>Ensino</h3>
+   <p class="small">Classes e disciplinas</p>
+  </div>
+  <div class="tile" onclick="showPage('library')">
+   <div class="emoji">📚</div>
+   <h3>Biblioteca</h3>
+   <p class="small">Consultar livros PDF</p>
+  </div>
+  <div class="tile" onclick="showPage('assistant')">
+   <div class="emoji">🤖</div>
+   <h3>Assistente IA</h3>
+   <p class="small">Perguntas e respostas</p>
+  </div>
+  <div class="tile" onclick="showPage('settings')">
+   <div class="emoji">🎙️</div>
+   <h3>Voz</h3>
+   <p class="small">Configurar áudio</p>
+  </div>
  </div>
 
  <div class="card">
-  <h2>✨ O que podes fazer?</h2>
-  <p>📚 Estudar diferentes disciplinas.</p>
-  <p>🧮 Praticar exercícios de Matemática.</p>
-  <p>📷 Preparar o envio de fotografias.</p>
-  <p>🔊 Ouvir respostas em áudio.</p>
+  <h3>🌍 Aprende sem fronteiras</h3>
+  <p class="small">Seleciona o país e consulta a organização escolar correspondente.</p>
+  <button class="full purple" onclick="showPage('study')">Escolher país</button>
  </div>
 </section>
 
-<section id="niveis" class="hidden">
+<!-- ENSINO -->
+<section id="study" class="page">
  <div class="card">
-  <h2>📚 Escolhe o teu nível</h2>
-  <p class="muted">Seleciona uma etapa para continuar.</p>
- </div>
+  <h2>🎓 Sistema de ensino</h2>
 
- <div class="card level">
-  <div class="level-icon">📗</div>
-  <div class="level-info">
-   <h3>Ensino Primário</h3>
-   <p>1.ª até 7.ª classe</p>
-   <button onclick="selecionar(1,7)">ENTRAR</button>
-  </div>
- </div>
+  <label>Escolhe o país</label>
+  <select id="country" onchange="updateCountry()">
+   <option value="mz">🇲🇿 Moçambique</option>
+   <option value="ao">🇦🇴 Angola</option>
+   <option value="pt">🇵🇹 Portugal</option>
+   <option value="br">🇧🇷 Brasil</option>
+   <option value="za">🇿🇦 África do Sul</option>
+   <option value="gb">🇬🇧 Reino Unido</option>
+   <option value="us">🇺🇸 Estados Unidos</option>
+   <option value="cv">🇨🇻 Cabo Verde</option>
+   <option value="gw">🇬🇼 Guiné-Bissau</option>
+   <option value="st">🇸🇹 São Tomé e Príncipe</option>
+   <option value="na">🇳🇦 Namíbia</option>
+   <option value="tz">🇹🇿 Tanzânia</option>
+   <option value="zw">🇿🇼 Zimbabwe</option>
+  </select>
 
- <div class="card level">
-  <div class="level-icon">📘</div>
-  <div class="level-info">
-   <h3>Ensino Secundário</h3>
-   <p>8.ª até 10.ª classe</p>
-   <button onclick="selecionar(8,10)">ENTRAR</button>
-  </div>
- </div>
+  <div id="system-info" class="small"></div>
 
- <div class="card level">
-  <div class="level-icon">🎓</div>
-  <div class="level-info">
-   <h3>Ensino Médio</h3>
-   <p>11.ª e 12.ª classe</p>
-   <button onclick="selecionar(11,12)">ENTRAR</button>
-  </div>
- </div>
-</section>
-
-<section id="estudo" class="hidden">
- <button class="secondary back" onclick="mostrar('niveis')">← VOLTAR</button>
-
- <div class="card">
-  <h2>📖 Área de estudo</h2>
-  <label>Classe</label>
-  <select id="classe"></select>
+  <label>Classe / Ano</label>
+  <select id="grade"></select>
 
   <label>Disciplina</label>
-  <select id="disciplina">
+  <select id="subject">
    <option>Matemática</option>
    <option>Português</option>
    <option>Inglês</option>
@@ -205,142 +202,356 @@ footer{text-align:center;padding:20px;color:#8294b4;font-size:12px}
    <option>Biologia</option>
    <option>História</option>
    <option>Geografia</option>
-   <option>TIC</option>
+   <option>TIC / Informática</option>
+   <option>Educação Visual</option>
    <option>Outra</option>
   </select>
+
+  <button class="full" onclick="startStudy()">Confirmar seleção</button>
  </div>
 
  <div class="card">
-  <h2>🤖 Conversar com Super Meta IA</h2>
+  <h3>📖 Precisas de um livro?</h3>
+  <p class="small">Consulta a biblioteca para encontrar o material da tua classe.</p>
+  <button class="full purple" onclick="showPage('library')">Abrir biblioteca</button>
+ </div>
+</section>
+
+<!-- BIBLIOTECA -->
+<section id="library" class="page">
+ <div class="card">
+  <h2>📚 Biblioteca digital</h2>
+  <p class="small">Carrega os teus livros PDF para consultar neste dispositivo.</p>
+
+  <label>Escolher livro em PDF</label>
+  <input type="file" id="book-file" accept=".pdf,application/pdf">
+  <button class="full" onclick="addBook()">Adicionar à biblioteca</button>
+ </div>
+
+ <div class="card">
+  <h3>📖 Os meus livros</h3>
+  <div id="book-list">
+   <p class="small">Ainda não adicionaste livros.</p>
+  </div>
+ </div>
+
+ <div id="reader" class="card hidden">
+  <h3 id="book-title">Leitor de livros</h3>
+  <iframe id="pdf-viewer"></iframe>
+  <button class="secondary full" onclick="closeBook()">Fechar livro</button>
+ </div>
+</section>
+
+<!-- ASSISTENTE -->
+<section id="assistant" class="page">
+ <div class="card">
+  <h2>🤖 Super Meta IA</h2>
+  <p class="small">Faz perguntas e consulta as respostas.</p>
+
   <div class="chat" id="chat">
-   <div class="message ai">Olá! Escolhe a tua disciplina e escreve uma pergunta para começar.</div>
+   <div class="msg ai">
+    Olá! Sou o Super Meta IA. Posso ajudar-te a estudar.
+    Escreve uma pergunta para começar.
+   </div>
   </div>
 
-  <div class="actions">
-   <input id="pergunta" placeholder="Escreve a tua pergunta...">
-   <button onclick="enviar()">➤</button>
+  <div class="row">
+   <input id="question" placeholder="Escreve a tua pergunta...">
+   <button onclick="sendQuestion()">➤</button>
   </div>
 
-  <label>📷 Enviar exercício em fotografia</label>
-  <input type="file" id="foto" accept="image/*">
-  <button class="primary" onclick="enviarFoto()">SELECIONAR FOTOGRAFIA</button>
+  <button class="full secondary" onclick="startVoice()">🎙️ Falar com o assistente</button>
 
-  <button class="secondary primary" style="margin-top:10px" onclick="ouvirUltima()">🔊 Ouvir última resposta</button>
+  <label>Enviar fotografia do exercício</label>
+  <input type="file" id="exercise-photo" accept="image/*">
+  <img id="photo-preview" class="hidden">
+
+  <button class="full purple" onclick="sendPhoto()">Enviar fotografia</button>
+  <p class="small" id="photo-status"></p>
+ </div>
+</section>
+
+<!-- DEFINIÇÕES -->
+<section id="settings" class="page">
+ <div class="card">
+  <h2>⚙️ Configurações</h2>
+
+  <label>Tipo de voz</label>
+  <select id="voice-type">
+   <option value="female">Feminina</option>
+   <option value="male">Masculina</option>
+  </select>
+
+  <label>Velocidade da voz</label>
+  <select id="voice-speed">
+   <option value="0.85">Lenta</option>
+   <option value="1" selected>Normal</option>
+   <option value="1.15">Rápida</option>
+  </select>
+
+  <button class="full" onclick="testVoice()">🔊 Testar voz</button>
+
+  <hr style="border-color:#344765;margin:20px 0">
+
+  <h3>Informação do projeto</h3>
+  <p class="small">Super Meta IA — Plataforma educativa em desenvolvimento.</p>
  </div>
 </section>
 
 </main>
 
-<footer>SUPER META IA · 2026</footer>
+<footer>SUPER META IA © 2026 · Educação para todos</footer>
 </div>
 
 <script>
-function mostrar(id){
- ["inicio","niveis","estudo"].forEach(x=>
-  document.getElementById(x).classList.add("hidden")
- );
- document.getElementById(id).classList.remove("hidden");
+// NAVEGAÇÃO
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ window.scrollTo(0,0);
 }
 
-function entrar(){
- mostrar("niveis");
- falar("Bem-vindo ao Super Meta IA. Escolhe o teu nível de ensino.");
-}
-
-function selecionar(inicio,fim){
- let c=document.getElementById("classe");
- c.innerHTML="";
- for(let i=inicio;i<=fim;i++){
-  let o=document.createElement("option");
-  o.value=i;
-  o.textContent=i+"ª Classe";
-  c.appendChild(o);
+// SISTEMAS ESCOLARES
+const countries={
+ mz:{
+  name:"Moçambique",
+  info:"Ensino primário, secundário e superior. Organização apresentada como referência geral.",
+  grades:["1ª Classe","2ª Classe","3ª Classe","4ª Classe","5ª Classe","6ª Classe","7ª Classe","8ª Classe","9ª Classe","10ª Classe","11ª Classe","12ª Classe"]
+ },
+ ao:{
+  name:"Angola",
+  info:"Sistema com ensino primário e ensino secundário.",
+  grades:["1ª Classe","2ª Classe","3ª Classe","4ª Classe","5ª Classe","6ª Classe","7ª Classe","8ª Classe","9ª Classe","10ª Classe","11ª Classe","12ª Classe"]
+ },
+ pt:{
+  name:"Portugal",
+  info:"Ensino básico: 1º ao 9º ano; ensino secundário: 10º ao 12º ano.",
+  grades:["1º Ano","2º Ano","3º Ano","4º Ano","5º Ano","6º Ano","7º Ano","8º Ano","9º Ano","10º Ano","11º Ano","12º Ano"]
+ },
+ br:{
+  name:"Brasil",
+  info:"Ensino fundamental: 1º ao 9º ano; ensino médio: 1º ao 3º ano.",
+  grades:["1º Ano EF","2º Ano EF","3º Ano EF","4º Ano EF","5º Ano EF","6º Ano EF","7º Ano EF","8º Ano EF","9º Ano EF","1º Ano EM","2º Ano EM","3º Ano EM"]
+ },
+ za:{
+  name:"África do Sul",
+  info:"Grades 1 a 12, divididos em diferentes fases escolares.",
+  grades:Array.from({length:12},(_,i)=>"Grade "+(i+1))
+ },
+ gb:{
+  name:"Reino Unido",
+  info:"Anos escolares variam conforme Inglaterra, Escócia, País de Gales e Irlanda do Norte.",
+  grades:Array.from({length:13},(_,i)=>"Year "+(i+1))
+ },
+ us:{
+  name:"Estados Unidos",
+  info:"Grades 1 a 12. A organização curricular varia por estado e distrito.",
+  grades:Array.from({length:12},(_,i)=>"Grade "+(i+1))
+ },
+ cv:{
+  name:"Cabo Verde",
+  info:"Ensino básico e secundário.",
+  grades:["1º Ano","2º Ano","3º Ano","4º Ano","5º Ano","6º Ano","7º Ano","8º Ano","9º Ano","10º Ano","11º Ano","12º Ano"]
+ },
+ gw:{
+  name:"Guiné-Bissau",
+  info:"Organização escolar apresentada como referência geral.",
+  grades:Array.from({length:12},(_,i)=>(i+1)+"ª Classe")
+ },
+ st:{
+  name:"São Tomé e Príncipe",
+  info:"Ensino básico e secundário.",
+  grades:Array.from({length:12},(_,i)=>(i+1)+"ª Classe")
+ },
+ na:{
+  name:"Namíbia",
+  info:"Grades 1 a 12.",
+  grades:Array.from({length:12},(_,i)=>"Grade "+(i+1))
+ },
+ tz:{
+  name:"Tanzânia",
+  info:"Ensino primário e secundário. A língua e organização dependem da escola.",
+  grades:["Standard I","Standard II","Standard III","Standard IV","Standard V","Standard VI","Standard VII","Form I","Form II","Form III","Form IV","Form V","Form VI"]
+ },
+ zw:{
+  name:"Zimbabwe",
+  info:"Ensino primário e secundário.",
+  grades:["Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Grade 6","Grade 7","Form 1","Form 2","Form 3","Form 4","Form 5","Form 6"]
  }
- mostrar("estudo");
+};
+
+function updateCountry(){
+ let code=document.getElementById("country").value;
+ let data=countries[code];
+ let grade=document.getElementById("grade");
+ grade.innerHTML="";
+ data.grades.forEach(g=>{
+  let o=document.createElement("option");
+  o.textContent=g;
+  grade.appendChild(o);
+ });
+ document.getElementById("system-info").textContent=data.info;
+}
+updateCountry();
+
+function startStudy(){
+ showPage("assistant");
+ addMessage("Sistema escolar: "+countries[document.getElementById("country").value].name+
+ "\nClasse: "+document.getElementById("grade").value+
+ "\nDisciplina: "+document.getElementById("subject").value+
+ "\n\nAgora podes colocar a tua pergunta.","ai");
 }
 
-let ultimaResposta="";
+// BIBLIOTECA PDF
+let books=[];
+let currentURL=null;
 
-function mensagem(texto,tipo){
+function addBook(){
+ let file=document.getElementById("book-file").files[0];
+ if(!file){alert("Escolhe um livro PDF primeiro.");return;}
+ if(file.type!=="application/pdf"){alert("Escolhe um ficheiro PDF válido.");return;}
+
+ let url=URL.createObjectURL(file);
+ books.push({name:file.name,url:url});
+ renderBooks();
+ document.getElementById("book-file").value="";
+}
+
+function renderBooks(){
+ let list=document.getElementById("book-list");
+ list.innerHTML="";
+ books.forEach((b,i)=>{
+  let div=document.createElement("div");
+  div.className="book";
+  let name=document.createElement("span");
+  name.textContent="📘 "+b.name;
+  let btn=document.createElement("button");
+  btn.textContent="Abrir";
+  btn.onclick=()=>openBook(i);
+  div.append(name,btn);
+  list.appendChild(div);
+ });
+}
+
+function openBook(i){
+ currentURL=books[i].url;
+ document.getElementById("book-title").textContent=books[i].name;
+ document.getElementById("pdf-viewer").src=currentURL;
+ document.getElementById("reader").classList.remove("hidden");
+ document.getElementById("reader").scrollIntoView();
+}
+
+function closeBook(){
+ document.getElementById("pdf-viewer").src="about:blank";
+ document.getElementById("reader").classList.add("hidden");
+}
+
+// CHAT
+function addMessage(text,type){
  let chat=document.getElementById("chat");
  let div=document.createElement("div");
- div.className="message "+tipo;
- div.textContent=texto;
+ div.className="msg "+type;
+ div.textContent=text;
  chat.appendChild(div);
  chat.scrollTop=chat.scrollHeight;
 }
 
-function calcular(texto){
- let m=texto.match(/^\s*(-?\d+(?:\.\d+)?)\s*([+\-*/])\s*(-?\d+(?:\.\d+)?)\s*=?\s*$/);
+function calculate(text){
+ let m=text.match(/^\s*(-?\d+(?:[.,]\d+)?)\s*([+\-*/])\s*(-?\d+(?:[.,]\d+)?)\s*=?\s*$/);
  if(!m)return null;
- let a=Number(m[1]),b=Number(m[3]),r;
- switch(m[2]){
-  case "+":r=a+b;break;
-  case "-":r=a-b;break;
-  case "*":r=a*b;break;
-  case "/":
-   if(b===0)return "Não é possível dividir por zero.";
-   r=a/b;break;
+ let a=Number(m[1].replace(",",".")),b=Number(m[3].replace(",","."));
+ let op=m[2],r;
+ if(op==="+")r=a+b;
+ if(op==="-")r=a-b;
+ if(op==="*")r=a*b;
+ if(op==="/"){
+  if(b===0)return "Não é possível dividir por zero.";
+  r=a/b;
  }
- return "RESOLUÇÃO\n\n"+a+" "+m[2]+" "+b+" = "+r+
- "\n\nResposta: "+r;
+ return "Resolução:\n"+a+" "+op+" "+b+" = "+r+"\n\nResposta: "+r;
 }
 
-function enviar(){
- let input=document.getElementById("pergunta");
- let p=input.value.trim();
- if(!p)return;
-
- mensagem(p,"user");
+function sendQuestion(){
+ let input=document.getElementById("question");
+ let text=input.value.trim();
+ if(!text)return;
+ addMessage(text,"user");
  input.value="";
 
- let disciplina=document.getElementById("disciplina").value;
- let classe=document.getElementById("classe").value;
- let resposta=calcular(p);
+ let answer=calculate(text);
 
- if(!resposta){
-  resposta="Recebi a tua pergunta de "+disciplina+
-  ", "+classe+"ª classe.\n\n"+
-  "Esta versão ainda não está ligada a um motor de inteligência artificial. "+
-  "A resposta automática completa depende dessa integração. "+
-  "Não vou inventar uma solução e apresentá-la como correta.";
+ if(!answer){
+  answer="Recebi a tua pergunta.\n\n"+
+  "O módulo de inteligência artificial ainda não está ligado a um servidor. "+
+  "Por isso, não posso afirmar que analisei ou resolvi esta pergunta. "+
+  "A ligação a um serviço de IA será necessária para respostas gerais e explicações completas.";
  }
 
- ultimaResposta=resposta;
- mensagem(resposta,"ai");
+ addMessage(answer,"ai");
+ speak(answer);
 }
 
-function enviarFoto(){
- let f=document.getElementById("foto").files[0];
- if(!f){
-  alert("Escolhe uma fotografia primeiro.");
-  return;
- }
- mensagem("Fotografia selecionada: "+f.name,"user");
- ultimaResposta="A fotografia foi selecionada, mas a análise automática ainda precisa de ligação a uma IA com visão.";
- mensagem(ultimaResposta,"ai");
+// FOTOGRAFIAS
+document.getElementById("exercise-photo").addEventListener("change",function(){
+ let f=this.files[0];
+ if(!f)return;
+ let img=document.getElementById("photo-preview");
+ img.src=URL.createObjectURL(f);
+ img.classList.remove("hidden");
+ document.getElementById("photo-status").textContent="Fotografia selecionada. A análise automática exige integração com IA.";
+});
+
+function sendPhoto(){
+ let f=document.getElementById("exercise-photo").files[0];
+ if(!f){alert("Seleciona uma fotografia.");return;}
+ addMessage("Fotografia selecionada: "+f.name,"user");
+ addMessage("A fotografia está selecionada, mas ainda não existe análise automática. Será necessário ligar o serviço de visão artificial.","ai");
 }
 
-function falar(texto){
- if(!("speechSynthesis" in window)){
-  alert("O teu navegador não suporta leitura em voz.");
-  return;
- }
+// VOZ
+function speak(text){
+ if(!("speechSynthesis" in window))return;
  speechSynthesis.cancel();
- let u=new SpeechSynthesisUtterance(texto);
- u.lang=document.getElementById("pais").value;
- u.pitch=document.getElementById("voz").value==="feminina"?1.2:0.8;
+ let u=new SpeechSynthesisUtterance(text);
+ u.lang=document.getElementById("country").value==="mz"?"pt-PT":"pt-PT";
+ let voices=speechSynthesis.getVoices();
+ let gender=document.getElementById("voice-type").value;
+ let candidates=voices.filter(v=>v.lang.toLowerCase().startsWith("pt"));
+ if(candidates.length){
+  let preferred=candidates.find(v=>
+   gender==="female"?
+   /female|maria|joana|luciana|francisca/i.test(v.name):
+   /male|daniel|antonio|ricardo/i.test(v.name)
+  );
+  u.voice=preferred||candidates[0];
+ }
+ u.pitch=gender==="female"?1.15:0.85;
+ u.rate=Number(document.getElementById("voice-speed").value);
  speechSynthesis.speak(u);
 }
 
-function ouvirUltima(){
- if(ultimaResposta)falar(ultimaResposta);
- else alert("Ainda não existe resposta para ouvir.");
+function testVoice(){
+ speak("Olá! Sou o Super Meta IA. Vamos aprender juntos.");
 }
 
-document.getElementById("pergunta").addEventListener("keydown",e=>{
- if(e.key==="Enter")enviar();
-});
+// RECONHECIMENTO DE VOZ
+function startVoice(){
+ const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!Recognition){
+  alert("O teu navegador não suporta reconhecimento de voz. Experimenta o Chrome.");
+  return;
+ }
+ let rec=new Recognition();
+ rec.lang="pt-PT";
+ rec.interimResults=false;
+ rec.onresult=function(e){
+  document.getElementById("question").value=e.results[0][0].transcript;
+ };
+ rec.onerror=function(){
+  alert("Não foi possível reconhecer a voz. Verifica a permissão do microfone.");
+ };
+ rec.start();
+}
 </script>
 </body>
 </html>
