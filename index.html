@@ -1,116 +1,60 @@
 
-<section id="books" class="page">
- <h2>📚 Biblioteca Escolar</h2>
+const SCHOOL_BOOK_SOURCES = [
+ {
+  name:"Ministério da Educação de Moçambique",
+  url:"https://www.mined.gov.mz/"
+ },
+ {
+  name:"IEDA - Instituto de Educação Aberta e à Distância",
+  url:"https://ieda.gov.mz/"
+ }
+];
 
- <div class="card">
-  <h3>Pesquisar livros escolares</h3>
+function searchSchoolBooks(){
+ const level=document.getElementById("libraryLevel").value;
+ const subject=document.getElementById("librarySubject").value;
+ const container=document.getElementById("onlineBooks");
 
-  <label for="libraryLevel">Classe</label>
-  <select id="libraryLevel">
-   <option value="Todas">Todas as classes</option>
-   <option>1.ª classe</option>
-   <option>2.ª classe</option>
-   <option>3.ª classe</option>
-   <option>4.ª classe</option>
-   <option>5.ª classe</option>
-   <option>6.ª classe</option>
-   <option>7.ª classe</option>
-   <option>8.ª classe</option>
-   <option>9.ª classe</option>
-   <option>10.ª classe</option>
-   <option>11.ª classe</option>
-   <option>12.ª classe</option>
-  </select>
+ container.replaceChildren();
 
-  <div class="field">
-   <label for="librarySubject">Disciplina</label>
-   <select id="librarySubject">
-    <option>Todas</option>
-    <option>Português</option>
-    <option>Matemática</option>
-    <option>Física</option>
-    <option>Química</option>
-    <option>Biologia</option>
-    <option>História</option>
-    <option>Geografia</option>
-    <option>Inglês</option>
-    <option>Francês</option>
-    <option>TIC</option>
-    <option>Filosofia</option>
-   </select>
-  </div>
+ const title=document.createElement("p");
+ title.textContent="Pesquisa de manuais: "+level+" · "+subject;
+ container.appendChild(title);
 
-  <button class="btn full" onclick="searchSchoolBooks()">
-   🔎 Procurar livros
-  </button>
- </div>
+ SCHOOL_BOOK_SOURCES.forEach(source=>{
+  const card=document.createElement("div");
+  card.className="book";
 
- <div class="card">
-  <h3>📖 Livros encontrados</h3>
-  <div id="onlineBooks">
-   Escolhe a classe e a disciplina para procurar livros.
-  </div>
- </div>
+  const name=document.createElement("strong");
+  name.textContent=source.name;
 
- <div class="card">
-  <h3>📥 Adicionar os meus PDFs</h3>
-  <p class="small">Guarda os teus manuais escolares no aplicativo.</p>
+  const description=document.createElement("p");
+  description.className="small";
+  description.textContent="Consultar materiais escolares e procurar PDFs disponíveis.";
 
-  <label for="bookType">Tipo de livro</label>
-  <select id="bookType">
-   <option>Livro escolar</option>
-   <option>Manual de exercícios</option>
-   <option>Dicionário</option>
-   <option>Gramática</option>
-   <option>Outro</option>
-  </select>
+  const link=document.createElement("a");
+  link.href=source.url;
+  link.target="_blank";
+  link.rel="noopener noreferrer";
+  link.textContent="Abrir biblioteca oficial ↗";
+  link.style.color="#75aaff";
 
-  <label for="bookSubject">Disciplina</label>
-  <select id="bookSubject">
-   <option>Português</option>
-   <option>Matemática</option>
-   <option>Física</option>
-   <option>Química</option>
-   <option>Biologia</option>
-   <option>História</option>
-   <option>Geografia</option>
-   <option>Inglês</option>
-   <option>TIC</option>
-  </select>
+  card.append(name,description,link);
+  container.appendChild(card);
+ });
 
-  <label for="bookLevel">Classe</label>
-  <select id="bookLevel">
-   <option>1.ª classe</option>
-   <option>2.ª classe</option>
-   <option>3.ª classe</option>
-   <option>4.ª classe</option>
-   <option>5.ª classe</option>
-   <option>6.ª classe</option>
-   <option>7.ª classe</option>
-   <option>8.ª classe</option>
-   <option>9.ª classe</option>
-   <option>10.ª classe</option>
-   <option>11.ª classe</option>
-   <option>12.ª classe</option>
-  </select>
+ const search=document.createElement("button");
+ search.className="btn secondary full";
+ search.textContent="Pesquisar na Internet";
+ search.onclick=()=>{
+  const query=encodeURIComponent(
+   "livro escolar Moçambique PDF "+level+" "+subject
+  );
+  window.open(
+   "https://www.google.com/search?q="+query,
+   "_blank"
+  );
+ };
 
-  <label for="bookName">Nome do livro</label>
-  <input id="bookName" placeholder="Nome do manual">
-
-  <label for="bookFile">Selecionar PDF</label>
-  <input type="file" id="bookFile" accept="application/pdf">
-
-  <button class="btn full" onclick="saveBook()">Guardar PDF</button>
- </div>
-
- <div class="card">
-  <h3>📚 A minha biblioteca</h3>
-  <div id="bookList">A carregar...</div>
- </div>
-
- <div class="card hidden" id="reader">
-  <h3 id="readerTitle">Leitor PDF</h3>
-  <iframe id="pdfFrame" title="Leitor PDF"></iframe>
-  <button class="btn secondary full" onclick="closeReader()">Fechar livro</button>
- </div>
-</section>
+ container.appendChild(search);
+}
