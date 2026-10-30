@@ -1,60 +1,141 @@
 
+<div class="library-section">
+  <h2>📚 Biblioteca Escolar</h2>
+
+  <select id="libraryLevel">
+    <option value="">Selecionar classe</option>
+    <option>1ª classe</option>
+    <option>2ª classe</option>
+    <option>3ª classe</option>
+    <option>4ª classe</option>
+    <option>5ª classe</option>
+    <option>6ª classe</option>
+    <option>7ª classe</option>
+    <option>8ª classe</option>
+    <option>9ª classe</option>
+    <option>10ª classe</option>
+    <option>11ª classe</option>
+    <option>12ª classe</option>
+  </select>
+
+  <select id="librarySubject">
+    <option value="">Selecionar disciplina</option>
+    <option>Matemática</option>
+    <option>Português</option>
+    <option>Inglês</option>
+    <option>Física</option>
+    <option>Química</option>
+    <option>Biologia</option>
+    <option>História</option>
+    <option>Geografia</option>
+    <option>TIC</option>
+  </select>
+
+  <button onclick="searchSchoolBooks()">
+    Pesquisar manuais
+  </button>
+
+  <div id="onlineBooks"></div>
+</div>
+
+<div class="ai-section">
+  <h2>🤖 Pergunta à Super Meta IA</h2>
+
+  <textarea
+    id="aiQuestion"
+    placeholder="Escreve a tua pergunta..."
+  ></textarea>
+
+  <button onclick="askSuperMeta()">
+    Perguntar à Super Meta
+  </button>
+
+  <div id="aiAnswer"></div>
+</div>
+
+<script>
 const SCHOOL_BOOK_SOURCES = [
- {
-  name:"Ministério da Educação de Moçambique",
-  url:"https://www.mined.gov.mz/"
- },
- {
-  name:"IEDA - Instituto de Educação Aberta e à Distância",
-  url:"https://ieda.gov.mz/"
- }
+  {
+    name: "Ministério da Educação",
+    url: "https://www.mined.gov.mz/"
+  },
+  {
+    name: "IEDA",
+    url: "https://ieda.gov.mz/"
+  }
 ];
 
-function searchSchoolBooks(){
- const level=document.getElementById("libraryLevel").value;
- const subject=document.getElementById("librarySubject").value;
- const container=document.getElementById("onlineBooks");
+function searchSchoolBooks() {
+  const level =
+    document.getElementById("libraryLevel").value;
 
- container.replaceChildren();
+  const subject =
+    document.getElementById("librarySubject").value;
 
- const title=document.createElement("p");
- title.textContent="Pesquisa de manuais: "+level+" · "+subject;
- container.appendChild(title);
+  const container =
+    document.getElementById("onlineBooks");
 
- SCHOOL_BOOK_SOURCES.forEach(source=>{
-  const card=document.createElement("div");
-  card.className="book";
+  container.replaceChildren();
 
-  const name=document.createElement("strong");
-  name.textContent=source.name;
+  if (!level || !subject) {
+    container.textContent =
+      "Seleciona a classe e a disciplina.";
+    return;
+  }
 
-  const description=document.createElement("p");
-  description.className="small";
-  description.textContent="Consultar materiais escolares e procurar PDFs disponíveis.";
+  const title = document.createElement("h3");
+  title.textContent = "Manuais: " + level + " · " + subject;
+  container.appendChild(title);
 
-  const link=document.createElement("a");
-  link.href=source.url;
-  link.target="_blank";
-  link.rel="noopener noreferrer";
-  link.textContent="Abrir biblioteca oficial ↗";
-  link.style.color="#75aaff";
+  SCHOOL_BOOK_SOURCES.forEach(source => {
+    const card = document.createElement("div");
+    const name = document.createElement("strong");
+    const link = document.createElement("a");
 
-  card.append(name,description,link);
-  container.appendChild(card);
- });
+    card.className = "book";
+    name.textContent = source.name;
 
- const search=document.createElement("button");
- search.className="btn secondary full";
- search.textContent="Pesquisar na Internet";
- search.onclick=()=>{
-  const query=encodeURIComponent(
-   "livro escolar Moçambique PDF "+level+" "+subject
-  );
-  window.open(
-   "https://www.google.com/search?q="+query,
-   "_blank"
-  );
- };
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "Consultar fonte oficial";
 
- container.appendChild(search);
+    card.append(name, document.createElement("br"), link);
+    container.appendChild(card);
+  });
+
+  const search = document.createElement("button");
+  search.textContent = "Pesquisar PDFs na Internet";
+
+  search.onclick = () => {
+    const query = encodeURIComponent(
+      "manual escolar Moçambique PDF " +
+      level + " " + subject
+    );
+
+    window.open(
+      "https://www.google.com/search?q=" + query,
+      "_blank"
+    );
+  };
+
+  container.appendChild(search);
 }
+
+async function askSuperMeta() {
+  const question =
+    document.getElementById("aiQuestion").value.trim();
+
+  const answer =
+    document.getElementById("aiAnswer");
+
+  if (!question) {
+    answer.textContent = "Escreve uma pergunta primeiro.";
+    return;
+  }
+
+  answer.textContent =
+    "A ligação à inteligência artificial ainda não foi configurada. " +
+    "Esta versão não inventa respostas nem simula uma API funcional.";
+}
+</script>
