@@ -34,31 +34,22 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* Cabeçalho */
         .header {
             background: var(--bg-gradient);
             color: white;
-            padding: 25px 20px;
+            padding: 20px;
             text-align: center;
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
         }
 
         .header h1 {
             margin: 0;
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 22px;
         }
 
-        .header p {
-            margin: 5px 0 0;
-            font-size: 13px;
-            opacity: 0.9;
-        }
-
-        /* Conteúdo Principal */
         .content {
-            padding: 20px;
+            padding: 15px;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -67,29 +58,15 @@
 
         .card {
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 16px;
+            padding: 18px;
+            border-radius: 14px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
         }
 
         .card h3 {
             margin-top: 0;
-            font-size: 18px;
+            font-size: 17px;
             color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .card p {
-            font-size: 14px;
-            color: #4b5563;
-            margin-bottom: 15px;
         }
 
         label {
@@ -98,6 +75,7 @@
             color: #374151;
             display: block;
             margin-bottom: 5px;
+            margin-top: 10px;
         }
 
         select, input {
@@ -107,7 +85,6 @@
             border-radius: 10px;
             font-size: 14px;
             background: #fff;
-            margin-bottom: 12px;
             box-sizing: border-box;
         }
 
@@ -121,11 +98,7 @@
             font-size: 15px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            margin-top: 15px;
         }
 
         .btn:hover {
@@ -136,82 +109,101 @@
             display: none;
         }
 
-        /* Secção de Chat / Resposta */
         .chat-box {
             background: #e0f2fe;
             border-left: 4px solid var(--primary-color);
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
             font-size: 14px;
-            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Cabeçalho -->
         <div class="header">
-            <h1>Super-meta v6 AI</h1>
-            <p>🚀 O teu assistente global de estudo inteligente</p>
+            <h1 id="app-title">Super-meta v6 AI</h1>
+            <p style="margin:5px 0 0; font-size:12px; opacity:0.9;">Voz Automática, Screenshots & Estudo Global</p>
         </div>
 
         <div class="content">
-            <!-- Ecrã de Configuração Inicial -->
+            
+            <!-- ECRÃ 1: Configuração Inicial (País com Bandeiras + Tipo de Voz) -->
             <div id="setup-screen" class="card">
-                <h3>⚙️ Configuração Inicial</h3>
+                <h3>⚙️ Configuração do Assistente</h3>
                 
-                <label for="country-select">País / Região:</label>
+                <label for="country-select">País / Região (Escolha a sua bandeira):</label>
                 <select id="country-select">
                     <option value="mz">🇲🇿 Moçambique</option>
                     <option value="br">🇧🇷 Brasil</option>
                     <option value="pt">🇵🇹 Portugal</option>
-                    <option value="gb">🇬🇧 Inglaterra (UK)</option>
+                    <option value="ao">🇦🇴 Angola</option>
+                    <option value="gb">🇬🇧 Reino Unido (Inglaterra)</option>
                     <option value="us">🇺🇸 Estados Unidos</option>
+                    <option value="za">🇿🇦 África do Sul</option>
+                    <option value="fr">🇫🇷 França</option>
+                    <option value="es">🇪🇸 Espanha</option>
                 </select>
 
-                <label for="voice-select">Tipo de Voz do Assistente:</label>
-                <select id="voice-select">
-                    <optgroup label="Voz Feminina">
-                        <option value="fem-relax">Feminina - Relaxante</option>
-                        <option value="fem-suave">Feminina - Suave</option>
+                <label for="voice-type-select">Tipo de Voz Desejado:</label>
+                <select id="voice-type-select">
+                    <optgroup label="Vozes Femininas">
+                        <option value="fem-relax">Feminina - Relaxante e Suave</option>
+                        <option value="fem-clara">Feminina - Clara e Direta</option>
                     </optgroup>
-                    <optgroup label="Voz Masculina">
-                        <option value="masc-grossa">Masculina - Voz Grossa</option>
-                        <option value="masc-calma">Masculina - Calma e Suave</option>
+                    <optgroup label="Vozes Masculinas">
+                        <option value="masc-grossa">Masculina - Voz Grossa e Firme</option>
+                        <option value="masc-calma">Masculina - Calma, Suave e Amigável</option>
                     </optgroup>
                 </select>
 
                 <button class="btn" onclick="entrarApp()">🚀 Entrar no Super-meta</button>
             </div>
 
-            <!-- Ecrã Principal com Níveis de Ensino (Escondido inicialmente) -->
+            <!-- ECRÃ 2: Ecrã Principal com os Blocos (Primário, Secundário, Médio) -->
             <div id="main-screen" class="hidden">
-                
-                <!-- Caixa de Boas-vindas falada/escrita -->
-                <div class="card chat-box" id="welcome-msg">
-                    💬 Olá! Sou o teu Super-meta v6. Escolhe a voz e o nível em que pretendes estudar hoje. Podes enviar dúvidas por texto, imagem ou áudio!
+                <div class="chat-box" id="welcome-msg-box">
+                    💬 Olá! Sou o teu Super-meta v6. Podes enviar dúvidas por texto, fotografias ou áudio!
                 </div>
 
                 <!-- Bloco Primário -->
                 <div class="card">
                     <h3>📖 Primário - 1ª à 7ª Classe</h3>
-                    <p>Matemática, Português, Ciências Naturais e Sociais.</p>
-                    <button class="btn" onclick="escolherNivel('primario')">▶ Começar Primário</button>
+                    <p style="font-size:13px; color:#4b5563;">Matemática, Português, Ciências e mais.</p>
+                    <button class="btn" onclick="abrirNivel('primario')">▶ Começar Primário</button>
                 </div>
 
                 <!-- Bloco Secundário -->
                 <div class="card">
                     <h3>📘 Secundário - 8ª à 10ª Classe</h3>
-                    <p>Física, Química, Biologia, Matemática, História.</p>
-                    <button class="btn" onclick="escolherNivel('secundario')">▶ Começar Secundário</button>
+                    <p style="font-size:13px; color:#4b5563;">Física, Química, Biologia, Matemática.</p>
+                    <button class="btn" onclick="abrirNivel('secundario')">▶ Começar Secundário</button>
                 </div>
 
                 <!-- Bloco Médio -->
                 <div class="card">
                     <h3>🎓 Médio - 11ª e 12ª Classe</h3>
-                    <p>Escolha de Secções (Ciências, Letras) e disciplinas avançadas.</p>
-                    <button class="btn" onclick="escolherNivel('medio')">▶ Começar Médio</button>
+                    <p style="font-size:13px; color:#4b5563;">Escolha de Seções (Ciências, Letras, etc.).</p>
+                    <button class="btn" onclick="abrirNivel('medio')">▶ Começar Médio</button>
+                </div>
+            </div>
+
+            <!-- ECRÃ 3: Sub-menus de Classes / Seções (Gerado dinamicamente) -->
+            <div id="sub-screen" class="hidden">
+                <a class="bac-link" class="back-link" onclick="voltarPrincipal()">⬅ Voltar aos Níveis</a>
+                <div id="sub-content" class="card">
+                    <!-- O conteúdo das classes/seções aparece aqui -->
                 </div>
             </div>
 
@@ -220,26 +212,110 @@
 
     <script>
         function entrarApp() {
-            const pais = document.getElementById('country-select').value;
-            const voz = document.getElementById('voice-select').value;
-            
-            // Esconde o ecrã de configuração e mostra os blocos de estudo
+            // Esconde configuração e mostra ecrã principal
             document.getElementById('setup-screen').classList.add('hidden');
             document.getElementById('main-screen').classList.remove('hidden');
 
-            // Simulação de voz de boas-vindas do assistente
-            const mensagem = "Seja bem-vindo ao Meta IA, escolha a voz que preferes ou que te sentas à vontade ao conversar com a voz.";
+            // Mensagem de boas-vindas pedida
+            const textoBoasVindas = "Seja bem-vindo ao Meta IA, escolha a voz que preferes ou que te sentas à vontade ao conversar com a voz.";
             
-            // Se o navegador suportar síntese de voz, lê a mensagem em voz alta automaticamente
+            document.getElementById('welcome-msg-box').innerText = "💬 " + textoBoasVindas;
+
+            // Ativa a voz automática do navegador
             if ('speechSynthesis' in window) {
-                let utterance = new SpeechSynthesisUtterance(mensagem);
-                utterance.lang = pais === 'en' ? 'en-US' : 'pt-PT';
+                let utterance = new SpeechSynthesisUtterance(textoBoasVindas);
+                utterance.lang = 'pt-PT';
                 window.speechSynthesis.speak(utterance);
             }
         }
 
-        function escolherNivel(nivel) {
-            alert("Abrindo o módulo de ensino: " + nivel.toUpperCase() + ". Aqui vais escolher a tua classe e secção detalhadamente!");
+        function abrirNivel(nivel) {
+            document.getElementById('main-screen').classList.add('hidden');
+            document.getElementById('sub-screen').classList.remove('hidden');
+            const container = document.getElementById('sub-content');
+
+            if (nivel === 'primario') {
+                container.innerHTML = `
+                    <h3>📖 Ensino Primário (1ª à 7ª Classe)</h3>
+                    <p>Selecione a sua classe:</p>
+                    <select id="classe-primaria" onchange="carregarDisciplinas('primario', this.value)">
+                        <option value="">-- Escolher Classe --</option>
+                        <option value="1">1ª Classe</option>
+                        <option value="2">2ª Classe</option>
+                        <option value="3">3ª Classe</option>
+                        <option value="4">4ª Classe</option>
+                        <option value="5">5ª Classe</option>
+                        <option value="6">6ª Classe</option>
+                        <option value="7">7ª Classe</option>
+                    </select>
+                    <div id="lista-disciplinas" style="margin-top:15px;"></div>
+                `;
+            } else if (nivel === 'secundario') {
+                container.innerHTML = `
+                    <h3>📘 Ensino Secundário (8ª à 10ª Classe)</h3>
+                    <p>Selecione a sua classe:</p>
+                    <select id="classe-secundaria" onchange="carregarDisciplinas('secundario', this.value)">
+                        <option value="">-- Escolher Classe --</option>
+                        <option value="8">8ª Classe</option>
+                        <option value="9">9ª Classe</option>
+                        <option value="10">10ª Classe</option>
+                    </select>
+                    <div id="lista-disciplinas" style="margin-top:15px;"></div>
+                `;
+            } else if (nivel === 'medio') {
+                container.innerHTML = `
+                    <h3>🎓 Ensino Médio (11ª e 12ª Classe)</h3>
+                    <p>Selecione a Seção / Curso:</p>
+                    <select id="secao-medio" onchange="carregarDisciplinasMedio(this.value)">
+                        <option value="">-- Escolher Seção --</option>
+                        <option value="ciencias-bio">Ciências com Biologia</option>
+                        <option value="ciencias-exatas">Ciências com Matemática/Física</option>
+                        <option value="letras">Letras e Humanidades</option>
+                        <option value="tecnico">Ensino Técnico / Profissional</option>
+                    </select>
+                    <div id="lista-disciplinas" style="margin-top:15px;"></div>
+                `;
+            }
+        }
+
+        function carregarDisciplinas(tipo, classe) {
+            const div = document.getElementById('lista-disciplinas');
+            if(!classe) {
+                div.innerHTML = "";
+                return;
+            }
+            div.innerHTML = `
+                <p><strong>Disciplinas disponíveis para a ${classe}ª Classe:</strong></p>
+                <ul style="padding-left: 20px; font-size: 14px; line-height: 1.6;">
+                    <li>Matemática</li>
+                    <li>Língua Portuguesa</li>
+                    <li>Ciências Naturais / Sociais</li>
+                    <li>Inglês</li>
+                </ul>
+                <button class="btn" onclick="alert('Podes começar a estudar, enviar fotos de exercícios ou fazer perguntas por áudio/texto ao Super-meta!')">Começar a Estudar com a IA 🚀</button>
+            `;
+        }
+
+        function carregarDisciplinasMedio(secao) {
+            const div = document.getElementById('lista-disciplinas');
+            if(!secao) {
+                div.innerHTML = "";
+                return;
+            }
+            div.innerHTML = `
+                <p><strong>Matérias e Módulos da Seção Selecionada:</strong></p>
+                <ul style="padding-left: 20px; font-size: 14px; line-height: 1.6;">
+                    <li>Disciplinas Centrais da Seção (11ª e 12ª)</li>
+                    <li>Resolução de Exames Anteriores</li>
+                    <li>Explicações detalhadas por IA (Áudio ou Texto)</li>
+                </ul>
+                <button class="btn" onclick="alert('Sessão iniciada! Envia a tua dúvida por foto ou texto para o Super-meta.')">Iniciar Aprendizagem 🚀</button>
+            `;
+        }
+
+        function voltarPrincipal() {
+            document.getElementById('sub-screen').classList.add('hidden');
+            document.getElementById('main-screen').classList.remove('hidden');
         }
     </script>
 </body>
