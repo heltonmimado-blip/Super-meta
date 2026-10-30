@@ -11,12 +11,13 @@
 :root {
   --bg:#0b1020;
   --panel:#151e35;
-  --panel2:#1c2945;
+  --panel2:#202d49;
   --blue:#3984ff;
   --purple:#875bff;
   --text:#f4f7ff;
   --muted:#aab7d0;
-  --border:#2b3958;
+  --border:#30405e;
+  --green:#39c98b;
 }
 * {box-sizing:border-box}
 body {
@@ -28,25 +29,25 @@ body {
 }
 button,input,select,textarea {font:inherit}
 button {cursor:pointer}
-.app {max-width:850px;margin:auto;min-height:100vh;padding-bottom:25px}
+.app {max-width:850px;margin:auto;min-height:100vh;padding-bottom:30px}
 header {
-  padding:20px 16px;
+  padding:17px;
   background:linear-gradient(120deg,#172c55,#30205c);
   border-bottom:1px solid var(--border);
-  position:sticky;top:0;z-index:5;
+  position:sticky;top:0;z-index:10;
 }
 .brand {display:flex;align-items:center;gap:12px}
 .logo {
-  width:48px;height:48px;border-radius:15px;
+  width:49px;height:49px;border-radius:15px;
   background:linear-gradient(135deg,var(--blue),var(--purple));
-  display:grid;place-items:center;font-size:25px;font-weight:bold;
+  display:grid;place-items:center;font-size:24px;font-weight:bold;
 }
 .brand h1 {font-size:23px;margin:0}
-.brand p {font-size:14px;color:var(--muted);margin:4px 0 0}
+.brand p {font-size:13px;color:var(--muted);margin:4px 0 0}
 nav {
   display:flex;gap:8px;overflow-x:auto;
-  padding:12px;background:#10182c;
-  position:sticky;top:88px;z-index:4;
+  padding:11px;background:#10182c;
+  position:sticky;top:82px;z-index:9;
 }
 nav button {
   border:1px solid var(--border);border-radius:12px;
@@ -54,13 +55,14 @@ nav button {
   padding:12px 15px;white-space:nowrap;
 }
 nav button.active {background:var(--blue);border-color:var(--blue)}
-main {padding:16px}
+main {padding:15px}
 .page {display:none}
 .page.active {display:block}
-h2 {font-size:25px;margin:8px 0 12px}
-h3 {font-size:20px}
+h2 {font-size:26px;margin:8px 0 12px}
+h3 {font-size:20px;margin-top:8px}
 p {line-height:1.5}
-.muted {color:var(--muted)}
+.muted,.small {color:var(--muted)}
+.small {font-size:14px}
 .card {
   background:var(--panel);
   border:1px solid var(--border);
@@ -70,17 +72,20 @@ p {line-height:1.5}
   background:linear-gradient(135deg,#174a91,#5934a0);
   border:0;padding:23px;
 }
-.hero h2 {font-size:28px}
+.hero h2 {font-size:29px}
 .grid {display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .field {margin:14px 0}
 label {display:block;margin-bottom:8px;font-weight:bold}
 input,select,textarea {
-  width:100%;padding:15px;border-radius:12px;
+  width:100%;padding:14px;border-radius:12px;
   border:1px solid var(--border);
   background:#0e172b;color:white;
   outline:none;
 }
 textarea {min-height:95px;resize:vertical}
+input:focus,select:focus,textarea:focus {
+  border-color:var(--blue);
+}
 .btn {
   border:0;border-radius:13px;padding:14px 17px;
   background:var(--blue);color:white;font-weight:bold;
@@ -96,28 +101,42 @@ textarea {min-height:95px;resize:vertical}
   border-radius:15px;margin-bottom:12px;
 }
 .message {
-  max-width:90%;padding:13px 15px;
-  border-radius:15px;margin:10px 0;line-height:1.5;
-  overflow-wrap:anywhere;white-space:pre-wrap;
+  max-width:92%;padding:13px 15px;
+  border-radius:15px;margin:10px 0;
+  line-height:1.5;overflow-wrap:anywhere;
+  white-space:pre-wrap;
 }
 .user {background:#245cb1;margin-left:auto}
 .bot {background:#25334f;margin-right:auto}
-.small {font-size:14px;color:var(--muted)}
 .book {
   background:var(--panel2);padding:14px;
   border:1px solid var(--border);border-radius:13px;
-  margin:10px 0;
+  margin:10px 0;overflow-wrap:anywhere;
 }
 .book button {margin-top:8px}
-iframe {width:100%;height:65vh;border:0;border-radius:12px;background:white}
+iframe {
+  width:100%;height:65vh;border:0;
+  border-radius:12px;background:white;
+}
 .status {font-size:14px;color:#8fc7ff;margin-top:8px}
-footer {text-align:center;color:var(--muted);font-size:13px;padding:20px}
+.badge {
+  display:inline-block;padding:6px 10px;
+  border-radius:20px;background:#263e65;
+  color:#b9d5ff;font-size:13px;
+}
+footer {
+  text-align:center;color:var(--muted);
+  font-size:13px;padding:20px;
+}
+#photoPreview {
+  max-width:100%;max-height:250px;
+  border-radius:12px;margin-top:10px;
+}
 @media(max-width:480px) {
   body {font-size:19px}
-  .app {width:100%}
-  header {padding:15px}
-  nav {top:78px}
-  main {padding:13px}
+  header {padding:14px}
+  nav {top:77px}
+  main {padding:12px}
   h2 {font-size:27px}
   .grid {grid-template-columns:1fr}
   .btn {min-height:52px;font-size:18px}
@@ -143,44 +162,47 @@ footer {text-align:center;color:var(--muted);font-size:13px;padding:20px}
 <nav>
   <button class="active" data-page="home">🏠 Início</button>
   <button data-page="chat">🤖 Assistente</button>
-  <button data-page="books">📚 Biblioteca</button>
+  <button data-page="books">📚 Livros</button>
   <button data-page="voice">🎙️ Voz</button>
   <button data-page="settings">⚙️ Definições</button>
 </nav>
 
 <main>
 
+<!-- INÍCIO -->
 <section id="home" class="page active">
   <div class="card hero">
-    <h2>Bem-vindo ao Super Meta IA!</h2>
-    <p>Aprende, faz perguntas, consulta livros e desenvolve os teus conhecimentos.</p>
+    <span class="badge">FULL EDUCATION</span>
+    <h2>Aprender é evoluir!</h2>
+    <p>Bem-vindo ao Super Meta IA. Estuda, faz perguntas e consulta os teus livros.</p>
     <button class="btn" onclick="showPage('chat')">Começar a estudar →</button>
   </div>
 
   <div class="grid">
     <div class="card">
       <h3>🤖 Assistente</h3>
-      <p class="muted">Faz perguntas sobre matérias escolares.</p>
+      <p class="muted">Perguntas e explicações escolares.</p>
       <button class="btn full" onclick="showPage('chat')">Abrir</button>
     </div>
     <div class="card">
-      <h3>📚 Livros</h3>
-      <p class="muted">Adiciona e consulta documentos PDF.</p>
+      <h3>📚 Biblioteca</h3>
+      <p class="muted">Guarda e consulta PDFs.</p>
       <button class="btn full" onclick="showPage('books')">Abrir</button>
     </div>
     <div class="card">
       <h3>🎙️ Voz MULTI</h3>
-      <p class="muted">Escolhe um idioma e utiliza a voz.</p>
+      <p class="muted">Vários idiomas e comandos de voz.</p>
       <button class="btn full" onclick="showPage('voice')">Abrir</button>
     </div>
     <div class="card">
       <h3>🎓 Ensino</h3>
-      <p class="muted">Escolhe o teu nível e disciplina.</p>
+      <p class="muted">País, classe e disciplina.</p>
       <button class="btn full" onclick="showPage('settings')">Configurar</button>
     </div>
   </div>
 </section>
 
+<!-- ASSISTENTE -->
 <section id="chat" class="page">
   <h2>🤖 Assistente educativo</h2>
   <p class="muted">Escreve uma pergunta ou utiliza o microfone.</p>
@@ -220,43 +242,54 @@ footer {text-align:center;color:var(--muted);font-size:13px;padding:20px}
   </div>
 
   <div class="field">
-    <textarea id="question" placeholder="Escreve aqui a tua pergunta..."></textarea>
+    <textarea id="question" placeholder="Escreve a tua pergunta..."></textarea>
   </div>
   <div class="actions">
     <button class="btn" onclick="sendMessage()">Enviar</button>
-    <button class="btn secondary" onclick="startRecognition()">🎙️ Falar</button>
+    <button class="btn secondary" onclick="startRecognition('chat')">🎙️ Falar</button>
     <button class="btn secondary" onclick="stopSpeaking()">Parar voz</button>
+    <button class="btn secondary" onclick="clearChat()">Limpar conversa</button>
   </div>
-  <p class="small" id="chatStatus">O assistente básico está disponível. A IA completa precisa de uma ligação segura a um servidor.</p>
-</section>
-
-<section id="books" class="page">
-  <h2>📚 Biblioteca escolar</h2>
-  <p class="muted">Adiciona os teus próprios livros e documentos PDF.</p>
+  <p class="small" id="chatStatus">Modo básico ativo. A IA completa necessita de servidor.</p>
 
   <div class="card">
-    <label for="bookFile">Escolher livro em PDF</label>
+    <h3>📷 Adicionar fotografia</h3>
+    <p class="small">Podes selecionar uma fotografia para a preparar para uma futura função de análise.</p>
+    <input type="file" id="photoInput" accept="image/*">
+    <img id="photoPreview" alt="Pré-visualização" hidden>
+    <p class="small" id="photoStatus"></p>
+  </div>
+</section>
+
+<!-- BIBLIOTECA -->
+<section id="books" class="page">
+  <h2>📚 Biblioteca escolar</h2>
+  <p class="muted">Adiciona livros em PDF para consulta no teu dispositivo.</p>
+
+  <div class="card">
+    <label for="bookFile">Escolher PDF</label>
     <input type="file" id="bookFile" accept="application/pdf">
     <div class="field">
       <label for="bookName">Nome do livro</label>
       <input id="bookName" placeholder="Ex.: Matemática da 11ª classe">
     </div>
     <button class="btn full" onclick="saveBook()">Guardar livro</button>
-    <p class="small">Os ficheiros são guardados no armazenamento local do navegador, quando suportado.</p>
+    <p class="small">Os livros ficam guardados no armazenamento do navegador.</p>
   </div>
 
   <div class="card">
     <h3>Os meus livros</h3>
-    <div id="bookList">Ainda não adicionaste livros.</div>
+    <div id="bookList">A carregar biblioteca...</div>
   </div>
 
-  <div class="card" id="reader" style="display:none">
+  <div class="card" id="reader" hidden>
     <h3 id="readerTitle">Leitor de PDF</h3>
     <iframe id="pdfFrame" title="Leitor de livro PDF"></iframe>
     <button class="btn secondary full" onclick="closeReader()">Fechar livro</button>
   </div>
 </section>
 
+<!-- VOZ -->
 <section id="voice" class="page">
   <h2>🎙️ Voz MULTI</h2>
   <div class="card">
@@ -287,16 +320,18 @@ footer {text-align:center;color:var(--muted);font-size:13px;padding:20px}
     <div class="actions">
       <button class="btn" onclick="speakText()">🔊 Falar</button>
       <button class="btn secondary" onclick="stopSpeaking()">Parar</button>
-      <button class="btn secondary" onclick="startRecognition()">🎤 Comando de voz</button>
+      <button class="btn secondary" onclick="startRecognition('voice')">🎤 Falar comigo</button>
     </div>
     <p id="voiceStatus" class="status"></p>
   </div>
+
   <div class="card">
     <h3>Sobre as vozes</h3>
-    <p class="small">A lista depende das vozes instaladas no Android ou navegador. A opção Português de Moçambique não garante uma voz com sotaque moçambicano: se não estiver disponível, o dispositivo poderá utilizar outra voz portuguesa.</p>
+    <p class="small">As vozes dependem do Android e do navegador. Escolher Português de Moçambique não garante um sotaque moçambicano se essa voz não estiver instalada.</p>
   </div>
 </section>
 
+<!-- DEFINIÇÕES -->
 <section id="settings" class="page">
   <h2>⚙️ Definições</h2>
   <div class="card">
@@ -310,11 +345,11 @@ footer {text-align:center;color:var(--muted);font-size:13px;padding:20px}
       <option>Cabo Verde</option>
       <option>Guiné-Bissau</option>
       <option>São Tomé e Príncipe</option>
-      <option>Estados Unidos</option>
-      <option>Reino Unido</option>
+      <option>Quénia</option>
       <option>França</option>
       <option>Espanha</option>
-      <option>Quénia</option>
+      <option>Reino Unido</option>
+      <option>Estados Unidos</option>
     </select>
 
     <div class="field">
@@ -326,16 +361,30 @@ footer {text-align:center;color:var(--muted);font-size:13px;padding:20px}
         <option>Ensino superior</option>
       </select>
     </div>
+
+    <div class="field">
+      <label for="defaultLanguage">Idioma preferido</label>
+      <select id="defaultLanguage">
+        <option value="pt-MZ">Português de Moçambique</option>
+        <option value="pt-PT">Português de Portugal</option>
+        <option value="pt-BR">Português do Brasil</option>
+        <option value="en-US">Inglês</option>
+        <option value="fr-FR">Francês</option>
+        <option value="es-ES">Espanhol</option>
+      </select>
+    </div>
+
     <button class="btn full" onclick="saveSettings()">Guardar definições</button>
     <p id="settingsStatus" class="status"></p>
   </div>
+
   <div class="card">
-    <h3>Estado das funcionalidades</h3>
+    <h3>Estado da aplicação</h3>
     <p>Interface: <strong>Disponível</strong></p>
-    <p>Voz: <strong>Depende do navegador</strong></p>
-    <p>Livros PDF: <strong>Armazenamento local</strong></p>
-    <p>IA completa: <strong>Precisa de servidor</strong></p>
-    <p>Modo offline: <strong>Não configurado nesta versão</strong></p>
+    <p>Voz: <strong>Depende do dispositivo</strong></p>
+    <p>PDF: <strong>Biblioteca local</strong></p>
+    <p>IA completa: <strong>Ainda não ligada</strong></p>
+    <p>Offline completo: <strong>Ainda não configurado</strong></p>
   </div>
 </section>
 
@@ -344,42 +393,82 @@ footer {text-align:center;color:var(--muted);font-size:13px;padding:20px}
 </div>
 
 <script>
+"use strict";
+
+// =====================================
+// SUPER META IA - FUNÇÕES PRINCIPAIS
+// =====================================
+
 const DB_NAME = "SuperMetaDatabase";
 const STORE = "books";
+
 let db = null;
 let currentPdfUrl = null;
 let voices = [];
+let recognition = null;
 
+// Para ativar a IA verdadeira, será necessário
+// configurar um servidor seguro.
+// Nunca colocar uma chave secreta neste ficheiro.
+const AI_ENDPOINT = "";
+
+// Navegação
 function showPage(id) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  const btn = document.querySelector('nav button[data-page="' + id + '"]');
-  if (btn) btn.classList.add("active");
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  document.querySelectorAll("nav button").forEach(button => {
+    button.classList.remove("active");
+  });
+
+  const page = document.getElementById(id);
+  if (!page) return;
+
+  page.classList.add("active");
+
+  const button = document.querySelector(
+    'nav button[data-page="' + id + '"]'
+  );
+
+  if (button) button.classList.add("active");
 }
 
-document.querySelectorAll("nav button").forEach(btn => {
-  btn.addEventListener("click", () => showPage(btn.dataset.page));
+document.querySelectorAll("nav button").forEach(button => {
+  button.addEventListener("click", () => {
+    showPage(button.dataset.page);
+  });
 });
 
-// Banco de dados local para guardar PDFs
+// =====================================
+// BIBLIOTECA E ARMAZENAMENTO PDF
+// =====================================
+
 function openDatabase() {
   return new Promise((resolve, reject) => {
-    if (!("indexedDB" in window)) {
-      reject(new Error("Armazenamento não suportado."));
+    if (!window.indexedDB) {
+      reject(new Error("IndexedDB não disponível."));
       return;
     }
+
     const request = indexedDB.open(DB_NAME, 1);
+
     request.onupgradeneeded = () => {
       const database = request.result;
+
       if (!database.objectStoreNames.contains(STORE)) {
-        database.createObjectStore(STORE, {keyPath:"id", autoIncrement:true});
+        database.createObjectStore(STORE, {
+          keyPath: "id",
+          autoIncrement: true
+        });
       }
     };
+
     request.onsuccess = () => {
       db = request.result;
       resolve(db);
     };
+
     request.onerror = () => reject(request.error);
   });
 }
@@ -396,9 +485,10 @@ function addBook(book) {
 function getBooks() {
   return new Promise((resolve, reject) => {
     const tx = db.transaction(STORE, "readonly");
-    const req = tx.objectStore(STORE).getAll();
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => reject(req.error);
+    const request = tx.objectStore(STORE).getAll();
+
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
   });
 }
 
@@ -414,246 +504,519 @@ function deleteBook(id) {
 async function saveBook() {
   const file = document.getElementById("bookFile").files[0];
   const name = document.getElementById("bookName").value.trim();
+
   if (!file || file.type !== "application/pdf") {
     alert("Escolhe um ficheiro PDF válido.");
     return;
   }
+
   try {
     await addBook({
       name: name || file.name,
       filename: file.name,
-      file:file,
-      date:Date.now()
+      file: file,
+      date: Date.now()
     });
+
     document.getElementById("bookFile").value = "";
     document.getElementById("bookName").value = "";
+
     await renderBooks();
-    alert("Livro guardado!");
-  } catch(e) {
-    alert("Não foi possível guardar o livro. Verifica o espaço disponível.");
+    alert("Livro guardado com sucesso!");
+
+  } catch (error) {
+    console.error(error);
+    alert("Não foi possível guardar. Verifica o espaço disponível.");
   }
 }
 
 async function renderBooks() {
   const list = document.getElementById("bookList");
+
+  if (!db) {
+    list.textContent = "A biblioteca não está disponível.";
+    return;
+  }
+
   try {
     const books = await getBooks();
+
     if (!books.length) {
       list.textContent = "Ainda não adicionaste livros.";
       return;
     }
-    list.innerHTML = "";
+
+    list.replaceChildren();
+
     books.forEach(book => {
       const div = document.createElement("div");
       div.className = "book";
+
       const title = document.createElement("strong");
       title.textContent = book.name;
-      const br = document.createElement("br");
+
       const open = document.createElement("button");
       open.className = "btn";
       open.textContent = "Abrir livro";
       open.onclick = () => openBook(book);
+
       const remove = document.createElement("button");
       remove.className = "btn danger";
-      remove.textContent = "Apagar";
       remove.style.marginLeft = "8px";
+      remove.textContent = "Apagar";
+
       remove.onclick = async () => {
         if (confirm("Apagar este livro?")) {
           await deleteBook(book.id);
-          renderBooks();
+          await renderBooks();
           closeReader();
         }
       };
-      div.append(title, br, open, remove);
+
+      div.append(title, document.createElement("br"), open, remove);
       list.appendChild(div);
     });
-  } catch(e) {
-    list.textContent = "Não foi possível carregar a biblioteca.";
+
+  } catch (error) {
+    console.error(error);
+    list.textContent = "Erro ao carregar os livros.";
   }
 }
 
 function openBook(book) {
   closeReader();
+
   currentPdfUrl = URL.createObjectURL(book.file);
+
   document.getElementById("readerTitle").textContent = book.name;
   document.getElementById("pdfFrame").src = currentPdfUrl;
-  document.getElementById("reader").style.display = "block";
-  document.getElementById("reader").scrollIntoView({behavior:"smooth"});
+  document.getElementById("reader").hidden = false;
+
+  document.getElementById("reader").scrollIntoView({
+    behavior: "smooth"
+  });
 }
 
 function closeReader() {
   document.getElementById("pdfFrame").src = "about:blank";
-  document.getElementById("reader").style.display = "none";
-  if (currentPdfUrl) URL.revokeObjectURL(currentPdfUrl);
-  currentPdfUrl = null;
+  document.getElementById("reader").hidden = true;
+
+  if (currentPdfUrl) {
+    URL.revokeObjectURL(currentPdfUrl);
+    currentPdfUrl = null;
+  }
 }
 
-// Voz e idiomas
+// =====================================
+// VOZ MULTI
+// =====================================
+
 function loadVoices() {
   if (!("speechSynthesis" in window)) return;
+
   voices = speechSynthesis.getVoices();
+
   const select = document.getElementById("voiceSelect");
-  const old = select.value;
-  select.innerHTML = '<option value="">Voz automática</option>';
+  const previous = select.value;
+
+  select.innerHTML = "";
+
+  const automatic = document.createElement("option");
+  automatic.value = "";
+  automatic.textContent = "Voz automática";
+  select.appendChild(automatic);
+
   voices.forEach((voice, index) => {
     const option = document.createElement("option");
-    option.value = index;
+    option.value = String(index);
     option.textContent = voice.name + " (" + voice.lang + ")";
     select.appendChild(option);
   });
-  select.value = old;
+
+  if (previous !== "") select.value = previous;
 }
+
 if ("speechSynthesis" in window) {
   loadVoices();
   speechSynthesis.onvoiceschanged = loadVoices;
 }
 
-function speakText() {
+function speakText(textOverride) {
   if (!("speechSynthesis" in window)) {
-    alert("Este navegador não suporta leitura de voz.");
+    alert("O navegador não suporta leitura de voz.");
     return;
   }
-  const text = document.getElementById("voiceText").value.trim();
+
+  const text = textOverride ||
+    document.getElementById("voiceText").value.trim();
+
   if (!text) return;
+
   speechSynthesis.cancel();
+
+  const language = document.getElementById("language").value;
   const utterance = new SpeechSynthesisUtterance(text);
-  const lang = document.getElementById("language").value;
-  utterance.lang = lang;
+
+  utterance.lang = language;
+  utterance.rate = 0.95;
+
   const selected = document.getElementById("voiceSelect").value;
-  if (selected !== "" && voices[selected]) {
-    utterance.voice = voices[selected];
+
+  if (selected !== "" && voices[Number(selected)]) {
+    utterance.voice = voices[Number(selected)];
   } else {
-    const prefix = lang.split("-")[0].toLowerCase();
-    const match = voices.find(v => v.lang.toLowerCase() === lang.toLowerCase())
-      || voices.find(v => v.lang.toLowerCase().startsWith(prefix));
+    const prefix = language.split("-")[0].toLowerCase();
+
+    const match =
+      voices.find(v => v.lang.toLowerCase() === language.toLowerCase()) ||
+      voices.find(v => v.lang.toLowerCase().startsWith(prefix));
+
     if (match) utterance.voice = match;
   }
-  utterance.rate = 0.95;
-  utterance.onstart = () => document.getElementById("voiceStatus").textContent = "A falar...";
-  utterance.onend = () => document.getElementById("voiceStatus").textContent = "Leitura concluída.";
-  utterance.onerror = () => document.getElementById("voiceStatus").textContent = "Não foi possível reproduzir esta voz.";
+
+  utterance.onstart = () => {
+    document.getElementById("voiceStatus").textContent = "A falar...";
+  };
+
+  utterance.onend = () => {
+    document.getElementById("voiceStatus").textContent = "Leitura concluída.";
+  };
+
+  utterance.onerror = () => {
+    document.getElementById("voiceStatus").textContent =
+      "Não foi possível reproduzir esta voz.";
+  };
+
   speechSynthesis.speak(utterance);
 }
 
 function stopSpeaking() {
-  if ("speechSynthesis" in window) speechSynthesis.cancel();
+  if ("speechSynthesis" in window) {
+    speechSynthesis.cancel();
+  }
 }
 
 // Reconhecimento de voz
-function startRecognition() {
-  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+function startRecognition(destination) {
+  const Recognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
   if (!Recognition) {
-    alert("O reconhecimento de voz não está disponível neste navegador. Experimenta o Chrome e verifica a permissão do microfone.");
+    alert("Reconhecimento de voz não disponível. Experimenta o Chrome.");
     return;
   }
-  const recognition = new Recognition();
+
+  if (recognition) {
+    try { recognition.stop(); } catch(e) {}
+  }
+
+  recognition = new Recognition();
+
   recognition.lang = document.getElementById("language").value;
   recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  recognition.onstart = () => {
+    document.getElementById("voiceStatus").textContent =
+      "Estou a ouvir...";
+  };
+
   recognition.onresult = event => {
     const spoken = event.results[0][0].transcript;
-    const question = document.getElementById("question");
-    question.value = spoken;
-    document.getElementById("voiceText").value = spoken;
-    showPage("chat");
+
+    if (destination === "chat") {
+      document.getElementById("question").value = spoken;
+      showPage("chat");
+    } else {
+      document.getElementById("voiceText").value = spoken;
+    }
+
+    document.getElementById("voiceStatus").textContent =
+      "Voz reconhecida.";
   };
-  recognition.onerror = () => alert("Não foi possível reconhecer a voz. Verifica a ligação e a permissão do microfone.");
-  recognition.start();
+
+  recognition.onerror = event => {
+    document.getElementById("voiceStatus").textContent =
+      "Erro no microfone: " + event.error;
+  };
+
+  recognition.onend = () => {
+    recognition = null;
+  };
+
+  try {
+    recognition.start();
+  } catch(error) {
+    alert("Não foi possível iniciar o microfone.");
+  }
 }
 
-// Chat educativo básico
+// =====================================
+// CHAT E HISTÓRICO
+// =====================================
+
 function addMessage(text, type) {
   const box = document.getElementById("chatbox");
   const div = document.createElement("div");
+
   div.className = "message " + type;
   div.textContent = text;
+
   box.appendChild(div);
   box.scrollTop = box.scrollHeight;
+}
+
+function saveChatHistory() {
+  try {
+    const messages = Array.from(
+      document.querySelectorAll("#chatbox .message")
+    ).map(message => ({
+      text: message.textContent,
+      type: message.classList.contains("user") ? "user" : "bot"
+    }));
+
+    localStorage.setItem("smChatHistory", JSON.stringify(messages));
+  } catch(error) {
+    console.warn("Não foi possível guardar o histórico.");
+  }
+}
+
+function loadChatHistory() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem("smChatHistory") || "[]"
+    );
+
+    if (!Array.isArray(saved) || !saved.length) return;
+
+    const box = document.getElementById("chatbox");
+    box.replaceChildren();
+
+    saved.slice(-60).forEach(message => {
+      if (typeof message.text === "string") {
+        addMessage(message.text,
+          message.type === "user" ? "user" : "bot");
+      }
+    });
+
+  } catch(error) {
+    console.warn("Histórico não disponível.");
+  }
+}
+
+function clearChat() {
+  if (!confirm("Queres apagar o histórico desta conversa?")) return;
+
+  const box = document.getElementById("chatbox");
+  box.replaceChildren();
+
+  addMessage(
+    "Olá! Sou o Super Meta IA. Como posso ajudar nos teus estudos?",
+    "bot"
+  );
+
+  localStorage.removeItem("smChatHistory");
 }
 
 async function sendMessage() {
   const input = document.getElementById("question");
   const question = input.value.trim();
+
   if (!question) return;
+
   input.value = "";
   addMessage(question, "user");
+  saveChatHistory();
 
   const level = document.getElementById("level").value;
   const subject = document.getElementById("subject").value;
   const status = document.getElementById("chatStatus");
+
   status.textContent = "A preparar resposta...";
 
-  // Para ativar IA real, configura um servidor seguro e coloca aqui
-  // apenas o endereço público do teu endpoint. Nunca coloques uma API key.
-  const AI_ENDPOINT = "";
-
+  // Ligação opcional a um servidor de IA seguro.
+  // O servidor deve receber question, level e subject
+  // e devolver JSON com a propriedade answer.
   if (AI_ENDPOINT) {
     try {
       const response = await fetch(AI_ENDPOINT, {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({question, level, subject})
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+          question: question,
+          level: level,
+          subject: subject
+        })
       });
-      if (!response.ok) throw new Error("Erro no servidor");
+
+      if (!response.ok) throw new Error("Erro no servidor.");
+
       const data = await response.json();
-      const answer = data.answer || data.response || "O servidor não enviou uma resposta.";
-      addMessage(answer, "bot");
-      document.getElementById("voiceText").value = answer;
+      const answer = data.answer || data.response;
+
+      if (!answer) throw new Error("Resposta vazia.");
+
+      addMessage(String(answer), "bot");
+      document.getElementById("voiceText").value = String(answer);
+      saveChatHistory();
+
       status.textContent = "Resposta recebida.";
       return;
+
     } catch(error) {
-      addMessage("Não consegui ligar ao serviço de IA. Verifica a ligação ou a configuração do servidor.", "bot");
+      console.error(error);
+
+      addMessage(
+        "Não consegui ligar ao servidor de IA. Verifica a ligação e a configuração.",
+        "bot"
+      );
+
       status.textContent = "Falha na ligação à IA.";
+      saveChatHistory();
       return;
     }
   }
 
   const normalized = question.toLowerCase();
-  let answer = "";
+  let answer;
 
   if (/^(olá|ola|oi|bom dia|boa tarde|boa noite)[!. ]*$/.test(normalized)) {
     answer = "Olá! Estou aqui para ajudar nos teus estudos. Qual é a tua pergunta?";
-  } else if (normalized.includes("quem és") || normalized.includes("quem es")) {
-    answer = "Sou o Super Meta IA, um protótipo de assistente educativo.";
-  } else if (normalized.includes("obrigado") || normalized.includes("obrigada")) {
+  } else if (
+    normalized.includes("quem és") ||
+    normalized.includes("quem es")
+  ) {
+    answer = "Sou o Super Meta IA, um assistente educativo em desenvolvimento.";
+  } else if (
+    normalized.includes("obrigado") ||
+    normalized.includes("obrigada")
+  ) {
     answer = "De nada! Continua a aprender e a fazer perguntas.";
   } else {
-    answer = "Recebi a tua pergunta sobre " + subject + " (" + level + "). Nesta versão, ainda não estou ligado a um motor de IA completo. Para resolver exercícios, explicar matérias e analisar perguntas livremente, precisamos de configurar um servidor de IA seguro.";
+    answer =
+      "Recebi a tua pergunta sobre " + subject + " (" + level + ").\n\n" +
+      "Nesta versão ainda não estou ligado a uma IA completa. " +
+      "Para explicar matérias, resolver exercícios e responder livremente, " +
+      "precisamos de configurar um servidor seguro de inteligência artificial.";
   }
 
   addMessage(answer, "bot");
   document.getElementById("voiceText").value = answer;
+
+  saveChatHistory();
   status.textContent = "Resposta do modo básico.";
 }
 
+// =====================================
+// FOTOGRAFIAS
+// =====================================
+
+document.getElementById("photoInput").addEventListener("change", event => {
+  const file = event.target.files[0];
+  const preview = document.getElementById("photoPreview");
+  const status = document.getElementById("photoStatus");
+
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    status.textContent = "Seleciona uma imagem válida.";
+    return;
+  }
+
+  if (preview.dataset.url) {
+    URL.revokeObjectURL(preview.dataset.url);
+  }
+
+  const url = URL.createObjectURL(file);
+
+  preview.src = url;
+  preview.dataset.url = url;
+  preview.hidden = false;
+
+  status.textContent =
+    "Imagem carregada. A análise inteligente ainda precisa de IA.";
+});
+
+// =====================================
+// DEFINIÇÕES
+// =====================================
+
 function saveSettings() {
-  const country = document.getElementById("country").value;
-  const level = document.getElementById("schoolLevel").value;
+  const settings = {
+    country: document.getElementById("country").value,
+    level: document.getElementById("schoolLevel").value,
+    language: document.getElementById("defaultLanguage").value
+  };
+
   try {
-    localStorage.setItem("smCountry", country);
-    localStorage.setItem("smLevel", level);
-    document.getElementById("settingsStatus").textContent = "Definições guardadas.";
-  } catch(e) {
-    document.getElementById("settingsStatus").textContent = "Não foi possível guardar as definições.";
+    localStorage.setItem("smSettings", JSON.stringify(settings));
+
+    document.getElementById("language").value = settings.language;
+
+    document.getElementById("settingsStatus").textContent =
+      "Definições guardadas com sucesso.";
+
+  } catch(error) {
+    document.getElementById("settingsStatus").textContent =
+      "Não foi possível guardar as definições.";
   }
 }
 
 function loadSettings() {
   try {
-    const country = localStorage.getItem("smCountry");
-    const level = localStorage.getItem("smLevel");
-    if (country) document.getElementById("country").value = country;
-    if (level) document.getElementById("schoolLevel").value = level;
-  } catch(e) {}
+    const settings = JSON.parse(
+      localStorage.getItem("smSettings") || "null"
+    );
+
+    if (!settings) return;
+
+    if (settings.country) {
+      document.getElementById("country").value = settings.country;
+    }
+
+    if (settings.level) {
+      document.getElementById("schoolLevel").value = settings.level;
+    }
+
+    if (settings.language) {
+      document.getElementById("defaultLanguage").value = settings.language;
+      document.getElementById("language").value = settings.language;
+    }
+
+  } catch(error) {
+    console.warn("Definições não disponíveis.");
+  }
 }
 
-openDatabase()
-  .then(renderBooks)
-  .catch(() => {
-    document.getElementById("bookList").textContent =
-      "O armazenamento de livros não está disponível neste navegador.";
-  });
+// =====================================
+// INICIALIZAÇÃO E PROTEÇÃO CONTRA ERROS
+// =====================================
 
-loadSettings();
+window.addEventListener("error", event => {
+  console.error("Erro na aplicação:", event.message);
+});
+
+async function initializeApp() {
+  loadSettings();
+  loadChatHistory();
+
+  try {
+    await openDatabase();
+    await renderBooks();
+  } catch(error) {
+    console.error(error);
+
+    document.getElementById("bookList").textContent =
+      "A biblioteca não conseguiu iniciar neste navegador.";
+  }
+
+  if ("speechSynthesis" in window) {
+    loadVoices();
+  }
+}
+
+initializeApp();
 </script>
 </body>
 </html>
