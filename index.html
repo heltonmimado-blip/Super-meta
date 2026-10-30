@@ -442,7 +442,6 @@
         function gerarSolucaoDireta(pergunta, classe) {
             let p = pergunta.toLowerCase();
             
-            // Se for conta matemática
             if (/\d/.test(p) && (p.includes("+") || p.includes("-") || p.includes("*") || p.includes("/") || p.includes("quanto"))) {
                 try {
                     let expressaoLimpa = p.replace(/quanto é/g, "").replace(/x/g, "*").replace(/[^0-9+\-*/().]/g, "");
@@ -453,7 +452,6 @@
                 } catch(e) {}
             }
 
-            // Resolução direta para perguntas de estudo, biologia, ciências, etc.
             return `Resolução completa para ${classe}: Sobre o tema "${pergunta}", a resposta direta é que devemos aplicar a teoria científica correta. Passo 1: Organizar os dados do problema. Passo 2: Desenvolver a fórmula ou conceito aplicável. Conclusão: O exercício está resolvido com sucesso, provando o resultado exato.`;
         }
 
