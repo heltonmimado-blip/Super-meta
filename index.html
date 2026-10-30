@@ -5,10 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#10172c">
-<title>Super Meta IA</title>
+<title>SUPER META IA FULL</title>
 
 <style>
-:root{
+:root {
  --bg:#0b1020;
  --panel:#151e35;
  --card:#1c2945;
@@ -23,84 +23,66 @@ body{
  font-family:Arial,sans-serif;
 }
 header{
- background:#111b32;padding:17px;
- display:flex;align-items:center;justify-content:space-between;
- position:sticky;top:0;z-index:5;
- border-bottom:1px solid #263653;
+ position:sticky;top:0;z-index:10;
+ display:flex;justify-content:space-between;
+ align-items:center;padding:16px;
+ background:#111b32;border-bottom:1px solid #30415f;
 }
 .logo{font-size:20px;font-weight:bold}
 .logo span{color:#69a0ff}
-.status{font-size:12px;color:var(--green)}
-main{padding:16px;padding-bottom:90px;max-width:800px;margin:auto}
+#connection{font-size:11px;color:var(--green)}
+main{max-width:850px;margin:auto;padding:15px 15px 100px}
 .page{display:none}
 .page.active{display:block}
 h2{font-size:21px}
-h3{font-size:16px}
-p{line-height:1.5;color:var(--muted)}
+p{color:var(--muted);line-height:1.5}
 .card{
  background:var(--panel);padding:16px;
- border:1px solid #293956;border-radius:15px;
- margin-bottom:13px;
+ border:1px solid #293956;border-radius:15px;margin-bottom:14px;
 }
-.grid{
- display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
-}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .tile{
  background:var(--card);border:1px solid #30415f;
- border-radius:14px;padding:17px 12px;
- cursor:pointer;text-align:left;color:white;
+ color:white;padding:17px 12px;border-radius:14px;
+ text-align:left;cursor:pointer;
 }
-.tile b{display:block;margin:9px 0 5px}
+.tile b{display:block;margin:8px 0}
 .tile small{color:var(--muted)}
 input,select,textarea{
  width:100%;padding:13px;margin:8px 0;
- border-radius:10px;border:1px solid #394c6e;
+ border:1px solid #394c6e;border-radius:10px;
  background:#0e172b;color:white;font-size:15px;
 }
-textarea{min-height:100px;resize:vertical}
+textarea{min-height:100px}
 button{
- border:0;border-radius:10px;padding:12px 16px;
- background:var(--blue);color:white;font-weight:bold;
- cursor:pointer;margin:4px 2px;
+ background:var(--blue);color:white;border:0;
+ border-radius:10px;padding:12px 15px;
+ font-weight:bold;cursor:pointer;margin:4px 2px;
 }
-button.secondary{background:#293956}
-button.green{background:#138b69}
-button.danger{background:#9c3548}
-button:disabled{opacity:.5}
+.secondary{background:#293956}
+.green{background:#138b69}
+.danger{background:#963b4b}
 nav{
  position:fixed;bottom:0;left:0;right:0;
  display:flex;justify-content:space-around;
  background:#111b32;border-top:1px solid #30415f;
- padding:10px 2px;z-index:10;
+ padding:9px 2px;z-index:20;
 }
 nav button{
  background:transparent;color:#b6c5df;
- padding:8px 5px;font-size:11px;margin:0;
+ font-size:11px;padding:7px 3px;margin:0;
 }
 nav button.active{color:#75a5ff}
 .book{
- background:#1b2944;padding:13px;border-radius:12px;
- margin:10px 0;border:1px solid #344562;
+ background:var(--card);padding:13px;
+ border:1px solid #344562;border-radius:12px;margin:10px 0;
 }
-a{color:#82b0ff}
-#chatMessages{
- max-height:420px;overflow:auto;margin:12px 0;
-}
-.message{
- padding:12px;border-radius:12px;margin:9px 0;
- line-height:1.5;white-space:pre-wrap;
-}
-.user{background:#244b8b;margin-left:18%}
-.bot{background:#202e49;margin-right:10%}
-.small{font-size:12px;color:var(--muted)}
-#pdfViewer{
- width:100%;height:65vh;border:0;background:white;
- display:none;border-radius:10px;
-}
-.result{
- background:#101a30;padding:13px;border-radius:10px;
- margin-top:10px;white-space:pre-wrap;
-}
+.message{padding:12px;border-radius:12px;margin:9px 0;white-space:pre-wrap;line-height:1.5}
+.user{background:#244b8b;margin-left:15%}
+.bot{background:#202e49;margin-right:8%}
+#chatMessages{max-height:400px;overflow:auto}
+.result{background:#101a30;padding:13px;border-radius:10px;margin-top:10px;white-space:pre-wrap}
+#pdfViewer{width:100%;height:65vh;border:0;display:none;background:white}
 footer{text-align:center;color:#74839e;font-size:11px;padding:20px}
 </style>
 </head>
@@ -109,120 +91,92 @@ footer{text-align:center;color:#74839e;font-size:11px;padding:20px}
 
 <header>
  <div class="logo">SUPER <span>META IA</span></div>
- <div class="status" id="connection">● A verificar...</div>
+ <div id="connection">● A iniciar...</div>
 </header>
 
 <main>
 
-<!-- INÍCIO -->
 <section id="home" class="page active">
  <div class="card">
-  <h2>Bem-vindo ao Super Meta IA</h2>
-  <p>O teu espaço de aprendizagem, conhecimento e educação.</p>
-  <div class="status" id="welcomeStatus">Modo educativo</div>
+  <h2>Bem-vindo ao SUPER META IA</h2>
+  <p>O teu assistente escolar inteligente.</p>
+  <p>📚 Aprende · 🤖 Pergunta · 🧮 Calcula · 🎓 Evolui</p>
  </div>
 
  <h3>O que desejas fazer?</h3>
  <div class="grid">
-  <button class="tile" onclick="showPage('library')">
-   <span>📚</span><b>Biblioteca</b>
-   <small>Livros e manuais escolares</small>
-  </button>
-  <button class="tile" onclick="showPage('assistant')">
-   <span>🤖</span><b>Professor IA</b>
-   <small>Fazer perguntas</small>
-  </button>
-  <button class="tile" onclick="showPage('tools')">
-   <span>🧮</span><b>Ferramentas</b>
-   <small>Calculadora e exercícios</small>
-  </button>
-  <button class="tile" onclick="showPage('quiz')">
-   <span>📝</span><b>Testes</b>
-   <small>Praticar conhecimentos</small>
-  </button>
+  <button class="tile" onclick="showPage('library')">📚<b>Biblioteca</b><small>1.ª à 12.ª classe</small></button>
+  <button class="tile" onclick="showPage('assistant')">🤖<b>Professor IA</b><small>Perguntas escolares</small></button>
+  <button class="tile" onclick="showPage('tools')">🧮<b>Ferramentas</b><small>Calculadora e conversões</small></button>
+  <button class="tile" onclick="showPage('quiz')">📝<b>Testes</b><small>Pratica conhecimentos</small></button>
+  <button class="tile" onclick="showPage('history')">📋<b>Histórico</b><small>As tuas perguntas</small></button>
+  <button class="tile" onclick="showPage('settings')">⚙️<b>Definições</b><small>Configurar aplicativo</small></button>
  </div>
 
- <div class="card" style="margin-top:16px">
-  <h3>📖 Os teus livros</h3>
-  <p id="bookCount">Ainda não guardaste livros.</p>
-  <button onclick="showPage('library')">Abrir biblioteca</button>
+ <div class="card" style="margin-top:15px">
+  <h3>📖 Minha biblioteca</h3>
+  <p id="bookCount">A carregar livros...</p>
+  <button onclick="showPage('library')">Abrir livros</button>
  </div>
 </section>
 
-<!-- BIBLIOTECA -->
 <section id="library" class="page">
  <h2>📚 Biblioteca Escolar</h2>
- <p>Pesquisa manuais escolares e guarda os teus próprios PDFs.</p>
-
  <div class="card">
-  <h3>Pesquisar manuais</h3>
-
-  <label>Classe</label>
+  <h3>Pesquisar manuais escolares</h3>
   <select id="libraryLevel">
    <option value="">Selecionar classe</option>
   </select>
-
-  <label>Disciplina</label>
   <select id="librarySubject">
    <option value="">Selecionar disciplina</option>
   </select>
-
-  <button onclick="searchSchoolBooks()">Pesquisar manuais</button>
-  <div id="onlineBooks"></div>
+  <button onclick="searchBooks()">Pesquisar manuais</button>
+  <div id="onlineBooks" class="result"></div>
  </div>
 
  <div class="card">
-  <h3>📥 Os meus livros PDF</h3>
-  <p>Importa livros para os consultar posteriormente, mesmo sem Internet.</p>
-  <input type="file" id="pdfInput" accept="application/pdf">
-  <button class="green" onclick="savePDF()">Guardar livro no dispositivo</button>
+  <h3>📥 Adicionar livros PDF</h3>
+  <p>Seleciona um manual PDF guardado no teu telemóvel.</p>
+  <input type="file" id="pdfInput" accept=".pdf,application/pdf">
+  <button class="green" onclick="savePDF()">Guardar livro</button>
   <div id="savedBooks"></div>
  </div>
 
  <div class="card">
-  <h3>📖 Leitor de livros</h3>
-  <p id="readerMessage">Escolhe um livro guardado para começar a leitura.</p>
+  <h3>📖 Leitor PDF</h3>
+  <p id="readerMessage">Seleciona um livro para ler.</p>
   <iframe id="pdfViewer" title="Leitor de PDF"></iframe>
  </div>
 </section>
 
-<!-- ASSISTENTE -->
 <section id="assistant" class="page">
  <h2>🤖 Professor Super Meta</h2>
  <div class="card">
-  <p>Escreve uma pergunta ou utiliza o microfone.</p>
+  <p>Faz perguntas sobre qualquer matéria escolar.</p>
   <div id="chatMessages"></div>
-  <textarea id="aiQuestion" placeholder="Exemplo: O que é a fotossíntese?"></textarea>
-  <button onclick="askSuperMeta()">Enviar pergunta</button>
+  <textarea id="aiQuestion" placeholder="Escreve a tua pergunta aqui..."></textarea>
+  <button onclick="askAI()">Enviar pergunta</button>
   <button class="secondary" onclick="startVoice()">🎤 Falar</button>
-  <button class="secondary" onclick="stopVoice()">Parar microfone</button>
-  <button class="secondary" onclick="speakLast()">🔊 Ouvir resposta</button>
+  <button class="secondary" onclick="speakLast()">🔊 Ouvir</button>
   <button class="danger" onclick="clearChat()">Limpar conversa</button>
  </div>
  <div class="card">
-  <h3>Informação sobre a IA</h3>
-  <p id="aiMode">
-   Modo offline: respostas educativas básicas disponíveis.
-   Para respostas inteligentes completas será necessária uma ligação
-   segura a um serviço de IA.
-  </p>
+  <h3>Estado da inteligência artificial</h3>
+  <p id="aiStatus">Modo educativo local. A ligação à IA online ainda precisa de configuração segura.</p>
  </div>
 </section>
 
-<!-- FERRAMENTAS -->
 <section id="tools" class="page">
  <h2>🧮 Ferramentas escolares</h2>
-
  <div class="card">
   <h3>Calculadora</h3>
-  <input id="calcInput" placeholder="Exemplo: (25+15)*2">
+  <input id="calcInput" placeholder="Exemplo: (20+10)*2">
   <button onclick="calculate()">Calcular</button>
   <div id="calcResult" class="result">Resultado aparecerá aqui.</div>
  </div>
-
  <div class="card">
-  <h3>Conversão de unidades</h3>
-  <input type="number" id="unitValue" placeholder="Valor">
+  <h3>Conversor de unidades</h3>
+  <input type="number" id="unitValue" placeholder="Introduzir valor">
   <select id="unitType">
    <option value="km">Quilómetros para metros</option>
    <option value="m">Metros para centímetros</option>
@@ -234,9 +188,8 @@ footer{text-align:center;color:#74839e;font-size:11px;padding:20px}
  </div>
 </section>
 
-<!-- TESTES -->
 <section id="quiz" class="page">
- <h2>📝 Testes de conhecimentos</h2>
+ <h2>📝 Testes escolares</h2>
  <div class="card">
   <h3>Biologia</h3>
   <p>Qual é a unidade básica da vida?</p>
@@ -246,29 +199,23 @@ footer{text-align:center;color:#74839e;font-size:11px;padding:20px}
    <option value="b">O coração</option>
    <option value="c">O osso</option>
   </select>
-  <button onclick="checkQuiz()">Verificar resposta</button>
+  <button onclick="checkQuiz()">Verificar</button>
   <div id="quizResult" class="result"></div>
  </div>
 </section>
 
-<!-- HISTÓRICO -->
 <section id="history" class="page">
  <h2>📋 Histórico</h2>
  <div class="card">
-  <div id="historyList">Ainda não existem perguntas guardadas.</div>
+  <div id="historyList">Ainda sem perguntas.</div>
   <button class="danger" onclick="clearHistory()">Apagar histórico</button>
  </div>
 </section>
 
-<!-- DEFINIÇÕES -->
 <section id="settings" class="page">
  <h2>⚙️ Definições</h2>
  <div class="card">
-  <h3>Voz</h3>
-  <label>
-   <input type="checkbox" id="autoVoice" style="width:auto">
-   Ler respostas automaticamente
-  </label>
+  <label><input type="checkbox" id="autoVoice" style="width:auto"> Ler respostas automaticamente</label>
   <label>Idioma da voz</label>
   <select id="voiceLanguage">
    <option value="pt-PT">Português de Portugal</option>
@@ -278,8 +225,8 @@ footer{text-align:center;color:#74839e;font-size:11px;padding:20px}
  </div>
  <div class="card">
   <h3>Sobre</h3>
-  <p>Super Meta IA — Assistente educativo.</p>
-  <p>Versão 1.0</p>
+  <p>SUPER META IA FULL · Versão 2.0</p>
+  <p>Assistente educativo.</p>
  </div>
 </section>
 
@@ -298,109 +245,76 @@ footer{text-align:center;color:#74839e;font-size:11px;padding:20px}
 <script>
 "use strict";
 
-/* NAVEGAÇÃO */
-function showPage(id,button){
- document.querySelectorAll(".page").forEach(p=>{
-  p.classList.remove("active");
- });
- const page=document.getElementById(id);
- if(page) page.classList.add("active");
+const subjects=[
+"Português","Matemática","Inglês","Francês",
+"Física","Química","Biologia","História",
+"Geografia","TIC","Educação Visual",
+"Educação Física","Agropecuária"
+];
 
- document.querySelectorAll("nav button").forEach(b=>{
-  b.classList.remove("active");
- });
+function showPage(id,button){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
  if(button) button.classList.add("active");
- else {
+ else{
   const btn=[...document.querySelectorAll("nav button")]
    .find(b=>b.getAttribute("onclick").includes("'"+id+"'"));
-  if(btn) btn.classList.add("active");
+  if(btn)btn.classList.add("active");
  }
+ window.scrollTo(0,0);
 }
-
-/* CLASSES E DISCIPLINAS */
-const subjects=[
- "Português","Matemática","Inglês","Francês",
- "Física","Química","Biologia","História",
- "Geografia","TIC","Educação Visual",
- "Educação Física","Agropecuária"
-];
 
 function setupLibrary(){
  const level=document.getElementById("libraryLevel");
  for(let i=1;i<=12;i++){
-  const option=document.createElement("option");
-  option.value=i+"ª classe";
-  option.textContent=i+"ª classe";
-  level.appendChild(option);
+  let o=document.createElement("option");
+  o.value=i+"ª classe";
+  o.textContent=i+"ª classe";
+  level.appendChild(o);
  }
  const subject=document.getElementById("librarySubject");
  subjects.forEach(s=>{
-  const o=document.createElement("option");
-  o.value=s;
-  o.textContent=s;
-  subject.appendChild(o);
+  let o=document.createElement("option");
+  o.value=s;o.textContent=s;subject.appendChild(o);
  });
 }
 
-/* PESQUISA DE MANUAIS */
-const SOURCES=[
- {name:"Ministério da Educação de Moçambique",
-  url:"https://www.mined.gov.mz/"},
- {name:"IEDA",
-  url:"https://ieda.gov.mz/"}
-];
-
-function searchSchoolBooks(){
+function searchBooks(){
  const level=document.getElementById("libraryLevel").value;
  const subject=document.getElementById("librarySubject").value;
- const container=document.getElementById("onlineBooks");
- container.replaceChildren();
-
+ const box=document.getElementById("onlineBooks");
+ box.replaceChildren();
  if(!level||!subject){
-  container.textContent="Seleciona a classe e a disciplina.";
+  box.textContent="Seleciona a classe e a disciplina.";
   return;
  }
-
- const title=document.createElement("h3");
- title.textContent="Resultados para "+level+" · "+subject;
- container.appendChild(title);
-
- SOURCES.forEach(source=>{
-  const div=document.createElement("div");
-  div.className="book";
-  const name=document.createElement("b");
-  name.textContent=source.name;
+ const q="manual escolar Moçambique PDF "+level+" "+subject;
+ const p=document.createElement("p");
+ p.textContent="Pesquisa de manuais para "+level+" · "+subject;
+ const a=document.createElement("a");
+ a.href="https://www.google.com/search?q="+encodeURIComponent(q);
+ a.target="_blank";a.rel="noopener noreferrer";
+ a.textContent="Pesquisar manuais PDF disponíveis";
+ box.append(p,a);
+ const official=document.createElement("p");
+ official.textContent="Fontes para consulta:";
+ box.appendChild(official);
+ [["IEDA","https://ieda.gov.mz/"],["Ministério da Educação","https://www.mined.gov.mz/"]].forEach(item=>{
   const link=document.createElement("a");
-  link.href=source.url;
-  link.target="_blank";
-  link.rel="noopener noreferrer";
-  link.textContent="Consultar fonte oficial";
-  div.append(name,document.createElement("br"),link);
-  container.appendChild(div);
+  link.href=item[1];link.target="_blank";link.rel="noopener noreferrer";
+  link.textContent=item[0];
+  const div=document.createElement("div");
+  div.appendChild(link);box.appendChild(div);
  });
-
- const btn=document.createElement("button");
- btn.textContent="Pesquisar manuais PDF";
- btn.onclick=()=>{
-  const q=encodeURIComponent(
-   "manual escolar Moçambique PDF "+level+" "+subject
-  );
-  window.open("https://www.google.com/search?q="+q,"_blank");
- };
- container.appendChild(btn);
 }
 
-/* ARMAZENAMENTO DE LIVROS */
-let db;
-
-function openDatabase(){
+function openDB(){
  return new Promise((resolve,reject)=>{
-  const request=indexedDB.open("SuperMetaBooks",1);
+  const request=indexedDB.open("SuperMetaFull",1);
   request.onupgradeneeded=()=>{
-   const database=request.result;
-   if(!database.objectStoreNames.contains("books")){
-    database.createObjectStore("books",{keyPath:"id",autoIncrement:true});
-   }
+   if(!request.result.objectStoreNames.contains("books"))
+    request.result.createObjectStore("books",{keyPath:"id",autoIncrement:true});
   };
   request.onsuccess=()=>resolve(request.result);
   request.onerror=()=>reject(request.error);
@@ -409,225 +323,123 @@ function openDatabase(){
 
 async function savePDF(){
  const file=document.getElementById("pdfInput").files[0];
- if(!file){
-  alert("Escolhe primeiro um ficheiro PDF.");
-  return;
- }
- if(file.type!=="application/pdf"){
-  alert("O ficheiro deve ser PDF.");
-  return;
- }
+ if(!file){alert("Seleciona primeiro um PDF.");return;}
+ if(file.type!=="application/pdf"){alert("O ficheiro deve ser PDF.");return;}
  try{
-  const database=await openDatabase();
-  const transaction=database.transaction("books","readwrite");
-  transaction.objectStore("books").add({
-   name:file.name,
-   blob:file,
-   date:new Date().toISOString()
-  });
-  transaction.oncomplete=()=>{
+  const db=await openDB();
+  const tx=db.transaction("books","readwrite");
+  tx.objectStore("books").add({name:file.name,blob:file});
+  tx.oncomplete=()=>{
    document.getElementById("pdfInput").value="";
-   loadBooks();
-   alert("Livro guardado com sucesso!");
+   loadBooks();alert("Livro guardado!");
   };
-  transaction.onerror=()=>alert("Não foi possível guardar o livro.");
- }catch(e){
-  alert("Erro no armazenamento. Verifica o espaço disponível.");
- }
+  tx.onerror=()=>alert("Não foi possível guardar o livro.");
+ }catch(e){alert("Erro ao guardar. Verifica o espaço do dispositivo.");}
 }
 
 async function loadBooks(){
  try{
-  const database=await openDatabase();
-  const tx=database.transaction("books","readonly");
-  const request=tx.objectStore("books").getAll();
-  request.onsuccess=()=>{
-   const books=request.result;
-   const container=document.getElementById("savedBooks");
-   container.replaceChildren();
-   document.getElementById("bookCount").textContent=
-    books.length+" livro(s) guardado(s).";
-
-   if(!books.length){
-    container.textContent="Ainda não existem livros guardados.";
-    return;
-   }
-
+  const db=await openDB();
+  const tx=db.transaction("books","readonly");
+  const req=tx.objectStore("books").getAll();
+  req.onsuccess=()=>{
+   const books=req.result;
+   const box=document.getElementById("savedBooks");
+   box.replaceChildren();
+   document.getElementById("bookCount").textContent=books.length+" livro(s) guardado(s).";
+   if(!books.length){box.textContent="Ainda não existem livros.";return;}
    books.forEach(book=>{
-    const div=document.createElement("div");
-    div.className="book";
-    const name=document.createElement("b");
-    name.textContent="📘 "+book.name;
-
-    const open=document.createElement("button");
-    open.textContent="Abrir livro";
+    const div=document.createElement("div");div.className="book";
+    const name=document.createElement("b");name.textContent="📘 "+book.name;
+    const open=document.createElement("button");open.textContent="Abrir";
     open.onclick=()=>openBook(book);
-
-    const del=document.createElement("button");
-    del.className="danger";
-    del.textContent="Apagar";
+    const del=document.createElement("button");del.textContent="Apagar";del.className="danger";
     del.onclick=()=>deleteBook(book.id);
-
-    div.append(name,document.createElement("br"),open,del);
-    container.appendChild(div);
+    div.append(name,document.createElement("br"),open,del);box.appendChild(div);
    });
   };
- }catch(e){
-  console.log("Biblioteca indisponível",e);
- }
+ }catch(e){console.log(e);}
 }
 
-async function openBook(book){
- const url=URL.createObjectURL(book.blob);
+let currentPDF=null;
+function openBook(book){
+ if(currentPDF)URL.revokeObjectURL(currentPDF);
+ currentPDF=URL.createObjectURL(book.blob);
  const viewer=document.getElementById("pdfViewer");
- viewer.src=url;
- viewer.style.display="block";
- document.getElementById("readerMessage").textContent=
-  "A ler: "+book.name;
+ viewer.src=currentPDF;viewer.style.display="block";
+ document.getElementById("readerMessage").textContent="A ler: "+book.name;
 }
 
 async function deleteBook(id){
- if(!confirm("Queres apagar este livro?")) return;
- const database=await openDatabase();
- const tx=database.transaction("books","readwrite");
+ if(!confirm("Apagar este livro?"))return;
+ const db=await openDB();
+ const tx=db.transaction("books","readwrite");
  tx.objectStore("books").delete(id);
  tx.oncomplete=loadBooks;
 }
 
-/* ASSISTENTE OFFLINE */
 let lastAnswer="";
 
 function addMessage(text,type){
  const box=document.getElementById("chatMessages");
  const div=document.createElement("div");
- div.className="message "+type;
- div.textContent=text;
- box.appendChild(div);
- box.scrollTop=box.scrollHeight;
+ div.className="message "+type;div.textContent=text;
+ box.appendChild(div);box.scrollTop=box.scrollHeight;
 }
 
-function offlineAnswer(question){
- const q=question.toLowerCase();
-
- if(q.includes("fotossíntese")){
-  return "A fotossíntese é o processo pelo qual as plantas produzem o seu alimento usando luz solar, água e dióxido de carbono. Durante o processo, libertam oxigénio.";
- }
- if(q.includes("célula")){
-  return "A célula é a unidade estrutural e funcional básica dos seres vivos. Existem células procarióticas e eucarióticas.";
- }
- if(q.includes("água")){
-  return "A água é uma substância química formada por dois átomos de hidrogénio e um de oxigénio. A sua fórmula é H₂O.";
- }
- if(q.includes("moçambique")){
-  return "Moçambique é um país localizado no sudeste de África. A sua capital é Maputo e a língua oficial é o português.";
- }
- if(q.includes("gravidade")){
-  return "A gravidade é uma força de atração entre corpos que possuem massa. Na superfície terrestre, a aceleração gravítica é aproximadamente 9,8 m/s².";
- }
- if(q.includes("matemática")||q.includes("somar")){
-  return "Posso ajudar com Matemática. Escreve a operação ou o exercício completo para analisarmos.";
- }
- return "Estou no modo offline. Ainda não tenho uma ligação a um modelo de inteligência artificial nesta versão. Posso responder a algumas perguntas escolares incorporadas, utilizar as ferramentas e consultar livros guardados. Para respostas inteligentes mais abrangentes, será necessário configurar um serviço de IA.";
+function offlineAnswer(q){
+ const question=q.toLowerCase();
+ if(question.includes("fotossíntese"))
+ return "A fotossíntese é o processo pelo qual as plantas produzem o seu alimento usando luz solar, água e dióxido de carbono. Libertam oxigénio.";
+ if(question.includes("célula"))
+ return "A célula é a unidade estrutural e funcional básica dos seres vivos.";
+ if(question.includes("água"))
+ return "A água é uma substância química formada por dois átomos de hidrogénio e um de oxigénio. A fórmula é H₂O.";
+ if(question.includes("moçambique"))
+ return "Moçambique situa-se no sudeste de África. A sua capital é Maputo e a língua oficial é o português.";
+ if(question.includes("gravidade"))
+ return "A gravidade é a atração entre corpos com massa. Na Terra, a aceleração gravítica é aproximadamente 9,8 m/s².";
+ if(question.includes("português"))
+ return "Português é a língua oficial de Moçambique. Posso ajudar com gramática, leitura e escrita.";
+ if(question.includes("matemática")||question.includes("somar"))
+ return "Escreve o exercício matemático completo para receberes uma explicação.";
+ return "Neste momento estou no modo educativo local. Para responder a perguntas variadas com IA verdadeira, é necessário configurar o servidor seguro de inteligência artificial.";
 }
 
-function askSuperMeta(){
+async function askAI(){
  const input=document.getElementById("aiQuestion");
- const question=input.value.trim();
- if(!question) return;
-
- addMessage(question,"user");
- const response=offlineAnswer(question);
+ const q=input.value.trim();
+ if(!q)return;
+ addMessage(q,"user");
+ input.value="";
+ const response=offlineAnswer(q);
  lastAnswer=response;
  addMessage(response,"bot");
- saveHistory(question,response);
- input.value="";
-
- if(document.getElementById("autoVoice").checked){
-  speakLast();
- }
+ saveHistory(q,response);
+ if(document.getElementById("autoVoice").checked)speakLast();
 }
 
-/* VOZ */
 function speakLast(){
- if(!lastAnswer){
-  alert("Ainda não existe resposta para ouvir.");
-  return;
- }
- if(!("speechSynthesis" in window)){
-  alert("A leitura por voz não é suportada neste navegador.");
-  return;
- }
+ if(!lastAnswer){alert("Ainda não há resposta.");return;}
+ if(!("speechSynthesis" in window)){alert("Voz não suportada.");return;}
  speechSynthesis.cancel();
- const utterance=new SpeechSynthesisUtterance(lastAnswer);
- utterance.lang=document.getElementById("voiceLanguage").value;
- speechSynthesis.speak(utterance);
+ const u=new SpeechSynthesisUtterance(lastAnswer);
+ u.lang=document.getElementById("voiceLanguage").value;
+ speechSynthesis.speak(u);
 }
 
 let recognition=null;
-
 function startVoice(){
- const SpeechRecognition=
-  window.SpeechRecognition||window.webkitSpeechRecognition;
-
- if(!SpeechRecognition){
-  alert("O reconhecimento de voz não está disponível neste navegador.");
-  return;
- }
- recognition=new SpeechRecognition();
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){alert("Reconhecimento de voz não suportado neste navegador.");return;}
+ recognition=new SR();
  recognition.lang=document.getElementById("voiceLanguage").value;
  recognition.onresult=e=>{
-  document.getElementById("aiQuestion").value=
-   e.results[0][0].transcript;
-  askSuperMeta();
+  document.getElementById("aiQuestion").value=e.results[0][0].transcript;
+  askAI();
  };
- recognition.onerror=()=>{
-  alert("Não foi possível reconhecer a voz.");
- };
+ recognition.onerror=()=>alert("Não foi possível reconhecer a voz.");
  recognition.start();
-}
-
-function stopVoice(){
- if(recognition) recognition.stop();
- if("speechSynthesis" in window) speechSynthesis.cancel();
-}
-
-/* HISTÓRICO */
-function saveHistory(question,answer){
- try{
-  const list=JSON.parse(localStorage.getItem("smHistory")||"[]");
-  list.unshift({question,answer,date:new Date().toLocaleString()});
-  localStorage.setItem("smHistory",JSON.stringify(list.slice(0,100)));
-  loadHistory();
- }catch(e){}
-}
-
-function loadHistory(){
- const list=JSON.parse(localStorage.getItem("smHistory")||"[]");
- const box=document.getElementById("historyList");
- box.replaceChildren();
- if(!list.length){
-  box.textContent="Ainda não existem perguntas guardadas.";
-  return;
- }
- list.forEach(item=>{
-  const div=document.createElement("div");
-  div.className="book";
-  const q=document.createElement("b");
-  q.textContent=item.question;
-  const a=document.createElement("p");
-  a.textContent=item.answer;
-  const date=document.createElement("small");
-  date.textContent=item.date;
-  div.append(q,a,date);
-  box.appendChild(div);
- });
-}
-
-function clearHistory(){
- if(confirm("Apagar todo o histórico?")){
-  localStorage.removeItem("smHistory");
-  loadHistory();
- }
 }
 
 function clearChat(){
@@ -635,94 +447,98 @@ function clearChat(){
  lastAnswer="";
 }
 
-/* CALCULADORA */
+function saveHistory(q,a){
+ try{
+  let list=JSON.parse(localStorage.getItem("smHistory")||"[]");
+  list.unshift({question:q,answer:a,date:new Date().toLocaleString()});
+  localStorage.setItem("smHistory",JSON.stringify(list.slice(0,100)));
+  loadHistory();
+ }catch(e){}
+}
+
+function loadHistory(){
+ let list=[];
+ try{list=JSON.parse(localStorage.getItem("smHistory")||"[]");}catch(e){}
+ const box=document.getElementById("historyList");
+ box.replaceChildren();
+ if(!list.length){box.textContent="Ainda sem perguntas.";return;}
+ list.forEach(item=>{
+  const div=document.createElement("div");div.className="book";
+  const q=document.createElement("b");q.textContent=item.question;
+  const a=document.createElement("p");a.textContent=item.answer;
+  const date=document.createElement("small");date.textContent=item.date;
+  div.append(q,a,date);box.appendChild(div);
+ });
+}
+
+function clearHistory(){
+ if(confirm("Apagar histórico?")){
+  localStorage.removeItem("smHistory");loadHistory();
+ }
+}
+
 function calculate(){
  const value=document.getElementById("calcInput").value.trim();
- const output=document.getElementById("calcResult");
-
- // Apenas operações matemáticas simples.
+ const out=document.getElementById("calcResult");
  if(!/^[0-9+\-*/().%\s]+$/.test(value)){
-  output.textContent="Expressão inválida.";
-  return;
+  out.textContent="Expressão inválida.";return;
  }
  try{
   const result=Function('"use strict";return ('+value+')')();
-  output.textContent=Number.isFinite(result)?
-   "Resultado: "+result:"Operação inválida.";
- }catch(e){
-  output.textContent="Não foi possível calcular.";
- }
+  out.textContent=Number.isFinite(result)?"Resultado: "+result:"Operação inválida.";
+ }catch(e){out.textContent="Não foi possível calcular.";}
 }
 
-/* CONVERSÕES */
 function convertUnit(){
- const n=Number(document.getElementById("unitValue").value);
- const type=document.getElementById("unitType").value;
- if(!Number.isFinite(n)||document.getElementById("unitValue").value===""){
-  document.getElementById("unitResult").textContent="Introduz um valor válido.";
-  return;
- }
+ const input=document.getElementById("unitValue");
+ const n=Number(input.value);
+ if(input.value===""){document.getElementById("unitResult").textContent="Introduz um valor.";return;}
  const factors={km:1000,m:100,kg:1000,l:1000};
  const labels={km:"metros",m:"centímetros",kg:"gramas",l:"mililitros"};
- document.getElementById("unitResult").textContent=
-  n*factors[type]+" "+labels[type];
+ const type=document.getElementById("unitType").value;
+ document.getElementById("unitResult").textContent=(n*factors[type])+" "+labels[type];
 }
 
-/* TESTE */
 function checkQuiz(){
  const value=document.getElementById("quizAnswer").value;
- const result=document.getElementById("quizResult");
- if(!value){
-  result.textContent="Seleciona uma resposta.";
- }else if(value==="a"){
-  result.textContent="Correto! A célula é a unidade básica da vida.";
- }else{
-  result.textContent="Ainda não está correto. Tenta novamente.";
- }
+ const out=document.getElementById("quizResult");
+ if(!value)out.textContent="Escolhe uma resposta.";
+ else if(value==="a")out.textContent="Correto! A célula é a unidade básica da vida.";
+ else out.textContent="Resposta incorreta. Tenta novamente.";
 }
 
-/* DEFINIÇÕES */
 function saveSettings(){
- localStorage.setItem("autoVoice",
-  document.getElementById("autoVoice").checked?"1":"0");
- localStorage.setItem("voiceLanguage",
-  document.getElementById("voiceLanguage").value);
+ localStorage.setItem("autoVoice",document.getElementById("autoVoice").checked?"1":"0");
+ localStorage.setItem("voiceLanguage",document.getElementById("voiceLanguage").value);
  alert("Definições guardadas.");
 }
 
 function loadSettings(){
- document.getElementById("autoVoice").checked=
-  localStorage.getItem("autoVoice")==="1";
+ document.getElementById("autoVoice").checked=localStorage.getItem("autoVoice")==="1";
  const lang=localStorage.getItem("voiceLanguage");
- if(lang) document.getElementById("voiceLanguage").value=lang;
+ if(lang)document.getElementById("voiceLanguage").value=lang;
 }
 
-/* ESTADO DA INTERNET */
 function updateConnection(){
- const online=navigator.onLine;
- document.getElementById("connection").textContent=
-  online?"● Internet disponível":"● Modo offline";
- document.getElementById("connection").style.color=
-  online?"#22c58b":"#ffbf5e";
+ const el=document.getElementById("connection");
+ el.textContent=navigator.onLine?"● Internet disponível":"● Modo offline";
+ el.style.color=navigator.onLine?"#22c58b":"#ffbf5e";
 }
+
 window.addEventListener("online",updateConnection);
 window.addEventListener("offline",updateConnection);
 
-/* INICIALIZAÇÃO SEGURA */
-async function init(){
+document.addEventListener("DOMContentLoaded",async()=>{
  try{
   setupLibrary();
   loadSettings();
   loadHistory();
   updateConnection();
   await loadBooks();
- }catch(error){
-  console.error("Erro ao iniciar Super Meta IA:",error);
+ }catch(e){
+  console.error("Inicialização:",e);
  }
-}
-
-document.addEventListener("DOMContentLoaded",init);
+});
 </script>
-
 </body>
 </html>
