@@ -9,67 +9,53 @@
 
 <style>
 :root{
- --bg:#080f20;
- --panel:#111d36;
- --panel2:#172746;
- --blue:#3478f6;
- --purple:#8655ed;
- --cyan:#35c8e8;
- --text:#f4f7ff;
- --muted:#aab8d2;
- --border:#293b5d;
- --green:#28c78b;
- --red:#ff657b;
+ --bg:#080f20;--panel:#111d36;--panel2:#172746;
+ --blue:#3478f6;--purple:#8655ed;--cyan:#35c8e8;
+ --text:#f4f7ff;--muted:#aab8d2;--border:#293b5d;
+ --green:#28c78b;--red:#ff657b;
 }
 *{box-sizing:border-box}
 body{
- margin:0;
- background:linear-gradient(145deg,#080f20,#111c36);
- color:var(--text);
- font-family:Arial,sans-serif;
- font-size:16px;
- min-height:100vh;
+ margin:0;background:linear-gradient(145deg,#080f20,#111c36);
+ color:var(--text);font-family:Arial,sans-serif;
+ font-size:16px;min-height:100vh
 }
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
 header{
- padding:19px 16px;
- background:#101b35;
+ padding:17px 15px;background:#101b35;
  border-bottom:1px solid var(--border);
- position:sticky;top:0;z-index:5;
+ position:sticky;top:0;z-index:5
 }
 .brand{display:flex;align-items:center;gap:12px}
 .logo{
- width:48px;height:48px;border-radius:15px;
+ width:49px;height:49px;border-radius:15px;
  background:linear-gradient(135deg,var(--blue),var(--purple));
- display:grid;place-items:center;font-size:25px;
+ display:grid;place-items:center;font-size:26px
 }
 .brand h1{font-size:19px;margin:0}
-.brand p{font-size:12px;color:var(--cyan);margin:5px 0 0}
-main{max-width:900px;margin:auto;padding:16px 14px 100px}
+.brand p{font-size:11px;color:var(--cyan);margin:5px 0 0}
+main{max-width:950px;margin:auto;padding:15px 13px 105px}
 .page{display:none;animation:appear .2s ease}
 .page.active{display:block}
 @keyframes appear{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:none}}
 .hero{
- padding:25px 19px;border-radius:23px;
+ padding:24px 18px;border-radius:22px;
  background:linear-gradient(135deg,#174b9c,#643bb4);
- margin:8px 0 20px;
+ margin:8px 0 19px
 }
 .hero h2{font-size:25px;margin:0 0 10px}
 .hero p{line-height:1.6;color:#e4edff}
 .card{
  background:var(--panel);border:1px solid var(--border);
- border-radius:18px;padding:17px;margin:13px 0;
+ border-radius:18px;padding:16px;margin:13px 0
 }
 .card h3{margin:0 0 13px;font-size:18px}
-.grid{
- display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
- gap:11px;
-}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
 .tile{
  background:var(--panel2);border:1px solid var(--border);
- padding:17px 12px;border-radius:17px;
- color:white;text-align:left;min-height:100px;
+ padding:16px 12px;border-radius:16px;color:white;
+ text-align:left;min-height:100px
 }
 .tile strong{display:block;margin:9px 0 5px}
 .tile span{font-size:26px}
@@ -78,15 +64,15 @@ main{max-width:900px;margin:auto;padding:16px 14px 100px}
 label{display:block;margin-bottom:7px;color:#dce6ff;font-weight:bold}
 input,select,textarea{
  width:100%;padding:13px;border-radius:12px;
- background:#0b152a;color:white;
- border:1px solid var(--border);outline:none;
+ background:#0b152a;color:white;border:1px solid var(--border);
+ outline:none
 }
-textarea{min-height:105px;resize:vertical}
+textarea{min-height:100px;resize:vertical}
 input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
 .btn{
  background:linear-gradient(120deg,var(--blue),var(--purple));
  color:white;border:0;border-radius:12px;
- padding:13px 16px;font-weight:bold;
+ padding:12px 15px;font-weight:bold
 }
 .btn.secondary{background:#243a60}
 .btn.green{background:#087d61}
@@ -99,41 +85,54 @@ nav{
  background:#101b35;border-top:1px solid var(--border);
  display:flex;justify-content:space-around;
  padding:9px 3px calc(9px + env(safe-area-inset-bottom));
- z-index:10;
+ z-index:10
 }
 nav button{
  background:none;border:0;color:var(--muted);
  font-size:11px;display:flex;flex-direction:column;
- align-items:center;gap:4px;padding:5px 3px;
+ align-items:center;gap:4px;padding:5px 3px
 }
 nav button b{font-size:21px}
 nav button.active{color:#63c8ff}
 .messages{
- min-height:170px;max-height:390px;overflow:auto;
- display:flex;flex-direction:column;gap:10px;
- padding:5px 0;
+ min-height:150px;max-height:380px;overflow:auto;
+ display:flex;flex-direction:column;gap:10px;padding:5px 0
 }
 .message{
  padding:12px 14px;border-radius:15px;
- max-width:92%;line-height:1.55;white-space:pre-wrap;
+ max-width:94%;line-height:1.55;white-space:pre-wrap
 }
 .message.user{align-self:flex-end;background:#294e91}
 .message.bot{align-self:flex-start;background:#1b2b49}
 .book{
- display:flex;align-items:center;gap:12px;
- padding:12px;background:#192945;
- border:1px solid var(--border);border-radius:13px;
- margin:9px 0;
+ display:flex;align-items:center;gap:11px;padding:12px;
+ background:#192945;border:1px solid var(--border);
+ border-radius:13px;margin:10px 0
 }
-.book-icon{font-size:27px}
+.book-icon{font-size:29px}
 .book-info{flex:1;min-width:0}
 .book-info strong{display:block;overflow-wrap:anywhere}
-.book-info small{color:var(--muted)}
+.book-info small{color:var(--muted);line-height:1.5}
+.book-actions{display:flex;gap:6px;flex-wrap:wrap}
+.book-cover{
+ width:48px;height:60px;display:grid;place-items:center;
+ background:linear-gradient(145deg,#245aab,#7445b5);
+ border-radius:7px;font-size:24px;flex-shrink:0
+}
+.flag-note{font-size:12px;color:var(--muted);margin-top:7px}
+.status{
+ padding:10px;border-radius:10px;background:#172746;
+ color:#b8e6ff;font-size:13px;margin-top:10px
+}
+.checkline{display:flex;align-items:center;gap:10px}
+.checkline input{width:20px;height:20px}
+.checkline label{margin:0}
 #photoPreview{max-width:100%;max-height:260px;border-radius:14px;display:none;margin-top:12px}
+#pdfReader{width:100%;height:65vh;min-height:420px;border:0;border-radius:12px;background:white}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
 @media(min-width:650px){
  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
- .hero h2{font-size:31px}
+ .hero h2{font-size:30px}
 }
 </style>
 </head>
@@ -163,27 +162,45 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
  <div class="card">
   <h3>🎓 Personaliza a tua aprendizagem</h3>
   <div class="field">
-   <label>Seleciona o teu país</label>
+   <label>🌍 Seleciona o teu país</label>
    <select id="country" onchange="saveProfile()">
-    <option value="">Escolher país</option>
-    <option>Moçambique</option><option>Angola</option>
-    <option>Portugal</option><option>Brasil</option>
-    <option>África do Sul</option><option>Cabo Verde</option>
-    <option>Guiné-Bissau</option><option>São Tomé e Príncipe</option>
-    <option>Timor-Leste</option><option>Estados Unidos</option>
-    <option>Reino Unido</option><option>França</option>
-    <option>Espanha</option><option>China</option>
-    <option>Japão</option><option>Índia</option>
-    <option>Nigéria</option><option>Quénia</option>
-    <option>Tanzânia</option><option>Zimbabwe</option>
-    <option>Zâmbia</option><option>Malawi</option>
-    <option>Namíbia</option><option>Eswatini</option>
-    <option>Lesoto</option><option>Gana</option>
-    <option>Senegal</option><option>Egito</option>
-    <option>Marrocos</option><option>Canadá</option>
-    <option>Austrália</option><option>Alemanha</option>
-    <option>Itália</option><option>Outro país</option>
+    <option value="">🌍 Escolher país</option>
+    <option value="Moçambique">🇲🇿 Moçambique</option>
+    <option value="Angola">🇦🇴 Angola</option>
+    <option value="Portugal">🇵🇹 Portugal</option>
+    <option value="Brasil">🇧🇷 Brasil</option>
+    <option value="África do Sul">🇿🇦 África do Sul</option>
+    <option value="Cabo Verde">🇨🇻 Cabo Verde</option>
+    <option value="Guiné-Bissau">🇬🇼 Guiné-Bissau</option>
+    <option value="São Tomé e Príncipe">🇸🇹 São Tomé e Príncipe</option>
+    <option value="Timor-Leste">🇹🇱 Timor-Leste</option>
+    <option value="Estados Unidos">🇺🇸 Estados Unidos</option>
+    <option value="Reino Unido">🇬🇧 Reino Unido</option>
+    <option value="França">🇫🇷 França</option>
+    <option value="Espanha">🇪🇸 Espanha</option>
+    <option value="China">🇨🇳 China</option>
+    <option value="Japão">🇯🇵 Japão</option>
+    <option value="Índia">🇮🇳 Índia</option>
+    <option value="Nigéria">🇳🇬 Nigéria</option>
+    <option value="Quénia">🇰🇪 Quénia</option>
+    <option value="Tanzânia">🇹🇿 Tanzânia</option>
+    <option value="Zimbabwe">🇿🇼 Zimbabwe</option>
+    <option value="Zâmbia">🇿🇲 Zâmbia</option>
+    <option value="Malawi">🇲🇼 Malawi</option>
+    <option value="Namíbia">🇳🇦 Namíbia</option>
+    <option value="Eswatini">🇸🇿 Eswatini</option>
+    <option value="Lesoto">🇱🇸 Lesoto</option>
+    <option value="Gana">🇬🇭 Gana</option>
+    <option value="Senegal">🇸🇳 Senegal</option>
+    <option value="Egito">🇪🇬 Egito</option>
+    <option value="Marrocos">🇲🇦 Marrocos</option>
+    <option value="Canadá">🇨🇦 Canadá</option>
+    <option value="Austrália">🇦🇺 Austrália</option>
+    <option value="Alemanha">🇩🇪 Alemanha</option>
+    <option value="Itália">🇮🇹 Itália</option>
+    <option value="Outro país">🌍 Outro país</option>
    </select>
+   <p class="flag-note">As bandeiras aparecem junto dos nomes dos países.</p>
   </div>
   <div class="field">
    <label>Seleciona a tua classe</label>
@@ -206,7 +223,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
  <h3>🚀 Explorar a aplicação</h3>
  <div class="grid">
   <button class="tile" onclick="showPage('chat')"><span>🤖</span><strong>Professor IA</strong><small>Faz perguntas e aprende.</small></button>
-  <button class="tile" onclick="showPage('books')"><span>📚</span><strong>Biblioteca</strong><small>Os teus livros e PDFs.</small></button>
+  <button class="tile" onclick="showPage('books')"><span>📚</span><strong>Biblioteca</strong><small>Livros e PDFs integrados.</small></button>
   <button class="tile" onclick="showPage('voice')"><span>🎙️</span><strong>Sistema de voz</strong><small>Fala e ouve o professor.</small></button>
   <button class="tile" onclick="showPage('photo')"><span>📷</span><strong>Fotografias</strong><small>Seleciona exercícios em imagem.</small></button>
   <button class="tile" onclick="showPage('history')"><span>📝</span><strong>Histórico</strong><small>Consulta as conversas.</small></button>
@@ -239,12 +256,17 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
    <label>A tua pergunta</label>
    <textarea id="question" placeholder="Escreve aqui a tua pergunta..."></textarea>
   </div>
-  <div class="actions">
-   <button class="btn" onclick="sendQuestion()">Enviar pergunta</button>
-   <button class="btn secondary" onclick="startRecognition('question')">🎤 Falar</button>
-   <button class="btn secondary" onclick="stopSpeaking()">Parar voz</button>
+  <div class="checkline">
+   <input type="checkbox" id="autoSpeak" checked>
+   <label for="autoSpeak">🔊 Falar automaticamente as respostas</label>
   </div>
-  <p class="muted" id="chatStatus">Modo básico local. Liga um serviço de IA seguro para respostas inteligentes completas.</p>
+  <div class="actions">
+   <button class="btn" id="sendButton" onclick="sendQuestion()">Enviar pergunta</button>
+   <button class="btn secondary" onclick="startRecognition('question')">🎤 Falar</button>
+   <button class="btn secondary" onclick="repeatLastAnswer()">🔁 Repetir</button>
+   <button class="btn secondary" onclick="stopSpeaking()">■ Parar voz</button>
+  </div>
+  <p class="muted" id="chatStatus">Professor pronto para receber perguntas.</p>
  </div>
 </section>
 
@@ -252,10 +274,53 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
 <section id="books" class="page">
  <div class="hero">
   <h2>📚 Biblioteca Escolar</h2>
-  <p>Organiza os teus livros digitais por disciplina, classe e país.</p>
+  <p>Consulta os livros escolares dentro do SUPER META IA.</p>
  </div>
+
  <div class="card">
-  <h3>Adicionar livro PDF</h3>
+  <h3>🔎 Encontrar um livro</h3>
+  <div class="field">
+   <label>País</label>
+   <select id="libraryCountry" onchange="renderCatalog()">
+    <option value="Moçambique">🇲🇿 Moçambique</option>
+    <option value="Angola">🇦🇴 Angola</option>
+    <option value="Portugal">🇵🇹 Portugal</option>
+    <option value="Brasil">🇧🇷 Brasil</option>
+    <option value="África do Sul">🇿🇦 África do Sul</option>
+   </select>
+  </div>
+  <div class="field">
+   <label>Classe</label>
+   <select id="filterGrade" onchange="renderCatalog()">
+    <option value="">Todas as classes</option>
+    <option>1ª classe</option><option>2ª classe</option>
+    <option>3ª classe</option><option>4ª classe</option>
+    <option>5ª classe</option><option>6ª classe</option>
+    <option>7ª classe</option><option>8ª classe</option>
+    <option>9ª classe</option><option>10ª classe</option>
+    <option>11ª classe</option><option>12ª classe</option>
+   </select>
+  </div>
+  <div class="field">
+   <label>Disciplina</label>
+   <select id="filterSubject" onchange="renderCatalog()">
+    <option value="">Todas as disciplinas</option>
+    <option>Matemática</option><option>Português</option>
+    <option>Ciências Naturais</option><option>Ciências Sociais</option>
+   </select>
+  </div>
+  <input id="bookSearch" placeholder="Pesquisar livro..." oninput="renderCatalog()">
+ </div>
+
+ <div class="card">
+  <h3>📖 Catálogo de livros oficiais</h3>
+  <p class="muted" id="catalogInfo">Manuais escolares disponíveis para consulta.</p>
+  <div id="catalogList"></div>
+ </div>
+
+ <div class="card">
+  <h3>📂 Os meus livros PDF</h3>
+  <p class="muted">Adiciona documentos teus para ficarem guardados nesta aplicação.</p>
   <div class="field">
    <label>Nome do livro</label>
    <input id="bookName" placeholder="Ex.: Livro de Matemática">
@@ -286,15 +351,17 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
    <input type="file" id="bookFile" accept=".pdf,application/pdf">
   </div>
   <button class="btn full" onclick="saveBook()">Guardar na biblioteca</button>
+  <div id="bookList"></div>
  </div>
- <div class="card">
-  <h3>Os meus livros</h3>
-  <div id="bookList"><p class="muted">Ainda não adicionaste livros.</p></div>
- </div>
+
  <div class="card" id="readerCard" style="display:none">
   <h3 id="readerTitle">Leitor de livros</h3>
-  <button class="btn secondary" onclick="closeReader()">Fechar livro</button>
-  <iframe id="pdfReader" title="Leitor PDF" style="width:100%;height:550px;border:0;border-radius:12px;margin-top:12px"></iframe>
+  <p class="muted" id="readerInfo"></p>
+  <div class="actions">
+   <button class="btn secondary" onclick="openCurrentInNewTab()">Abrir PDF</button>
+   <button class="btn red" onclick="closeReader()">Fechar livro</button>
+  </div>
+  <iframe id="pdfReader" title="Leitor PDF"></iframe>
  </div>
 </section>
 
@@ -302,41 +369,45 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
 <section id="voice" class="page">
  <div class="hero">
   <h2>🎙️ Sistema de Voz</h2>
-  <p>Escolhe o idioma e utiliza a voz do teu dispositivo para aprender.</p>
+  <p>O professor pode falar contigo e ouvir as tuas perguntas.</p>
  </div>
  <div class="card">
-  <h3>Configuração da voz</h3>
+  <h3>🔊 Configurar voz do professor</h3>
   <div class="field">
    <label>Idioma</label>
-   <select id="voiceLanguage">
-    <option value="pt-MZ">Português de Moçambique</option>
-    <option value="pt-PT">Português de Portugal</option>
-    <option value="pt-BR">Português do Brasil</option>
-    <option value="en-US">Inglês</option>
-    <option value="fr-FR">Francês</option>
-    <option value="es-ES">Espanhol</option>
+   <select id="voiceLanguage" onchange="loadVoices()">
+    <option value="pt-MZ">🇲🇿 Português de Moçambique</option>
+    <option value="pt-PT">🇵🇹 Português de Portugal</option>
+    <option value="pt-BR">🇧🇷 Português do Brasil</option>
+    <option value="en-US">🇺🇸 Inglês</option>
+    <option value="fr-FR">🇫🇷 Francês</option>
+    <option value="es-ES">🇪🇸 Espanhol</option>
     <option value="sw-KE">Suaíli</option>
     <option value="zu-ZA">Zulu</option>
     <option value="af-ZA">Afrikaans</option>
    </select>
   </div>
   <div class="field">
-   <label>Voz disponível no dispositivo</label>
-   <select id="voiceChoice"><option value="">Voz automática</option></select>
+   <label>Escolher voz disponível</label>
+   <select id="voiceChoice">
+    <option value="">Voz automática</option>
+   </select>
   </div>
   <div class="field">
    <label>Velocidade da fala</label>
    <input type="range" id="voiceSpeed" min="0.6" max="1.5" step="0.1" value="1">
+   <p class="muted">Velocidade: <span id="speedValue">1.0</span></p>
   </div>
   <div class="actions">
-   <button class="btn" onclick="speakText('Olá! Bem-vindo ao Super Meta IA. Vamos aprender juntos.')">▶ Testar voz</button>
-   <button class="btn secondary" onclick="stopSpeaking()">■ Parar</button>
+   <button class="btn green" onclick="testVoice()">▶ Testar voz</button>
+   <button class="btn secondary" onclick="repeatLastAnswer()">🔁 Repetir resposta</button>
+   <button class="btn red" onclick="stopSpeaking()">Parar</button>
   </div>
+  <p id="voiceStatus" class="status">A preparar vozes do dispositivo...</p>
   <hr style="border-color:var(--border);margin:20px 0">
-  <h3>🎤 Reconhecimento de voz</h3>
-  <p class="muted">Fala para escrever a tua pergunta. Depois podes enviá-la ao professor.</p>
-  <button class="btn green full" onclick="startRecognition('question')">Começar a falar</button>
-  <p id="voiceStatus" class="muted">Aguardando comando.</p>
+  <h3>🎤 Falar com o professor</h3>
+  <p class="muted">Carrega no botão, fala e depois envia a pergunta.</p>
+  <button class="btn green full" onclick="startRecognition('question')">🎤 Começar a falar</button>
  </div>
 </section>
 
@@ -344,14 +415,14 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
 <section id="photo" class="page">
  <div class="hero">
   <h2>📷 Fotografias de exercícios</h2>
-  <p>Seleciona uma fotografia para a preparar para análise.</p>
+  <p>Seleciona uma fotografia para preparar uma pergunta.</p>
  </div>
  <div class="card">
   <label>Escolher fotografia</label>
   <input type="file" id="photoFile" accept="image/*" capture="environment" onchange="previewPhoto()">
   <img id="photoPreview" alt="Pré-visualização da fotografia">
-  <p id="photoStatus" class="muted">A fotografia será apresentada aqui. A análise automática exige uma ligação a um serviço de IA com visão.</p>
-  <button class="btn" onclick="usePhotoQuestion()">Enviar pergunta sobre a fotografia</button>
+  <p id="photoStatus" class="muted">A análise automática requer ligação a uma IA com capacidade de analisar imagens.</p>
+  <button class="btn full" onclick="usePhotoQuestion()">Enviar pergunta sobre a fotografia</button>
  </div>
 </section>
 
@@ -359,12 +430,10 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
 <section id="history" class="page">
  <div class="hero">
   <h2>📝 Histórico de conversas</h2>
-  <p>Revê as tuas perguntas e respostas guardadas neste dispositivo.</p>
+  <p>Revê as tuas perguntas e respostas.</p>
  </div>
  <div class="card">
-  <div class="actions">
-   <button class="btn red" onclick="clearHistory()">Apagar histórico</button>
-  </div>
+  <button class="btn red" onclick="clearHistory()">Apagar histórico</button>
   <div id="historyList"></div>
  </div>
 </section>
@@ -373,26 +442,31 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
 <section id="settings" class="page">
  <div class="hero">
   <h2>⚙️ Definições</h2>
-  <p>Personaliza a tua aplicação.</p>
+  <p>Personaliza a aplicação.</p>
  </div>
  <div class="card">
-  <h3>Informações da aplicação</h3>
-  <p><strong>Nome:</strong> SUPER META IA</p>
-  <p><strong>Versão:</strong> FULL 1.0</p>
-  <p><strong>Objetivo:</strong> Educação e aprendizagem.</p>
+  <h3>SUPER META IA</h3>
+  <p>Versão FULL 2.0</p>
+  <p class="muted">Aplicação educativa com biblioteca, professor e voz.</p>
   <hr style="border-color:var(--border)">
   <h3>Ligação à inteligência artificial</h3>
-  <p class="muted">Para respostas inteligentes completas, é necessário um servidor seguro. Não coloques chaves secretas de API neste ficheiro.</p>
+  <p class="muted">Para respostas completas, é necessário um servidor seguro. Nunca coloques chaves secretas de API neste ficheiro.</p>
   <div class="field">
-   <label>Endereço do servidor de IA</label>
+   <label>Endereço do servidor IA</label>
    <input id="aiEndpoint" placeholder="https://teu-servidor.example/api/chat">
   </div>
   <button class="btn full" onclick="saveEndpoint()">Guardar endereço</button>
-  <p class="muted" id="endpointStatus"></p>
+  <p id="endpointStatus" class="muted"></p>
+  <hr style="border-color:var(--border)">
+  <h3>Voz automática</h3>
+  <div class="checkline">
+   <input type="checkbox" id="settingsAutoSpeak" onchange="syncAutoSpeak()">
+   <label for="settingsAutoSpeak">Falar respostas automaticamente</label>
+  </div>
  </div>
  <div class="card">
   <h3>Armazenamento</h3>
-  <p class="muted">Os livros guardados e o histórico ficam neste navegador. Limpar os dados do navegador pode apagar esses conteúdos.</p>
+  <p class="muted">Os teus PDFs pessoais ficam guardados no armazenamento do navegador. Os livros do catálogo oficial são consultados pela internet.</p>
  </div>
 </section>
 
@@ -415,34 +489,43 @@ const $ = id => document.getElementById(id);
 function showPage(name){
  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
  const page=$(name);
- if(page) page.classList.add("active");
+ if(page)page.classList.add("active");
  document.querySelectorAll("nav button").forEach(b=>{
   b.classList.toggle("active",b.dataset.page===name);
  });
- if(name==="history") renderHistory();
- if(name==="books") renderBooks();
+ if(name==="history")renderHistory();
+ if(name==="books"){renderBooks();renderCatalog();}
+ if(name==="voice")loadVoices();
  window.scrollTo({top:0,behavior:"smooth"});
 }
 
+/* PERFIL */
 function saveProfile(){
- const country=$("country").value;
- const grade=$("grade").value;
- localStorage.setItem("smia_profile",JSON.stringify({country,grade}));
+ const profile={
+  country:$("country").value,
+  grade:$("grade").value
+ };
+ localStorage.setItem("smia_profile",JSON.stringify(profile));
  $("profileStatus").textContent=
-  country && grade ? "Perfil guardado: "+country+" • "+grade :
+  profile.country&&profile.grade?
+  "Perfil guardado: "+profile.country+" • "+profile.grade:
   "Escolhe o país e a classe para personalizar o estudo.";
 }
-
 function loadProfile(){
  try{
   const p=JSON.parse(localStorage.getItem("smia_profile")||"{}");
   $("country").value=p.country||"";
   $("grade").value=p.grade||"";
-  if(p.country && p.grade) $("profileStatus").textContent="Perfil guardado: "+p.country+" • "+p.grade;
+  if(p.country&&p.grade)
+   $("profileStatus").textContent="Perfil guardado: "+p.country+" • "+p.grade;
+  if(p.country)$("libraryCountry").value=p.country;
+  if(p.grade)$("filterGrade").value=p.grade;
  }catch(e){}
 }
 
-/* CHAT */
+/* RESPOSTAS E CHAT */
+let lastAnswer="";
+
 function addMessage(text,type){
  const div=document.createElement("div");
  div.className="message "+type;
@@ -453,34 +536,44 @@ function addMessage(text,type){
 
 function localAnswer(question,subject){
  const q=question.toLowerCase();
+
  if(/^(olá|ola|oi|bom dia|boa tarde|boa noite)/.test(q))
-  return "Olá! Estou aqui para te ajudar a estudar. Diz-me qual é a tua dúvida.";
+  return "Olá! Sou o professor SUPER META IA. Estou pronto para ajudar nos teus estudos.";
+
  if(q.includes("quem és")||q.includes("quem e voce"))
   return "Sou o SUPER META IA, um assistente educativo criado para apoiar a tua aprendizagem.";
+
  if(q.includes("obrigad"))
-  return "De nada! Continua a estudar e a fazer perguntas.";
+  return "De nada! Continua a estudar e a fazer perguntas. Aprender é uma aventura.";
+
  if(q.includes("matemática")||subject==="Matemática")
-  return "Vamos trabalhar Matemática! Envia o exercício completo. Posso ajudar a organizar os dados, explicar a fórmula e mostrar os passos. Para respostas avançadas, liga um serviço de IA.";
- return "Recebi a tua pergunta sobre "+subject+". Nesta versão, o professor básico ainda não tem conhecimento de IA completo. Para responder a perguntas escolares livremente, é necessário configurar um servidor de inteligência artificial seguro.";
+  return "Vamos trabalhar Matemática! Envia o exercício completo. Posso ajudar a organizar os dados, explicar a fórmula e mostrar os passos. Para respostas escolares completas, liga um serviço de IA.";
+
+ return "Recebi a tua pergunta sobre "+subject+". Esta é a versão básica local do professor. Para responder a qualquer pergunta com explicações completas, é necessário configurar um servidor de inteligência artificial seguro.";
 }
 
 async function sendQuestion(){
  const question=$("question").value.trim();
  if(!question)return;
+
+ const button=$("sendButton");
+ button.disabled=true;
+ button.textContent="A responder...";
+
  const subject=$("subject").value;
  addMessage(question,"user");
  $("question").value="";
  let answer="";
  const endpoint=localStorage.getItem("smia_endpoint")||"";
- if(endpoint){
-  $("chatStatus").textContent="A contactar o professor IA...";
-  try{
+
+ try{
+  if(endpoint){
+   $("chatStatus").textContent="A contactar o professor IA...";
    const response=await fetch(endpoint,{
     method:"POST",
     headers:{"Content-Type":"application/json"},
     body:JSON.stringify({
-     question,
-     subject,
+     question,subject,
      country:$("country").value,
      grade:$("grade").value
     })
@@ -488,20 +581,31 @@ async function sendQuestion(){
    if(!response.ok)throw new Error("Servidor indisponível");
    const data=await response.json();
    answer=data.answer||data.response||"O servidor não enviou uma resposta.";
-  }catch(error){
-   answer="Não foi possível contactar o servidor. Verifica a ligação ou o endereço configurado.";
+  }else{
+   answer=localAnswer(question,subject);
   }
- }else{
-  answer=localAnswer(question,subject);
+ }catch(error){
+  answer="Não foi possível contactar o servidor. Verifica a ligação à internet ou o endereço configurado.";
  }
+
  addMessage(answer,"bot");
+ lastAnswer=answer;
  saveHistory(question,answer);
  $("chatStatus").textContent="Resposta preparada.";
- speakText(answer);
+
+ button.disabled=false;
+ button.textContent="Enviar pergunta";
+
+ if($("autoSpeak").checked){
+  speakText(answer);
+ }
 }
 
 $("question").addEventListener("keydown",e=>{
- if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendQuestion();}
+ if(e.key==="Enter"&&!e.shiftKey){
+  e.preventDefault();
+  sendQuestion();
+ }
 });
 
 /* HISTÓRICO */
@@ -514,101 +618,326 @@ function saveHistory(question,answer){
 function renderHistory(){
  let list=[];
  try{list=JSON.parse(localStorage.getItem("smia_history")||"[]")}catch(e){}
- const area=$("historyList");area.innerHTML="";
- if(!list.length){area.textContent="Ainda não existem conversas guardadas.";return;}
+ const area=$("historyList");
+ area.innerHTML="";
+ if(!list.length){
+  area.textContent="Ainda não existem conversas guardadas.";
+  return;
+ }
  list.forEach(item=>{
-  const div=document.createElement("div");div.className="card";
-  const q=document.createElement("p");q.textContent="Pergunta: "+item.question;
-  const a=document.createElement("p");a.textContent="Resposta: "+item.answer;
-  const d=document.createElement("small");d.textContent=item.date;
-  div.append(q,a,d);area.appendChild(div);
+  const div=document.createElement("div");
+  div.className="card";
+  const q=document.createElement("p");
+  q.textContent="Pergunta: "+item.question;
+  const a=document.createElement("p");
+  a.textContent="Resposta: "+item.answer;
+  const d=document.createElement("small");
+  d.textContent=item.date;
+  div.append(q,a,d);
+  area.appendChild(div);
  });
 }
 function clearHistory(){
  if(confirm("Queres apagar todo o histórico?")){
-  localStorage.removeItem("smia_history");renderHistory();
+  localStorage.removeItem("smia_history");
+  renderHistory();
  }
 }
 
-/* VOZ */
+/* SISTEMA DE VOZ */
 let recognition=null;
+let voicesReady=false;
+
 function loadVoices(){
- if(!("speechSynthesis" in window))return;
+ if(!("speechSynthesis" in window)){
+  $("voiceStatus").textContent="Este navegador não suporta leitura de voz.";
+  return;
+ }
  const voices=speechSynthesis.getVoices();
+ if(!voices.length){
+  $("voiceStatus").textContent="A carregar vozes do telemóvel. Aguarda um momento.";
+  return;
+ }
+
  const select=$("voiceChoice");
- const previous=select.value;
+ const old=select.value;
  select.innerHTML='<option value="">Voz automática</option>';
- voices.forEach((voice,i)=>{
+
+ voices.forEach((voice,index)=>{
   const option=document.createElement("option");
-  option.value=String(i);
+  option.value=String(index);
   option.textContent=voice.name+" ("+voice.lang+")";
   select.appendChild(option);
  });
- select.value=previous;
+
+ if([...select.options].some(o=>o.value===old))select.value=old;
+ voicesReady=true;
+ $("voiceStatus").textContent=voices.length+" vozes disponíveis no dispositivo.";
 }
+
 if("speechSynthesis" in window){
  speechSynthesis.onvoiceschanged=loadVoices;
- loadVoices();
+ setTimeout(loadVoices,500);
 }
+
 function speakText(text){
  if(!("speechSynthesis" in window)){
-  alert("Este navegador não suporta leitura de voz.");
+  $("voiceStatus").textContent="O navegador não suporta voz.";
   return;
  }
+ if(!text)return;
+
  speechSynthesis.cancel();
- const utterance=new SpeechSynthesisUtterance(text);
+
+ const utterance=new SpeechSynthesisUtterance(String(text));
  const lang=$("voiceLanguage").value||"pt-PT";
  utterance.lang=lang;
  utterance.rate=Number($("voiceSpeed").value)||1;
+ utterance.pitch=1;
+
  const voices=speechSynthesis.getVoices();
  const selected=$("voiceChoice").value;
- if(selected!=="" && voices[Number(selected)])utterance.voice=voices[Number(selected)];
- else{
-  const match=voices.find(v=>v.lang.toLowerCase().startsWith(lang.slice(0,2).toLowerCase()));
+
+ if(selected!==""&&voices[Number(selected)]){
+  utterance.voice=voices[Number(selected)];
+ }else{
+  const match=voices.find(v=>
+   v.lang.toLowerCase().startsWith(lang.slice(0,2).toLowerCase())
+  );
   if(match)utterance.voice=match;
  }
+
+ utterance.onstart=()=>{
+  $("voiceStatus").textContent="🔊 Professor a falar...";
+  $("chatStatus").textContent="🔊 A reproduzir resposta...";
+ };
+ utterance.onend=()=>{
+  $("voiceStatus").textContent="✅ Leitura terminada.";
+  $("chatStatus").textContent="Resposta terminada.";
+ };
+ utterance.onerror=()=>{
+  $("voiceStatus").textContent="Não foi possível reproduzir a voz. Verifica as vozes instaladas no Android.";
+ };
+
  speechSynthesis.speak(utterance);
+
+ // Ajuda alguns navegadores móveis a iniciar a fila de fala.
+ setTimeout(()=>{
+  if(speechSynthesis.paused)speechSynthesis.resume();
+ },250);
 }
+
+function testVoice(){
+ speakText("Olá! Bem-vindo ao Super Meta IA. O teu professor virtual está pronto para ensinar.");
+}
+
+function repeatLastAnswer(){
+ if(lastAnswer)speakText(lastAnswer);
+ else $("voiceStatus").textContent="Ainda não existe uma resposta para repetir.";
+}
+
 function stopSpeaking(){
  if("speechSynthesis" in window)speechSynthesis.cancel();
+ $("voiceStatus").textContent="Voz parada.";
+ $("chatStatus").textContent="Leitura interrompida.";
 }
+
+$("voiceSpeed").addEventListener("input",()=>{
+ $("speedValue").textContent=Number($("voiceSpeed").value).toFixed(1);
+});
+
+function syncAutoSpeak(){
+ $("autoSpeak").checked=$("settingsAutoSpeak").checked;
+ localStorage.setItem("smia_auto_speak",String($("autoSpeak").checked));
+}
+function loadAutoSpeak(){
+ const saved=localStorage.getItem("smia_auto_speak");
+ const enabled=saved===null?true:saved==="true";
+ $("autoSpeak").checked=enabled;
+ $("settingsAutoSpeak").checked=enabled;
+}
+$("autoSpeak").addEventListener("change",()=>{
+ $("settingsAutoSpeak").checked=$("autoSpeak").checked;
+ localStorage.setItem("smia_auto_speak",String($("autoSpeak").checked));
+});
+
 function startRecognition(target){
  const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
  if(!SpeechRecognition){
   $("voiceStatus").textContent="Reconhecimento de voz não disponível neste navegador.";
-  alert("Experimenta utilizar o Chrome atualizado e permitir o acesso ao microfone.");
+  alert("Experimenta o Chrome atualizado e permite o acesso ao microfone.");
   return;
  }
- if(recognition)recognition.stop();
+
+ if(recognition){
+  try{recognition.stop();}catch(e){}
+ }
+
  recognition=new SpeechRecognition();
  recognition.lang=$("voiceLanguage").value||"pt-PT";
  recognition.interimResults=false;
  recognition.maxAlternatives=1;
- recognition.onstart=()=>{$("voiceStatus").textContent="Estou a ouvir...";};
+
+ recognition.onstart=()=>{
+  $("voiceStatus").textContent="🎤 Estou a ouvir...";
+ };
+
  recognition.onresult=e=>{
   const result=e.results[0][0].transcript;
   $(target).value=($(target).value+" "+result).trim();
-  $("voiceStatus").textContent="Voz reconhecida. Podes enviar a pergunta.";
+  $("voiceStatus").textContent="Voz reconhecida. Agora envia a pergunta.";
   showPage("chat");
  };
+
  recognition.onerror=e=>{
-  $("voiceStatus").textContent="Não foi possível reconhecer a voz: "+e.error;
+  $("voiceStatus").textContent="Erro no microfone: "+e.error;
  };
+
  recognition.onend=()=>{
-  if($("voiceStatus").textContent==="Estou a ouvir...")
+  if($("voiceStatus").textContent==="🎤 Estou a ouvir...")
    $("voiceStatus").textContent="Gravação terminada.";
  };
+
  try{recognition.start();}
  catch(e){$("voiceStatus").textContent="Não foi possível iniciar o microfone.";}
 }
 
-/* BIBLIOTECA: IndexedDB */
+/* CATÁLOGO DE LIVROS OFICIAIS
+   Os endereços abaixo pertencem ao Ministério da Educação
+   e Cultura de Moçambique. */
+const MEC_BOOKS=[
+ ["Matemática","1ª classe","matematica_1a.pdf"],
+ ["Matemática","2ª classe","matematica_2a.pdf"],
+ ["Matemática","3ª classe","matematica_3a.pdf"],
+ ["Matemática","4ª classe","matematica_4a.pdf"],
+ ["Matemática","5ª classe","matematica_5a.pdf"],
+ ["Matemática","6ª classe","matematica_6a.pdf"],
+
+ ["Português","1ª classe","portugues_1a.pdf"],
+ ["Português","2ª classe","portugues_2a.pdf"],
+ ["Português","3ª classe","portugues_3a.pdf"],
+ ["Português","4ª classe","portugues_4a.pdf"],
+ ["Português","5ª classe","portugues_5a.pdf"],
+ ["Português","6ª classe","portugues_6a.pdf"],
+
+ ["Ciências Naturais","4ª classe","ciencias_naturais_4a.pdf"],
+ ["Ciências Naturais","5ª classe","ciencias_naturais_5a.pdf"],
+ ["Ciências Naturais","6ª classe","ciencias_naturais_6a.pdf"],
+
+ ["Ciências Sociais","4ª classe","ciencias_sociais_4a.pdf"],
+ ["Ciências Sociais","5ª classe","ciencias_sociais_5a.pdf"],
+ ["Ciências Sociais","6ª classe","ciencias_sociais_6a.pdf"]
+];
+
+const MEC_BASE="https://www.mec.gov.mz/assets/docs/livros/";
+
+function renderCatalog(){
+ const area=$("catalogList");
+ if(!area)return;
+ area.innerHTML="";
+
+ const country=$("libraryCountry").value;
+ const grade=$("filterGrade").value;
+ const subject=$("filterSubject").value;
+ const search=$("bookSearch").value.trim().toLowerCase();
+
+ if(country!=="Moçambique"){
+  $("catalogInfo").textContent=
+   "Ainda não temos um catálogo oficial verificado para "+country+". Podes adicionar os teus próprios PDFs abaixo.";
+  area.innerHTML='<p class="muted">O catálogo de Moçambique está disponível. Os restantes países serão acrescentados quando tivermos fontes oficiais verificadas.</p>';
+  return;
+ }
+
+ $("catalogInfo").textContent="Manuais publicados no portal do Ministério da Educação e Cultura de Moçambique.";
+
+ const filtered=MEC_BOOKS.filter(book=>{
+  const title=book[0]+" "+book[1];
+  return (!grade||book[1]===grade)&&
+   (!subject||book[0]===subject)&&
+   title.toLowerCase().includes(search);
+ });
+
+ if(!filtered.length){
+  area.textContent="Não foram encontrados livros com esses filtros.";
+  return;
+ }
+
+ filtered.forEach(book=>{
+  const [subj,level,file]=book;
+  const url=MEC_BASE+file;
+
+  const div=document.createElement("div");
+  div.className="book";
+
+  const cover=document.createElement("div");
+  cover.className="book-cover";
+  cover.textContent="📘";
+
+  const info=document.createElement("div");
+  info.className="book-info";
+
+  const title=document.createElement("strong");
+  title.textContent=subj+" — "+level;
+
+  const details=document.createElement("small");
+  details.textContent="🇲🇿 Moçambique • Manual escolar oficial";
+
+  info.append(title,details);
+
+  const actions=document.createElement("div");
+  actions.className="book-actions";
+
+  const open=document.createElement("button");
+  open.className="btn";
+  open.textContent="Ler";
+  open.onclick=()=>openRemoteBook(title.textContent,url);
+
+  const download=document.createElement("button");
+  download.className="btn secondary";
+  download.textContent="PDF";
+  download.onclick=()=>window.open(url,"_blank","noopener");
+
+  actions.append(open,download);
+  div.append(cover,info,actions);
+  area.appendChild(div);
+ });
+}
+
 let db=null;
 let currentPdfUrl=null;
+let currentBookUrl=null;
 
+function openRemoteBook(title,url){
+ closeReader();
+ currentBookUrl=url;
+ $("readerTitle").textContent=title;
+ $("readerInfo").textContent="Livro consultado a partir do portal do Ministério da Educação. É necessária internet.";
+ $("pdfReader").src=url;
+ $("readerCard").style.display="block";
+ $("readerCard").scrollIntoView({behavior:"smooth"});
+}
+
+function openCurrentInNewTab(){
+ if(currentBookUrl)window.open(currentBookUrl,"_blank","noopener");
+}
+
+function closeReader(){
+ $("pdfReader").src="about:blank";
+ $("readerCard").style.display="none";
+ currentBookUrl=null;
+ if(currentPdfUrl){
+  URL.revokeObjectURL(currentPdfUrl);
+  currentPdfUrl=null;
+ }
+}
+
+/* LIVROS PESSOAIS: INDEXEDDB */
 function openDatabase(){
  return new Promise((resolve,reject)=>{
-  if(!("indexedDB" in window)){reject(new Error("Armazenamento não suportado"));return;}
+  if(!("indexedDB" in window)){
+   reject(new Error("Armazenamento não suportado"));
+   return;
+  }
   const request=indexedDB.open("SuperMetaIABooks",1);
   request.onupgradeneeded=()=>{
    const database=request.result;
@@ -619,120 +948,200 @@ function openDatabase(){
   request.onerror=()=>reject(request.error);
  });
 }
+
 async function saveBook(){
  const file=$("bookFile").files[0];
  const name=$("bookName").value.trim();
+
  if(!file){alert("Seleciona um ficheiro PDF.");return;}
- if(!file.name.toLowerCase().endsWith(".pdf") && file.type!=="application/pdf"){
-  alert("Seleciona um ficheiro PDF válido.");return;
+ if(!file.name.toLowerCase().endsWith(".pdf")&&file.type!=="application/pdf"){
+  alert("Seleciona um ficheiro PDF válido.");
+  return;
  }
  if(!name){alert("Escreve o nome do livro.");return;}
+
  try{
   if(!db)await openDatabase();
+
   const book={
-   name,subject:$("bookSubject").value,
+   name,
+   subject:$("bookSubject").value,
    grade:$("bookGrade").value,
    fileName:file.name,
    file:file,
    date:new Date().toISOString()
   };
+
   const transaction=db.transaction("books","readwrite");
   transaction.objectStore("books").add(book);
+
   transaction.oncomplete=()=>{
    $("bookName").value="";
    $("bookFile").value="";
    renderBooks();
    alert("Livro guardado na biblioteca!");
   };
+
   transaction.onerror=()=>alert("Não foi possível guardar o livro.");
- }catch(error){alert("Erro no armazenamento. Experimenta um PDF menor ou outro navegador.");}
+ }catch(error){
+  alert("Erro ao guardar. Experimenta um PDF menor ou outro navegador.");
+ }
 }
+
 async function renderBooks(){
  try{
   if(!db)await openDatabase();
+
   const transaction=db.transaction("books","readonly");
   const request=transaction.objectStore("books").getAll();
+
   request.onsuccess=()=>{
-   const area=$("bookList");area.innerHTML="";
-   if(!request.result.length){area.textContent="Ainda não adicionaste livros.";return;}
+   const area=$("bookList");
+   area.innerHTML="";
+
+   if(!request.result.length){
+    area.innerHTML='<p class="muted">Ainda não adicionaste livros pessoais.</p>';
+    return;
+   }
+
    request.result.forEach(book=>{
-    const div=document.createElement("div");div.className="book";
-    const icon=document.createElement("span");icon.className="book-icon";icon.textContent="📕";
-    const info=document.createElement("div");info.className="book-info";
-    const title=document.createElement("strong");title.textContent=book.name;
-    const details=document.createElement("small");details.textContent=book.subject+" • "+book.grade;
+    const div=document.createElement("div");
+    div.className="book";
+
+    const cover=document.createElement("div");
+    cover.className="book-cover";
+    cover.textContent="📕";
+
+    const info=document.createElement("div");
+    info.className="book-info";
+
+    const title=document.createElement("strong");
+    title.textContent=book.name;
+
+    const details=document.createElement("small");
+    details.textContent=book.subject+" • "+book.grade;
+
     info.append(title,details);
-    const open=document.createElement("button");open.className="btn";open.textContent="Abrir";
-    open.onclick=()=>openBook(book.id);
-    const del=document.createElement("button");del.className="btn red";del.textContent="×";
+
+    const open=document.createElement("button");
+    open.className="btn";
+    open.textContent="Abrir";
+    open.onclick=()=>openLocalBook(book.id);
+
+    const del=document.createElement("button");
+    del.className="btn red";
+    del.textContent="×";
     del.onclick=()=>deleteBook(book.id);
-    div.append(icon,info,open,del);area.appendChild(div);
+
+    const actions=document.createElement("div");
+    actions.className="book-actions";
+    actions.append(open,del);
+
+    div.append(cover,info,actions);
+    area.appendChild(div);
    });
   };
- }catch(error){$("bookList").textContent="Não foi possível abrir a biblioteca neste navegador.";}
+ }catch(error){
+  $("bookList").textContent="Não foi possível abrir a biblioteca neste navegador.";
+ }
 }
-async function openBook(id){
+
+async function openLocalBook(id){
  if(!db)await openDatabase();
+
  const request=db.transaction("books","readonly").objectStore("books").get(id);
+
  request.onsuccess=()=>{
-  const book=request.result;if(!book)return;
-  if(currentPdfUrl)URL.revokeObjectURL(currentPdfUrl);
+  const book=request.result;
+  if(!book)return;
+
+  closeReader();
   currentPdfUrl=URL.createObjectURL(book.file);
+  currentBookUrl=currentPdfUrl;
+
   $("readerTitle").textContent=book.name;
+  $("readerInfo").textContent=book.subject+" • "+book.grade;
   $("pdfReader").src=currentPdfUrl;
   $("readerCard").style.display="block";
   $("readerCard").scrollIntoView({behavior:"smooth"});
  };
 }
-function closeReader(){
- $("pdfReader").src="about:blank";
- $("readerCard").style.display="none";
- if(currentPdfUrl){URL.revokeObjectURL(currentPdfUrl);currentPdfUrl=null;}
-}
+
 async function deleteBook(id){
  if(!confirm("Apagar este livro?"))return;
  if(!db)await openDatabase();
+
  const transaction=db.transaction("books","readwrite");
  transaction.objectStore("books").delete(id);
  transaction.oncomplete=renderBooks;
 }
 
-/* FOTOGRAFIA */
+/* FOTOGRAFIAS */
 let selectedPhoto=null;
+let photoUrl=null;
+
 function previewPhoto(){
  const file=$("photoFile").files[0];
  if(!file)return;
- if(!file.type.startsWith("image/")){alert("Seleciona uma imagem.");return;}
+ if(!file.type.startsWith("image/")){
+  alert("Seleciona uma imagem.");
+  return;
+ }
  selectedPhoto=file;
- const image=$("photoPreview");
- image.src=URL.createObjectURL(file);
- image.style.display="block";
- $("photoStatus").textContent="Fotografia selecionada. A análise automática requer um servidor de IA com capacidade de analisar imagens.";
-}
-function usePhotoQuestion(){
- if(!selectedPhoto){alert("Primeiro seleciona uma fotografia.");return;}
- showPage("chat");
- $("question").value="Quero ajuda para compreender e resolver o exercício da fotografia selecionada. Como posso analisá-lo?";
+
+ if(photoUrl)URL.revokeObjectURL(photoUrl);
+ photoUrl=URL.createObjectURL(file);
+
+ $("photoPreview").src=photoUrl;
+ $("photoPreview").style.display="block";
+ $("photoStatus").textContent=
+  "Fotografia selecionada. A análise automática requer um servidor de IA com visão.";
 }
 
-/* CONFIGURAÇÕES */
+function usePhotoQuestion(){
+ if(!selectedPhoto){
+  alert("Primeiro seleciona uma fotografia.");
+  return;
+ }
+ showPage("chat");
+ $("question").value=
+  "Quero ajuda para compreender e resolver o exercício da fotografia selecionada.";
+}
+
+/* DEFINIÇÕES */
 function saveEndpoint(){
  const value=$("aiEndpoint").value.trim();
- if(value && !/^https:\/\//i.test(value)){
-  alert("Utiliza um endereço HTTPS seguro.");return;
+
+ if(value&&!/^https:\/\//i.test(value)){
+  alert("Utiliza um endereço HTTPS seguro.");
+  return;
  }
+
  localStorage.setItem("smia_endpoint",value);
  $("endpointStatus").textContent="Endereço guardado neste navegador.";
 }
+
 function loadSettings(){
  $("aiEndpoint").value=localStorage.getItem("smia_endpoint")||"";
 }
 
-window.addEventListener("DOMContentLoaded",()=>{
+window.addEventListener("DOMContentLoaded",async()=>{
  loadProfile();
  loadSettings();
- openDatabase().then(()=>renderBooks()).catch(()=>{});
+ loadAutoSpeak();
+ renderCatalog();
+
+ try{
+  await openDatabase();
+  renderBooks();
+ }catch(e){
+  $("bookList").textContent="O armazenamento de livros não está disponível neste navegador.";
+ }
+
+ loadVoices();
+ setTimeout(loadVoices,1500);
 });
 </script>
+
 </body>
 </html>
