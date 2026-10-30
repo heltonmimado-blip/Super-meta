@@ -2,162 +2,244 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Super-meta v6 - Ultimate AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super-meta v6 AI</title>
     <style>
-        body { margin: 0; font-family: sans-serif; background: #f1f5f9; color: #333; display: flex; flex-direction: column; height: 100vh; }
-        header { background: linear-gradient(135deg, #1e40af, #3b82f6); color: #fff; padding: 16px; text-align: center; }
-        h1 { margin: 0; font-size: 20px; }
-        .container { padding: 10px; max-width: 600px; margin: auto; width: 100%; flex: 1; display: flex; flex-direction: column; box-sizing: border-box; }
-        .card { background: #fff; margin: 6px 0; padding: 14px; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
-        select, input, button { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 15px; margin-top: 6px; box-sizing: border-box; }
-        button { background: #1e40af; color: #fff; border: 0; font-weight: bold; cursor: pointer; }
-        .btn-secundario { background: #0ea5e9; }
-        .chat-box { flex: 1; background: #fff; border-radius: 14px; padding: 10px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.1); margin-bottom: 8px; }
-        .msg { padding: 10px 14px; border-radius: 12px; max-width: 85%; line-height: 1.4; font-size: 15px; }
-        .msg-user { background: #3b82f6; color: #fff; align-self: flex-end; }
-        .msg-ai { background: #e2e8f0; color: #1e293b; align-self: flex-start; }
-        .input-area { display: flex; gap: 6px; align-items: center; }
-        .input-area input { margin-top: 0; flex: 1; }
-        .input-area button { margin-top: 0; width: auto; padding: 12px 14px; }
-        .escondido { display: none; }
-        .preview-img { max-width: 100%; max-height: 150px; border-radius: 8px; margin-top: 6px; }
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --bg-gradient: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --gray-bg: #f3f4f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gray-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--gray-bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Cabeçalho */
+        .header {
+            background: var(--bg-gradient);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        /* Conteúdo Principal */
+        .content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #4b5563;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            font-size: 14px;
+            background: #fff;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Secção de Chat / Resposta */
+        .chat-box {
+            background: #e0f2fe;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>🎙️ Super-meta v6 AI</h1>
-        <p style="margin:2px 0 0; font-size:12px;">Voz Automática, Screenshots & Estudo Global</p>
-    </header>
-
     <div class="container">
-        <!-- ECRÃ DE CONFIGURAÇÃO -->
-        <div id="ecra-setup" class="card">
-            <h3>⚙️ Configuração do Assistente</h3>
-            
-            <label><b>País / Região:</b></label>
-            <select id="pais">
-                <option value="MZ">Moçambique</option>
-                <option value="PT">Portugal</option>
-                <option value="BR">Brasil</option>
-                <option value="AO">Angola</option>
-                <option value="Global">Outro / Global</option>
-            </select>
-
-            <label style="margin-top:10px; display:block;"><b>Voz do Assistente:</b></label>
-            <select id="tipo-voz">
-                <option value="feminina">Feminina</option>
-                <option value="masculina">Masculina</option>
-            </select>
-
-            <button onclick="iniciarSuperMeta()" style="margin-top:14px;">🚀 Entrar no Super-meta</button>
+        <!-- Cabeçalho -->
+        <div class="header">
+            <h1>Super-meta v6 AI</h1>
+            <p>🚀 O teu assistente global de estudo inteligente</p>
         </div>
 
-        <!-- ECRÃ DE CHAT -->
-        <div id="ecra-chat" class="escondido" style="display:flex; flex-direction:column; flex:1;">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                <span id="status-voz" style="font-size:12px; font-weight:bold; color:#1e40af;">🎧 Voz Ativa</span>
-                <button onclick="mudarConfig()" style="width:auto; padding:4px 10px; font-size:11px; background:#64748b;">⚙️ Definições</button>
+        <div class="content">
+            <!-- Ecrã de Configuração Inicial -->
+            <div id="setup-screen" class="card">
+                <h3>⚙️ Configuração Inicial</h3>
+                
+                <label for="country-select">País / Região:</label>
+                <select id="country-select">
+                    <option value="mz">🇲🇿 Moçambique</option>
+                    <option value="br">🇧🇷 Brasil</option>
+                    <option value="pt">🇵🇹 Portugal</option>
+                    <option value="gb">🇬🇧 Inglaterra (UK)</option>
+                    <option value="us">🇺🇸 Estados Unidos</option>
+                </select>
+
+                <label for="voice-select">Tipo de Voz do Assistente:</label>
+                <select id="voice-select">
+                    <optgroup label="Voz Feminina">
+                        <option value="fem-relax">Feminina - Relaxante</option>
+                        <option value="fem-suave">Feminina - Suave</option>
+                    </optgroup>
+                    <optgroup label="Voz Masculina">
+                        <option value="masc-grossa">Masculina - Voz Grossa</option>
+                        <option value="masc-calma">Masculina - Calma e Suave</option>
+                    </optgroup>
+                </select>
+
+                <button class="btn" onclick="entrarApp()">🚀 Entrar no Super-meta</button>
             </div>
 
-            <div id="chat-historico" class="chat-box">
-                <div class="msg msg-ai">Olá! Sou o teu Super-meta v6. Podes enviar dúvidas, screenshots ou pedir dicas de estudo. Eu respondo e leio automaticamente para ti!</div>
+            <!-- Ecrã Principal com Níveis de Ensino (Escondido inicialmente) -->
+            <div id="main-screen" class="hidden">
+                
+                <!-- Caixa de Boas-vindas falada/escrita -->
+                <div class="card chat-box" id="welcome-msg">
+                    💬 Olá! Sou o teu Super-meta v6. Escolhe a voz e o nível em que pretendes estudar hoje. Podes enviar dúvidas por texto, imagem ou áudio!
+                </div>
+
+                <!-- Bloco Primário -->
+                <div class="card">
+                    <h3>📖 Primário - 1ª à 7ª Classe</h3>
+                    <p>Matemática, Português, Ciências Naturais e Sociais.</p>
+                    <button class="btn" onclick="escolherNivel('primario')">▶ Começar Primário</button>
+                </div>
+
+                <!-- Bloco Secundário -->
+                <div class="card">
+                    <h3>📘 Secundário - 8ª à 10ª Classe</h3>
+                    <p>Física, Química, Biologia, Matemática, História.</p>
+                    <button class="btn" onclick="escolherNivel('secundario')">▶ Começar Secundário</button>
+                </div>
+
+                <!-- Bloco Médio -->
+                <div class="card">
+                    <h3>🎓 Médio - 11ª e 12ª Classe</h3>
+                    <p>Escolha de Secções (Ciências, Letras) e disciplinas avançadas.</p>
+                    <button class="btn" onclick="escolherNivel('medio')">▶ Começar Médio</button>
+                </div>
             </div>
 
-            <div id="preview-container" class="escondido card" style="padding: 8px; margin-bottom: 6px;">
-                <span style="font-size: 12px; font-weight: bold;">📸 Screenshot anexado:</span>
-                <img id="img-preview" class="preview-img">
-                <button onclick="removerImagem()" style="background:#ef4444; padding:6px; font-size:12px; margin-top:4px;">Remover Imagem</button>
-            </div>
-
-            <div class="input-area">
-                <input type="file" id="input-file" accept="image/*" style="display:none" onchange="carregarImagem(event)">
-                <button type="button" onclick="document.getElementById('input-file').click()" class="btn-secundario" title="Enviar Screenshot">📷</button>
-                <input type="text" id="pergunta-input" placeholder="Escreve a tua dúvida..." onkeypress="if(event.key==='Enter') enviarMensagem()">
-                <button onclick="enviarMensagem()">Enviar</button>
-            </div>
         </div>
     </div>
 
     <script>
-        let config = { pais: "MZ", voz: "feminina" };
-        let imagemBase64 = null;
+        function entrarApp() {
+            const pais = document.getElementById('country-select').value;
+            const voz = document.getElementById('voice-select').value;
+            
+            // Esconde o ecrã de configuração e mostra os blocos de estudo
+            document.getElementById('setup-screen').classList.add('hidden');
+            document.getElementById('main-screen').classList.remove('hidden');
 
-        function iniciarSuperMeta() {
-            config.pais = document.getElementById('pais').value;
-            config.voz = document.getElementById('tipo-voz').value;
-
-            document.getElementById('ecra-setup').classList.add('escondido');
-            document.getElementById('ecra-chat').classList.remove('escondido');
-            falarTexto("Olá! O Super-meta está pronto. Como posso ajudar nos teus estudos hoje?");
-        }
-
-        function mudarConfig() {
-            document.getElementById('ecra-chat').classList.add('escondido');
-            document.getElementById('ecra-setup').classList.remove('escondido');
-        }
-
-        function carregarImagem(event) {
-            const ficheiro = event.target.files[0];
-            if (ficheiro) {
-                const leitor = new FileReader();
-                leitor.onload = function(e) {
-                    imagemBase64 = e.target.result;
-                    document.getElementById('img-preview').src = imagemBase64;
-                    document.getElementById('preview-container').classList.remove('escondido');
-                }
-                leitor.readAsDataURL(ficheiro);
-            }
-        }
-
-        function removerImagem() {
-            imagemBase64 = null;
-            document.getElementById('preview-container').classList.add('escondido');
-            document.getElementById('input-file').value = "";
-        }
-
-        function falarTexto(texto) {
+            // Simulação de voz de boas-vindas do assistente
+            const mensagem = "Seja bem-vindo ao Meta IA, escolha a voz que preferes ou que te sentas à vontade ao conversar com a voz.";
+            
+            // Se o navegador suportar síntese de voz, lê a mensagem em voz alta automaticamente
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(texto);
-                utterance.lang = 'pt-PT';
+                let utterance = new SpeechSynthesisUtterance(mensagem);
+                utterance.lang = pais === 'en' ? 'en-US' : 'pt-PT';
                 window.speechSynthesis.speak(utterance);
             }
         }
 
-        function enviarMensagem() {
-            const input = document.getElementById('pergunta-input');
-            const texto = input.value.trim();
-            if (!texto && !imagemBase64) return;
-
-            const historico = document.getElementById('chat-historico');
-            let conteudoUser = texto;
-
-            if (imagemBase64) {
-                conteudoUser += `<br><img src="${imagemBase64}" class="preview-img">`;
-            }
-
-            historico.innerHTML += `<div class="msg msg-user">${conteudoUser}</div>`;
-            input.value = "";
-            
-            let imgTemp = imagemBase64;
-            removerImagem();
-            historico.scrollTop = historico.scrollHeight;
-
-            setTimeout(() => {
-                let resposta = `Com base no teu currículo (${config.pais}), analisei a tua dúvida. Deves focar-te nos conceitos fundamentais, estruturar o teu raciocínio passo a passo e praticar exercícios semelhantes.`;
-                
-                if(imgTemp) {
-                    resposta = `Recebi o teu screenshot com sucesso! Analisei a imagem e o exercício apresentado. Vamos resolvê-lo passo a passo aplicando a matéria correta.`;
-                }
-
-                historico.innerHTML += `<div class="msg msg-ai">${resposta}</div>`;
-                historico.scrollTop = historico.scrollHeight;
-                
-                // Fala automaticamente a resposta em voz alta
-                falarTexto(resposta);
-            }, 800);
+        function escolherNivel(nivel) {
+            alert("Abrindo o módulo de ensino: " + nivel.toUpperCase() + ". Aqui vais escolher a tua classe e secção detalhadamente!");
         }
     </script>
 </body>
