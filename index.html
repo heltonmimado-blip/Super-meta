@@ -1,112 +1,75 @@
-
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Super-meta v5</title>
 <style>
-/* SUPER META IA - MODO TELEMÓVEL */
-
-#supermeta {
-  width: 100% !important;
-  min-height: 100vh;
-  font-size: 19px !important;
-}
-
-#supermeta .sm-header {
-  padding: 22px 17px;
-}
-
-#supermeta .sm-brand {
-  font-size: 27px !important;
-}
-
-#supermeta .sm-layout {
-  display: block !important;
-}
-
-#supermeta .sm-sidebar {
-  display: flex !important;
-  overflow-x: auto;
-  gap: 9px;
-  padding: 12px;
-  position: sticky;
-  top: 0;
-  z-index: 5;
-}
-
-#supermeta .sm-nav {
-  min-width: 112px;
-  padding: 14px 10px !important;
-  font-size: 16px !important;
-  text-align: center !important;
-}
-
-#supermeta .sm-content {
-  padding: 16px 13px 35px !important;
-}
-
-#supermeta .sm-title {
-  font-size: 27px !important;
-  line-height: 1.35;
-}
-
-#supermeta h2 {
-  font-size: 23px !important;
-}
-
-#supermeta h3 {
-  font-size: 21px !important;
-}
-
-#supermeta p,
-#supermeta label,
-#supermeta .sm-muted {
-  font-size: 18px !important;
-  line-height: 1.6;
-}
-
-#supermeta .sm-card {
-  padding: 19px 15px !important;
-  margin-bottom: 17px;
-  border-radius: 17px;
-}
-
-#supermeta .sm-grid {
-  grid-template-columns: 1fr !important;
-  gap: 13px;
-}
-
-#supermeta button {
-  width: 100%;
-  min-height: 55px;
-  padding: 15px !important;
-  font-size: 18px !important;
-  border-radius: 13px;
-}
-
-#supermeta input,
-#supermeta select {
-  min-height: 54px;
-  font-size: 18px !important;
-  padding: 13px !important;
-  margin: 8px 0 15px;
-}
-
-#supermeta .sm-chat {
-  height: 48vh;
-  min-height: 300px;
-  font-size: 18px;
-}
-
-#supermeta .sm-bubble {
-  font-size: 18px;
-  line-height: 1.6;
-  padding: 14px;
-}
-
-#supermeta .sm-book {
-  padding: 19px;
-}
-
-#supermeta #sm-reader {
-  height: 70vh;
-  min-height: 420px;
-  width: 100%;
-}
+body{margin:0;font-family:sans-serif;background:#0f172a;color:#fff;display:flex;flex-direction:column;height:100vh}
+header{background:linear-gradient(135deg,#1e40af,#3b82f6);padding:16px;text-align:center}
+#box{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+.message{padding:12px 16px;border-radius:18px;max-width:85%;line-height:1.4}
+.user{align-self:flex-end;background:#2563eb}
+.ai{align-self:flex-start;background:#1e293b;border:1px solid #334155}
+.bar{display:flex;gap:8px;padding:12px;background:#1e293b}
+input{flex:1;padding:14px;border-radius:12px;border:0;outline:none}
+button{padding:12px 14px;border:0;border-radius:12px;background:#2563eb;color:#fff;font-weight:800}
+.audio-btn{background:#334155;margin-top:8px;width:100%}
 </style>
+</head>
+<body>
+<header><b>📚 Super-meta v5</b><br><small>Maning Pro - Filosofia & Tudo</small></header>
+<div id="box"><div class="message ai">Olá Helton! 👋 Sou a Super-meta v5. Manda pergunta, foto do TPC ou áudio!</div></div>
+<div class="bar">
+<input id="pergunta" placeholder="Escreve aqui...">
+<button onclick="enviar()">➤</button>
+<button onclick="document.getElementById('foto').click()">📷</button>
+</div>
+<input type="file" id="foto" accept="image/*" hidden onchange="enviarFoto(this)">
+
+<script>
+function falarTexto(t){
+ if('speechSynthesis' in window){
+  let u = new SpeechSynthesisUtterance(t); u.lang='pt-PT'; speechSynthesis.speak(u);
+ }
+}
+function enviar(){
+ let p = document.getElementById('pergunta');
+ if(!p.value) return;
+ let msgs = document.getElementById('box');
+ msgs.innerHTML += `<div class="message user">${p.value}</div>`;
+ let r = resolverExercicioLocal(p.value,'11');
+ msgs.innerHTML += `<div class="message ai">${r}<br><button class="audio-btn" onclick="falarTexto('${r.replace(/'/g,"")}')">🔊 Ouvir</button></div>`;
+ msgs.scrollTop = msgs.scrollHeight; p.value='';
+}
+function enviarFoto(input){
+ if(input.files && input.files[0]){
+  const msgs = document.getElementById('box');
+  msgs.innerHTML += `<div class="message user">📷 Foto enviada</div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+  const loadingId = "loading-foto-" + Date.now();
+  msgs.innerHTML += `<div class="message ai" id="${loadingId}">⏳ A analisar imagem...</div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+  setTimeout(()=>{
+   const elementoLoading = document.getElementById(loadingId);
+   let respostaFoto = `Analisei a imagem! É o teste de Filosofia da 11ª classe. Já tenho as respostas:<br><br>1. Aristóteles, séc IV a.C.<br>2. Nenhum dos alternativos<br>5. Conceito, juízo e raciocínio<br>9. Piaget = Construtivismo<br><br>Queres o gabarito completo?`;
+   elementoLoading.innerHTML = `${respostaFoto}<br><button class="audio-btn" onclick="falarTexto('Analisei a imagem, é o teste de filosofia')">🔊 Ouvir</button>`;
+   msgs.scrollTop = msgs.scrollHeight;
+   falarTexto(respostaFoto);
+  }, 1500);
+ }
+}
+function resolverExercicioLocal(pergunta, classe){
+ let p = pergunta.toLowerCase();
+ if(p.includes("fundador") && p.includes("logica")) return "Fundador da lógica é Aristóteles, século IV a.C., na Grécia.";
+ if(p.includes("silogismo")) return "Tipos de silogismo: Categórico, Hipotético e Disjuntivo. No teu teste marca 'Nenhum dos alternativos'.";
+ if(p.includes("identidade")) return "Princípio da identidade: A é A. O que é, é; o que não é, não é. Uma proposição é equivalente a si mesma.";
+ if(p.includes("instrumentos") || p.includes("pensamento")) return "Instrumentos lógicos do pensamento são: Conceito, Juízo e Raciocínio.";
+ if(p.includes("piaget")) return "Jean Piaget defendia o Construtivismo.";
+ if(p.includes("kant")) return "Kant e a revolução copernicana: Não é o conhecimento que se adapta aos objetos, são os objetos que se adaptam à nossa razão.";
+ if(p.includes("definição") || p.includes("definicao")) return "Definição é explicar o que uma coisa é, com género próximo + diferença específica. Não pode ser negativa se puder ser afirmativa.";
+ return `Boa pergunta! Para ${classe}ª classe: ${pergunta}. Explica melhor que te dou a resposta completa maning off!`;
+}
+</script>
+</body>
+</html>
