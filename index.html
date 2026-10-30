@@ -127,6 +127,65 @@
             font-size: 14px;
             cursor: pointer;
         }
+
+        /* Estilo da Área de Chat Real */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .chat-messages {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 12px;
+            height: 180px;
+            overflow-y: auto;
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .message {
+            padding: 8px 12px;
+            border-radius: 8px;
+            max-width: 85%;
+        }
+
+        .message.ai {
+            background: #e0f2fe;
+            color: #1e3a8a;
+            align-self: flex-start;
+        }
+
+        .message.user {
+            background: #2563eb;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .chat-input-area input {
+            margin-bottom: 0;
+        }
+
+        .btn-file {
+            background: #4b5563;
+            color: white;
+            border: none;
+            padding: 0 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -139,7 +198,7 @@
 
         <div class="content">
             
-            <!-- ECRÃ 1: Configuração Inicial (País com Bandeiras + Tipo de Voz) -->
+            <!-- ECRÃ 1: Configuração Inicial -->
             <div id="setup-screen" class="card">
                 <h3>⚙️ Configuração do Assistente</h3>
                 
@@ -152,8 +211,6 @@
                     <option value="gb">🇬🇧 Reino Unido (Inglaterra)</option>
                     <option value="us">🇺🇸 Estados Unidos</option>
                     <option value="za">🇿🇦 África do Sul</option>
-                    <option value="fr">🇫🇷 França</option>
-                    <option value="es">🇪🇸 Espanha</option>
                 </select>
 
                 <label for="voice-type-select">Tipo de Voz Desejado:</label>
@@ -171,27 +228,24 @@
                 <button class="btn" onclick="entrarApp()">🚀 Entrar no Super-meta</button>
             </div>
 
-            <!-- ECRÃ 2: Ecrã Principal com os Blocos (Primário, Secundário, Médio) -->
+            <!-- ECRÃ 2: Ecrã Principal com os Blocos -->
             <div id="main-screen" class="hidden">
                 <div class="chat-box" id="welcome-msg-box">
-                    💬 Olá! Sou o teu Super-meta v6. Podes enviar dúvidas por texto, fotografias ou áudio!
+                    💬 Olá! Sou o teu Super-meta v6. Escolhe o nível de ensino abaixo.
                 </div>
 
-                <!-- Bloco Primário -->
                 <div class="card">
                     <h3>📖 Primário - 1ª à 7ª Classe</h3>
                     <p style="font-size:13px; color:#4b5563;">Matemática, Português, Ciências e mais.</p>
                     <button class="btn" onclick="abrirNivel('primario')">▶ Começar Primário</button>
                 </div>
 
-                <!-- Bloco Secundário -->
                 <div class="card">
                     <h3>📘 Secundário - 8ª à 10ª Classe</h3>
                     <p style="font-size:13px; color:#4b5563;">Física, Química, Biologia, Matemática.</p>
                     <button class="btn" onclick="abrirNivel('secundario')">▶ Começar Secundário</button>
                 </div>
 
-                <!-- Bloco Médio -->
                 <div class="card">
                     <h3>🎓 Médio - 11ª e 12ª Classe</h3>
                     <p style="font-size:13px; color:#4b5563;">Escolha de Seções (Ciências, Letras, etc.).</p>
@@ -199,11 +253,11 @@
                 </div>
             </div>
 
-            <!-- ECRÃ 3: Sub-menus de Classes / Seções (Gerado dinamicamente) -->
+            <!-- ECRÃ 3: Sub-menus e Área de Chat Real -->
             <div id="sub-screen" class="hidden">
-                <a class="bac-link" class="back-link" onclick="voltarPrincipal()">⬅ Voltar aos Níveis</a>
+                <a class="back-link" onclick="voltarPrincipal()">⬅ Voltar aos Níveis</a>
                 <div id="sub-content" class="card">
-                    <!-- O conteúdo das classes/seções aparece aqui -->
+                    <!-- Conteúdo dinâmico com chat -->
                 </div>
             </div>
 
@@ -212,16 +266,12 @@
 
     <script>
         function entrarApp() {
-            // Esconde configuração e mostra ecrã principal
             document.getElementById('setup-screen').classList.add('hidden');
             document.getElementById('main-screen').classList.remove('hidden');
 
-            // Mensagem de boas-vindas pedida
             const textoBoasVindas = "Seja bem-vindo ao Meta IA, escolha a voz que preferes ou que te sentas à vontade ao conversar com a voz.";
-            
             document.getElementById('welcome-msg-box').innerText = "💬 " + textoBoasVindas;
 
-            // Ativa a voz automática do navegador
             if ('speechSynthesis' in window) {
                 let utterance = new SpeechSynthesisUtterance(textoBoasVindas);
                 utterance.lang = 'pt-PT';
@@ -238,79 +288,98 @@
                 container.innerHTML = `
                     <h3>📖 Ensino Primário (1ª à 7ª Classe)</h3>
                     <p>Selecione a sua classe:</p>
-                    <select id="classe-primaria" onchange="carregarDisciplinas('primario', this.value)">
+                    <select id="classe-sel" onchange="ativarChat(this.value, 'Primário')">
                         <option value="">-- Escolher Classe --</option>
-                        <option value="1">1ª Classe</option>
-                        <option value="2">2ª Classe</option>
-                        <option value="3">3ª Classe</option>
-                        <option value="4">4ª Classe</option>
-                        <option value="5">5ª Classe</option>
-                        <option value="6">6ª Classe</option>
-                        <option value="7">7ª Classe</option>
+                        <option value="1ª Classe">1ª Classe</option>
+                        <option value="2ª Classe">2ª Classe</option>
+                        <option value="3ª Classe">3ª Classe</option>
+                        <option value="4ª Classe">4ª Classe</option>
+                        <option value="5ª Classe">5ª Classe</option>
+                        <option value="6ª Classe">6ª Classe</option>
+                        <option value="7ª Classe">7ª Classe</option>
                     </select>
-                    <div id="lista-disciplinas" style="margin-top:15px;"></div>
+                    <div id="chat-wrapper"></div>
                 `;
             } else if (nivel === 'secundario') {
                 container.innerHTML = `
                     <h3>📘 Ensino Secundário (8ª à 10ª Classe)</h3>
                     <p>Selecione a sua classe:</p>
-                    <select id="classe-secundaria" onchange="carregarDisciplinas('secundario', this.value)">
+                    <select id="classe-sel" onchange="ativarChat(this.value, 'Secundário')">
                         <option value="">-- Escolher Classe --</option>
-                        <option value="8">8ª Classe</option>
-                        <option value="9">9ª Classe</option>
-                        <option value="10">10ª Classe</option>
+                        <option value="8ª Classe">8ª Classe</option>
+                        <option value="9ª Classe">9ª Classe</option>
+                        <option value="10ª Classe">10ª Classe</option>
                     </select>
-                    <div id="lista-disciplinas" style="margin-top:15px;"></div>
+                    <div id="chat-wrapper"></div>
                 `;
             } else if (nivel === 'medio') {
                 container.innerHTML = `
                     <h3>🎓 Ensino Médio (11ª e 12ª Classe)</h3>
                     <p>Selecione a Seção / Curso:</p>
-                    <select id="secao-medio" onchange="carregarDisciplinasMedio(this.value)">
+                    <select id="classe-sel" onchange="ativarChat(this.value, 'Médio')">
                         <option value="">-- Escolher Seção --</option>
-                        <option value="ciencias-bio">Ciências com Biologia</option>
-                        <option value="ciencias-exatas">Ciências com Matemática/Física</option>
-                        <option value="letras">Letras e Humanidades</option>
-                        <option value="tecnico">Ensino Técnico / Profissional</option>
+                        <option value="Ciências com Biologia">Ciências com Biologia</option>
+                        <option value="Ciências Exatas (Matemática/Física)">Ciências Exatas (Matemática/Física)</option>
+                        <option value="Letras e Humanidades">Letras e Humanidades</option>
+                        <option value="Ensino Técnico">Ensino Técnico / Profissional</option>
                     </select>
-                    <div id="lista-disciplinas" style="margin-top:15px;"></div>
+                    <div id="chat-wrapper"></div>
                 `;
             }
         }
 
-        function carregarDisciplinas(tipo, classe) {
-            const div = document.getElementById('lista-disciplinas');
-            if(!classe) {
-                div.innerHTML = "";
+        function ativarChat(valor, nivelNome) {
+            const wrapper = document.getElementById('chat-wrapper');
+            if (!valor) {
+                wrapper.innerHTML = "";
                 return;
             }
-            div.innerHTML = `
-                <p><strong>Disciplinas disponíveis para a ${classe}ª Classe:</strong></p>
-                <ul style="padding-left: 20px; font-size: 14px; line-height: 1.6;">
-                    <li>Matemática</li>
-                    <li>Língua Portuguesa</li>
-                    <li>Ciências Naturais / Sociais</li>
-                    <li>Inglês</li>
-                </ul>
-                <button class="btn" onclick="alert('Podes começar a estudar, enviar fotos de exercícios ou fazer perguntas por áudio/texto ao Super-meta!')">Começar a Estudar com a IA 🚀</button>
+
+            wrapper.innerHTML = `
+                <div class="chat-container">
+                    <p style="font-size:13px; color:#059669; margin:0;">✔ Selecionado: <strong>${nivelNome} - ${valor}</strong></p>
+                    <div class="chat-messages" id="box-mensagens">
+                        <div class="message ai">Olá! Estou pronto para ajudar na ${valor}. Escreve a tua dúvida, envia uma foto do exercício ou pede explicação em áudio!</div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="file" id="file-input" accept="image/*" style="display:none" onchange="enviarFoto(this)">
+                        <button class="btn-file" onclick="document.getElementById('file-input').click()" title="Enviar Foto/Screenshot">📷</button>
+                        <input type="text" id="user-input" placeholder="Escreve a tua dúvida...">
+                        <button class="btn" style="margin-top:0; width:auto; padding:0 14px;" onclick="enviarMensagem()">Enviar</button>
+                    </div>
+                </div>
             `;
         }
 
-        function carregarDisciplinasMedio(secao) {
-            const div = document.getElementById('lista-disciplinas');
-            if(!secao) {
-                div.innerHTML = "";
-                return;
+        function enviarMensagem() {
+            const input = document.getElementById('user-input');
+            const msgs = document.getElementById('box-mensagens');
+            if (!input.value.trim()) return;
+
+            // Mensagem do Utilizador
+            msgs.innerHTML += `<div class="message user">${input.value}</div>`;
+            const texto = input.value;
+            input.value = "";
+            msgs.scrollTop = msgs.scrollHeight;
+
+            // Resposta simulada da IA
+            setTimeout(() => {
+                msgs.innerHTML += `<div class="message ai">Recebi a tua dúvida sobre "${texto}". Como Super-meta, estou a analisar para te dar a explicação detalhada! Podes também pedir áudio.</div>`;
+                msgs.scrollTop = msgs.scrollHeight;
+            }, 800);
+        }
+
+        function enviarFoto(input) {
+            if (input.files && input.files[0]) {
+                const msgs = document.getElementById('box-mensagens');
+                msgs.innerHTML += `<div class="message user">📷 [Fotografia enviada com sucesso]</div>`;
+                msgs.scrollTop = msgs.scrollHeight;
+
+                setTimeout(() => {
+                    msgs.innerHTML += `<div class="message ai">📸 Analisei a imagem do teu exercício! Aqui está a resolução passo a passo...</div>`;
+                    msgs.scrollTop = msgs.scrollHeight;
+                }, 1000);
             }
-            div.innerHTML = `
-                <p><strong>Matérias e Módulos da Seção Selecionada:</strong></p>
-                <ul style="padding-left: 20px; font-size: 14px; line-height: 1.6;">
-                    <li>Disciplinas Centrais da Seção (11ª e 12ª)</li>
-                    <li>Resolução de Exames Anteriores</li>
-                    <li>Explicações detalhadas por IA (Áudio ou Texto)</li>
-                </ul>
-                <button class="btn" onclick="alert('Sessão iniciada! Envia a tua dúvida por foto ou texto para o Super-meta.')">Iniciar Aprendizagem 🚀</button>
-            `;
         }
 
         function voltarPrincipal() {
