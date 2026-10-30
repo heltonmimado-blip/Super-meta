@@ -4,121 +4,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080f25">
 <title>Super Meta IA</title>
 
 <style>
-:root {
-  --blue:#2563eb;
-  --dark:#10234e;
-  --bg:#f1f5f9;
-  --white:#ffffff;
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#080f25;
+ color:#f8fafc;
 }
-* {box-sizing:border-box}
-body {
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:var(--bg);
-  color:#1e293b;
+.app{
+ max-width:520px;
+ min-height:100vh;
+ margin:auto;
+ background:#0f172a;
 }
-.app {
-  max-width:500px;
-  min-height:100vh;
-  margin:auto;
-  background:var(--bg);
+header{
+ padding:25px 20px;
+ background:linear-gradient(135deg,#111c3e,#1749a8);
+ border-bottom:1px solid #334d85;
 }
-header {
-  background:linear-gradient(135deg,#10234e,#2563eb);
-  color:white;
-  padding:28px 18px;
-  text-align:center;
-  border-radius:0 0 25px 25px;
+.brand{display:flex;align-items:center;gap:13px}
+.logo{
+ width:50px;height:50px;
+ display:grid;place-items:center;
+ background:#2563eb;
+ border-radius:16px;
+ font-size:27px;
 }
-.logo {
-  font-size:35px;
-  margin-bottom:8px;
+h1{font-size:23px;margin:0}
+header p{color:#dbeafe;font-size:13px}
+main{padding:18px}
+.card{
+ background:#192641;
+ border:1px solid #2b3c5b;
+ padding:18px;
+ border-radius:17px;
+ margin-bottom:16px;
 }
-header h1 {margin:0;font-size:25px}
-header p {font-size:13px;opacity:.9}
-main {padding:17px}
-.card {
-  background:white;
-  padding:18px;
-  margin-bottom:15px;
-  border-radius:17px;
-  box-shadow:0 5px 18px #0000000c;
+h2{font-size:18px;margin-top:0}
+p{line-height:1.5}
+.muted{color:#a8b8d3;font-size:13px}
+input,select,textarea{
+ width:100%;
+ padding:14px;
+ border-radius:10px;
+ border:1px solid #435573;
+ background:#101d35;
+ color:white;
+ margin:7px 0 13px;
+ font-size:14px;
 }
-h3 {color:var(--blue);margin-top:0}
-label {
-  display:block;
-  margin:13px 0 6px;
-  font-size:13px;
-  font-weight:bold;
+button{
+ border:0;
+ padding:14px;
+ border-radius:11px;
+ background:#2563eb;
+ color:white;
+ font-weight:bold;
+ cursor:pointer;
 }
-select,input {
-  width:100%;
-  padding:13px;
-  border:1px solid #cbd5e1;
-  border-radius:10px;
-  background:white;
-  font-size:14px;
+button:active{opacity:.8}
+.primary{width:100%}
+.secondary{background:#334766}
+.hidden{display:none!important}
+.level{
+ display:flex;
+ align-items:center;
+ gap:14px;
 }
-button {
-  border:0;
-  border-radius:11px;
-  padding:13px;
-  background:var(--blue);
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
+.level-icon{font-size:29px}
+.level-info{flex:1}
+.level-info h3{margin:0 0 5px}
+.level-info p{margin:0;color:#a8b8d3;font-size:12px}
+.level button{margin-top:12px;width:100%}
+.chat{
+ height:340px;
+ overflow-y:auto;
+ background:#0b1529;
+ padding:12px;
+ border-radius:12px;
+ border:1px solid #344665;
 }
-.primary {width:100%;margin-top:15px}
-.hidden {display:none!important}
-.level {
-  display:flex;
-  align-items:center;
-  gap:12px;
+.message{
+ padding:12px;
+ margin:9px 0;
+ border-radius:12px;
+ white-space:pre-wrap;
+ overflow-wrap:anywhere;
+ font-size:14px;
+ line-height:1.5;
 }
-.level-icon {font-size:28px}
-.level button {width:100%;margin-top:8px}
-.messages {
-  height:310px;
-  overflow-y:auto;
-  background:#f8fafc;
-  border:1px solid #e2e8f0;
-  padding:12px;
-  border-radius:12px;
-}
-.message {
-  padding:11px;
-  margin:8px 0;
-  border-radius:12px;
-  font-size:14px;
-  line-height:1.5;
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-}
-.ai {background:#dbeafe;color:#17356d}
-.user {background:#2563eb;color:white;margin-left:20px}
-.chat-controls {
-  display:flex;
-  gap:7px;
-  margin-top:10px;
-}
-.chat-controls input {min-width:0;flex:1}
-.chat-controls button {padding:10px}
-.small {font-size:12px;color:#64748b}
-.back {
-  background:#e2e8f0;
-  color:#1e293b;
-  margin-bottom:12px;
-}
-.audio {background:#1e40af;margin-top:8px}
-footer {
-  text-align:center;
-  padding:18px;
-  color:#64748b;
-  font-size:12px;
-}
+.ai{background:#1e3760}
+.user{background:#1d4ed8;margin-left:25px}
+.actions{display:flex;gap:8px;margin-top:10px}
+.actions input{flex:1;min-width:0;margin:0}
+.actions button{padding:12px}
+.back{margin-bottom:12px}
+footer{text-align:center;padding:20px;color:#8294b4;font-size:12px}
 </style>
 </head>
 
@@ -126,245 +111,236 @@ footer {
 <div class="app">
 
 <header>
+ <div class="brand">
   <div class="logo">🧠</div>
-  <h1>Super Meta IA</h1>
-  <p>O teu assistente educativo inteligente</p>
+  <div>
+   <h1>Super Meta IA</h1>
+   <span style="font-size:11px;color:#bfdbfe">ASSISTENTE EDUCATIVO</span>
+  </div>
+ </div>
+ <p>Aprende, pergunta e descobre. O conhecimento começa aqui.</p>
 </header>
 
 <main>
 
-<section id="setup" class="card">
-  <h3>⚙️ Configurar assistente</h3>
+<section id="inicio">
+ <div class="card">
+  <h2>👋 Bem-vindo ao Super Meta IA</h2>
+  <p class="muted">O teu espaço de aprendizagem para estudar, praticar e compreender melhor as disciplinas.</p>
 
-  <label>País</label>
-  <select id="country">
-    <option value="pt-MZ">🇲🇿 Moçambique</option>
-    <option value="pt-BR">🇧🇷 Brasil</option>
-    <option value="pt-PT">🇵🇹 Portugal</option>
-    <option value="en-GB">🇬🇧 Reino Unido</option>
+  <label>🌍 País</label>
+  <select id="pais">
+   <option value="pt-MZ">Moçambique</option>
+   <option value="pt-PT">Portugal</option>
+   <option value="pt-BR">Brasil</option>
   </select>
 
-  <label>Tipo de voz</label>
-  <select id="voice">
-    <option value="female">Feminina</option>
-    <option value="male">Masculina</option>
+  <label>🔊 Voz do assistente</label>
+  <select id="voz">
+   <option value="feminina">Feminina</option>
+   <option value="masculina">Masculina</option>
   </select>
 
-  <button class="primary" onclick="entrar()">
-    🚀 Entrar no Super Meta IA
-  </button>
+  <button class="primary" onclick="entrar()">COMEÇAR AGORA →</button>
+ </div>
+
+ <div class="card">
+  <h2>✨ O que podes fazer?</h2>
+  <p>📚 Estudar diferentes disciplinas.</p>
+  <p>🧮 Praticar exercícios de Matemática.</p>
+  <p>📷 Preparar o envio de fotografias.</p>
+  <p>🔊 Ouvir respostas em áudio.</p>
+ </div>
 </section>
 
-<section id="home" class="hidden">
-  <div class="card">
-    <h3>Olá! Bem-vindo ao Super Meta IA 👋</h3>
-    <p>Escolhe o teu nível de ensino para começar.</p>
-  </div>
+<section id="niveis" class="hidden">
+ <div class="card">
+  <h2>📚 Escolhe o teu nível</h2>
+  <p class="muted">Seleciona uma etapa para continuar.</p>
+ </div>
 
-  <div class="card level">
-    <div class="level-icon">📚</div>
-    <div style="flex:1">
-      <h3>Ensino Primário</h3>
-      <p class="small">1.ª à 7.ª classe</p>
-      <button onclick="abrirNivel('primario')">Começar</button>
-    </div>
+ <div class="card level">
+  <div class="level-icon">📗</div>
+  <div class="level-info">
+   <h3>Ensino Primário</h3>
+   <p>1.ª até 7.ª classe</p>
+   <button onclick="selecionar(1,7)">ENTRAR</button>
   </div>
+ </div>
 
-  <div class="card level">
-    <div class="level-icon">📘</div>
-    <div style="flex:1">
-      <h3>Ensino Secundário</h3>
-      <p class="small">8.ª à 10.ª classe</p>
-      <button onclick="abrirNivel('secundario')">Começar</button>
-    </div>
+ <div class="card level">
+  <div class="level-icon">📘</div>
+  <div class="level-info">
+   <h3>Ensino Secundário</h3>
+   <p>8.ª até 10.ª classe</p>
+   <button onclick="selecionar(8,10)">ENTRAR</button>
   </div>
+ </div>
 
-  <div class="card level">
-    <div class="level-icon">🎓</div>
-    <div style="flex:1">
-      <h3>Ensino Médio</h3>
-      <p class="small">11.ª e 12.ª classe</p>
-      <button onclick="abrirNivel('medio')">Começar</button>
-    </div>
+ <div class="card level">
+  <div class="level-icon">🎓</div>
+  <div class="level-info">
+   <h3>Ensino Médio</h3>
+   <p>11.ª e 12.ª classe</p>
+   <button onclick="selecionar(11,12)">ENTRAR</button>
   </div>
+ </div>
 </section>
 
-<section id="study" class="hidden">
-  <button class="back" onclick="voltar()">⬅ Voltar</button>
+<section id="estudo" class="hidden">
+ <button class="secondary back" onclick="mostrar('niveis')">← VOLTAR</button>
 
-  <div class="card">
-    <h3>📖 Área de aprendizagem</h3>
+ <div class="card">
+  <h2>📖 Área de estudo</h2>
+  <label>Classe</label>
+  <select id="classe"></select>
 
-    <label>Classe</label>
-    <select id="classe"></select>
+  <label>Disciplina</label>
+  <select id="disciplina">
+   <option>Matemática</option>
+   <option>Português</option>
+   <option>Inglês</option>
+   <option>Física</option>
+   <option>Química</option>
+   <option>Biologia</option>
+   <option>História</option>
+   <option>Geografia</option>
+   <option>TIC</option>
+   <option>Outra</option>
+  </select>
+ </div>
 
-    <label>Disciplina</label>
-    <select id="disciplina">
-      <option>Matemática</option>
-      <option>Português</option>
-      <option>Inglês</option>
-      <option>Física</option>
-      <option>Química</option>
-      <option>Biologia</option>
-      <option>História</option>
-      <option>Geografia</option>
-      <option>TIC</option>
-      <option>Outra disciplina</option>
-    </select>
+ <div class="card">
+  <h2>🤖 Conversar com Super Meta IA</h2>
+  <div class="chat" id="chat">
+   <div class="message ai">Olá! Escolhe a tua disciplina e escreve uma pergunta para começar.</div>
   </div>
 
-  <div class="card">
-    <h3>💬 Conversar com a IA</h3>
-
-    <div id="messages" class="messages">
-      <div class="message ai">
-        Olá! Sou o Super Meta IA.
-        Escreve a tua dúvida ou envia uma fotografia.
-      </div>
-    </div>
-
-    <div class="chat-controls">
-      <input id="question" placeholder="Escreve o exercício...">
-      <button onclick="enviar()">Enviar</button>
-    </div>
-
-    <label>📷 Fotografia do exercício</label>
-    <input id="photo" type="file" accept="image/*">
-    <button class="primary" onclick="enviarFoto()">Enviar fotografia</button>
+  <div class="actions">
+   <input id="pergunta" placeholder="Escreve a tua pergunta...">
+   <button onclick="enviar()">➤</button>
   </div>
+
+  <label>📷 Enviar exercício em fotografia</label>
+  <input type="file" id="foto" accept="image/*">
+  <button class="primary" onclick="enviarFoto()">SELECIONAR FOTOGRAFIA</button>
+
+  <button class="secondary primary" style="margin-top:10px" onclick="ouvirUltima()">🔊 Ouvir última resposta</button>
+ </div>
 </section>
 
 </main>
 
-<footer>
-  Super Meta IA © 2026 · Aprender sem limites
-</footer>
+<footer>SUPER META IA · 2026</footer>
 </div>
 
 <script>
-let nivel = "";
-
-function mostrar(id) {
-  ["setup","home","study"].forEach(x =>
-    document.getElementById(x).classList.add("hidden")
-  );
-  document.getElementById(id).classList.remove("hidden");
+function mostrar(id){
+ ["inicio","niveis","estudo"].forEach(x=>
+  document.getElementById(x).classList.add("hidden")
+ );
+ document.getElementById(id).classList.remove("hidden");
 }
 
-function entrar() {
-  mostrar("home");
-  falar("Bem-vindo ao Super Meta IA. Escolhe o teu nível de ensino.");
+function entrar(){
+ mostrar("niveis");
+ falar("Bem-vindo ao Super Meta IA. Escolhe o teu nível de ensino.");
 }
 
-function abrirNivel(tipo) {
-  nivel = tipo;
-  const select = document.getElementById("classe");
-  select.innerHTML = "";
-
-  let inicio = tipo === "primario" ? 1 :
-               tipo === "secundario" ? 8 : 11;
-  let fim = tipo === "primario" ? 7 :
-            tipo === "secundario" ? 10 : 12;
-
-  for(let i=inicio;i<=fim;i++) {
-    let option = document.createElement("option");
-    option.value = i;
-    option.textContent = i + "ª Classe";
-    select.appendChild(option);
-  }
-
-  mostrar("study");
+function selecionar(inicio,fim){
+ let c=document.getElementById("classe");
+ c.innerHTML="";
+ for(let i=inicio;i<=fim;i++){
+  let o=document.createElement("option");
+  o.value=i;
+  o.textContent=i+"ª Classe";
+  c.appendChild(o);
+ }
+ mostrar("estudo");
 }
 
-function falar(texto) {
-  if(!("speechSynthesis" in window)) return;
+let ultimaResposta="";
 
-  speechSynthesis.cancel();
-  const fala = new SpeechSynthesisUtterance(texto);
-  fala.lang = document.getElementById("country").value;
-
-  const voz = document.getElementById("voice").value;
-  fala.pitch = voz === "female" ? 1.2 : 0.8;
-  fala.rate = 0.95;
-
-  speechSynthesis.speak(fala);
+function mensagem(texto,tipo){
+ let chat=document.getElementById("chat");
+ let div=document.createElement("div");
+ div.className="message "+tipo;
+ div.textContent=texto;
+ chat.appendChild(div);
+ chat.scrollTop=chat.scrollHeight;
 }
 
-function adicionarMensagem(texto,tipo) {
-  const mensagens = document.getElementById("messages");
-  const div = document.createElement("div");
-  div.className = "message " + tipo;
-  div.textContent = texto;
-  mensagens.appendChild(div);
-  mensagens.scrollTop = mensagens.scrollHeight;
+function calcular(texto){
+ let m=texto.match(/^\s*(-?\d+(?:\.\d+)?)\s*([+\-*/])\s*(-?\d+(?:\.\d+)?)\s*=?\s*$/);
+ if(!m)return null;
+ let a=Number(m[1]),b=Number(m[3]),r;
+ switch(m[2]){
+  case "+":r=a+b;break;
+  case "-":r=a-b;break;
+  case "*":r=a*b;break;
+  case "/":
+   if(b===0)return "Não é possível dividir por zero.";
+   r=a/b;break;
+ }
+ return "RESOLUÇÃO\n\n"+a+" "+m[2]+" "+b+" = "+r+
+ "\n\nResposta: "+r;
 }
 
-function resolverMatematica(texto) {
-  let match = texto.match(/^\s*(\d+)\s*([+\-*/])\s*(\d+)\s*=?\s*$/);
-  if(!match) return null;
+function enviar(){
+ let input=document.getElementById("pergunta");
+ let p=input.value.trim();
+ if(!p)return;
 
-  let a = Number(match[1]);
-  let b = Number(match[3]);
-  let op = match[2];
-  let resultado;
+ mensagem(p,"user");
+ input.value="";
 
-  if(op === "+") resultado = a+b;
-  if(op === "-") resultado = a-b;
-  if(op === "*") resultado = a*b;
-  if(op === "/") {
-    if(b === 0) return "Não é possível dividir por zero.";
-    resultado = a/b;
-  }
+ let disciplina=document.getElementById("disciplina").value;
+ let classe=document.getElementById("classe").value;
+ let resposta=calcular(p);
 
-  return "Resolução:\n" + a + " " + op + " " + b +
-         " = " + resultado + "\nResposta: " + resultado;
+ if(!resposta){
+  resposta="Recebi a tua pergunta de "+disciplina+
+  ", "+classe+"ª classe.\n\n"+
+  "Esta versão ainda não está ligada a um motor de inteligência artificial. "+
+  "A resposta automática completa depende dessa integração. "+
+  "Não vou inventar uma solução e apresentá-la como correta.";
+ }
+
+ ultimaResposta=resposta;
+ mensagem(resposta,"ai");
 }
 
-function enviar() {
-  const input = document.getElementById("question");
-  const texto = input.value.trim();
-  if(!texto) return;
-
-  adicionarMensagem(texto,"user");
-  input.value = "";
-
-  const classe = document.getElementById("classe").value;
-  const disciplina = document.getElementById("disciplina").value;
-
-  let resposta = resolverMatematica(texto);
-
-  if(!resposta) {
-    resposta = "Recebi a tua pergunta sobre " + disciplina +
-      ", da " + classe + "ª classe.\n\n" +
-      "Esta versão ainda não está ligada a uma IA real. " +
-      "Para obter uma resolução completa, precisamos de configurar " +
-      "uma API de inteligência artificial.";
-  }
-
-  adicionarMensagem(resposta,"ai");
-  falar(resposta);
+function enviarFoto(){
+ let f=document.getElementById("foto").files[0];
+ if(!f){
+  alert("Escolhe uma fotografia primeiro.");
+  return;
+ }
+ mensagem("Fotografia selecionada: "+f.name,"user");
+ ultimaResposta="A fotografia foi selecionada, mas a análise automática ainda precisa de ligação a uma IA com visão.";
+ mensagem(ultimaResposta,"ai");
 }
 
-function enviarFoto() {
-  const foto = document.getElementById("photo").files[0];
-
-  if(!foto) {
-    alert("Seleciona primeiro uma fotografia.");
-    return;
-  }
-
-  adicionarMensagem("📷 Fotografia selecionada: " + foto.name,"user");
-
-  adicionarMensagem(
-    "A fotografia foi selecionada. A análise automática de imagens " +
-    "será ativada quando ligarmos o Super Meta IA a um serviço de IA.",
-    "ai"
-  );
+function falar(texto){
+ if(!("speechSynthesis" in window)){
+  alert("O teu navegador não suporta leitura em voz.");
+  return;
+ }
+ speechSynthesis.cancel();
+ let u=new SpeechSynthesisUtterance(texto);
+ u.lang=document.getElementById("pais").value;
+ u.pitch=document.getElementById("voz").value==="feminina"?1.2:0.8;
+ speechSynthesis.speak(u);
 }
 
-function voltar() {
-  mostrar("home");
+function ouvirUltima(){
+ if(ultimaResposta)falar(ultimaResposta);
+ else alert("Ainda não existe resposta para ouvir.");
 }
+
+document.getElementById("pergunta").addEventListener("keydown",e=>{
+ if(e.key==="Enter")enviar();
+});
 </script>
 </body>
 </html>
