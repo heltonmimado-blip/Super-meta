@@ -1,415 +1,579 @@
 
-<!-- SUPER META IA: BIBLIOTECA, VOZ E CONVERSA -->
+<!-- SUPER META IA - FULL SCREEN V1 -->
 
 <style>
-#sm-extra {
-  color: #fff;
-  background: #101a35;
-  padding: 18px;
-  border-radius: 18px;
-  margin: 15px auto;
-  max-width: 900px;
-  font-family: Arial, sans-serif;
-}
-#sm-extra h2 { color: #70b7ff; }
-#sm-extra button, #sm-extra select, #sm-extra input {
-  padding: 12px;
-  border-radius: 9px;
-  border: 0;
-  margin: 5px 0;
-}
-#sm-extra button {
-  background: #2878ef;
-  color: white;
-  cursor: pointer;
-}
-#sm-extra input, #sm-extra select {
+* { box-sizing: border-box; }
+
+#supermeta {
+  position: relative;
   width: 100%;
-  box-sizing: border-box;
+  min-height: 100vh;
+  background: #071329;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+}
+
+#supermeta button,
+#supermeta select,
+#supermeta input {
+  font: inherit;
+}
+
+#supermeta button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 12px;
+  padding: 13px;
+  background: #2879ef;
+  color: white;
+}
+
+#supermeta select,
+#supermeta input {
+  width: 100%;
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid #536b91;
   background: #fff;
   color: #111;
+  margin: 7px 0 14px;
 }
-.sm-panel {
-  background: #1b294b;
-  padding: 14px;
-  border-radius: 12px;
-  margin: 14px 0;
+
+.sm-header {
+  padding: 20px;
+  background: linear-gradient(120deg,#102c5b,#442b85);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
-#sm-messages {
-  height: 230px;
+
+.sm-brand {
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.sm-layout {
+  display: grid;
+  grid-template-columns: 230px minmax(0,1fr);
+  min-height: calc(100vh - 90px);
+}
+
+.sm-sidebar {
+  background: #0d1d38;
+  padding: 16px;
+}
+
+.sm-nav {
+  width: 100%;
+  display: block;
+  text-align: left;
+  margin: 8px 0;
+  background: #1b3157 !important;
+}
+
+.sm-nav.active { background: #2879ef !important; }
+
+.sm-content {
+  padding: 24px;
+  min-width: 0;
+}
+
+.sm-page { display: none; }
+.sm-page.active { display: block; }
+
+.sm-card {
+  background: #142747;
+  border: 1px solid #2c4268;
+  padding: 20px;
+  border-radius: 17px;
+  margin-bottom: 20px;
+}
+
+.sm-title {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.sm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 16px;
+}
+
+.sm-chat {
+  height: 45vh;
+  min-height: 300px;
   overflow-y: auto;
-  background: #0b142b;
-  padding: 12px;
-  border-radius: 10px;
+  background: #08152b;
+  padding: 15px;
+  border-radius: 12px;
 }
-.sm-message {
-  padding: 10px;
-  margin: 7px 0;
-  border-radius: 9px;
-  background: #263b65;
+
+.sm-bubble {
+  background: #263e69;
+  padding: 13px;
+  border-radius: 12px;
+  margin: 10px 0;
   overflow-wrap: anywhere;
 }
-.sm-user { background: #245a9c; }
-#sm-pdf {
+
+.sm-bubble.user { background: #245d9e; }
+
+.sm-book {
+  background: #203b64;
+  padding: 18px;
+  border-radius: 15px;
+}
+
+.sm-book-icon {
+  font-size: 42px;
+}
+
+#sm-reader {
   width: 100%;
-  height: 450px;
+  height: 75vh;
+  min-height: 500px;
   background: white;
-  border: none;
-  margin-top: 12px;
+  border: 0;
+  border-radius: 12px;
+}
+
+.sm-muted { color: #bbcae2; }
+
+@media(max-width:700px) {
+  .sm-layout { grid-template-columns: 1fr; }
+  .sm-sidebar {
+    display: flex;
+    overflow-x: auto;
+    gap: 7px;
+  }
+  .sm-nav {
+    min-width: 115px;
+    text-align: center;
+  }
+  .sm-content { padding: 13px; }
+  .sm-header { padding: 15px; }
+  .sm-title { font-size: 23px; }
 }
 </style>
 
-<div id="sm-extra">
+<div id="supermeta">
 
-  <h2>🎓 Super Meta IA</h2>
-  <p>Biblioteca escolar, assistente e comandos de voz.</p>
-
-  <!-- VOZ -->
-  <div class="sm-panel">
-    <h3>🔊 Configuração da voz</h3>
-
-    <label>Escolher voz:</label>
-    <select id="sm-voice"></select>
-
-    <label>Tom da voz:</label>
-    <select id="sm-pitch">
-      <option value="0.8">Grave</option>
-      <option value="1" selected>Normal</option>
-      <option value="1.3">Agudo</option>
-    </select>
-
-    <label>Velocidade:</label>
-    <select id="sm-speed">
-      <option value="0.8">Lenta</option>
-      <option value="1" selected>Normal</option>
-      <option value="1.2">Rápida</option>
-    </select>
-
-    <button onclick="smSpeak('Olá! Sou o Super Meta IA. Estou pronto para ajudar nos teus estudos.')">
-      🔊 Testar voz
-    </button>
-
-    <button onclick="smStop()">⏹ Parar áudio</button>
-    <p id="sm-voice-status">Aguardando configuração da voz.</p>
+<header class="sm-header">
+  <div>
+    <div class="sm-brand">🚀 SUPER META IA</div>
+    <div class="sm-muted">A tua escola inteligente</div>
   </div>
+  <div>🌍 Educação sem fronteiras</div>
+</header>
 
-  <!-- CONVERSA -->
-  <div class="sm-panel">
-    <h3>🤖 Conversar com Super Meta</h3>
+<div class="sm-layout">
 
-    <div id="sm-messages">
-      <div class="sm-message">
+<aside class="sm-sidebar">
+  <button class="sm-nav active" data-page="home">🏠 Início</button>
+  <button class="sm-nav" data-page="chat">🤖 Assistente</button>
+  <button class="sm-nav" data-page="library">📚 Biblioteca</button>
+  <button class="sm-nav" data-page="voice">🔊 Vozes</button>
+</aside>
+
+<main class="sm-content">
+
+<section class="sm-page active" id="page-home">
+  <h1 class="sm-title">Bem-vindo ao Super Meta IA</h1>
+  <p class="sm-muted">Aprender, descobrir e evoluir.</p>
+
+  <div class="sm-grid">
+    <div class="sm-card">
+      <div class="sm-book-icon">🤖</div>
+      <h2>Assistente inteligente</h2>
+      <p>Conversa e ajuda nos estudos.</p>
+      <button onclick="smPage('chat')">Abrir assistente</button>
+    </div>
+
+    <div class="sm-card">
+      <div class="sm-book-icon">📚</div>
+      <h2>Biblioteca escolar</h2>
+      <p>Organiza e consulta os teus livros.</p>
+      <button onclick="smPage('library')">Abrir biblioteca</button>
+    </div>
+
+    <div class="sm-card">
+      <div class="sm-book-icon">🌐</div>
+      <h2>Várias línguas</h2>
+      <p>Seleciona a língua da comunicação.</p>
+      <button onclick="smPage('voice')">Configurar voz</button>
+    </div>
+  </div>
+</section>
+
+<section class="sm-page" id="page-chat">
+  <h1 class="sm-title">🤖 Assistente Super Meta</h1>
+
+  <div class="sm-card">
+    <div class="sm-chat" id="sm-chat">
+      <div class="sm-bubble">
         Super Meta: Olá! Como posso ajudar-te hoje?
       </div>
     </div>
 
-    <input id="sm-question"
-      placeholder="Escreve uma mensagem..."
-      onkeydown="if(event.key==='Enter') smSend()">
+    <input id="sm-message"
+      placeholder="Escreve a tua mensagem..."
+      onkeydown="if(event.key==='Enter')smSend()">
 
-    <button onclick="smSend()">Enviar mensagem</button>
-    <button onclick="smListen()">🎤 Falar</button>
+    <div class="sm-grid">
+      <button onclick="smSend()">Enviar</button>
+      <button onclick="smMic()">🎤 Falar</button>
+      <button onclick="smStop()">⏹ Parar voz</button>
+    </div>
   </div>
+</section>
 
-  <!-- BIBLIOTECA -->
-  <div class="sm-panel">
-    <h3>📚 Biblioteca Escolar</h3>
+<section class="sm-page" id="page-library">
+  <h1 class="sm-title">📚 Biblioteca Escolar</h1>
 
-    <label>País:</label>
+  <div class="sm-card">
+    <label>País</label>
     <select id="sm-country">
-      <option value="Moçambique">Moçambique</option>
-      <option value="Angola">Angola</option>
-      <option value="Portugal">Portugal</option>
-      <option value="Brasil">Brasil</option>
-      <option value="Cabo Verde">Cabo Verde</option>
-      <option value="Guiné-Bissau">Guiné-Bissau</option>
-      <option value="São Tomé e Príncipe">São Tomé e Príncipe</option>
-      <option value="África do Sul">África do Sul</option>
+      <option>Moçambique</option>
+      <option>Angola</option>
+      <option>Portugal</option>
+      <option>Brasil</option>
+      <option>Cabo Verde</option>
+      <option>Guiné-Bissau</option>
+      <option>São Tomé e Príncipe</option>
+      <option>África do Sul</option>
+      <option>Namíbia</option>
+      <option>Zimbabwe</option>
+      <option>Tanzânia</option>
+      <option>Reino Unido</option>
+      <option>Estados Unidos</option>
     </select>
 
-    <label>Classe:</label>
-    <select id="sm-class">
-      <option value="1.ª classe">1.ª classe</option>
-      <option value="2.ª classe">2.ª classe</option>
-      <option value="3.ª classe">3.ª classe</option>
-      <option value="4.ª classe">4.ª classe</option>
-      <option value="5.ª classe">5.ª classe</option>
-      <option value="6.ª classe">6.ª classe</option>
-      <option value="7.ª classe">7.ª classe</option>
-      <option value="8.ª classe">8.ª classe</option>
-      <option value="9.ª classe">9.ª classe</option>
-      <option value="10.ª classe">10.ª classe</option>
-      <option value="11.ª classe">11.ª classe</option>
-      <option value="12.ª classe">12.ª classe</option>
+    <label>Classe / Ano</label>
+    <select id="sm-grade">
+      <option>1.ª classe</option>
+      <option>2.ª classe</option>
+      <option>3.ª classe</option>
+      <option>4.ª classe</option>
+      <option>5.ª classe</option>
+      <option>6.ª classe</option>
+      <option>7.ª classe</option>
+      <option>8.ª classe</option>
+      <option>9.ª classe</option>
+      <option>10.ª classe</option>
+      <option>11.ª classe</option>
+      <option>12.ª classe</option>
     </select>
 
-    <label>Disciplina:</label>
+    <label>Disciplina</label>
     <select id="sm-subject">
       <option>Matemática</option>
       <option>Português</option>
+      <option>Inglês</option>
       <option>Física</option>
       <option>Química</option>
       <option>Biologia</option>
       <option>História</option>
       <option>Geografia</option>
-      <option>Inglês</option>
       <option>TIC</option>
+      <option>Filosofia</option>
     </select>
 
-    <p>Adicionar um livro escolar em PDF:</p>
-    <input type="file" id="sm-book-file" accept=".pdf,application/pdf">
-
-    <button onclick="smAddBook()">Adicionar livro</button>
-
-    <div id="sm-book-list">
-      <p>Ainda não adicionaste livros.</p>
-    </div>
-
-    <iframe id="sm-pdf" title="Leitor de livros PDF"></iframe>
+    <label>Adicionar manual escolar em PDF</label>
+    <input type="file" id="sm-file" accept=".pdf,application/pdf">
+    <button onclick="smAddBook()">Adicionar à biblioteca</button>
   </div>
 
+  <h2>Os meus livros</h2>
+  <div class="sm-grid" id="sm-books">
+    <p class="sm-muted">Ainda não existem livros adicionados.</p>
+  </div>
+
+  <div class="sm-card">
+    <h2>📖 Leitor de livros</h2>
+    <iframe id="sm-reader" title="Leitor de PDF"></iframe>
+  </div>
+</section>
+
+<section class="sm-page" id="page-voice">
+  <h1 class="sm-title">🔊 Língua e voz</h1>
+
+  <div class="sm-card">
+    <label>Escolher língua</label>
+    <select id="sm-lang">
+      <option value="pt-MZ">Português de Moçambique</option>
+      <option value="pt-PT">Português de Portugal</option>
+      <option value="pt-BR">Português do Brasil</option>
+      <option value="en-GB">Inglês britânico</option>
+      <option value="en-US">Inglês americano</option>
+      <option value="fr-FR">Francês</option>
+      <option value="es-ES">Espanhol</option>
+      <option value="zu-ZA">Zulu</option>
+      <option value="af-ZA">Afrikaans</option>
+      <option value="sw-TZ">Suaíli</option>
+    </select>
+
+    <label>Voz disponível no dispositivo</label>
+    <select id="sm-voice"></select>
+
+    <label>Tom</label>
+    <select id="sm-tone">
+      <option value="0.8">Grave</option>
+      <option value="1" selected>Normal</option>
+      <option value="1.2">Agudo</option>
+    </select>
+
+    <label>Velocidade</label>
+    <select id="sm-rate">
+      <option value="0.8">Lenta</option>
+      <option value="1" selected>Normal</option>
+      <option value="1.2">Rápida</option>
+    </select>
+
+    <button onclick="smSpeak('Olá! Sou o Super Meta IA. Bem-vindo à tua escola inteligente.')">
+      🔊 Testar voz
+    </button>
+
+    <p id="sm-voice-status" class="sm-muted">
+      A procurar vozes disponíveis...
+    </p>
+  </div>
+</section>
+
+</main>
+</div>
 </div>
 
 <script>
-(function () {
+(function(){
   const $ = id => document.getElementById(id);
+  let books = [];
+  let currentObjectURL = null;
 
-  let smLastAnswer = "";
-  let smBooks = [];
+  // NAVEGAÇÃO
+  window.smPage = function(name){
+    document.querySelectorAll("#supermeta .sm-page")
+      .forEach(p=>p.classList.remove("active"));
+    document.querySelectorAll("#supermeta .sm-nav")
+      .forEach(b=>b.classList.remove("active"));
+
+    $("page-"+name).classList.add("active");
+    document.querySelector('[data-page="'+name+'"]')
+      ?.classList.add("active");
+  };
+
+  document.querySelectorAll("#supermeta .sm-nav")
+    .forEach(button=>{
+      button.addEventListener("click",()=>{
+        smPage(button.dataset.page);
+      });
+    });
 
   // VOZ
-  function smLoadVoices() {
-    const select = $("sm-voice");
-    if (!select) return;
+  function loadVoices(){
+    if(!window.speechSynthesis) return;
 
-    const voices = window.speechSynthesis
-      ? speechSynthesis.getVoices()
-      : [];
+    const voices=speechSynthesis.getVoices();
+    const select=$("sm-voice");
+    const lang=$("sm-lang").value;
+    select.innerHTML="";
 
-    select.innerHTML = "";
+    const matching=voices.filter(v=>
+      v.lang.toLowerCase()===lang.toLowerCase()
+    );
 
-    voices.forEach((voice, index) => {
-      const option = document.createElement("option");
-      option.value = index;
-      option.textContent = voice.name + " (" + voice.lang + ")";
+    const fallback=voices.filter(v=>
+      lang.startsWith("pt") &&
+      v.lang.toLowerCase().startsWith("pt")
+    );
+
+    const choices=matching.length?matching:fallback;
+
+    choices.forEach(v=>{
+      const option=document.createElement("option");
+      option.value=voices.indexOf(v);
+      option.textContent=v.name+" ("+v.lang+")";
       select.appendChild(option);
     });
 
-    $("sm-voice-status").textContent = voices.length
-      ? "Vozes disponíveis: " + voices.length
-      : "Não foram encontradas vozes. Verifica as definições de voz do Android.";
+    if(!choices.length){
+      const option=document.createElement("option");
+      option.value="-1";
+      option.textContent="Nenhuma voz compatível instalada";
+      select.appendChild(option);
+    }
+
+    $("sm-voice-status").textContent=choices.length
+      ? "Encontradas "+choices.length+" vozes compatíveis."
+      : "Não existe uma voz compatível instalada. Instala uma voz nas definições do Android.";
   }
 
-  window.smSpeak = function (text) {
-    if (!("speechSynthesis" in window)) {
-      $("sm-voice-status").textContent =
-        "Este navegador não suporta leitura de voz.";
+  $("sm-lang").addEventListener("change",loadVoices);
+
+  window.smSpeak=function(text){
+    if(!window.speechSynthesis){
+      $("sm-voice-status").textContent="Voz não suportada.";
       return;
     }
 
-    if (!text || !text.trim()) return;
-
     speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    const voices = speechSynthesis.getVoices();
-    const index = Number($("sm-voice").value);
-    const voice = voices[index];
+    const utterance=new SpeechSynthesisUtterance(text);
+    const voices=speechSynthesis.getVoices();
+    const voice=voices[Number($("sm-voice").value)];
 
-    if (voice) utterance.voice = voice;
+    if(voice) utterance.voice=voice;
 
-    utterance.lang = voice?.lang || "pt-PT";
-    utterance.pitch = Number($("sm-pitch").value);
-    utterance.rate = Number($("sm-speed").value);
+    utterance.lang=voice?.lang||$("sm-lang").value;
+    utterance.pitch=Number($("sm-tone").value);
+    utterance.rate=Number($("sm-rate").value);
 
-    utterance.onstart = () => {
-      $("sm-voice-status").textContent = "A falar...";
+    utterance.onerror=e=>{
+      $("sm-voice-status").textContent="Erro de voz: "+e.error;
     };
 
-    utterance.onend = () => {
-      $("sm-voice-status").textContent = "Áudio terminado.";
-    };
-
-    utterance.onerror = event => {
-      $("sm-voice-status").textContent =
-        "Erro na voz: " + event.error;
+    utterance.onstart=()=>{
+      $("sm-voice-status").textContent="A falar...";
     };
 
     speechSynthesis.speak(utterance);
   };
 
-  window.smStop = function () {
-    if ("speechSynthesis" in window) {
-      speechSynthesis.cancel();
-      $("sm-voice-status").textContent = "Áudio parado.";
-    }
+  window.smStop=function(){
+    speechSynthesis?.cancel();
+    $("sm-voice-status").textContent="Voz parada.";
   };
 
-  if ("speechSynthesis" in window) {
-    speechSynthesis.onvoiceschanged = smLoadVoices;
-    smLoadVoices();
-    setTimeout(smLoadVoices, 1000);
+  if(window.speechSynthesis){
+    speechSynthesis.onvoiceschanged=loadVoices;
+    loadVoices();
+    setTimeout(loadVoices,1000);
   }
 
-  // RESPOSTAS BÁSICAS
-  function smAnswer(message) {
-    const text = message.toLowerCase().trim();
+  // CHAT BÁSICO
+  function answer(message){
+    const t=message.toLowerCase().trim();
 
-    if (/^(oi|olá|ola|bom dia|boa tarde|boa noite|hey)\b/.test(text)) {
-      if (text.includes("boa noite")) {
-        return "Boa noite! Como estás? Em que posso ajudar nos teus estudos?";
-      }
-      if (text.includes("boa tarde")) {
-        return "Boa tarde! Seja bem-vindo ao Super Meta IA. Como posso ajudar?";
-      }
-      if (text.includes("bom dia")) {
-        return "Bom dia! Espero que tenhas um excelente dia de aprendizagem.";
-      }
-      return "Olá! Sou o Super Meta IA. Estou aqui para ajudar-te a estudar.";
-    }
+    if(/\b(boa noite)\b/.test(t))
+      return "Boa noite! Como estás? Em que posso ajudar-te hoje?";
 
-    if (text.includes("obrigado") || text.includes("obrigada")) {
-      return "De nada! Estou aqui para ajudar.";
-    }
+    if(/\b(bom dia)\b/.test(t))
+      return "Bom dia! Bem-vindo ao Super Meta IA.";
 
-    if (text.includes("quem és") || text.includes("quem e voce")) {
-      return "Sou o Super Meta IA, um assistente educativo.";
-    }
+    if(/\b(boa tarde)\b/.test(t))
+      return "Boa tarde! Estou pronto para ajudar-te.";
 
-    if (text.includes("ajuda") || text.includes("o que podes fazer")) {
-      return "Posso conversar, ler respostas em voz alta e ajudar a organizar os teus livros escolares. Para respostas escolares avançadas, preciso de uma ligação a um serviço de inteligência artificial.";
-    }
+    if(/\b(olá|ola|oi|hey)\b/.test(t))
+      return "Olá! É bom ter-te aqui. Qual é a tua dúvida?";
 
-    if (/^[\d\s()+\-*/.,]+$/.test(text)) {
-      try {
-        const normalized = text.replace(",", ".");
-        if (!/^[\d\s()+\-*/.]+$/.test(normalized)) {
-          throw new Error("Expressão inválida");
-        }
-        const result = Function('"use strict"; return (' + normalized + ')')();
-        if (Number.isFinite(result)) return "O resultado é " + result;
-      } catch (e) {}
-    }
+    if(t.includes("obrigado"))
+      return "De nada! Continua a aprender.";
 
-    return "Recebi a tua mensagem: " + message +
-      ". Ainda não estou ligado a um serviço de IA para responder a todas as perguntas. Posso responder a cumprimentos e algumas operações simples.";
+    if(t.includes("teu nome"))
+      return "O meu nome é Super Meta IA.";
+
+    return "Recebi a tua mensagem. Para responder a perguntas escolares complexas, ainda preciso de uma ligação a um serviço de inteligência artificial.";
   }
 
-  window.smSend = function () {
-    const input = $("sm-question");
-    const message = input.value.trim();
+  window.smSend=function(){
+    const input=$("sm-message");
+    const message=input.value.trim();
+    if(!message) return;
 
-    if (!message) {
-      input.focus();
-      return;
-    }
+    const chat=$("sm-chat");
 
-    const box = $("sm-messages");
+    const user=document.createElement("div");
+    user.className="sm-bubble user";
+    user.textContent="Tu: "+message;
+    chat.appendChild(user);
 
-    const user = document.createElement("div");
-    user.className = "sm-message sm-user";
-    user.textContent = "Tu: " + message;
-    box.appendChild(user);
+    const response=answer(message);
+    const bot=document.createElement("div");
+    bot.className="sm-bubble";
+    bot.textContent="Super Meta: "+response;
+    chat.appendChild(bot);
 
-    const answer = smAnswer(message);
-    smLastAnswer = answer;
-
-    const bot = document.createElement("div");
-    bot.className = "sm-message";
-    bot.textContent = "Super Meta: " + answer;
-    box.appendChild(bot);
-
-    input.value = "";
-    box.scrollTop = box.scrollHeight;
-
-    smSpeak(answer);
+    input.value="";
+    chat.scrollTop=chat.scrollHeight;
+    smSpeak(response);
   };
 
-  // RECONHECIMENTO DE VOZ
-  window.smListen = function () {
-    const Recognition =
-      window.SpeechRecognition ||
+  // MICROFONE
+  window.smMic=function(){
+    const API=window.SpeechRecognition||
       window.webkitSpeechRecognition;
 
-    if (!Recognition) {
-      $("sm-voice-status").textContent =
-        "O reconhecimento de voz não está disponível neste navegador. Usa o teclado ou experimenta o Chrome.";
+    if(!API){
+      alert("O teu navegador não suporta reconhecimento de voz.");
       return;
     }
 
-    const recognition = new Recognition();
-    recognition.lang = "pt-MZ";
-    recognition.interimResults = false;
-
-    recognition.onstart = () => {
-      $("sm-voice-status").textContent = "Estou a ouvir...";
-    };
-
-    recognition.onresult = event => {
-      $("sm-question").value =
-        event.results[0][0].transcript;
+    const recognition=new API();
+    recognition.lang=$("sm-lang").value;
+    recognition.onresult=e=>{
+      $("sm-message").value=e.results[0][0].transcript;
       smSend();
     };
-
-    recognition.onerror = event => {
-      $("sm-voice-status").textContent =
-        "Erro no microfone: " + event.error;
+    recognition.onerror=e=>{
+      alert("Erro no microfone: "+e.error);
     };
-
     recognition.start();
   };
 
-  // BIBLIOTECA PDF
-  window.smAddBook = function () {
-    const file = $("sm-book-file").files[0];
+  // BIBLIOTECA
+  window.smAddBook=function(){
+    const file=$("sm-file").files[0];
 
-    if (!file) {
-      alert("Seleciona primeiro um livro PDF.");
-      return;
-    }
-
-    if (file.type !== "application/pdf") {
+    if(!file || file.type!=="application/pdf"){
       alert("Seleciona um ficheiro PDF válido.");
       return;
     }
 
-    const url = URL.createObjectURL(file);
+    const url=URL.createObjectURL(file);
 
-    const book = {
-      name: file.name,
-      country: $("sm-country").value,
-      grade: $("sm-class").value,
-      subject: $("sm-subject").value,
-      url: url
-    };
+    books.push({
+      name:file.name,
+      country:$("sm-country").value,
+      grade:$("sm-grade").value,
+      subject:$("sm-subject").value,
+      url:url
+    });
 
-    smBooks.push(book);
-    smRenderBooks();
-    $("sm-book-file").value = "";
+    renderBooks();
+    $("sm-file").value="";
   };
 
-  function smRenderBooks() {
-    const list = $("sm-book-list");
-    list.innerHTML = "";
+  function renderBooks(){
+    const grid=$("sm-books");
+    grid.innerHTML="";
 
-    smBooks.forEach((book, index) => {
-      const item = document.createElement("div");
-      item.className = "sm-message";
+    books.forEach(book=>{
+      const card=document.createElement("div");
+      card.className="sm-book";
 
-      const title = document.createElement("p");
-      title.textContent =
-        book.name + " — " + book.country + " — " +
-        book.grade + " — " + book.subject;
+      const icon=document.createElement("div");
+      icon.className="sm-book-icon";
+      icon.textContent="📕";
 
-      const open = document.createElement("button");
-      open.textContent = "Abrir livro";
-      open.onclick = () => {
-        $("sm-pdf").src = book.url;
+      const title=document.createElement("h3");
+      title.textContent=book.name;
+
+      const detail=document.createElement("p");
+      detail.textContent=
+        book.country+" · "+book.grade+" · "+book.subject;
+
+      const open=document.createElement("button");
+      open.textContent="Abrir livro";
+      open.onclick=()=>{
+        $("sm-reader").src=book.url;
+        smPage("library");
       };
 
-      item.appendChild(title);
-      item.appendChild(open);
-      list.appendChild(item);
+      card.append(icon,title,detail,open);
+      grid.appendChild(card);
     });
   }
 })();
