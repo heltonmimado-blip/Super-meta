@@ -3,145 +3,125 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#10172c">
 <title>Super Meta IA</title>
 
 <style>
 :root {
-  --bg:#0b1020;
-  --panel:#151e35;
-  --panel2:#202d49;
-  --blue:#3984ff;
-  --purple:#875bff;
-  --text:#f4f7ff;
-  --muted:#aab7d0;
-  --border:#30405e;
-  --green:#39c98b;
+ --bg:#080f20;
+ --panel:#141f38;
+ --panel2:#202e4d;
+ --blue:#3984ff;
+ --purple:#875bff;
+ --text:#f4f7ff;
+ --muted:#aab7d0;
+ --border:#30405e;
+ --green:#39c98b;
 }
-* {box-sizing:border-box}
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,sans-serif;
-  font-size:18px;
+*{box-sizing:border-box}
+body{
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:Arial,sans-serif;font-size:17px;
 }
-button,input,select,textarea {font:inherit}
-button {cursor:pointer}
-.app {max-width:850px;margin:auto;min-height:100vh;padding-bottom:30px}
-header {
-  padding:17px;
-  background:linear-gradient(120deg,#172c55,#30205c);
-  border-bottom:1px solid var(--border);
-  position:sticky;top:0;z-index:10;
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app{max-width:900px;margin:auto;min-height:100vh;padding-bottom:30px}
+header{
+ padding:16px;background:linear-gradient(120deg,#172c55,#30205c);
+ position:sticky;top:0;z-index:20;
+ border-bottom:1px solid var(--border)
 }
-.brand {display:flex;align-items:center;gap:12px}
-.logo {
-  width:49px;height:49px;border-radius:15px;
-  background:linear-gradient(135deg,var(--blue),var(--purple));
-  display:grid;place-items:center;font-size:24px;font-weight:bold;
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+ width:49px;height:49px;border-radius:15px;
+ display:grid;place-items:center;
+ background:linear-gradient(135deg,var(--blue),var(--purple));
+ font-weight:bold;font-size:23px
 }
-.brand h1 {font-size:23px;margin:0}
-.brand p {font-size:13px;color:var(--muted);margin:4px 0 0}
-nav {
-  display:flex;gap:8px;overflow-x:auto;
-  padding:11px;background:#10182c;
-  position:sticky;top:82px;z-index:9;
+.brand h1{font-size:23px;margin:0}
+.brand p{font-size:12px;color:var(--muted);margin:4px 0 0}
+nav{
+ display:flex;gap:8px;overflow-x:auto;padding:10px;
+ background:#10182c;position:sticky;top:80px;z-index:15
 }
-nav button {
-  border:1px solid var(--border);border-radius:12px;
-  background:var(--panel);color:white;
-  padding:12px 15px;white-space:nowrap;
+nav button{
+ background:var(--panel);color:white;
+ border:1px solid var(--border);
+ border-radius:12px;padding:12px;white-space:nowrap
 }
-nav button.active {background:var(--blue);border-color:var(--blue)}
-main {padding:15px}
-.page {display:none}
-.page.active {display:block}
-h2 {font-size:26px;margin:8px 0 12px}
-h3 {font-size:20px;margin-top:8px}
-p {line-height:1.5}
-.muted,.small {color:var(--muted)}
-.small {font-size:14px}
-.card {
-  background:var(--panel);
-  border:1px solid var(--border);
-  padding:17px;border-radius:18px;margin-bottom:15px;
+nav button.active{background:var(--blue)}
+main{padding:15px}
+.page{display:none}
+.page.active{display:block}
+h2{font-size:26px;margin:8px 0 14px}
+h3{font-size:19px}
+p{line-height:1.5}
+.card{
+ background:var(--panel);border:1px solid var(--border);
+ border-radius:17px;padding:16px;margin-bottom:15px
 }
-.hero {
-  background:linear-gradient(135deg,#174a91,#5934a0);
-  border:0;padding:23px;
+.hero{
+ background:linear-gradient(135deg,#174a91,#5934a0);
+ border:0;padding:23px
 }
-.hero h2 {font-size:29px}
-.grid {display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.field {margin:14px 0}
-label {display:block;margin-bottom:8px;font-weight:bold}
-input,select,textarea {
-  width:100%;padding:14px;border-radius:12px;
-  border:1px solid var(--border);
-  background:#0e172b;color:white;
-  outline:none;
+.hero h2{font-size:29px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin:14px 0}
+label{display:block;font-weight:bold;margin-bottom:8px}
+input,select,textarea{
+ width:100%;padding:13px;border-radius:12px;
+ border:1px solid var(--border);
+ background:#0e172b;color:white;outline:none
 }
-textarea {min-height:95px;resize:vertical}
-input:focus,select:focus,textarea:focus {
-  border-color:var(--blue);
+textarea{min-height:100px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--blue)}
+.btn{
+ border:0;border-radius:12px;padding:13px 16px;
+ background:var(--blue);color:white;font-weight:bold
 }
-.btn {
-  border:0;border-radius:13px;padding:14px 17px;
-  background:var(--blue);color:white;font-weight:bold;
+.btn.secondary{background:var(--panel2);border:1px solid var(--border)}
+.btn.purple{background:var(--purple)}
+.btn.danger{background:#a9384a}
+.btn.full{width:100%;margin-top:8px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.badge{
+ display:inline-block;padding:6px 10px;
+ background:#263e65;border-radius:20px;
+ font-size:12px;color:#b9d5ff
 }
-.btn.secondary {background:var(--panel2);border:1px solid var(--border)}
-.btn.purple {background:var(--purple)}
-.btn.danger {background:#a9384a}
-.btn.full {width:100%;margin-top:8px}
-.actions {display:flex;gap:9px;flex-wrap:wrap}
-.chatbox {
-  height:390px;overflow-y:auto;padding:12px;
-  background:#0e172b;border:1px solid var(--border);
-  border-radius:15px;margin-bottom:12px;
+.muted,.small{color:var(--muted)}
+.small{font-size:13px}
+.chatbox{
+ height:390px;overflow-y:auto;padding:12px;
+ background:#0e172b;border:1px solid var(--border);
+ border-radius:15px;margin-bottom:12px
 }
-.message {
-  max-width:92%;padding:13px 15px;
-  border-radius:15px;margin:10px 0;
-  line-height:1.5;overflow-wrap:anywhere;
-  white-space:pre-wrap;
+.message{
+ max-width:94%;padding:13px 15px;
+ border-radius:14px;margin:10px 0;
+ line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere
 }
-.user {background:#245cb1;margin-left:auto}
-.bot {background:#25334f;margin-right:auto}
-.book {
-  background:var(--panel2);padding:14px;
-  border:1px solid var(--border);border-radius:13px;
-  margin:10px 0;overflow-wrap:anywhere;
+.user{background:#245cb1;margin-left:auto}
+.bot{background:#25334f;margin-right:auto}
+.book{
+ background:var(--panel2);padding:14px;
+ border:1px solid var(--border);border-radius:13px;margin:10px 0
 }
-.book button {margin-top:8px}
-iframe {
-  width:100%;height:65vh;border:0;
-  border-radius:12px;background:white;
-}
-.status {font-size:14px;color:#8fc7ff;margin-top:8px}
-.badge {
-  display:inline-block;padding:6px 10px;
-  border-radius:20px;background:#263e65;
-  color:#b9d5ff;font-size:13px;
-}
-footer {
-  text-align:center;color:var(--muted);
-  font-size:13px;padding:20px;
-}
-#photoPreview {
-  max-width:100%;max-height:250px;
-  border-radius:12px;margin-top:10px;
-}
-@media(max-width:480px) {
-  body {font-size:19px}
-  header {padding:14px}
-  nav {top:77px}
-  main {padding:12px}
-  h2 {font-size:27px}
-  .grid {grid-template-columns:1fr}
-  .btn {min-height:52px;font-size:18px}
-  input,select,textarea {font-size:18px;min-height:53px}
-  .chatbox {height:48vh}
+.book button{margin:5px 5px 0 0}
+.status{font-size:13px;color:#8fc7ff;margin-top:8px}
+footer{text-align:center;color:var(--muted);padding:20px;font-size:13px}
+#photoPreview{max-width:100%;max-height:260px;border-radius:12px;margin-top:10px}
+iframe{width:100%;height:65vh;border:0;background:white;border-radius:12px}
+.hidden{display:none!important}
+@media(max-width:520px){
+ body{font-size:18px}
+ nav{top:77px}
+ .grid{grid-template-columns:1fr}
+ main{padding:11px}
+ .btn{min-height:48px}
+ input,select,textarea{font-size:17px;min-height:50px}
+ .chatbox{height:45vh}
 }
 </style>
 </head>
@@ -150,255 +130,329 @@ footer {
 <div class="app">
 
 <header>
-  <div class="brand">
-    <div class="logo">SM</div>
-    <div>
-      <h1>Super Meta IA</h1>
-      <p>O teu assistente de aprendizagem</p>
-    </div>
+ <div class="brand">
+  <div class="logo">SM</div>
+  <div>
+   <h1>SUPER META IA</h1>
+   <p>Inteligência artificial educativa</p>
   </div>
+ </div>
 </header>
 
 <nav>
-  <button class="active" data-page="home">🏠 Início</button>
-  <button data-page="chat">🤖 Assistente</button>
-  <button data-page="books">📚 Livros</button>
-  <button data-page="voice">🎙️ Voz</button>
-  <button data-page="settings">⚙️ Definições</button>
+ <button class="active" data-page="home">🏠 Início</button>
+ <button data-page="chat">🤖 Assistente</button>
+ <button data-page="books">📚 Livros</button>
+ <button data-page="voice">🎙️ Voz</button>
+ <button data-page="settings">⚙️ Definições</button>
 </nav>
 
 <main>
 
-<!-- INÍCIO -->
 <section id="home" class="page active">
-  <div class="card hero">
-    <span class="badge">FULL EDUCATION</span>
-    <h2>Aprender é evoluir!</h2>
-    <p>Bem-vindo ao Super Meta IA. Estuda, faz perguntas e consulta os teus livros.</p>
-    <button class="btn" onclick="showPage('chat')">Começar a estudar →</button>
-  </div>
+ <div class="card hero">
+  <span class="badge">FULL EDUCATION</span>
+  <h2>Aprender é evoluir!</h2>
+  <p>O teu assistente de aprendizagem para todos os níveis de ensino.</p>
+  <button class="btn" onclick="showPage('chat')">Começar a estudar →</button>
+ </div>
 
-  <div class="grid">
-    <div class="card">
-      <h3>🤖 Assistente</h3>
-      <p class="muted">Perguntas e explicações escolares.</p>
-      <button class="btn full" onclick="showPage('chat')">Abrir</button>
-    </div>
-    <div class="card">
-      <h3>📚 Biblioteca</h3>
-      <p class="muted">Guarda e consulta PDFs.</p>
-      <button class="btn full" onclick="showPage('books')">Abrir</button>
-    </div>
-    <div class="card">
-      <h3>🎙️ Voz MULTI</h3>
-      <p class="muted">Vários idiomas e comandos de voz.</p>
-      <button class="btn full" onclick="showPage('voice')">Abrir</button>
-    </div>
-    <div class="card">
-      <h3>🎓 Ensino</h3>
-      <p class="muted">País, classe e disciplina.</p>
-      <button class="btn full" onclick="showPage('settings')">Configurar</button>
-    </div>
+ <div class="grid">
+  <div class="card">
+   <h3>🤖 Assistente IA</h3>
+   <p class="muted">Perguntas, exercícios e explicações.</p>
+   <button class="btn full" onclick="showPage('chat')">Abrir</button>
   </div>
+  <div class="card">
+   <h3>📚 Biblioteca</h3>
+   <p class="muted">Organiza os teus livros escolares.</p>
+   <button class="btn full" onclick="showPage('books')">Abrir</button>
+  </div>
+  <div class="card">
+   <h3>🎙️ Voz MULTI</h3>
+   <p class="muted">Comunicação por áudio.</p>
+   <button class="btn full" onclick="showPage('voice')">Abrir</button>
+  </div>
+  <div class="card">
+   <h3>🎓 Ensino</h3>
+   <p class="muted">Seleciona a tua classe.</p>
+   <button class="btn full" onclick="showPage('settings')">Configurar</button>
+  </div>
+ </div>
 </section>
 
-<!-- ASSISTENTE -->
 <section id="chat" class="page">
-  <h2>🤖 Assistente educativo</h2>
-  <p class="muted">Escreve uma pergunta ou utiliza o microfone.</p>
+ <h2>🤖 Assistente educativo</h2>
 
-  <div class="card">
-    <div class="grid">
-      <div>
-        <label for="level">Nível de ensino</label>
-        <select id="level">
-          <option>Ensino primário</option>
-          <option>Ensino secundário</option>
-          <option>Ensino técnico</option>
-          <option>Ensino superior</option>
-          <option>Aprendizagem geral</option>
-        </select>
-      </div>
-      <div>
-        <label for="subject">Disciplina</label>
-        <select id="subject">
-          <option>Geral</option>
-          <option>Matemática</option>
-          <option>Português</option>
-          <option>Física</option>
-          <option>Química</option>
-          <option>Biologia</option>
-          <option>História</option>
-          <option>Geografia</option>
-          <option>Inglês</option>
-          <option>TIC</option>
-        </select>
-      </div>
-    </div>
+ <div class="card">
+  <div class="grid">
+   <div>
+    <label for="level">Nível / Classe</label>
+    <select id="level">
+     <optgroup label="Ensino primário">
+      <option>1.ª classe</option>
+      <option>2.ª classe</option>
+      <option>3.ª classe</option>
+      <option>4.ª classe</option>
+      <option>5.ª classe</option>
+      <option>6.ª classe</option>
+      <option>7.ª classe</option>
+     </optgroup>
+     <optgroup label="Ensino secundário">
+      <option>8.ª classe</option>
+      <option>9.ª classe</option>
+      <option>10.ª classe</option>
+      <option selected>11.ª classe</option>
+      <option>12.ª classe</option>
+     </optgroup>
+     <option>Ensino técnico</option>
+     <option>Ensino superior</option>
+     <option>Aprendizagem geral</option>
+    </select>
+   </div>
+   <div>
+    <label for="subject">Disciplina</label>
+    <select id="subject">
+     <option>Geral</option>
+     <option>Matemática</option>
+     <option>Português</option>
+     <option>Física</option>
+     <option>Química</option>
+     <option>Biologia</option>
+     <option>História</option>
+     <option>Geografia</option>
+     <option>Inglês</option>
+     <option>Francês</option>
+     <option>TIC</option>
+     <option>Filosofia</option>
+     <option>Educação Visual</option>
+     <option>Educação Física</option>
+     <option>Outra</option>
+    </select>
+   </div>
   </div>
+ </div>
 
-  <div id="chatbox" class="chatbox" aria-live="polite">
-    <div class="message bot">Olá! Sou o Super Meta IA. Como posso ajudar nos teus estudos?</div>
+ <div id="chatbox" class="chatbox" aria-live="polite">
+  <div class="message bot">Olá! Sou o Super Meta IA. Vamos estudar juntos! 📚</div>
+ </div>
+
+ <textarea id="question" placeholder="Escreve uma pergunta ou exercício..."></textarea>
+
+ <div class="actions">
+  <button class="btn" onclick="sendMessage()">Enviar</button>
+  <button class="btn secondary" onclick="startRecognition('chat')">🎙️ Falar</button>
+  <button class="btn secondary" onclick="stopSpeaking()">Parar voz</button>
+  <button class="btn secondary" onclick="clearChat()">Limpar</button>
+ </div>
+
+ <p id="chatStatus" class="status">Assistente em modo básico.</p>
+
+ <div class="card">
+  <h3>📷 Resolver exercícios por fotografia</h3>
+  <p class="small">Seleciona uma imagem para a preparar para análise pela IA, quando estiver ligada.</p>
+  <input type="file" id="photoInput" accept="image/*">
+  <img id="photoPreview" hidden alt="Fotografia selecionada">
+  <p id="photoStatus" class="small"></p>
+  <button class="btn secondary" onclick="clearPhoto()">Remover fotografia</button>
+ </div>
+</section>
+
+<section id="books" class="page">
+ <h2>📚 Biblioteca escolar</h2>
+ <div class="card">
+  <label for="bookType">Tipo de livro</label>
+  <select id="bookType">
+   <option>Livro escolar</option>
+   <option>Manual de exercícios</option>
+   <option>Dicionário</option>
+   <option>Gramática</option>
+   <option>Literatura</option>
+   <option>Livro técnico</option>
+   <option>Outro</option>
+  </select>
+
+  <div class="field">
+   <label for="bookSubject">Disciplina</label>
+   <select id="bookSubject">
+    <option>Português</option>
+    <option>Matemática</option>
+    <option>Física</option>
+    <option>Química</option>
+    <option>Biologia</option>
+    <option>História</option>
+    <option>Geografia</option>
+    <option>Inglês</option>
+    <option>TIC</option>
+    <option>Filosofia</option>
+    <option>Outra</option>
+   </select>
   </div>
 
   <div class="field">
-    <textarea id="question" placeholder="Escreve a tua pergunta..."></textarea>
+   <label for="bookLevel">Classe / Nível</label>
+   <select id="bookLevel">
+    <option>1.ª classe</option>
+    <option>2.ª classe</option>
+    <option>3.ª classe</option>
+    <option>4.ª classe</option>
+    <option>5.ª classe</option>
+    <option>6.ª classe</option>
+    <option>7.ª classe</option>
+    <option>8.ª classe</option>
+    <option>9.ª classe</option>
+    <option>10.ª classe</option>
+    <option>11.ª classe</option>
+    <option>12.ª classe</option>
+    <option>Ensino técnico</option>
+    <option>Ensino superior</option>
+   </select>
   </div>
-  <div class="actions">
-    <button class="btn" onclick="sendMessage()">Enviar</button>
-    <button class="btn secondary" onclick="startRecognition('chat')">🎙️ Falar</button>
-    <button class="btn secondary" onclick="stopSpeaking()">Parar voz</button>
-    <button class="btn secondary" onclick="clearChat()">Limpar conversa</button>
-  </div>
-  <p class="small" id="chatStatus">Modo básico ativo. A IA completa necessita de servidor.</p>
 
-  <div class="card">
-    <h3>📷 Adicionar fotografia</h3>
-    <p class="small">Podes selecionar uma fotografia para a preparar para uma futura função de análise.</p>
-    <input type="file" id="photoInput" accept="image/*">
-    <img id="photoPreview" alt="Pré-visualização" hidden>
-    <p class="small" id="photoStatus"></p>
+  <div class="field">
+   <label for="bookName">Nome do livro</label>
+   <input id="bookName" placeholder="Ex.: Manual de Português">
   </div>
+
+  <div class="field">
+   <label for="bookFile">Selecionar PDF</label>
+   <input type="file" id="bookFile" accept=".pdf,application/pdf">
+  </div>
+
+  <button class="btn full" onclick="saveBook()">Guardar livro</button>
+ </div>
+
+ <div class="card">
+  <h3>Os meus livros</h3>
+  <div id="bookList">A carregar biblioteca...</div>
+ </div>
+
+ <div class="card hidden" id="reader">
+  <h3 id="readerTitle">Leitor PDF</h3>
+  <iframe id="pdfFrame" title="Leitor de PDF"></iframe>
+  <button class="btn secondary full" onclick="closeReader()">Fechar livro</button>
+ </div>
 </section>
 
-<!-- BIBLIOTECA -->
-<section id="books" class="page">
-  <h2>📚 Biblioteca escolar</h2>
-  <p class="muted">Adiciona livros em PDF para consulta no teu dispositivo.</p>
-
-  <div class="card">
-    <label for="bookFile">Escolher PDF</label>
-    <input type="file" id="bookFile" accept="application/pdf">
-    <div class="field">
-      <label for="bookName">Nome do livro</label>
-      <input id="bookName" placeholder="Ex.: Matemática da 11ª classe">
-    </div>
-    <button class="btn full" onclick="saveBook()">Guardar livro</button>
-    <p class="small">Os livros ficam guardados no armazenamento do navegador.</p>
-  </div>
-
-  <div class="card">
-    <h3>Os meus livros</h3>
-    <div id="bookList">A carregar biblioteca...</div>
-  </div>
-
-  <div class="card" id="reader" hidden>
-    <h3 id="readerTitle">Leitor de PDF</h3>
-    <iframe id="pdfFrame" title="Leitor de livro PDF"></iframe>
-    <button class="btn secondary full" onclick="closeReader()">Fechar livro</button>
-  </div>
-</section>
-
-<!-- VOZ -->
 <section id="voice" class="page">
-  <h2>🎙️ Voz MULTI</h2>
-  <div class="card">
-    <label for="language">Escolher idioma</label>
-    <select id="language">
-      <option value="pt-MZ">Português de Moçambique</option>
-      <option value="pt-PT">Português de Portugal</option>
-      <option value="pt-BR">Português do Brasil</option>
-      <option value="en-US">Inglês</option>
-      <option value="fr-FR">Francês</option>
-      <option value="es-ES">Espanhol</option>
-      <option value="sw-KE">Suaíli</option>
-      <option value="zu-ZA">Zulu</option>
-      <option value="af-ZA">Afrikaans</option>
-    </select>
+ <h2>🎙️ Voz MULTI</h2>
+ <div class="card">
+  <label for="language">Idioma</label>
+  <select id="language">
+   <option value="pt-MZ">Português de Moçambique</option>
+   <option value="pt-PT">Português de Portugal</option>
+   <option value="pt-BR">Português do Brasil</option>
+   <option value="en-US">Inglês</option>
+   <option value="fr-FR">Francês</option>
+   <option value="es-ES">Espanhol</option>
+   <option value="sw-KE">Suaíli</option>
+   <option value="zu-ZA">Zulu</option>
+   <option value="af-ZA">Afrikaans</option>
+  </select>
 
-    <div class="field">
-      <label for="voiceSelect">Voz disponível no dispositivo</label>
-      <select id="voiceSelect">
-        <option value="">Voz automática</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="voiceText">Texto para falar</label>
-      <textarea id="voiceText">Olá! Bem-vindo ao Super Meta IA. Vamos aprender juntos.</textarea>
-    </div>
-    <div class="actions">
-      <button class="btn" onclick="speakText()">🔊 Falar</button>
-      <button class="btn secondary" onclick="stopSpeaking()">Parar</button>
-      <button class="btn secondary" onclick="startRecognition('voice')">🎤 Falar comigo</button>
-    </div>
-    <p id="voiceStatus" class="status"></p>
+  <div class="field">
+   <label for="voiceSelect">Voz instalada</label>
+   <select id="voiceSelect">
+    <option value="">Voz automática</option>
+   </select>
   </div>
 
-  <div class="card">
-    <h3>Sobre as vozes</h3>
-    <p class="small">As vozes dependem do Android e do navegador. Escolher Português de Moçambique não garante um sotaque moçambicano se essa voz não estiver instalada.</p>
+  <div class="field">
+   <label for="voiceText">Texto para falar</label>
+   <textarea id="voiceText">Olá! Bem-vindo ao Super Meta IA. Vamos aprender juntos.</textarea>
   </div>
+
+  <div class="actions">
+   <button class="btn" onclick="speakText()">🔊 Falar</button>
+   <button class="btn secondary" onclick="stopSpeaking()">Parar</button>
+   <button class="btn secondary" onclick="startRecognition('voice')">🎤 Falar comigo</button>
+  </div>
+  <p id="voiceStatus" class="status"></p>
+ </div>
+ <div class="card">
+  <h3>Sobre a voz</h3>
+  <p class="small">A disponibilidade dos idiomas depende das vozes instaladas no Android. O reconhecimento de voz pode precisar de internet.</p>
+ </div>
 </section>
 
-<!-- DEFINIÇÕES -->
 <section id="settings" class="page">
-  <h2>⚙️ Definições</h2>
-  <div class="card">
-    <label for="country">País</label>
-    <select id="country">
-      <option>Moçambique</option>
-      <option>Angola</option>
-      <option>Portugal</option>
-      <option>Brasil</option>
-      <option>África do Sul</option>
-      <option>Cabo Verde</option>
-      <option>Guiné-Bissau</option>
-      <option>São Tomé e Príncipe</option>
-      <option>Quénia</option>
-      <option>França</option>
-      <option>Espanha</option>
-      <option>Reino Unido</option>
-      <option>Estados Unidos</option>
-    </select>
+ <h2>⚙️ Definições</h2>
+ <div class="card">
+  <label for="country">País</label>
+  <select id="country">
+   <option>Moçambique</option>
+   <option>Angola</option>
+   <option>Portugal</option>
+   <option>Brasil</option>
+   <option>África do Sul</option>
+   <option>Cabo Verde</option>
+   <option>Guiné-Bissau</option>
+   <option>São Tomé e Príncipe</option>
+   <option>Quénia</option>
+   <option>França</option>
+   <option>Espanha</option>
+   <option>Reino Unido</option>
+   <option>Estados Unidos</option>
+  </select>
 
-    <div class="field">
-      <label for="schoolLevel">Nível de ensino</label>
-      <select id="schoolLevel">
-        <option>Ensino primário</option>
-        <option>Ensino secundário</option>
-        <option>Ensino técnico</option>
-        <option>Ensino superior</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="defaultLanguage">Idioma preferido</label>
-      <select id="defaultLanguage">
-        <option value="pt-MZ">Português de Moçambique</option>
-        <option value="pt-PT">Português de Portugal</option>
-        <option value="pt-BR">Português do Brasil</option>
-        <option value="en-US">Inglês</option>
-        <option value="fr-FR">Francês</option>
-        <option value="es-ES">Espanhol</option>
-      </select>
-    </div>
-
-    <button class="btn full" onclick="saveSettings()">Guardar definições</button>
-    <p id="settingsStatus" class="status"></p>
+  <div class="field">
+   <label for="schoolLevel">Nível de ensino</label>
+   <select id="schoolLevel">
+    <option>Ensino primário</option>
+    <option>Ensino secundário</option>
+    <option>Ensino técnico</option>
+    <option>Ensino superior</option>
+   </select>
   </div>
 
-  <div class="card">
-    <h3>Estado da aplicação</h3>
-    <p>Interface: <strong>Disponível</strong></p>
-    <p>Voz: <strong>Depende do dispositivo</strong></p>
-    <p>PDF: <strong>Biblioteca local</strong></p>
-    <p>IA completa: <strong>Ainda não ligada</strong></p>
-    <p>Offline completo: <strong>Ainda não configurado</strong></p>
+  <div class="field">
+   <label for="defaultLanguage">Idioma preferido</label>
+   <select id="defaultLanguage">
+    <option value="pt-MZ">Português de Moçambique</option>
+    <option value="pt-PT">Português de Portugal</option>
+    <option value="pt-BR">Português do Brasil</option>
+    <option value="en-US">Inglês</option>
+    <option value="fr-FR">Francês</option>
+    <option value="es-ES">Espanhol</option>
+   </select>
   </div>
+
+  <button class="btn full" onclick="saveSettings()">Guardar definições</button>
+  <p id="settingsStatus" class="status"></p>
+ </div>
+
+ <div class="card">
+  <h3>Ligação da inteligência artificial</h3>
+  <p class="small">Para respostas inteligentes completas, precisas de um servidor seguro. O endereço do servidor pode ser configurado aqui. Não coloques chaves secretas neste ficheiro.</p>
+  <label for="aiEndpoint">Endereço do servidor IA</label>
+  <input id="aiEndpoint" type="url" placeholder="https://teu-servidor.com/api/chat">
+  <button class="btn full" onclick="saveEndpoint()">Guardar endereço</button>
+  <p class="small" id="endpointStatus"></p>
+ </div>
+
+ <div class="card">
+  <h3>Estado do sistema</h3>
+  <p>Interface: <strong>Disponível</strong></p>
+  <p>Biblioteca PDF: <strong>Local</strong></p>
+  <p>Voz: <strong>Dependente do dispositivo</strong></p>
+  <p>IA completa: <strong id="aiState">Não ligada</strong></p>
+  <p>Modo offline: <strong>Básico</strong></p>
+ </div>
+
+ <div class="card">
+  <h3>Gestão de dados</h3>
+  <button class="btn danger full" onclick="clearAllHistory()">Apagar histórico de conversas</button>
+ </div>
 </section>
 
 </main>
-<footer>Super Meta IA · Aprender é evoluir.</footer>
+<footer>SUPER META IA · FULL EDUCATION</footer>
 </div>
 
 <script>
 "use strict";
 
-// =====================================
-// SUPER META IA - FUNÇÕES PRINCIPAIS
-// =====================================
-
+// CONFIGURAÇÃO
 const DB_NAME = "SuperMetaDatabase";
 const STORE = "books";
 
@@ -406,617 +460,604 @@ let db = null;
 let currentPdfUrl = null;
 let voices = [];
 let recognition = null;
+let selectedPhoto = null;
+let busy = false;
 
-// Para ativar a IA verdadeira, será necessário
-// configurar um servidor seguro.
-// Nunca colocar uma chave secreta neste ficheiro.
-const AI_ENDPOINT = "";
+let AI_ENDPOINT = "";
 
-// Navegação
-function showPage(id) {
-  document.querySelectorAll(".page").forEach(page => {
-    page.classList.remove("active");
-  });
+const $ = id => document.getElementById(id);
 
-  document.querySelectorAll("nav button").forEach(button => {
-    button.classList.remove("active");
-  });
+// NAVEGAÇÃO
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
 
-  const page = document.getElementById(id);
-  if (!page) return;
+ const page = $(id);
+ if(!page)return;
+ page.classList.add("active");
 
-  page.classList.add("active");
-
-  const button = document.querySelector(
-    'nav button[data-page="' + id + '"]'
-  );
-
-  if (button) button.classList.add("active");
+ const button = document.querySelector('nav button[data-page="'+id+'"]');
+ if(button)button.classList.add("active");
 }
 
-document.querySelectorAll("nav button").forEach(button => {
-  button.addEventListener("click", () => {
-    showPage(button.dataset.page);
-  });
+document.querySelectorAll("nav button").forEach(button=>{
+ button.addEventListener("click",()=>showPage(button.dataset.page));
 });
 
-// =====================================
-// BIBLIOTECA E ARMAZENAMENTO PDF
-// =====================================
-
-function openDatabase() {
-  return new Promise((resolve, reject) => {
-    if (!window.indexedDB) {
-      reject(new Error("IndexedDB não disponível."));
-      return;
-    }
-
-    const request = indexedDB.open(DB_NAME, 1);
-
-    request.onupgradeneeded = () => {
-      const database = request.result;
-
-      if (!database.objectStoreNames.contains(STORE)) {
-        database.createObjectStore(STORE, {
-          keyPath: "id",
-          autoIncrement: true
-        });
-      }
-    };
-
-    request.onsuccess = () => {
-      db = request.result;
-      resolve(db);
-    };
-
-    request.onerror = () => reject(request.error);
-  });
-}
-
-function addBook(book) {
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction(STORE, "readwrite");
-    tx.objectStore(STORE).add(book);
-    tx.oncomplete = resolve;
-    tx.onerror = () => reject(tx.error);
-  });
-}
-
-function getBooks() {
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction(STORE, "readonly");
-    const request = tx.objectStore(STORE).getAll();
-
-    request.onsuccess = () => resolve(request.result);
-    request.onerror = () => reject(request.error);
-  });
-}
-
-function deleteBook(id) {
-  return new Promise((resolve, reject) => {
-    const tx = db.transaction(STORE, "readwrite");
-    tx.objectStore(STORE).delete(id);
-    tx.oncomplete = resolve;
-    tx.onerror = () => reject(tx.error);
-  });
-}
-
-async function saveBook() {
-  const file = document.getElementById("bookFile").files[0];
-  const name = document.getElementById("bookName").value.trim();
-
-  if (!file || file.type !== "application/pdf") {
-    alert("Escolhe um ficheiro PDF válido.");
-    return;
+// BASE DE DADOS
+function openDatabase(){
+ return new Promise((resolve,reject)=>{
+  if(!window.indexedDB){
+   reject(new Error("IndexedDB indisponível"));
+   return;
   }
 
-  try {
-    await addBook({
-      name: name || file.name,
-      filename: file.name,
-      file: file,
-      date: Date.now()
+  const request=indexedDB.open(DB_NAME,2);
+
+  request.onupgradeneeded=()=>{
+   const database=request.result;
+   if(!database.objectStoreNames.contains(STORE)){
+    database.createObjectStore(STORE,{
+     keyPath:"id",autoIncrement:true
     });
+   }
+  };
 
-    document.getElementById("bookFile").value = "";
-    document.getElementById("bookName").value = "";
-
-    await renderBooks();
-    alert("Livro guardado com sucesso!");
-
-  } catch (error) {
-    console.error(error);
-    alert("Não foi possível guardar. Verifica o espaço disponível.");
-  }
+  request.onsuccess=()=>{
+   db=request.result;
+   resolve(db);
+  };
+  request.onerror=()=>reject(request.error);
+ });
 }
 
-async function renderBooks() {
-  const list = document.getElementById("bookList");
-
-  if (!db) {
-    list.textContent = "A biblioteca não está disponível.";
-    return;
-  }
-
-  try {
-    const books = await getBooks();
-
-    if (!books.length) {
-      list.textContent = "Ainda não adicionaste livros.";
-      return;
-    }
-
-    list.replaceChildren();
-
-    books.forEach(book => {
-      const div = document.createElement("div");
-      div.className = "book";
-
-      const title = document.createElement("strong");
-      title.textContent = book.name;
-
-      const open = document.createElement("button");
-      open.className = "btn";
-      open.textContent = "Abrir livro";
-      open.onclick = () => openBook(book);
-
-      const remove = document.createElement("button");
-      remove.className = "btn danger";
-      remove.style.marginLeft = "8px";
-      remove.textContent = "Apagar";
-
-      remove.onclick = async () => {
-        if (confirm("Apagar este livro?")) {
-          await deleteBook(book.id);
-          await renderBooks();
-          closeReader();
-        }
-      };
-
-      div.append(title, document.createElement("br"), open, remove);
-      list.appendChild(div);
-    });
-
-  } catch (error) {
-    console.error(error);
-    list.textContent = "Erro ao carregar os livros.";
-  }
+function addBook(book){
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction(STORE,"readwrite");
+  tx.objectStore(STORE).add(book);
+  tx.oncomplete=resolve;
+  tx.onerror=()=>reject(tx.error);
+ });
 }
 
-function openBook(book) {
-  closeReader();
-
-  currentPdfUrl = URL.createObjectURL(book.file);
-
-  document.getElementById("readerTitle").textContent = book.name;
-  document.getElementById("pdfFrame").src = currentPdfUrl;
-  document.getElementById("reader").hidden = false;
-
-  document.getElementById("reader").scrollIntoView({
-    behavior: "smooth"
-  });
+function getBooks(){
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction(STORE,"readonly");
+  const request=tx.objectStore(STORE).getAll();
+  request.onsuccess=()=>resolve(request.result);
+  request.onerror=()=>reject(request.error);
+ });
 }
 
-function closeReader() {
-  document.getElementById("pdfFrame").src = "about:blank";
-  document.getElementById("reader").hidden = true;
-
-  if (currentPdfUrl) {
-    URL.revokeObjectURL(currentPdfUrl);
-    currentPdfUrl = null;
-  }
+function deleteBook(id){
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction(STORE,"readwrite");
+  tx.objectStore(STORE).delete(id);
+  tx.oncomplete=resolve;
+  tx.onerror=()=>reject(tx.error);
+ });
 }
 
-// =====================================
-// VOZ MULTI
-// =====================================
+// GUARDAR LIVROS
+async function saveBook(){
+ const file=$("bookFile").files[0];
+ const name=$("bookName").value.trim();
 
-function loadVoices() {
-  if (!("speechSynthesis" in window)) return;
+ if(!file || file.type!=="application/pdf"){
+  alert("Seleciona um ficheiro PDF válido.");
+  return;
+ }
 
-  voices = speechSynthesis.getVoices();
+ if(!db){
+  alert("A biblioteca ainda não está pronta.");
+  return;
+ }
 
-  const select = document.getElementById("voiceSelect");
-  const previous = select.value;
+ if(file.size>40*1024*1024){
+  alert("O PDF é muito grande. Escolhe um ficheiro inferior a 40 MB.");
+  return;
+ }
 
-  select.innerHTML = "";
-
-  const automatic = document.createElement("option");
-  automatic.value = "";
-  automatic.textContent = "Voz automática";
-  select.appendChild(automatic);
-
-  voices.forEach((voice, index) => {
-    const option = document.createElement("option");
-    option.value = String(index);
-    option.textContent = voice.name + " (" + voice.lang + ")";
-    select.appendChild(option);
+ try{
+  await addBook({
+   name:name || file.name,
+   filename:file.name,
+   type:$("bookType").value,
+   subject:$("bookSubject").value,
+   level:$("bookLevel").value,
+   file:file,
+   date:Date.now()
   });
 
-  if (previous !== "") select.value = previous;
+  $("bookFile").value="";
+  $("bookName").value="";
+  await renderBooks();
+  alert("Livro guardado com sucesso!");
+
+ }catch(error){
+  console.error(error);
+  alert("Não foi possível guardar o livro.");
+ }
 }
 
-if ("speechSynthesis" in window) {
-  loadVoices();
-  speechSynthesis.onvoiceschanged = loadVoices;
-}
+async function renderBooks(){
+ const list=$("bookList");
+ if(!db){
+  list.textContent="Biblioteca indisponível.";
+  return;
+ }
 
-function speakText(textOverride) {
-  if (!("speechSynthesis" in window)) {
-    alert("O navegador não suporta leitura de voz.");
-    return;
+ try{
+  const books=await getBooks();
+  list.replaceChildren();
+
+  if(!books.length){
+   list.textContent="Ainda não adicionaste livros.";
+   return;
   }
 
-  const text = textOverride ||
-    document.getElementById("voiceText").value.trim();
+  books.sort((a,b)=>b.date-a.date);
 
-  if (!text) return;
+  books.forEach(book=>{
+   const div=document.createElement("div");
+   div.className="book";
 
-  speechSynthesis.cancel();
+   const title=document.createElement("strong");
+   title.textContent=book.name;
 
-  const language = document.getElementById("language").value;
-  const utterance = new SpeechSynthesisUtterance(text);
+   const details=document.createElement("p");
+   details.className="small";
+   details.textContent=(book.subject||"Geral")+" · "+(book.level||"")+" · "+(book.type||"Livro");
 
-  utterance.lang = language;
-  utterance.rate = 0.95;
+   const open=document.createElement("button");
+   open.className="btn";
+   open.textContent="Abrir";
+   open.onclick=()=>openBook(book);
 
-  const selected = document.getElementById("voiceSelect").value;
-
-  if (selected !== "" && voices[Number(selected)]) {
-    utterance.voice = voices[Number(selected)];
-  } else {
-    const prefix = language.split("-")[0].toLowerCase();
-
-    const match =
-      voices.find(v => v.lang.toLowerCase() === language.toLowerCase()) ||
-      voices.find(v => v.lang.toLowerCase().startsWith(prefix));
-
-    if (match) utterance.voice = match;
-  }
-
-  utterance.onstart = () => {
-    document.getElementById("voiceStatus").textContent = "A falar...";
-  };
-
-  utterance.onend = () => {
-    document.getElementById("voiceStatus").textContent = "Leitura concluída.";
-  };
-
-  utterance.onerror = () => {
-    document.getElementById("voiceStatus").textContent =
-      "Não foi possível reproduzir esta voz.";
-  };
-
-  speechSynthesis.speak(utterance);
-}
-
-function stopSpeaking() {
-  if ("speechSynthesis" in window) {
-    speechSynthesis.cancel();
-  }
-}
-
-// Reconhecimento de voz
-function startRecognition(destination) {
-  const Recognition =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
-
-  if (!Recognition) {
-    alert("Reconhecimento de voz não disponível. Experimenta o Chrome.");
-    return;
-  }
-
-  if (recognition) {
-    try { recognition.stop(); } catch(e) {}
-  }
-
-  recognition = new Recognition();
-
-  recognition.lang = document.getElementById("language").value;
-  recognition.interimResults = false;
-  recognition.maxAlternatives = 1;
-
-  recognition.onstart = () => {
-    document.getElementById("voiceStatus").textContent =
-      "Estou a ouvir...";
-  };
-
-  recognition.onresult = event => {
-    const spoken = event.results[0][0].transcript;
-
-    if (destination === "chat") {
-      document.getElementById("question").value = spoken;
-      showPage("chat");
-    } else {
-      document.getElementById("voiceText").value = spoken;
+   const remove=document.createElement("button");
+   remove.className="btn danger";
+   remove.textContent="Apagar";
+   remove.onclick=async()=>{
+    if(confirm("Apagar este livro?")){
+     await deleteBook(book.id);
+     if($("readerTitle").dataset.bookId===String(book.id))closeReader();
+     await renderBooks();
     }
+   };
 
-    document.getElementById("voiceStatus").textContent =
-      "Voz reconhecida.";
-  };
+   div.append(title,details,open,remove);
+   list.appendChild(div);
+  });
+ }catch(error){
+  console.error(error);
+  list.textContent="Erro ao carregar a biblioteca.";
+ }
+}
 
-  recognition.onerror = event => {
-    document.getElementById("voiceStatus").textContent =
-      "Erro no microfone: " + event.error;
-  };
+function openBook(book){
+ closeReader();
+ currentPdfUrl=URL.createObjectURL(book.file);
+ $("readerTitle").textContent=book.name;
+ $("readerTitle").dataset.bookId=String(book.id);
+ $("pdfFrame").src=currentPdfUrl;
+ $("reader").classList.remove("hidden");
+ $("reader").scrollIntoView({behavior:"smooth"});
+}
 
-  recognition.onend = () => {
-    recognition = null;
-  };
+function closeReader(){
+ $("pdfFrame").src="about:blank";
+ $("reader").classList.add("hidden");
+ if(currentPdfUrl){
+  URL.revokeObjectURL(currentPdfUrl);
+  currentPdfUrl=null;
+ }
+}
 
-  try {
-    recognition.start();
-  } catch(error) {
-    alert("Não foi possível iniciar o microfone.");
+// VOZ
+function loadVoices(){
+ if(!("speechSynthesis" in window))return;
+
+ voices=speechSynthesis.getVoices();
+ const select=$("voiceSelect");
+ const previous=select.value;
+
+ select.replaceChildren();
+
+ const automatic=document.createElement("option");
+ automatic.value="";
+ automatic.textContent="Voz automática";
+ select.appendChild(automatic);
+
+ voices.forEach((voice,index)=>{
+  const option=document.createElement("option");
+  option.value=String(index);
+  option.textContent=voice.name+" ("+voice.lang+")";
+  select.appendChild(option);
+ });
+
+ if(previous!=="")select.value=previous;
+}
+
+if("speechSynthesis" in window){
+ loadVoices();
+ speechSynthesis.onvoiceschanged=loadVoices;
+}
+
+function speakText(textOverride){
+ if(!("speechSynthesis" in window)){
+  alert("Este navegador não suporta leitura de voz.");
+  return;
+ }
+
+ const text=textOverride || $("voiceText").value.trim();
+ if(!text)return;
+
+ speechSynthesis.cancel();
+
+ const utterance=new SpeechSynthesisUtterance(text);
+ const language=$("language").value;
+ utterance.lang=language;
+ utterance.rate=0.95;
+
+ const selected=$("voiceSelect").value;
+
+ if(selected!=="" && voices[Number(selected)]){
+  utterance.voice=voices[Number(selected)];
+ }else{
+  const prefix=language.split("-")[0].toLowerCase();
+  const match=voices.find(v=>v.lang.toLowerCase()===language.toLowerCase())
+   ||voices.find(v=>v.lang.toLowerCase().startsWith(prefix));
+  if(match)utterance.voice=match;
+ }
+
+ utterance.onstart=()=>$("voiceStatus").textContent="A falar...";
+ utterance.onend=()=>$("voiceStatus").textContent="Leitura concluída.";
+ utterance.onerror=()=>$("voiceStatus").textContent="Erro na reprodução.";
+
+ speechSynthesis.speak(utterance);
+}
+
+function stopSpeaking(){
+ if("speechSynthesis" in window)speechSynthesis.cancel();
+}
+
+function startRecognition(destination){
+ const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+
+ if(!Recognition){
+  alert("Reconhecimento de voz indisponível. Experimenta o Chrome.");
+  return;
+ }
+
+ if(recognition){
+  try{recognition.stop()}catch(e){}
+ }
+
+ recognition=new Recognition();
+ recognition.lang=$("language").value;
+ recognition.interimResults=false;
+ recognition.maxAlternatives=1;
+
+ recognition.onstart=()=>{
+  $("voiceStatus").textContent="Estou a ouvir...";
+  $("chatStatus").textContent="Microfone ativo...";
+ };
+
+ recognition.onresult=event=>{
+  const spoken=event.results[0][0].transcript;
+
+  if(destination==="chat"){
+   $("question").value=spoken;
+   showPage("chat");
+  }else{
+   $("voiceText").value=spoken;
   }
+  $("voiceStatus").textContent="Voz reconhecida.";
+ };
+
+ recognition.onerror=event=>{
+  $("voiceStatus").textContent="Erro no microfone: "+event.error;
+ };
+
+ recognition.onend=()=>{recognition=null};
+
+ try{recognition.start()}
+ catch(error){alert("Não foi possível iniciar o microfone.")}
 }
 
-// =====================================
-// CHAT E HISTÓRICO
-// =====================================
-
-function addMessage(text, type) {
-  const box = document.getElementById("chatbox");
-  const div = document.createElement("div");
-
-  div.className = "message " + type;
-  div.textContent = text;
-
-  box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
+// CHAT
+function addMessage(text,type){
+ const box=$("chatbox");
+ const div=document.createElement("div");
+ div.className="message "+type;
+ div.textContent=String(text);
+ box.appendChild(div);
+ box.scrollTop=box.scrollHeight;
 }
 
-function saveChatHistory() {
-  try {
-    const messages = Array.from(
-      document.querySelectorAll("#chatbox .message")
-    ).map(message => ({
-      text: message.textContent,
-      type: message.classList.contains("user") ? "user" : "bot"
-    }));
+function saveChatHistory(){
+ try{
+  const messages=Array.from(
+   document.querySelectorAll("#chatbox .message")
+  ).map(m=>({
+   text:m.textContent,
+   type:m.classList.contains("user")?"user":"bot"
+  }));
+  localStorage.setItem("smChatHistory",JSON.stringify(messages));
+ }catch(e){console.warn(e)}
+}
 
-    localStorage.setItem("smChatHistory", JSON.stringify(messages));
-  } catch(error) {
-    console.warn("Não foi possível guardar o histórico.");
+function loadChatHistory(){
+ try{
+  const saved=JSON.parse(localStorage.getItem("smChatHistory")||"[]");
+  if(!Array.isArray(saved)||!saved.length)return;
+
+  $("chatbox").replaceChildren();
+
+  saved.slice(-60).forEach(m=>{
+   if(typeof m.text==="string"){
+    addMessage(m.text,m.type==="user"?"user":"bot");
+   }
+  });
+ }catch(e){console.warn(e)}
+}
+
+function clearChat(){
+ if(!confirm("Apagar esta conversa?"))return;
+ $("chatbox").replaceChildren();
+ addMessage("Olá! Sou o Super Meta IA. Como posso ajudar?","bot");
+ localStorage.removeItem("smChatHistory");
+}
+
+function clearAllHistory(){
+ if(!confirm("Queres apagar todo o histórico de conversas?"))return;
+ localStorage.removeItem("smChatHistory");
+ clearChatDisplay();
+ alert("Histórico apagado.");
+}
+
+function clearChatDisplay(){
+ $("chatbox").replaceChildren();
+ addMessage("Olá! Sou o Super Meta IA. Vamos estudar juntos!","bot");
+}
+
+function offlineAnswer(question,subject,level){
+ const q=question.toLowerCase();
+
+ if(/^(olá|ola|oi|bom dia|boa tarde|boa noite)[!. ]*$/.test(q)){
+  return "Olá! Bem-vindo ao Super Meta IA. O que vamos aprender hoje?";
+ }
+
+ if(q.includes("quem és")||q.includes("quem es")){
+  return "Sou o Super Meta IA, o teu assistente educativo.";
+ }
+
+ if(q.includes("obrigado")||q.includes("obrigada")){
+  return "De nada! Continua a estudar e a aprender.";
+ }
+
+ if(q.includes("tabuada")){
+  return "A tabuada é uma forma de representar multiplicações. Por exemplo: 3 × 4 = 12.";
+ }
+
+ if(q.includes("fotossíntese")){
+  return "A fotossíntese é o processo pelo qual as plantas produzem o seu alimento utilizando luz, água e dióxido de carbono.";
+ }
+
+ if(q.includes("átomo")||q.includes("atomo")){
+  return "Um átomo é a unidade básica da matéria. É constituído por protões, neutrões e eletrões.";
+ }
+
+ if(q.includes("verbo")){
+  return "O verbo é a palavra que indica uma ação, estado ou fenómeno. Exemplo: estudar, ser, chover.";
+ }
+
+ return "Recebi a tua pergunta sobre "+subject+" ("+level+").\n\n"+
+ "Estou atualmente no modo educativo básico, sem ligação à IA completa.\n\n"+
+ "Para receber explicações personalizadas, resolver exercícios e analisar fotografias, é necessário ligar um servidor de inteligência artificial.";
+}
+
+// ENVIO DE PERGUNTAS
+async function sendMessage(){
+ if(busy)return;
+
+ const question=$("question").value.trim();
+ if(!question)return;
+
+ busy=true;
+ $("question").value="";
+ addMessage(question,"user");
+ saveChatHistory();
+
+ const level=$("level").value;
+ const subject=$("subject").value;
+
+ $("chatStatus").textContent="A preparar resposta...";
+
+ if(AI_ENDPOINT){
+  try{
+   const response=await fetch(AI_ENDPOINT,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+     question:question,
+     level:level,
+     subject:subject,
+     country:$("country").value,
+     language:$("language").value
+    })
+   });
+
+   if(!response.ok)throw new Error("Erro HTTP "+response.status);
+
+   const data=await response.json();
+   const answer=data.answer||data.response;
+
+   if(typeof answer!=="string"||!answer.trim()){
+    throw new Error("Resposta inválida do servidor.");
+   }
+
+   addMessage(answer,"bot");
+   $("voiceText").value=answer;
+   $("chatStatus").textContent="Resposta recebida.";
+
+  }catch(error){
+   console.error(error);
+   addMessage("Não consegui ligar à IA. Verifica a internet e a configuração do servidor.","bot");
+   $("chatStatus").textContent="Falha na ligação.";
   }
+ }else{
+  const answer=offlineAnswer(question,subject,level);
+  addMessage(answer,"bot");
+  $("voiceText").value=answer;
+  $("chatStatus").textContent="Resposta do modo básico.";
+ }
+
+ saveChatHistory();
+ busy=false;
 }
 
-function loadChatHistory() {
-  try {
-    const saved = JSON.parse(
-      localStorage.getItem("smChatHistory") || "[]"
-    );
+$("question").addEventListener("keydown",event=>{
+ if(event.key==="Enter"&&!event.shiftKey){
+  event.preventDefault();
+  sendMessage();
+ }
+});
 
-    if (!Array.isArray(saved) || !saved.length) return;
-
-    const box = document.getElementById("chatbox");
-    box.replaceChildren();
-
-    saved.slice(-60).forEach(message => {
-      if (typeof message.text === "string") {
-        addMessage(message.text,
-          message.type === "user" ? "user" : "bot");
-      }
-    });
-
-  } catch(error) {
-    console.warn("Histórico não disponível.");
-  }
-}
-
-function clearChat() {
-  if (!confirm("Queres apagar o histórico desta conversa?")) return;
-
-  const box = document.getElementById("chatbox");
-  box.replaceChildren();
-
-  addMessage(
-    "Olá! Sou o Super Meta IA. Como posso ajudar nos teus estudos?",
-    "bot"
-  );
-
-  localStorage.removeItem("smChatHistory");
-}
-
-async function sendMessage() {
-  const input = document.getElementById("question");
-  const question = input.value.trim();
-
-  if (!question) return;
-
-  input.value = "";
-  addMessage(question, "user");
-  saveChatHistory();
-
-  const level = document.getElementById("level").value;
-  const subject = document.getElementById("subject").value;
-  const status = document.getElementById("chatStatus");
-
-  status.textContent = "A preparar resposta...";
-
-  // Ligação opcional a um servidor de IA seguro.
-  // O servidor deve receber question, level e subject
-  // e devolver JSON com a propriedade answer.
-  if (AI_ENDPOINT) {
-    try {
-      const response = await fetch(AI_ENDPOINT, {
-        method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({
-          question: question,
-          level: level,
-          subject: subject
-        })
-      });
-
-      if (!response.ok) throw new Error("Erro no servidor.");
-
-      const data = await response.json();
-      const answer = data.answer || data.response;
-
-      if (!answer) throw new Error("Resposta vazia.");
-
-      addMessage(String(answer), "bot");
-      document.getElementById("voiceText").value = String(answer);
-      saveChatHistory();
-
-      status.textContent = "Resposta recebida.";
-      return;
-
-    } catch(error) {
-      console.error(error);
-
-      addMessage(
-        "Não consegui ligar ao servidor de IA. Verifica a ligação e a configuração.",
-        "bot"
-      );
-
-      status.textContent = "Falha na ligação à IA.";
-      saveChatHistory();
-      return;
-    }
-  }
-
-  const normalized = question.toLowerCase();
-  let answer;
-
-  if (/^(olá|ola|oi|bom dia|boa tarde|boa noite)[!. ]*$/.test(normalized)) {
-    answer = "Olá! Estou aqui para ajudar nos teus estudos. Qual é a tua pergunta?";
-  } else if (
-    normalized.includes("quem és") ||
-    normalized.includes("quem es")
-  ) {
-    answer = "Sou o Super Meta IA, um assistente educativo em desenvolvimento.";
-  } else if (
-    normalized.includes("obrigado") ||
-    normalized.includes("obrigada")
-  ) {
-    answer = "De nada! Continua a aprender e a fazer perguntas.";
-  } else {
-    answer =
-      "Recebi a tua pergunta sobre " + subject + " (" + level + ").\n\n" +
-      "Nesta versão ainda não estou ligado a uma IA completa. " +
-      "Para explicar matérias, resolver exercícios e responder livremente, " +
-      "precisamos de configurar um servidor seguro de inteligência artificial.";
-  }
-
-  addMessage(answer, "bot");
-  document.getElementById("voiceText").value = answer;
-
-  saveChatHistory();
-  status.textContent = "Resposta do modo básico.";
-}
-
-// =====================================
 // FOTOGRAFIAS
-// =====================================
+$("photoInput").addEventListener("change",event=>{
+ const file=event.target.files[0];
+ if(!file)return;
 
-document.getElementById("photoInput").addEventListener("change", event => {
-  const file = event.target.files[0];
-  const preview = document.getElementById("photoPreview");
-  const status = document.getElementById("photoStatus");
+ if(!file.type.startsWith("image/")){
+  $("photoStatus").textContent="Seleciona uma imagem válida.";
+  return;
+ }
 
-  if (!file) return;
+ if(file.size>12*1024*1024){
+  $("photoStatus").textContent="A imagem deve ter menos de 12 MB.";
+  event.target.value="";
+  return;
+ }
 
-  if (!file.type.startsWith("image/")) {
-    status.textContent = "Seleciona uma imagem válida.";
-    return;
-  }
+ selectedPhoto=file;
+ const preview=$("photoPreview");
 
-  if (preview.dataset.url) {
-    URL.revokeObjectURL(preview.dataset.url);
-  }
+ if(preview.dataset.url){
+  URL.revokeObjectURL(preview.dataset.url);
+ }
 
-  const url = URL.createObjectURL(file);
+ const url=URL.createObjectURL(file);
+ preview.src=url;
+ preview.dataset.url=url;
+ preview.hidden=false;
 
-  preview.src = url;
-  preview.dataset.url = url;
-  preview.hidden = false;
-
-  status.textContent =
-    "Imagem carregada. A análise inteligente ainda precisa de IA.";
+ $("photoStatus").textContent="Fotografia selecionada. A análise inteligente requer ligação a um servidor compatível.";
 });
 
-// =====================================
+function clearPhoto(){
+ const preview=$("photoPreview");
+ if(preview.dataset.url)URL.revokeObjectURL(preview.dataset.url);
+ preview.removeAttribute("src");
+ delete preview.dataset.url;
+ preview.hidden=true;
+ $("photoInput").value="";
+ $("photoStatus").textContent="";
+ selectedPhoto=null;
+}
+
 // DEFINIÇÕES
-// =====================================
+function saveSettings(){
+ const settings={
+  country:$("country").value,
+  level:$("schoolLevel").value,
+  language:$("defaultLanguage").value
+ };
 
-function saveSettings() {
-  const settings = {
-    country: document.getElementById("country").value,
-    level: document.getElementById("schoolLevel").value,
-    language: document.getElementById("defaultLanguage").value
-  };
-
-  try {
-    localStorage.setItem("smSettings", JSON.stringify(settings));
-
-    document.getElementById("language").value = settings.language;
-
-    document.getElementById("settingsStatus").textContent =
-      "Definições guardadas com sucesso.";
-
-  } catch(error) {
-    document.getElementById("settingsStatus").textContent =
-      "Não foi possível guardar as definições.";
-  }
+ try{
+  localStorage.setItem("smSettings",JSON.stringify(settings));
+  $("language").value=settings.language;
+  $("settingsStatus").textContent="Definições guardadas!";
+ }catch(e){
+  $("settingsStatus").textContent="Erro ao guardar.";
+ }
 }
 
-function loadSettings() {
-  try {
-    const settings = JSON.parse(
-      localStorage.getItem("smSettings") || "null"
-    );
+function loadSettings(){
+ try{
+  const settings=JSON.parse(localStorage.getItem("smSettings")||"null");
+  if(!settings)return;
 
-    if (!settings) return;
-
-    if (settings.country) {
-      document.getElementById("country").value = settings.country;
-    }
-
-    if (settings.level) {
-      document.getElementById("schoolLevel").value = settings.level;
-    }
-
-    if (settings.language) {
-      document.getElementById("defaultLanguage").value = settings.language;
-      document.getElementById("language").value = settings.language;
-    }
-
-  } catch(error) {
-    console.warn("Definições não disponíveis.");
+  if(settings.country)$("country").value=settings.country;
+  if(settings.level)$("schoolLevel").value=settings.level;
+  if(settings.language){
+   $("defaultLanguage").value=settings.language;
+   $("language").value=settings.language;
   }
+ }catch(e){console.warn(e)}
 }
 
-// =====================================
-// INICIALIZAÇÃO E PROTEÇÃO CONTRA ERROS
-// =====================================
+function saveEndpoint(){
+ const endpoint=$("aiEndpoint").value.trim();
 
-window.addEventListener("error", event => {
-  console.error("Erro na aplicação:", event.message);
+ if(endpoint){
+  try{
+   const url=new URL(endpoint);
+   if(url.protocol!=="https:" && url.hostname!=="localhost"){
+    alert("Utiliza um endereço HTTPS seguro.");
+    return;
+   }
+  }catch(e){
+   alert("Endereço inválido.");
+   return;
+  }
+ }
+
+ AI_ENDPOINT=endpoint;
+
+ try{
+  localStorage.setItem("smAIEndpoint",AI_ENDPOINT);
+  $("endpointStatus").textContent="Endereço guardado.";
+  $("aiState").textContent=AI_ENDPOINT?"Endereço configurado":"Não ligada";
+ }catch(e){
+  $("endpointStatus").textContent="Não foi possível guardar.";
+ }
+}
+
+function loadEndpoint(){
+ try{
+  AI_ENDPOINT=localStorage.getItem("smAIEndpoint")||"";
+  $("aiEndpoint").value=AI_ENDPOINT;
+  $("aiState").textContent=AI_ENDPOINT?"Endereço configurado":"Não ligada";
+ }catch(e){}
+}
+
+// INICIALIZAÇÃO
+async function initializeApp(){
+ loadSettings();
+ loadEndpoint();
+ loadChatHistory();
+
+ try{
+  await openDatabase();
+  await renderBooks();
+ }catch(error){
+  console.error(error);
+  $("bookList").textContent="Biblioteca indisponível neste navegador.";
+ }
+
+ if("speechSynthesis" in window)loadVoices();
+}
+
+window.addEventListener("beforeunload",()=>{
+ closeReader();
+ if($("photoPreview").dataset.url){
+  URL.revokeObjectURL($("photoPreview").dataset.url);
+ }
 });
-
-async function initializeApp() {
-  loadSettings();
-  loadChatHistory();
-
-  try {
-    await openDatabase();
-    await renderBooks();
-  } catch(error) {
-    console.error(error);
-
-    document.getElementById("bookList").textContent =
-      "A biblioteca não conseguiu iniciar neste navegador.";
-  }
-
-  if ("speechSynthesis" in window) {
-    loadVoices();
-  }
-}
 
 initializeApp();
 </script>
+
 </body>
 </html>
