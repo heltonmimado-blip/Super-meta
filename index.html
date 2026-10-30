@@ -1,580 +1,112 @@
 
-<!-- SUPER META IA - FULL SCREEN V1 -->
-
 <style>
-* { box-sizing: border-box; }
+/* SUPER META IA - MODO TELEMÓVEL */
 
 #supermeta {
-  position: relative;
-  width: 100%;
+  width: 100% !important;
   min-height: 100vh;
-  background: #071329;
-  color: white;
-  font-family: Arial, sans-serif;
-  font-size: 17px;
+  font-size: 19px !important;
 }
 
-#supermeta button,
-#supermeta select,
-#supermeta input {
-  font: inherit;
+#supermeta .sm-header {
+  padding: 22px 17px;
+}
+
+#supermeta .sm-brand {
+  font-size: 27px !important;
+}
+
+#supermeta .sm-layout {
+  display: block !important;
+}
+
+#supermeta .sm-sidebar {
+  display: flex !important;
+  overflow-x: auto;
+  gap: 9px;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+#supermeta .sm-nav {
+  min-width: 112px;
+  padding: 14px 10px !important;
+  font-size: 16px !important;
+  text-align: center !important;
+}
+
+#supermeta .sm-content {
+  padding: 16px 13px 35px !important;
+}
+
+#supermeta .sm-title {
+  font-size: 27px !important;
+  line-height: 1.35;
+}
+
+#supermeta h2 {
+  font-size: 23px !important;
+}
+
+#supermeta h3 {
+  font-size: 21px !important;
+}
+
+#supermeta p,
+#supermeta label,
+#supermeta .sm-muted {
+  font-size: 18px !important;
+  line-height: 1.6;
+}
+
+#supermeta .sm-card {
+  padding: 19px 15px !important;
+  margin-bottom: 17px;
+  border-radius: 17px;
+}
+
+#supermeta .sm-grid {
+  grid-template-columns: 1fr !important;
+  gap: 13px;
 }
 
 #supermeta button {
-  cursor: pointer;
-  border: 0;
-  border-radius: 12px;
-  padding: 13px;
-  background: #2879ef;
-  color: white;
-}
-
-#supermeta select,
-#supermeta input {
   width: 100%;
-  padding: 13px;
-  border-radius: 10px;
-  border: 1px solid #536b91;
-  background: #fff;
-  color: #111;
-  margin: 7px 0 14px;
+  min-height: 55px;
+  padding: 15px !important;
+  font-size: 18px !important;
+  border-radius: 13px;
 }
 
-.sm-header {
-  padding: 20px;
-  background: linear-gradient(120deg,#102c5b,#442b85);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+#supermeta input,
+#supermeta select {
+  min-height: 54px;
+  font-size: 18px !important;
+  padding: 13px !important;
+  margin: 8px 0 15px;
 }
 
-.sm-brand {
-  font-size: 27px;
-  font-weight: bold;
-}
-
-.sm-layout {
-  display: grid;
-  grid-template-columns: 230px minmax(0,1fr);
-  min-height: calc(100vh - 90px);
-}
-
-.sm-sidebar {
-  background: #0d1d38;
-  padding: 16px;
-}
-
-.sm-nav {
-  width: 100%;
-  display: block;
-  text-align: left;
-  margin: 8px 0;
-  background: #1b3157 !important;
-}
-
-.sm-nav.active { background: #2879ef !important; }
-
-.sm-content {
-  padding: 24px;
-  min-width: 0;
-}
-
-.sm-page { display: none; }
-.sm-page.active { display: block; }
-
-.sm-card {
-  background: #142747;
-  border: 1px solid #2c4268;
-  padding: 20px;
-  border-radius: 17px;
-  margin-bottom: 20px;
-}
-
-.sm-title {
-  font-size: 26px;
-  margin-bottom: 15px;
-}
-
-.sm-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 16px;
-}
-
-.sm-chat {
-  height: 45vh;
+#supermeta .sm-chat {
+  height: 48vh;
   min-height: 300px;
-  overflow-y: auto;
-  background: #08152b;
-  padding: 15px;
-  border-radius: 12px;
+  font-size: 18px;
 }
 
-.sm-bubble {
-  background: #263e69;
-  padding: 13px;
-  border-radius: 12px;
-  margin: 10px 0;
-  overflow-wrap: anywhere;
+#supermeta .sm-bubble {
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 14px;
 }
 
-.sm-bubble.user { background: #245d9e; }
-
-.sm-book {
-  background: #203b64;
-  padding: 18px;
-  border-radius: 15px;
+#supermeta .sm-book {
+  padding: 19px;
 }
 
-.sm-book-icon {
-  font-size: 42px;
-}
-
-#sm-reader {
+#supermeta #sm-reader {
+  height: 70vh;
+  min-height: 420px;
   width: 100%;
-  height: 75vh;
-  min-height: 500px;
-  background: white;
-  border: 0;
-  border-radius: 12px;
-}
-
-.sm-muted { color: #bbcae2; }
-
-@media(max-width:700px) {
-  .sm-layout { grid-template-columns: 1fr; }
-  .sm-sidebar {
-    display: flex;
-    overflow-x: auto;
-    gap: 7px;
-  }
-  .sm-nav {
-    min-width: 115px;
-    text-align: center;
-  }
-  .sm-content { padding: 13px; }
-  .sm-header { padding: 15px; }
-  .sm-title { font-size: 23px; }
 }
 </style>
-
-<div id="supermeta">
-
-<header class="sm-header">
-  <div>
-    <div class="sm-brand">🚀 SUPER META IA</div>
-    <div class="sm-muted">A tua escola inteligente</div>
-  </div>
-  <div>🌍 Educação sem fronteiras</div>
-</header>
-
-<div class="sm-layout">
-
-<aside class="sm-sidebar">
-  <button class="sm-nav active" data-page="home">🏠 Início</button>
-  <button class="sm-nav" data-page="chat">🤖 Assistente</button>
-  <button class="sm-nav" data-page="library">📚 Biblioteca</button>
-  <button class="sm-nav" data-page="voice">🔊 Vozes</button>
-</aside>
-
-<main class="sm-content">
-
-<section class="sm-page active" id="page-home">
-  <h1 class="sm-title">Bem-vindo ao Super Meta IA</h1>
-  <p class="sm-muted">Aprender, descobrir e evoluir.</p>
-
-  <div class="sm-grid">
-    <div class="sm-card">
-      <div class="sm-book-icon">🤖</div>
-      <h2>Assistente inteligente</h2>
-      <p>Conversa e ajuda nos estudos.</p>
-      <button onclick="smPage('chat')">Abrir assistente</button>
-    </div>
-
-    <div class="sm-card">
-      <div class="sm-book-icon">📚</div>
-      <h2>Biblioteca escolar</h2>
-      <p>Organiza e consulta os teus livros.</p>
-      <button onclick="smPage('library')">Abrir biblioteca</button>
-    </div>
-
-    <div class="sm-card">
-      <div class="sm-book-icon">🌐</div>
-      <h2>Várias línguas</h2>
-      <p>Seleciona a língua da comunicação.</p>
-      <button onclick="smPage('voice')">Configurar voz</button>
-    </div>
-  </div>
-</section>
-
-<section class="sm-page" id="page-chat">
-  <h1 class="sm-title">🤖 Assistente Super Meta</h1>
-
-  <div class="sm-card">
-    <div class="sm-chat" id="sm-chat">
-      <div class="sm-bubble">
-        Super Meta: Olá! Como posso ajudar-te hoje?
-      </div>
-    </div>
-
-    <input id="sm-message"
-      placeholder="Escreve a tua mensagem..."
-      onkeydown="if(event.key==='Enter')smSend()">
-
-    <div class="sm-grid">
-      <button onclick="smSend()">Enviar</button>
-      <button onclick="smMic()">🎤 Falar</button>
-      <button onclick="smStop()">⏹ Parar voz</button>
-    </div>
-  </div>
-</section>
-
-<section class="sm-page" id="page-library">
-  <h1 class="sm-title">📚 Biblioteca Escolar</h1>
-
-  <div class="sm-card">
-    <label>País</label>
-    <select id="sm-country">
-      <option>Moçambique</option>
-      <option>Angola</option>
-      <option>Portugal</option>
-      <option>Brasil</option>
-      <option>Cabo Verde</option>
-      <option>Guiné-Bissau</option>
-      <option>São Tomé e Príncipe</option>
-      <option>África do Sul</option>
-      <option>Namíbia</option>
-      <option>Zimbabwe</option>
-      <option>Tanzânia</option>
-      <option>Reino Unido</option>
-      <option>Estados Unidos</option>
-    </select>
-
-    <label>Classe / Ano</label>
-    <select id="sm-grade">
-      <option>1.ª classe</option>
-      <option>2.ª classe</option>
-      <option>3.ª classe</option>
-      <option>4.ª classe</option>
-      <option>5.ª classe</option>
-      <option>6.ª classe</option>
-      <option>7.ª classe</option>
-      <option>8.ª classe</option>
-      <option>9.ª classe</option>
-      <option>10.ª classe</option>
-      <option>11.ª classe</option>
-      <option>12.ª classe</option>
-    </select>
-
-    <label>Disciplina</label>
-    <select id="sm-subject">
-      <option>Matemática</option>
-      <option>Português</option>
-      <option>Inglês</option>
-      <option>Física</option>
-      <option>Química</option>
-      <option>Biologia</option>
-      <option>História</option>
-      <option>Geografia</option>
-      <option>TIC</option>
-      <option>Filosofia</option>
-    </select>
-
-    <label>Adicionar manual escolar em PDF</label>
-    <input type="file" id="sm-file" accept=".pdf,application/pdf">
-    <button onclick="smAddBook()">Adicionar à biblioteca</button>
-  </div>
-
-  <h2>Os meus livros</h2>
-  <div class="sm-grid" id="sm-books">
-    <p class="sm-muted">Ainda não existem livros adicionados.</p>
-  </div>
-
-  <div class="sm-card">
-    <h2>📖 Leitor de livros</h2>
-    <iframe id="sm-reader" title="Leitor de PDF"></iframe>
-  </div>
-</section>
-
-<section class="sm-page" id="page-voice">
-  <h1 class="sm-title">🔊 Língua e voz</h1>
-
-  <div class="sm-card">
-    <label>Escolher língua</label>
-    <select id="sm-lang">
-      <option value="pt-MZ">Português de Moçambique</option>
-      <option value="pt-PT">Português de Portugal</option>
-      <option value="pt-BR">Português do Brasil</option>
-      <option value="en-GB">Inglês britânico</option>
-      <option value="en-US">Inglês americano</option>
-      <option value="fr-FR">Francês</option>
-      <option value="es-ES">Espanhol</option>
-      <option value="zu-ZA">Zulu</option>
-      <option value="af-ZA">Afrikaans</option>
-      <option value="sw-TZ">Suaíli</option>
-    </select>
-
-    <label>Voz disponível no dispositivo</label>
-    <select id="sm-voice"></select>
-
-    <label>Tom</label>
-    <select id="sm-tone">
-      <option value="0.8">Grave</option>
-      <option value="1" selected>Normal</option>
-      <option value="1.2">Agudo</option>
-    </select>
-
-    <label>Velocidade</label>
-    <select id="sm-rate">
-      <option value="0.8">Lenta</option>
-      <option value="1" selected>Normal</option>
-      <option value="1.2">Rápida</option>
-    </select>
-
-    <button onclick="smSpeak('Olá! Sou o Super Meta IA. Bem-vindo à tua escola inteligente.')">
-      🔊 Testar voz
-    </button>
-
-    <p id="sm-voice-status" class="sm-muted">
-      A procurar vozes disponíveis...
-    </p>
-  </div>
-</section>
-
-</main>
-</div>
-</div>
-
-<script>
-(function(){
-  const $ = id => document.getElementById(id);
-  let books = [];
-  let currentObjectURL = null;
-
-  // NAVEGAÇÃO
-  window.smPage = function(name){
-    document.querySelectorAll("#supermeta .sm-page")
-      .forEach(p=>p.classList.remove("active"));
-    document.querySelectorAll("#supermeta .sm-nav")
-      .forEach(b=>b.classList.remove("active"));
-
-    $("page-"+name).classList.add("active");
-    document.querySelector('[data-page="'+name+'"]')
-      ?.classList.add("active");
-  };
-
-  document.querySelectorAll("#supermeta .sm-nav")
-    .forEach(button=>{
-      button.addEventListener("click",()=>{
-        smPage(button.dataset.page);
-      });
-    });
-
-  // VOZ
-  function loadVoices(){
-    if(!window.speechSynthesis) return;
-
-    const voices=speechSynthesis.getVoices();
-    const select=$("sm-voice");
-    const lang=$("sm-lang").value;
-    select.innerHTML="";
-
-    const matching=voices.filter(v=>
-      v.lang.toLowerCase()===lang.toLowerCase()
-    );
-
-    const fallback=voices.filter(v=>
-      lang.startsWith("pt") &&
-      v.lang.toLowerCase().startsWith("pt")
-    );
-
-    const choices=matching.length?matching:fallback;
-
-    choices.forEach(v=>{
-      const option=document.createElement("option");
-      option.value=voices.indexOf(v);
-      option.textContent=v.name+" ("+v.lang+")";
-      select.appendChild(option);
-    });
-
-    if(!choices.length){
-      const option=document.createElement("option");
-      option.value="-1";
-      option.textContent="Nenhuma voz compatível instalada";
-      select.appendChild(option);
-    }
-
-    $("sm-voice-status").textContent=choices.length
-      ? "Encontradas "+choices.length+" vozes compatíveis."
-      : "Não existe uma voz compatível instalada. Instala uma voz nas definições do Android.";
-  }
-
-  $("sm-lang").addEventListener("change",loadVoices);
-
-  window.smSpeak=function(text){
-    if(!window.speechSynthesis){
-      $("sm-voice-status").textContent="Voz não suportada.";
-      return;
-    }
-
-    speechSynthesis.cancel();
-
-    const utterance=new SpeechSynthesisUtterance(text);
-    const voices=speechSynthesis.getVoices();
-    const voice=voices[Number($("sm-voice").value)];
-
-    if(voice) utterance.voice=voice;
-
-    utterance.lang=voice?.lang||$("sm-lang").value;
-    utterance.pitch=Number($("sm-tone").value);
-    utterance.rate=Number($("sm-rate").value);
-
-    utterance.onerror=e=>{
-      $("sm-voice-status").textContent="Erro de voz: "+e.error;
-    };
-
-    utterance.onstart=()=>{
-      $("sm-voice-status").textContent="A falar...";
-    };
-
-    speechSynthesis.speak(utterance);
-  };
-
-  window.smStop=function(){
-    speechSynthesis?.cancel();
-    $("sm-voice-status").textContent="Voz parada.";
-  };
-
-  if(window.speechSynthesis){
-    speechSynthesis.onvoiceschanged=loadVoices;
-    loadVoices();
-    setTimeout(loadVoices,1000);
-  }
-
-  // CHAT BÁSICO
-  function answer(message){
-    const t=message.toLowerCase().trim();
-
-    if(/\b(boa noite)\b/.test(t))
-      return "Boa noite! Como estás? Em que posso ajudar-te hoje?";
-
-    if(/\b(bom dia)\b/.test(t))
-      return "Bom dia! Bem-vindo ao Super Meta IA.";
-
-    if(/\b(boa tarde)\b/.test(t))
-      return "Boa tarde! Estou pronto para ajudar-te.";
-
-    if(/\b(olá|ola|oi|hey)\b/.test(t))
-      return "Olá! É bom ter-te aqui. Qual é a tua dúvida?";
-
-    if(t.includes("obrigado"))
-      return "De nada! Continua a aprender.";
-
-    if(t.includes("teu nome"))
-      return "O meu nome é Super Meta IA.";
-
-    return "Recebi a tua mensagem. Para responder a perguntas escolares complexas, ainda preciso de uma ligação a um serviço de inteligência artificial.";
-  }
-
-  window.smSend=function(){
-    const input=$("sm-message");
-    const message=input.value.trim();
-    if(!message) return;
-
-    const chat=$("sm-chat");
-
-    const user=document.createElement("div");
-    user.className="sm-bubble user";
-    user.textContent="Tu: "+message;
-    chat.appendChild(user);
-
-    const response=answer(message);
-    const bot=document.createElement("div");
-    bot.className="sm-bubble";
-    bot.textContent="Super Meta: "+response;
-    chat.appendChild(bot);
-
-    input.value="";
-    chat.scrollTop=chat.scrollHeight;
-    smSpeak(response);
-  };
-
-  // MICROFONE
-  window.smMic=function(){
-    const API=window.SpeechRecognition||
-      window.webkitSpeechRecognition;
-
-    if(!API){
-      alert("O teu navegador não suporta reconhecimento de voz.");
-      return;
-    }
-
-    const recognition=new API();
-    recognition.lang=$("sm-lang").value;
-    recognition.onresult=e=>{
-      $("sm-message").value=e.results[0][0].transcript;
-      smSend();
-    };
-    recognition.onerror=e=>{
-      alert("Erro no microfone: "+e.error);
-    };
-    recognition.start();
-  };
-
-  // BIBLIOTECA
-  window.smAddBook=function(){
-    const file=$("sm-file").files[0];
-
-    if(!file || file.type!=="application/pdf"){
-      alert("Seleciona um ficheiro PDF válido.");
-      return;
-    }
-
-    const url=URL.createObjectURL(file);
-
-    books.push({
-      name:file.name,
-      country:$("sm-country").value,
-      grade:$("sm-grade").value,
-      subject:$("sm-subject").value,
-      url:url
-    });
-
-    renderBooks();
-    $("sm-file").value="";
-  };
-
-  function renderBooks(){
-    const grid=$("sm-books");
-    grid.innerHTML="";
-
-    books.forEach(book=>{
-      const card=document.createElement("div");
-      card.className="sm-book";
-
-      const icon=document.createElement("div");
-      icon.className="sm-book-icon";
-      icon.textContent="📕";
-
-      const title=document.createElement("h3");
-      title.textContent=book.name;
-
-      const detail=document.createElement("p");
-      detail.textContent=
-        book.country+" · "+book.grade+" · "+book.subject;
-
-      const open=document.createElement("button");
-      open.textContent="Abrir livro";
-      open.onclick=()=>{
-        $("sm-reader").src=book.url;
-        smPage("library");
-      };
-
-      card.append(icon,title,detail,open);
-      grid.appendChild(card);
-    });
-  }
-})();
-</script>
