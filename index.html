@@ -1,74 +1,556 @@
+
 <!DOCTYPE html>
-<html lang="pt-MZ">
+<html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Super-meta v5</title>
+<meta name="theme-color" content="#080d20">
+<title>Super Meta IA</title>
+
 <style>
-body{margin:0;font-family:sans-serif;background:#0f172a;color:#fff;display:flex;flex-direction:column;height:100vh}
-header{background:linear-gradient(135deg,#1e40af,#3b82f6);padding:16px;text-align:center}
-#box{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
-.message{padding:12px 16px;border-radius:18px;max-width:85%;line-height:1.4}
-.user{align-self:flex-end;background:#2563eb}
-.ai{align-self:flex-start;background:#1e293b;border:1px solid #334155}
-.bar{display:flex;gap:8px;padding:12px;background:#1e293b}
-input{flex:1;padding:14px;border-radius:12px;border:0;outline:none}
-button{padding:12px 14px;border:0;border-radius:12px;background:#2563eb;color:#fff;font-weight:800}
-.audio-btn{background:#334155;margin-top:8px;width:100%}
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080d20;color:#f8fafc;
+ font-family:Arial,sans-serif
+}
+.app{max-width:520px;margin:auto;min-height:100vh;background:#101a33}
+header{
+ padding:25px 20px;
+ background:linear-gradient(135deg,#101a44,#1648a8,#7139b9);
+ border-radius:0 0 28px 28px;
+}
+.brand{display:flex;align-items:center;gap:13px}
+.logo{
+ width:54px;height:54px;border-radius:17px;
+ background:linear-gradient(135deg,#60a5fa,#9333ea);
+ display:grid;place-items:center;font-size:30px;
+}
+h1{font-size:23px;margin:0}
+header p{font-size:12px;color:#dbeafe}
+.status{font-size:11px;color:#86efac}
+nav{
+ display:flex;gap:7px;overflow-x:auto;padding:13px;
+ background:#111d38;position:sticky;top:0;z-index:5
+}
+nav button{white-space:nowrap;padding:10px 13px}
+button{
+ border:0;border-radius:11px;padding:12px;
+ background:#2563eb;color:white;font-weight:bold;
+ cursor:pointer
+}
+button:active{opacity:.75}
+.secondary{background:#334765}
+.purple{background:#7437c9}
+main{padding:15px}
+.page{display:none}
+.page.active{display:block}
+.card{
+ background:#192744;border:1px solid #2e4165;
+ border-radius:17px;padding:17px;margin-bottom:14px
+}
+h2{font-size:19px;margin:0 0 13px}
+h3{font-size:15px}
+p{line-height:1.5}
+.small{font-size:12px;color:#a8bad7}
+input,select,textarea{
+ width:100%;padding:13px;margin:7px 0 13px;
+ border-radius:10px;border:1px solid #425573;
+ background:#0d1930;color:white;font-size:14px
+}
+label{font-size:12px;font-weight:bold}
+.full{width:100%}
+.grid{
+ display:grid;grid-template-columns:1fr 1fr;gap:10px
+}
+.tile{
+ background:#203557;border:1px solid #344d75;
+ padding:17px;border-radius:15px;cursor:pointer
+}
+.tile .emoji{font-size:27px}
+.tile h3{margin:10px 0 5px}
+.chat{
+ height:300px;overflow:auto;padding:10px;
+ background:#0b152b;border-radius:12px
+}
+.msg{
+ padding:11px;border-radius:12px;
+ margin:8px 0;font-size:14px;line-height:1.5;
+ white-space:pre-wrap;overflow-wrap:anywhere
+}
+.ai{background:#203e6a}
+.user{background:#2856ac;margin-left:25px}
+.row{display:flex;gap:7px;align-items:center}
+.row input{flex:1;min-width:0}
+.book{
+ padding:13px;background:#203557;
+ border-radius:12px;margin:9px 0;
+ display:flex;justify-content:space-between;
+ align-items:center;gap:10px
+}
+.book button{flex-shrink:0}
+#pdf-viewer{
+ width:100%;height:65vh;border:0;
+ background:white;border-radius:12px
+}
+#photo-preview{max-width:100%;border-radius:12px;margin-top:10px}
+.badge{
+ background:#163b37;color:#86efac;
+ padding:5px 9px;border-radius:20px;font-size:11px
+}
+footer{text-align:center;color:#7184a5;padding:20px;font-size:11px}
 </style>
 </head>
+
 <body>
-<header><b>📚 Super-meta v5</b><br><small>Maning Pro - Filosofia & Tudo</small></header>
-<div id="box"><div class="message ai">Olá Helton! 👋 Sou a Super-meta v5. Manda pergunta, foto do TPC ou áudio!</div></div>
-<div class="bar">
-<input id="pergunta" placeholder="Escreve aqui...">
-<button onclick="enviar()">➤</button>
-<button onclick="document.getElementById('foto').click()">📷</button>
+<div class="app">
+
+<header>
+ <div class="brand">
+  <div class="logo">🧠</div>
+  <div>
+   <h1>Super Meta IA</h1>
+   <div class="status">● Assistente educativo</div>
+  </div>
+ </div>
+ <p>O conhecimento não tem fronteiras. Aprende ao teu ritmo.</p>
+</header>
+
+<nav>
+ <button onclick="showPage('home')">🏠 Início</button>
+ <button onclick="showPage('study')">📚 Estudos</button>
+ <button onclick="showPage('library')">📖 Biblioteca</button>
+ <button onclick="showPage('assistant')">🤖 IA</button>
+ <button onclick="showPage('settings')">⚙️ Definições</button>
+</nav>
+
+<main>
+
+<!-- INÍCIO -->
+<section id="home" class="page active">
+ <div class="card">
+  <span class="badge">VERSÃO 3.0</span>
+  <h2 style="margin-top:15px">Bem-vindo ao Super Meta IA!</h2>
+  <p class="small">A tua plataforma para aprender, consultar livros e esclarecer dúvidas.</p>
+  <button class="full" onclick="showPage('study')">Começar a estudar →</button>
+ </div>
+
+ <h2>Explora a plataforma</h2>
+ <div class="grid">
+  <div class="tile" onclick="showPage('study')">
+   <div class="emoji">🎓</div>
+   <h3>Ensino</h3>
+   <p class="small">Classes e disciplinas</p>
+  </div>
+  <div class="tile" onclick="showPage('library')">
+   <div class="emoji">📚</div>
+   <h3>Biblioteca</h3>
+   <p class="small">Consultar livros PDF</p>
+  </div>
+  <div class="tile" onclick="showPage('assistant')">
+   <div class="emoji">🤖</div>
+   <h3>Assistente IA</h3>
+   <p class="small">Perguntas e respostas</p>
+  </div>
+  <div class="tile" onclick="showPage('settings')">
+   <div class="emoji">🎙️</div>
+   <h3>Voz</h3>
+   <p class="small">Configurar áudio</p>
+  </div>
+ </div>
+
+ <div class="card">
+  <h3>🌍 Aprende sem fronteiras</h3>
+  <p class="small">Seleciona o país e consulta a organização escolar correspondente.</p>
+  <button class="full purple" onclick="showPage('study')">Escolher país</button>
+ </div>
+</section>
+
+<!-- ENSINO -->
+<section id="study" class="page">
+ <div class="card">
+  <h2>🎓 Sistema de ensino</h2>
+
+  <label>Escolhe o país</label>
+  <select id="country" onchange="updateCountry()">
+   <option value="mz">🇲🇿 Moçambique</option>
+   <option value="ao">🇦🇴 Angola</option>
+   <option value="pt">🇵🇹 Portugal</option>
+   <option value="br">🇧🇷 Brasil</option>
+   <option value="za">🇿🇦 África do Sul</option>
+   <option value="gb">🇬🇧 Reino Unido</option>
+   <option value="us">🇺🇸 Estados Unidos</option>
+   <option value="cv">🇨🇻 Cabo Verde</option>
+   <option value="gw">🇬🇼 Guiné-Bissau</option>
+   <option value="st">🇸🇹 São Tomé e Príncipe</option>
+   <option value="na">🇳🇦 Namíbia</option>
+   <option value="tz">🇹🇿 Tanzânia</option>
+   <option value="zw">🇿🇼 Zimbabwe</option>
+  </select>
+
+  <div id="system-info" class="small"></div>
+
+  <label>Classe / Ano</label>
+  <select id="grade"></select>
+
+  <label>Disciplina</label>
+  <select id="subject">
+   <option>Matemática</option>
+   <option>Português</option>
+   <option>Inglês</option>
+   <option>Física</option>
+   <option>Química</option>
+   <option>Biologia</option>
+   <option>História</option>
+   <option>Geografia</option>
+   <option>TIC / Informática</option>
+   <option>Educação Visual</option>
+   <option>Outra</option>
+  </select>
+
+  <button class="full" onclick="startStudy()">Confirmar seleção</button>
+ </div>
+
+ <div class="card">
+  <h3>📖 Precisas de um livro?</h3>
+  <p class="small">Consulta a biblioteca para encontrar o material da tua classe.</p>
+  <button class="full purple" onclick="showPage('library')">Abrir biblioteca</button>
+ </div>
+</section>
+
+<!-- BIBLIOTECA -->
+<section id="library" class="page">
+ <div class="card">
+  <h2>📚 Biblioteca digital</h2>
+  <p class="small">Carrega os teus livros PDF para consultar neste dispositivo.</p>
+
+  <label>Escolher livro em PDF</label>
+  <input type="file" id="book-file" accept=".pdf,application/pdf">
+  <button class="full" onclick="addBook()">Adicionar à biblioteca</button>
+ </div>
+
+ <div class="card">
+  <h3>📖 Os meus livros</h3>
+  <div id="book-list">
+   <p class="small">Ainda não adicionaste livros.</p>
+  </div>
+ </div>
+
+ <div id="reader" class="card hidden">
+  <h3 id="book-title">Leitor de livros</h3>
+  <iframe id="pdf-viewer"></iframe>
+  <button class="secondary full" onclick="closeBook()">Fechar livro</button>
+ </div>
+</section>
+
+<!-- ASSISTENTE -->
+<section id="assistant" class="page">
+ <div class="card">
+  <h2>🤖 Super Meta IA</h2>
+  <p class="small">Faz perguntas e consulta as respostas.</p>
+
+  <div class="chat" id="chat">
+   <div class="msg ai">
+    Olá! Sou o Super Meta IA. Posso ajudar-te a estudar.
+    Escreve uma pergunta para começar.
+   </div>
+  </div>
+
+  <div class="row">
+   <input id="question" placeholder="Escreve a tua pergunta...">
+   <button onclick="sendQuestion()">➤</button>
+  </div>
+
+  <button class="full secondary" onclick="startVoice()">🎙️ Falar com o assistente</button>
+
+  <label>Enviar fotografia do exercício</label>
+  <input type="file" id="exercise-photo" accept="image/*">
+  <img id="photo-preview" class="hidden">
+
+  <button class="full purple" onclick="sendPhoto()">Enviar fotografia</button>
+  <p class="small" id="photo-status"></p>
+ </div>
+</section>
+
+<!-- DEFINIÇÕES -->
+<section id="settings" class="page">
+ <div class="card">
+  <h2>⚙️ Configurações</h2>
+
+  <label>Tipo de voz</label>
+  <select id="voice-type">
+   <option value="female">Feminina</option>
+   <option value="male">Masculina</option>
+  </select>
+
+  <label>Velocidade da voz</label>
+  <select id="voice-speed">
+   <option value="0.85">Lenta</option>
+   <option value="1" selected>Normal</option>
+   <option value="1.15">Rápida</option>
+  </select>
+
+  <button class="full" onclick="testVoice()">🔊 Testar voz</button>
+
+  <hr style="border-color:#344765;margin:20px 0">
+
+  <h3>Informação do projeto</h3>
+  <p class="small">Super Meta IA — Plataforma educativa em desenvolvimento.</p>
+ </div>
+</section>
+
+</main>
+
+<footer>SUPER META IA © 2026 · Educação para todos</footer>
 </div>
-<input type="file" id="foto" accept="image/*" hidden onchange="enviarFoto(this)">
 
 <script>
-function falarTexto(t){
- if('speechSynthesis' in window){
-  let u = new SpeechSynthesisUtterance(t); u.lang='pt-PT'; speechSynthesis.speak(u);
+// NAVEGAÇÃO
+function showPage(id){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ window.scrollTo(0,0);
+}
+
+// SISTEMAS ESCOLARES
+const countries={
+ mz:{
+  name:"Moçambique",
+  info:"Ensino primário, secundário e superior. Organização apresentada como referência geral.",
+  grades:["1ª Classe","2ª Classe","3ª Classe","4ª Classe","5ª Classe","6ª Classe","7ª Classe","8ª Classe","9ª Classe","10ª Classe","11ª Classe","12ª Classe"]
+ },
+ ao:{
+  name:"Angola",
+  info:"Sistema com ensino primário e ensino secundário.",
+  grades:["1ª Classe","2ª Classe","3ª Classe","4ª Classe","5ª Classe","6ª Classe","7ª Classe","8ª Classe","9ª Classe","10ª Classe","11ª Classe","12ª Classe"]
+ },
+ pt:{
+  name:"Portugal",
+  info:"Ensino básico: 1º ao 9º ano; ensino secundário: 10º ao 12º ano.",
+  grades:["1º Ano","2º Ano","3º Ano","4º Ano","5º Ano","6º Ano","7º Ano","8º Ano","9º Ano","10º Ano","11º Ano","12º Ano"]
+ },
+ br:{
+  name:"Brasil",
+  info:"Ensino fundamental: 1º ao 9º ano; ensino médio: 1º ao 3º ano.",
+  grades:["1º Ano EF","2º Ano EF","3º Ano EF","4º Ano EF","5º Ano EF","6º Ano EF","7º Ano EF","8º Ano EF","9º Ano EF","1º Ano EM","2º Ano EM","3º Ano EM"]
+ },
+ za:{
+  name:"África do Sul",
+  info:"Grades 1 a 12, divididos em diferentes fases escolares.",
+  grades:Array.from({length:12},(_,i)=>"Grade "+(i+1))
+ },
+ gb:{
+  name:"Reino Unido",
+  info:"Anos escolares variam conforme Inglaterra, Escócia, País de Gales e Irlanda do Norte.",
+  grades:Array.from({length:13},(_,i)=>"Year "+(i+1))
+ },
+ us:{
+  name:"Estados Unidos",
+  info:"Grades 1 a 12. A organização curricular varia por estado e distrito.",
+  grades:Array.from({length:12},(_,i)=>"Grade "+(i+1))
+ },
+ cv:{
+  name:"Cabo Verde",
+  info:"Ensino básico e secundário.",
+  grades:["1º Ano","2º Ano","3º Ano","4º Ano","5º Ano","6º Ano","7º Ano","8º Ano","9º Ano","10º Ano","11º Ano","12º Ano"]
+ },
+ gw:{
+  name:"Guiné-Bissau",
+  info:"Organização escolar apresentada como referência geral.",
+  grades:Array.from({length:12},(_,i)=>(i+1)+"ª Classe")
+ },
+ st:{
+  name:"São Tomé e Príncipe",
+  info:"Ensino básico e secundário.",
+  grades:Array.from({length:12},(_,i)=>(i+1)+"ª Classe")
+ },
+ na:{
+  name:"Namíbia",
+  info:"Grades 1 a 12.",
+  grades:Array.from({length:12},(_,i)=>"Grade "+(i+1))
+ },
+ tz:{
+  name:"Tanzânia",
+  info:"Ensino primário e secundário. A língua e organização dependem da escola.",
+  grades:["Standard I","Standard II","Standard III","Standard IV","Standard V","Standard VI","Standard VII","Form I","Form II","Form III","Form IV","Form V","Form VI"]
+ },
+ zw:{
+  name:"Zimbabwe",
+  info:"Ensino primário e secundário.",
+  grades:["Grade 1","Grade 2","Grade 3","Grade 4","Grade 5","Grade 6","Grade 7","Form 1","Form 2","Form 3","Form 4","Form 5","Form 6"]
  }
+};
+
+function updateCountry(){
+ let code=document.getElementById("country").value;
+ let data=countries[code];
+ let grade=document.getElementById("grade");
+ grade.innerHTML="";
+ data.grades.forEach(g=>{
+  let o=document.createElement("option");
+  o.textContent=g;
+  grade.appendChild(o);
+ });
+ document.getElementById("system-info").textContent=data.info;
 }
-function enviar(){
- let p = document.getElementById('pergunta');
- if(!p.value) return;
- let msgs = document.getElementById('box');
- msgs.innerHTML += `<div class="message user">${p.value}</div>`;
- let r = resolverExercicioLocal(p.value,'11');
- msgs.innerHTML += `<div class="message ai">${r}<br><button class="audio-btn" onclick="falarTexto('${r.replace(/'/g,"")}')">🔊 Ouvir</button></div>`;
- msgs.scrollTop = msgs.scrollHeight; p.value='';
+updateCountry();
+
+function startStudy(){
+ showPage("assistant");
+ addMessage("Sistema escolar: "+countries[document.getElementById("country").value].name+
+ "\nClasse: "+document.getElementById("grade").value+
+ "\nDisciplina: "+document.getElementById("subject").value+
+ "\n\nAgora podes colocar a tua pergunta.","ai");
 }
-function enviarFoto(input){
- if(input.files && input.files[0]){
-  const msgs = document.getElementById('box');
-  msgs.innerHTML += `<div class="message user">📷 Foto enviada</div>`;
-  msgs.scrollTop = msgs.scrollHeight;
-  const loadingId = "loading-foto-" + Date.now();
-  msgs.innerHTML += `<div class="message ai" id="${loadingId}">⏳ A analisar imagem...</div>`;
-  msgs.scrollTop = msgs.scrollHeight;
-  setTimeout(()=>{
-   const elementoLoading = document.getElementById(loadingId);
-   let respostaFoto = `Analisei a imagem! É o teste de Filosofia da 11ª classe. Já tenho as respostas:<br><br>1. Aristóteles, séc IV a.C.<br>2. Nenhum dos alternativos<br>5. Conceito, juízo e raciocínio<br>9. Piaget = Construtivismo<br><br>Queres o gabarito completo?`;
-   elementoLoading.innerHTML = `${respostaFoto}<br><button class="audio-btn" onclick="falarTexto('Analisei a imagem, é o teste de filosofia')">🔊 Ouvir</button>`;
-   msgs.scrollTop = msgs.scrollHeight;
-   falarTexto(respostaFoto);
-  }, 1500);
+
+// BIBLIOTECA PDF
+let books=[];
+let currentURL=null;
+
+function addBook(){
+ let file=document.getElementById("book-file").files[0];
+ if(!file){alert("Escolhe um livro PDF primeiro.");return;}
+ if(file.type!=="application/pdf"){alert("Escolhe um ficheiro PDF válido.");return;}
+
+ let url=URL.createObjectURL(file);
+ books.push({name:file.name,url:url});
+ renderBooks();
+ document.getElementById("book-file").value="";
+}
+
+function renderBooks(){
+ let list=document.getElementById("book-list");
+ list.innerHTML="";
+ books.forEach((b,i)=>{
+  let div=document.createElement("div");
+  div.className="book";
+  let name=document.createElement("span");
+  name.textContent="📘 "+b.name;
+  let btn=document.createElement("button");
+  btn.textContent="Abrir";
+  btn.onclick=()=>openBook(i);
+  div.append(name,btn);
+  list.appendChild(div);
+ });
+}
+
+function openBook(i){
+ currentURL=books[i].url;
+ document.getElementById("book-title").textContent=books[i].name;
+ document.getElementById("pdf-viewer").src=currentURL;
+ document.getElementById("reader").classList.remove("hidden");
+ document.getElementById("reader").scrollIntoView();
+}
+
+function closeBook(){
+ document.getElementById("pdf-viewer").src="about:blank";
+ document.getElementById("reader").classList.add("hidden");
+}
+
+// CHAT
+function addMessage(text,type){
+ let chat=document.getElementById("chat");
+ let div=document.createElement("div");
+ div.className="msg "+type;
+ div.textContent=text;
+ chat.appendChild(div);
+ chat.scrollTop=chat.scrollHeight;
+}
+
+function calculate(text){
+ let m=text.match(/^\s*(-?\d+(?:[.,]\d+)?)\s*([+\-*/])\s*(-?\d+(?:[.,]\d+)?)\s*=?\s*$/);
+ if(!m)return null;
+ let a=Number(m[1].replace(",",".")),b=Number(m[3].replace(",","."));
+ let op=m[2],r;
+ if(op==="+")r=a+b;
+ if(op==="-")r=a-b;
+ if(op==="*")r=a*b;
+ if(op==="/"){
+  if(b===0)return "Não é possível dividir por zero.";
+  r=a/b;
  }
+ return "Resolução:\n"+a+" "+op+" "+b+" = "+r+"\n\nResposta: "+r;
 }
-function resolverExercicioLocal(pergunta, classe){
- let p = pergunta.toLowerCase();
- if(p.includes("fundador") && p.includes("logica")) return "Fundador da lógica é Aristóteles, século IV a.C., na Grécia.";
- if(p.includes("silogismo")) return "Tipos de silogismo: Categórico, Hipotético e Disjuntivo. No teu teste marca 'Nenhum dos alternativos'.";
- if(p.includes("identidade")) return "Princípio da identidade: A é A. O que é, é; o que não é, não é. Uma proposição é equivalente a si mesma.";
- if(p.includes("instrumentos") || p.includes("pensamento")) return "Instrumentos lógicos do pensamento são: Conceito, Juízo e Raciocínio.";
- if(p.includes("piaget")) return "Jean Piaget defendia o Construtivismo.";
- if(p.includes("kant")) return "Kant e a revolução copernicana: Não é o conhecimento que se adapta aos objetos, são os objetos que se adaptam à nossa razão.";
- if(p.includes("definição") || p.includes("definicao")) return "Definição é explicar o que uma coisa é, com género próximo + diferença específica. Não pode ser negativa se puder ser afirmativa.";
- return `Boa pergunta! Para ${classe}ª classe: ${pergunta}. Explica melhor que te dou a resposta completa maning off!`;
+
+function sendQuestion(){
+ let input=document.getElementById("question");
+ let text=input.value.trim();
+ if(!text)return;
+ addMessage(text,"user");
+ input.value="";
+
+ let answer=calculate(text);
+
+ if(!answer){
+  answer="Recebi a tua pergunta.\n\n"+
+  "O módulo de inteligência artificial ainda não está ligado a um servidor. "+
+  "Por isso, não posso afirmar que analisei ou resolvi esta pergunta. "+
+  "A ligação a um serviço de IA será necessária para respostas gerais e explicações completas.";
+ }
+
+ addMessage(answer,"ai");
+ speak(answer);
+}
+
+// FOTOGRAFIAS
+document.getElementById("exercise-photo").addEventListener("change",function(){
+ let f=this.files[0];
+ if(!f)return;
+ let img=document.getElementById("photo-preview");
+ img.src=URL.createObjectURL(f);
+ img.classList.remove("hidden");
+ document.getElementById("photo-status").textContent="Fotografia selecionada. A análise automática exige integração com IA.";
+});
+
+function sendPhoto(){
+ let f=document.getElementById("exercise-photo").files[0];
+ if(!f){alert("Seleciona uma fotografia.");return;}
+ addMessage("Fotografia selecionada: "+f.name,"user");
+ addMessage("A fotografia está selecionada, mas ainda não existe análise automática. Será necessário ligar o serviço de visão artificial.","ai");
+}
+
+// VOZ
+function speak(text){
+ if(!("speechSynthesis" in window))return;
+ speechSynthesis.cancel();
+ let u=new SpeechSynthesisUtterance(text);
+ u.lang=document.getElementById("country").value==="mz"?"pt-PT":"pt-PT";
+ let voices=speechSynthesis.getVoices();
+ let gender=document.getElementById("voice-type").value;
+ let candidates=voices.filter(v=>v.lang.toLowerCase().startsWith("pt"));
+ if(candidates.length){
+  let preferred=candidates.find(v=>
+   gender==="female"?
+   /female|maria|joana|luciana|francisca/i.test(v.name):
+   /male|daniel|antonio|ricardo/i.test(v.name)
+  );
+  u.voice=preferred||candidates[0];
+ }
+ u.pitch=gender==="female"?1.15:0.85;
+ u.rate=Number(document.getElementById("voice-speed").value);
+ speechSynthesis.speak(u);
+}
+
+function testVoice(){
+ speak("Olá! Sou o Super Meta IA. Vamos aprender juntos.");
+}
+
+// RECONHECIMENTO DE VOZ
+function startVoice(){
+ const Recognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!Recognition){
+  alert("O teu navegador não suporta reconhecimento de voz. Experimenta o Chrome.");
+  return;
+ }
+ let rec=new Recognition();
+ rec.lang="pt-PT";
+ rec.interimResults=false;
+ rec.onresult=function(e){
+  document.getElementById("question").value=e.results[0][0].transcript;
+ };
+ rec.onerror=function(){
+  alert("Não foi possível reconhecer a voz. Verifica a permissão do microfone.");
+ };
+ rec.start();
 }
 </script>
 </body>
