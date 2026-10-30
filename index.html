@@ -1,471 +1,370 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super-meta v6 AI</title>
-    <style>
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --bg-gradient: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            --card-bg: #ffffff;
-            --text-color: #1f2937;
-            --gray-bg: #f3f4f6;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Meta IA</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--gray-bg);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 480px;
-            background: var(--gray-bg);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            background: var(--bg-gradient);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 22px;
-        }
-
-        .content {
-            padding: 15px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 18px;
-            border-radius: 14px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            font-size: 17px;
-            color: var(--primary-color);
-        }
-
-        label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #374151;
-            display: block;
-            margin-bottom: 5px;
-            margin-top: 10px;
-        }
-
-        select, input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 10px;
-            font-size: 14px;
-            background: #fff;
-            box-sizing: border-box;
-        }
-
-        .btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-
-        .btn:hover {
-            background: var(--secondary-color);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .chat-box {
-            background: #e0f2fe;
-            border-left: 4px solid var(--primary-color);
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            cursor: pointer;
-        }
-
-        .chat-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .chat-messages {
-            background: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 12px;
-            height: 220px;
-            overflow-y: auto;
-            font-size: 13px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .message {
-            padding: 10px 12px;
-            border-radius: 8px;
-            max-width: 90%;
-            position: relative;
-            line-height: 1.4;
-        }
-
-        .message.ai {
-            background: #e0f2fe;
-            color: #1e3a8a;
-            align-self: flex-start;
-        }
-
-        .message.user {
-            background: #2563eb;
-            color: white;
-            align-self: flex-end;
-        }
-
-        .audio-btn {
-            background: #1e40af;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 12px;
-            margin-top: 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-weight: bold;
-        }
-
-        .chat-input-area {
-            display: flex;
-            gap: 8px;
-            margin-top: 5px;
-        }
-
-        .chat-input-area input {
-            margin-bottom: 0;
-        }
-
-        .btn-file {
-            background: #4b5563;
-            color: white;
-            border: none;
-            padding: 0 14px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-    </style>
+<style>
+:root {
+  --blue:#2563eb;
+  --dark:#10234e;
+  --bg:#f1f5f9;
+  --white:#ffffff;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:#1e293b;
+}
+.app {
+  max-width:500px;
+  min-height:100vh;
+  margin:auto;
+  background:var(--bg);
+}
+header {
+  background:linear-gradient(135deg,#10234e,#2563eb);
+  color:white;
+  padding:28px 18px;
+  text-align:center;
+  border-radius:0 0 25px 25px;
+}
+.logo {
+  font-size:35px;
+  margin-bottom:8px;
+}
+header h1 {margin:0;font-size:25px}
+header p {font-size:13px;opacity:.9}
+main {padding:17px}
+.card {
+  background:white;
+  padding:18px;
+  margin-bottom:15px;
+  border-radius:17px;
+  box-shadow:0 5px 18px #0000000c;
+}
+h3 {color:var(--blue);margin-top:0}
+label {
+  display:block;
+  margin:13px 0 6px;
+  font-size:13px;
+  font-weight:bold;
+}
+select,input {
+  width:100%;
+  padding:13px;
+  border:1px solid #cbd5e1;
+  border-radius:10px;
+  background:white;
+  font-size:14px;
+}
+button {
+  border:0;
+  border-radius:11px;
+  padding:13px;
+  background:var(--blue);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+.primary {width:100%;margin-top:15px}
+.hidden {display:none!important}
+.level {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.level-icon {font-size:28px}
+.level button {width:100%;margin-top:8px}
+.messages {
+  height:310px;
+  overflow-y:auto;
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  padding:12px;
+  border-radius:12px;
+}
+.message {
+  padding:11px;
+  margin:8px 0;
+  border-radius:12px;
+  font-size:14px;
+  line-height:1.5;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.ai {background:#dbeafe;color:#17356d}
+.user {background:#2563eb;color:white;margin-left:20px}
+.chat-controls {
+  display:flex;
+  gap:7px;
+  margin-top:10px;
+}
+.chat-controls input {min-width:0;flex:1}
+.chat-controls button {padding:10px}
+.small {font-size:12px;color:#64748b}
+.back {
+  background:#e2e8f0;
+  color:#1e293b;
+  margin-bottom:12px;
+}
+.audio {background:#1e40af;margin-top:8px}
+footer {
+  text-align:center;
+  padding:18px;
+  color:#64748b;
+  font-size:12px;
+}
+</style>
 </head>
+
 <body>
+<div class="app">
 
-    <div class="container">
-        <div class="header">
-            <h1 id="app-title">Super-meta v6 AI</h1>
-            <p style="margin:5px 0 0; font-size:12px; opacity:0.9;">Resolução Inteligente & Voz Automática</p>
-        </div>
+<header>
+  <div class="logo">🧠</div>
+  <h1>Super Meta IA</h1>
+  <p>O teu assistente educativo inteligente</p>
+</header>
 
-        <div class="content">
-            
-            <!-- ECRÃ 1: Configuração Inicial -->
-            <div id="setup-screen" class="card">
-                <h3>⚙️ Configuração do Assistente</h3>
-                
-                <label for="country-select">País / Região (Escolha a sua bandeira):</label>
-                <select id="country-select">
-                    <option value="mz">🇲🇿 Moçambique</option>
-                    <option value="br">🇧🇷 Brasil</option>
-                    <option value="pt">🇵🇹 Portugal</option>
-                    <option value="ao">🇦🇴 Angola</option>
-                    <option value="gb">🇬🇧 Reino Unido (Inglaterra)</option>
-                    <option value="us">🇺🇸 Estados Unidos</option>
-                    <option value="za">🇿🇦 África do Sul</option>
-                </select>
+<main>
 
-                <label for="voice-type-select">Tipo de Voz Desejado:</label>
-                <select id="voice-type-select">
-                    <optgroup label="Vozes Femininas">
-                        <option value="fem-relax">Feminina - Relaxante e Suave</option>
-                        <option value="fem-clara">Feminina - Clara e Direta</option>
-                    </optgroup>
-                    <optgroup label="Vozes Masculinas">
-                        <option value="masc-grossa">Masculina - Voz Grossa e Firme</option>
-                        <option value="masc-calma">Masculina - Calma, Suave e Amigável</option>
-                    </optgroup>
-                </select>
+<section id="setup" class="card">
+  <h3>⚙️ Configurar assistente</h3>
 
-                <button class="btn" onclick="entrarApp()">🚀 Entrar no Super-meta</button>
-            </div>
+  <label>País</label>
+  <select id="country">
+    <option value="pt-MZ">🇲🇿 Moçambique</option>
+    <option value="pt-BR">🇧🇷 Brasil</option>
+    <option value="pt-PT">🇵🇹 Portugal</option>
+    <option value="en-GB">🇬🇧 Reino Unido</option>
+  </select>
 
-            <!-- ECRÃ 2: Ecrã Principal com os Blocos -->
-            <div id="main-screen" class="hidden">
-                <div class="chat-box" id="welcome-msg-box">
-                    💬 Olá! Sou o teu Super-meta v6. Escolhe o nível de ensino abaixo.
-                </div>
+  <label>Tipo de voz</label>
+  <select id="voice">
+    <option value="female">Feminina</option>
+    <option value="male">Masculina</option>
+  </select>
 
-                <div class="card">
-                    <h3>📖 Primário - 1ª à 7ª Classe</h3>
-                    <p style="font-size:13px; color:#4b5563;">Matemática, Português, Ciências e mais.</p>
-                    <button class="btn" onclick="abrirNivel('primario')">▶ Começar Primário</button>
-                </div>
+  <button class="primary" onclick="entrar()">
+    🚀 Entrar no Super Meta IA
+  </button>
+</section>
 
-                <div class="card">
-                    <h3>📘 Secundário - 8ª à 10ª Classe</h3>
-                    <p style="font-size:13px; color:#4b5563;">Física, Química, Biologia, Matemática.</p>
-                    <button class="btn" onclick="abrirNivel('secundario')">▶ Começar Secundário</button>
-                </div>
+<section id="home" class="hidden">
+  <div class="card">
+    <h3>Olá! Bem-vindo ao Super Meta IA 👋</h3>
+    <p>Escolhe o teu nível de ensino para começar.</p>
+  </div>
 
-                <div class="card">
-                    <h3>🎓 Médio - 11ª e 12ª Classe</h3>
-                    <p style="font-size:13px; color:#4b5563;">Escolha de Seções (Ciências, Letras, etc.).</p>
-                    <button class="btn" onclick="abrirNivel('medio')">▶ Começar Médio</button>
-                </div>
-            </div>
+  <div class="card level">
+    <div class="level-icon">📚</div>
+    <div style="flex:1">
+      <h3>Ensino Primário</h3>
+      <p class="small">1.ª à 7.ª classe</p>
+      <button onclick="abrirNivel('primario')">Começar</button>
+    </div>
+  </div>
 
-            <!-- ECRÃ 3: Sub-menus e Área de Chat Real -->
-            <div id="sub-screen" class="hidden">
-                <a class="back-link" onclick="voltarPrincipal()">⬅ Voltar aos Níveis</a>
-                <div id="sub-content" class="card">
-                    <!-- Conteúdo dinâmico com chat -->
-                </div>
-            </div>
+  <div class="card level">
+    <div class="level-icon">📘</div>
+    <div style="flex:1">
+      <h3>Ensino Secundário</h3>
+      <p class="small">8.ª à 10.ª classe</p>
+      <button onclick="abrirNivel('secundario')">Começar</button>
+    </div>
+  </div>
 
-        </div>
+  <div class="card level">
+    <div class="level-icon">🎓</div>
+    <div style="flex:1">
+      <h3>Ensino Médio</h3>
+      <p class="small">11.ª e 12.ª classe</p>
+      <button onclick="abrirNivel('medio')">Começar</button>
+    </div>
+  </div>
+</section>
+
+<section id="study" class="hidden">
+  <button class="back" onclick="voltar()">⬅ Voltar</button>
+
+  <div class="card">
+    <h3>📖 Área de aprendizagem</h3>
+
+    <label>Classe</label>
+    <select id="classe"></select>
+
+    <label>Disciplina</label>
+    <select id="disciplina">
+      <option>Matemática</option>
+      <option>Português</option>
+      <option>Inglês</option>
+      <option>Física</option>
+      <option>Química</option>
+      <option>Biologia</option>
+      <option>História</option>
+      <option>Geografia</option>
+      <option>TIC</option>
+      <option>Outra disciplina</option>
+    </select>
+  </div>
+
+  <div class="card">
+    <h3>💬 Conversar com a IA</h3>
+
+    <div id="messages" class="messages">
+      <div class="message ai">
+        Olá! Sou o Super Meta IA.
+        Escreve a tua dúvida ou envia uma fotografia.
+      </div>
     </div>
 
-    <script>
-        let nivelAtual = "";
-        let classeAtual = "";
+    <div class="chat-controls">
+      <input id="question" placeholder="Escreve o exercício...">
+      <button onclick="enviar()">Enviar</button>
+    </div>
 
-        function entrarApp() {
-            document.getElementById('setup-screen').classList.add('hidden');
-            document.getElementById('main-screen').classList.remove('hidden');
+    <label>📷 Fotografia do exercício</label>
+    <input id="photo" type="file" accept="image/*">
+    <button class="primary" onclick="enviarFoto()">Enviar fotografia</button>
+  </div>
+</section>
 
-            const textoBoasVindas = "Seja bem-vindo ao Super-meta. Escolhe a classe e envia qualquer exercício para eu resolver.";
-            document.getElementById('welcome-msg-box').innerText = "💬 " + textoBoasVindas;
-            falarTexto(textoBoasVindas);
-        }
+</main>
 
-        function abrirNivel(nivel) {
-            nivelAtual = nivel;
-            document.getElementById('main-screen').classList.add('hidden');
-            document.getElementById('sub-screen').classList.remove('hidden');
-            const container = document.getElementById('sub-content');
+<footer>
+  Super Meta IA © 2026 · Aprender sem limites
+</footer>
+</div>
 
-            if (nivel === 'primario') {
-                container.innerHTML = `
-                    <h3>📖 Ensino Primário (1ª à 7ª Classe)</h3>
-                    <p>Selecione a sua classe:</p>
-                    <select id="classe-sel" onchange="ativarChat(this.value, 'Primário')">
-                        <option value="">-- Escolher Classe --</option>
-                        <option value="1ª Classe">1ª Classe</option>
-                        <option value="2ª Classe">2ª Classe</option>
-                        <option value="3ª Classe">3ª Classe</option>
-                        <option value="4ª Classe">4ª Classe</option>
-                        <option value="5ª Classe">5ª Classe</option>
-                        <option value="6ª Classe">6ª Classe</option>
-                        <option value="7ª Classe">7ª Classe</option>
-                    </select>
-                    <div id="chat-wrapper"></div>
-                `;
-            } else if (nivel === 'secundario') {
-                container.innerHTML = `
-                    <h3>📘 Ensino Secundário (8ª à 10ª Classe)</h3>
-                    <p>Selecione a sua classe:</p>
-                    <select id="classe-sel" onchange="ativarChat(this.value, 'Secundário')">
-                        <option value="">-- Escolher Classe --</option>
-                        <option value="8ª Classe">8ª Classe</option>
-                        <option value="9ª Classe">9ª Classe</option>
-                        <option value="10ª Classe">10ª Classe</option>
-                    </select>
-                    <div id="chat-wrapper"></div>
-                `;
-            } else if (nivel === 'medio') {
-                container.innerHTML = `
-                    <h3>🎓 Ensino Médio (11ª e 12ª Classe)</h3>
-                    <p>Selecione a Seção / Curso:</p>
-                    <select id="classe-sel" onchange="ativarChat(this.value, 'Médio')">
-                        <option value="">-- Escolher Seção --</option>
-                        <option value="Ciências com Biologia">Ciências com Biologia</option>
-                        <option value="Ciências Exatas (Matemática/Física)">Ciências Exatas (Matemática/Física)</option>
-                        <option value="Letras e Humanidades">Letras e Humanidades</option>
-                        <option value="Ensino Técnico">Ensino Técnico / Profissional</option>
-                    </select>
-                    <div id="chat-wrapper"></div>
-                `;
-            }
-        }
+<script>
+let nivel = "";
 
-        function ativarChat(valor, nivelNome) {
-            classeAtual = valor;
-            const wrapper = document.getElementById('chat-wrapper');
-            if (!valor) {
-                wrapper.innerHTML = "";
-                return;
-            }
+function mostrar(id) {
+  ["setup","home","study"].forEach(x =>
+    document.getElementById(x).classList.add("hidden")
+  );
+  document.getElementById(id).classList.remove("hidden");
+}
 
-            const msgInicial = `Pronto! Estou na ${valor}. Escreve a tua questão ou envia uma foto para eu resolver agora mesmo.`;
+function entrar() {
+  mostrar("home");
+  falar("Bem-vindo ao Super Meta IA. Escolhe o teu nível de ensino.");
+}
 
-            wrapper.innerHTML = `
-                <div class="chat-container">
-                    <p style="font-size:13px; color:#059669; margin:0;">✔ Selecionado: <strong>${nivelNome} - ${valor}</strong></p>
-                    <div class="chat-messages" id="box-mensagens">
-                        <div class="message ai">
-                            ${msgInicial}<br>
-                            <button class="audio-btn" onclick="falarTexto('${msgInicial}')">🔊 Ouvir em Áudio</button>
-                        </div>
-                    </div>
-                    <div class="chat-input-area">
-                        <input type="file" id="file-input" accept="image/*" style="display:none" onchange="enviarFoto(this)">
-                        <button class="btn-file" onclick="document.getElementById('file-input').click()" title="Enviar Foto/Screenshot">📷</button>
-                        <input type="text" id="user-input" placeholder="Escreve o exercício..." onkeypress="if(event.key === 'Enter') enviarMensagem()">
-                        <button class="btn" style="margin-top:0; width:auto; padding:0 14px;" onclick="enviarMensagem()">Resolver</button>
-                    </div>
-                </div>
-            `;
+function abrirNivel(tipo) {
+  nivel = tipo;
+  const select = document.getElementById("classe");
+  select.innerHTML = "";
 
-            falarTexto(msgInicial);
-        }
+  let inicio = tipo === "primario" ? 1 :
+               tipo === "secundario" ? 8 : 11;
+  let fim = tipo === "primario" ? 7 :
+            tipo === "secundario" ? 10 : 12;
 
-        function falarTexto(texto) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); 
-                let utterance = new SpeechSynthesisUtterance(texto);
-                utterance.lang = 'pt-PT';
-                
-                const tipoVoz = document.getElementById('voice-type-select') ? document.getElementById('voice-type-select').value : 'fem-relax';
-                if (tipoVoz.includes('grossa')) {
-                    utterance.pitch = 0.5; 
-                } else if (tipoVoz.includes('calma') || tipoVoz.includes('relax')) {
-                    utterance.pitch = 0.9;
-                    utterance.rate = 0.95; 
-                } else {
-                    utterance.pitch = 1.2; 
-                }
+  for(let i=inicio;i<=fim;i++) {
+    let option = document.createElement("option");
+    option.value = i;
+    option.textContent = i + "ª Classe";
+    select.appendChild(option);
+  }
 
-                window.speechSynthesis.speak(utterance);
-            }
-        }
+  mostrar("study");
+}
 
-        function enviarMensagem() {
-            const input = document.getElementById('user-input');
-            const msgs = document.getElementById('box-mensagens');
-            const texto = input.value.trim();
-            if (!texto) return;
+function falar(texto) {
+  if(!("speechSynthesis" in window)) return;
 
-            msgs.innerHTML += `<div class="message user">${texto}</div>`;
-            input.value = "";
-            msgs.scrollTop = msgs.scrollHeight;
+  speechSynthesis.cancel();
+  const fala = new SpeechSynthesisUtterance(texto);
+  fala.lang = document.getElementById("country").value;
 
-            setTimeout(() => {
-                let respostaResolvida = gerarResoluçãoInteligente(texto, classeAtual);
+  const voz = document.getElementById("voice").value;
+  fala.pitch = voz === "female" ? 1.2 : 0.8;
+  fala.rate = 0.95;
 
-                msgs.innerHTML += `
-                    <div class="message ai">
-                        ${respostaResolvida}<br>
-                        <button class="audio-btn" onclick="falarTexto('${respostaResolvida.replace(/'/g, "")}')">🔊 Ouvir em Áudio</button>
-                    </div>
-                `;
-                msgs.scrollTop = msgs.scrollHeight;
-                falarTexto(respostaResolvida);
-            }, 600);
-        }
+  speechSynthesis.speak(fala);
+}
 
-        function enviarFoto(input) {
-            if (input.files && input.files[0]) {
-                const msgs = document.getElementById('box-mensagens');
-                msgs.innerHTML += `<div class="message user">📷 [Fotografia do exercício enviada]</div>`;
-                msgs.scrollTop = msgs.scrollHeight;
+function adicionarMensagem(texto,tipo) {
+  const mensagens = document.getElementById("messages");
+  const div = document.createElement("div");
+  div.className = "message " + tipo;
+  div.textContent = texto;
+  mensagens.appendChild(div);
+  mensagens.scrollTop = mensagens.scrollHeight;
+}
 
-                setTimeout(() => {
-                    let respostaFoto = `Resolução detalhada para ${classeAtual}: Analisei a imagem do exercício. Passo 1: Extração dos dados principais do enunciado. Passo 2: Aplicação direta da fórmula teórica correspondente. Conclusão: O cálculo foi efetuado com sucesso, resultando na resposta exata pretendida para este problema.`;
+function resolverMatematica(texto) {
+  let match = texto.match(/^\s*(\d+)\s*([+\-*/])\s*(\d+)\s*=?\s*$/);
+  if(!match) return null;
 
-                    msgs.innerHTML += `
-                        <div class="message ai">
-                            ${respostaFoto}<br>
-                            <button class="audio-btn" onclick="falarTexto('${respostaFoto}')">🔊 Ouvir em Áudio</button>
-                        </div>
-                    `;
-                    msgs.scrollTop = msgs.scrollHeight;
-                    falarTexto(respostaFoto);
-                }, 800);
-            }
-        }
+  let a = Number(match[1]);
+  let b = Number(match[3]);
+  let op = match[2];
+  let resultado;
 
-        function gerarResoluçãoInteligente(pergunta, classe) {
-            let p = pergunta.toLowerCase();
-            
-            // Resolve contas matemáticas diretas
-            if (/\d/.test(p) && (p.includes("+") || p.includes("-") || p.includes("*") || p.includes("/") || p.includes("quanto"))) {
-                try {
-                    let expressaoLimpa = p.replace(/quanto é/g, "").replace(/x/g, "*").replace(/[^0-9+\-*/().]/g, "");
-                    if(expressaoLimpa.length > 0) {
-                        let resultado = eval(expressaoLimpa);
-                        return `Resolução exata para ${classe}: O resultado da conta é ${resultado}. Passo a passo: efetuamos a operação aritmética com os valores fornecidos e obtivemos ${resultado} como solução final.`;
-                    }
-                } catch(e) {}
-            }
+  if(op === "+") resultado = a+b;
+  if(op === "-") resultado = a-b;
+  if(op === "*") resultado = a*b;
+  if(op === "/") {
+    if(b === 0) return "Não é possível dividir por zero.";
+    resultado = a/b;
+  }
 
-            // Resolução específica para Biologia / Ciências
-            if (p.includes("biologia") || p.includes("celula") || p.includes("fotosintese") || p.includes("ciencia")) {
-                return `Resolução de Biologia para ${classe}: O tema abordado refere-se aos processos vitais dos seres vivos. A explicação detalhada é que as células desempenham funções metabólicas essenciais, transformando nutrientes em energia através da respiração celular ou sintetizando matéria orgânica via fotossíntese. Resposta correta e validada!`;
-            }
+  return "Resolução:\n" + a + " " + op + " " + b +
+         " = " + resultado + "\nResposta: " + resultado;
+}
 
-            // Resolução geral detalhada para qualquer outra dúvida escolar
-            return `Resolução passo a passo para ${classe} sobre "${pergunta}": 1. Identificação dos dados fornecidos no enunciado. 2. Seleção da lei ou fórmula científica aplicável. 3. Resolução algébrica e lógica detalhada. Conclusão: O exercício está inteiramente resolvido com o resultado correto.`;
-        }
+function enviar() {
+  const input = document.getElementById("question");
+  const texto = input.value.trim();
+  if(!texto) return;
 
-        function voltarPrincipal() {
-            document.getElementById('sub-screen').classList.add('hidden');
-            document.getElementById('main-screen').classList.remove('hidden');
-        }
-    </script>
+  adicionarMensagem(texto,"user");
+  input.value = "";
+
+  const classe = document.getElementById("classe").value;
+  const disciplina = document.getElementById("disciplina").value;
+
+  let resposta = resolverMatematica(texto);
+
+  if(!resposta) {
+    resposta = "Recebi a tua pergunta sobre " + disciplina +
+      ", da " + classe + "ª classe.\n\n" +
+      "Esta versão ainda não está ligada a uma IA real. " +
+      "Para obter uma resolução completa, precisamos de configurar " +
+      "uma API de inteligência artificial.";
+  }
+
+  adicionarMensagem(resposta,"ai");
+  falar(resposta);
+}
+
+function enviarFoto() {
+  const foto = document.getElementById("photo").files[0];
+
+  if(!foto) {
+    alert("Seleciona primeiro uma fotografia.");
+    return;
+  }
+
+  adicionarMensagem("📷 Fotografia selecionada: " + foto.name,"user");
+
+  adicionarMensagem(
+    "A fotografia foi selecionada. A análise automática de imagens " +
+    "será ativada quando ligarmos o Super Meta IA a um serviço de IA.",
+    "ai"
+  );
+}
+
+function voltar() {
+  mostrar("home");
+}
+</script>
 </body>
 </html>
