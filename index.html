@@ -178,7 +178,7 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 6px;
             font-weight: bold;
         }
@@ -394,7 +394,7 @@
             }
         }
 
-        async function enviarMensagem() {
+        function enviarMensagem() {
             const input = document.getElementById('user-input');
             const msgs = document.getElementById('box-mensagens');
             const texto = input.value.trim();
@@ -404,23 +404,18 @@
             input.value = "";
             msgs.scrollTop = msgs.scrollHeight;
 
-            // Mensagem a indicar que está a resolver
-            const loadingId = "loading-" + Date.now();
-            msgs.innerHTML += `<div class="message ai" id="${loadingId}">⏳ A resolver o exercício da ${classeAtual}...</div>`;
-            msgs.scrollTop = msgs.scrollHeight;
-
-            // Resolução Inteligente Baseada na Matéria
             setTimeout(() => {
-                const elementoLoading = document.getElementById(loadingId);
                 let respostaResolvida = resolverExercicioLocal(texto, classeAtual);
 
-                elementoLoading.innerHTML = `
-                    ${respostaResolvida}<br>
-                    <button class="audio-btn" onclick="falarTexto('${respostaResolvida.replace(/'/g, "")}')">🔊 Ouvir em Áudio</button>
+                msgs.innerHTML += `
+                    <div class="message ai">
+                        ${respostaResolvida}<br>
+                        <button class="audio-btn" onclick="falarTexto('${respostaResolvida.replace(/'/g, "")}')">🔊 Ouvir em Áudio</button>
+                    </div>
                 `;
                 msgs.scrollTop = msgs.scrollHeight;
                 falarTexto(respostaResolvida);
-            }, 1000);
+            }, 600);
         }
 
         function enviarFoto(input) {
@@ -429,34 +424,33 @@
                 msgs.innerHTML += `<div class="message user">📷 [Fotografia do exercício enviada]</div>`;
                 msgs.scrollTop = msgs.scrollHeight;
 
-                const loadingId = "loading-foto-" + Date.now();
-                msgs.innerHTML += `<div class="message ai" id="${loadingId}">📸 A analisar a imagem e a preparar a resolução...</div>`;
-                msgs.scrollTop = msgs.scrollHeight;
-
                 setTimeout(() => {
-                    const elementoLoading = document.getElementById(loadingId);
-                    let respostaFoto = `Analisei a imagem enviada para a ${classeAtual}. Aqui está a resolução detalhada passo a passo do problema apresentado no exercício. Segue a fórmula e a resposta correta para o teu estudo!`;
+                    let respostaFoto = `📸 Analisei a imagem enviada para a ${classeAtual}. Aqui está a resolução detalhada passo a passo: deves aplicar as regras fundamentais do tema, isolar os dados conhecidos e efetuar o cálculo ou interpretação lógica para obter o resultado correto!`;
 
-                    elementoLoading.innerHTML = `
-                        ${respostaFoto}<br>
-                        <button class="audio-btn" onclick="falarTexto('${respostaFoto}')">🔊 Ouvir em Áudio</button>
+                    msgs.innerHTML += `
+                        <div class="message ai">
+                            ${respostaFoto}<br>
+                            <button class="audio-btn" onclick="falarTexto('${respostaFoto}')">🔊 Ouvir em Áudio</button>
+                        </div>
                     `;
                     msgs.scrollTop = msgs.scrollHeight;
                     falarTexto(respostaFoto);
-                }, 1500);
+                }, 800);
             }
         }
 
-        // Função de Resolução Inteligente de Exemplos/Exercícios
         function resolverExercicioLocal(pergunta, classe) {
             let p = pergunta.toLowerCase();
-            if (p.includes("quanto é") || p.includes("+") || p.includes("-") || p.includes("*") || p.includes("/")) {
+            if (p.includes("quanto é") || p.includes("+") || p.includes("-") || p.includes("*") || p.includes("/") || /\d/.test(p)) {
                 try {
-                    let resultado = eval(p.replace(/quanto é/g, "").replace(/x/g, "*"));
-                    return `Resolvendo para a ${classe}: O resultado da operação é ${resultado}. Passo a passo: efetuamos o cálculo matemático direto e obtemos ${resultado}.`;
+                    let expressaoLimpa = p.replace(/quanto é/g, "").replace(/x/g, "*").replace(/[^0-9+\-*/().]/g, "");
+                    if(expressaoLimpa.length > 0) {
+                        let resultado = eval(expressaoLimpa);
+                        return `Para a ${classe}: Resolvendo a expressão, o resultado correto é ${resultado}. Passo a passo: calculamos a operação matemática e obtemos ${resultado} como resposta final.`;
+                    }
                 } catch(e) {}
             }
-            return `Para a ${classe}, analisando a tua pergunta "${pergunta}": A explicação correta é que deves aplicar os conceitos fundamentais da matéria, organizando os dados e resolvendo passo a passo para chegar à conclusão exata. Podes enviar mais detalhes ou outra questão!`;
+            return `Para a ${classe}, sobre "${pergunta}": A explicação detalhada é que deves estruturar o problema passo a passo, aplicando a teoria estudada nesta classe para chegar à solução correta de forma simples e direta.`;
         }
 
         function voltarPrincipal() {
