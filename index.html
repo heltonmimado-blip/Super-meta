@@ -168,16 +168,17 @@
         }
 
         .audio-btn {
-            background: none;
+            background: #1e40af;
+            color: white;
             border: none;
-            color: #1e40af;
             cursor: pointer;
-            font-size: 14px;
-            margin-top: 5px;
-            display: flex;
+            font-size: 13px;
+            margin-top: 8px;
+            display: inline-flex;
             align-items: center;
             gap: 5px;
-            padding: 0;
+            padding: 6px 12px;
+            border-radius: 6px;
             font-weight: bold;
         }
 
@@ -285,7 +286,6 @@
 
             const textoBoasVindas = "Seja bem-vindo ao Meta IA, escolha a voz que preferes ou que te sentas à vontade ao conversar com a voz.";
             document.getElementById('welcome-msg-box').innerText = "💬 " + textoBoasVindas;
-
             falarTexto(textoBoasVindas);
         }
 
@@ -352,7 +352,7 @@
                     <p style="font-size:13px; color:#059669; margin:0;">✔ Selecionado: <strong>${nivelNome} - ${valor}</strong></p>
                     <div class="chat-messages" id="box-mensagens">
                         <div class="message ai">
-                            ${msgInicial}
+                            ${msgInicial}<br>
                             <button class="audio-btn" onclick="falarTexto('${msgInicial}')">🔊 Ouvir em Áudio</button>
                         </div>
                     </div>
@@ -365,28 +365,28 @@
                 </div>
             `;
 
-            // Fala automaticamente a saudação da classe escolhida
             falarTexto(msgInicial);
         }
 
         function falarTexto(texto) {
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel(); // Cancela qualquer áudio anterior
+                window.speechSynthesis.cancel(); 
                 let utterance = new SpeechSynthesisUtterance(texto);
                 utterance.lang = 'pt-PT';
                 
-                // Ajusta tom/velocidade consoante a voz escolhida no início
                 const tipoVoz = document.getElementById('voice-type-select') ? document.getElementById('voice-type-select').value : 'fem-relax';
                 if (tipoVoz.includes('grossa')) {
-                    utterance.pitch = 0.6; // Voz mais grave/grossa
+                    utterance.pitch = 0.5; 
                 } else if (tipoVoz.includes('calma') || tipoVoz.includes('relax')) {
-                    utterance.pitch = 1.0;
-                    utterance.rate = 0.9; // Um pouco mais lenta e relaxante
+                    utterance.pitch = 0.9;
+                    utterance.rate = 0.95; 
                 } else {
-                    utterance.pitch = 1.2; // Feminina mais clara
+                    utterance.pitch = 1.2; 
                 }
 
                 window.speechSynthesis.speak(utterance);
+            } else {
+                alert("O seu navegador não suporta reprodução de voz automática.");
             }
         }
 
@@ -404,7 +404,7 @@
                 const respostaIA = `Recebi a tua dúvida sobre "${texto}". Como Super-meta, estou a analisar para te dar a explicação detalhada!`;
                 msgs.innerHTML += `
                     <div class="message ai">
-                        ${respostaIA}
+                        ${respostaIA}<br>
                         <button class="audio-btn" onclick="falarTexto('${respostaIA}')">🔊 Ouvir em Áudio</button>
                     </div>
                 `;
@@ -423,7 +423,7 @@
                     const respostaFoto = "📸 Analisei a imagem do teu exercício! Aqui está a resolução passo a passo...";
                     msgs.innerHTML += `
                         <div class="message ai">
-                            ${respostaFoto}
+                            ${respostaFoto}<br>
                             <button class="audio-btn" onclick="falarTexto('${respostaFoto}')">🔊 Ouvir em Áudio</button>
                         </div>
                     `;
